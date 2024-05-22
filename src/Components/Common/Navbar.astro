@@ -1,0 +1,163 @@
+---
+// Dark Mode
+import DarkMode from './DarkMode';
+
+// Componentes
+import Divisor from './Divisor.astro';
+
+// Lenguaje
+import { useLocale } from '../../Hooks/useLocale';
+const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
+---
+
+<nav>
+	<div
+		class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+		<!-- Logo -->
+		<a href='/' class='flex items-center space-x-3 rtl:space-x-reverse'>
+			<img id='LogoTheme' src='' class='h-8' alt='AnderCMD Logo' />
+		</a>
+
+		<!-- Movil -->
+		<button
+			data-collapse-toggle='navbar-default'
+			type='button'
+			class='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+			aria-controls='navbar-default'
+			aria-expanded='false'>
+			<span class='sr-only'>{t('Nav.OpenMenu')}</span>
+			<svg
+				class='w-5 h-5'
+				aria-hidden='true'
+				xmlns='http://www.w3.org/2000/svg'
+				fill='none'
+				viewBox='0 0 17 14'>
+				<path
+					stroke='currentColor'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+					stroke-width='2'
+					d='M1 1h15M1 7h15M1 13h15'></path>
+			</svg>
+		</button>
+
+		<!-- Paginas -->
+		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
+			<div
+				class='font-medium flex flex-col p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg max-lg:bg-gray-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-gray-800 dark:border-gray-700'>
+				<a
+					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='fa-solid fa-house text-black dark:text-white'></i>
+					<span>{t('Nav.Index')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(
+						currentLocale ?? '',
+						t('Nav.About')
+					)}
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='fa-solid fa-person text-black dark:text-white'
+					></i>
+					<span>{t('Nav.About')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(
+						currentLocale ?? '',
+						t('Nav.Posts')
+					)}
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='fa-solid fa-newspaper text-black dark:text-white'
+					></i>
+					<span>{t('Nav.Posts')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(
+						currentLocale ?? '',
+						t('Nav.Projects')
+					)}
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='fa-solid fa-server text-black dark:text-white'
+					></i>
+					<span>{t('Nav.Projects')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(
+						currentLocale ?? '',
+						t('Nav.Contact')
+					)}
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='fa-solid fa-envelope text-black dark:text-white'
+					></i>
+					<span>{t('Nav.Contact')}</span>
+				</a>
+				<Divisor />
+				<div
+					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<DarkMode client:idle ThemeText={t('Nav.Theme')} />
+				</div>
+				<Divisor />
+				<div
+					class='flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse'>
+					<button
+						type='button'
+						data-dropdown-toggle='language-dropdown-menu'
+						class='inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white transition-all hover:scale-105'>
+						{
+							Lang === 'en' ? (
+								<div class='inline-flex items-center'>
+									<img
+										src='/Images/Estados-Unidos.png'
+										class='w-5 h-5 me-2'
+										alt='US Flag'
+									/>
+									English (en-US)
+								</div>
+							) : (
+								<div class='inline-flex items-center'>
+									<img
+										src='/Images/Mexico.png'
+										class='w-5 h-5 me-2'
+										alt='Bandera de Mexico'
+									/>
+									Español (es-MX)
+								</div>
+							)
+						}
+					</button>
+					<!-- Dropdown -->
+					<div
+						class='z-50 gap-4 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 dark:divide-gray-500 rounded-lg shadow dark:bg-gray-700'
+						id='language-dropdown-menu'>
+						<a
+							href='/en/'
+							class='block px-4 py-2 text-sm text-gray-700 hover:rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white transition-all hover:scale-105'
+							role='menuitem'>
+							<div class='inline-flex items-center'>
+								<img
+									src='/Images/Estados-Unidos.png'
+									class='w-5 h-5 me-2'
+									alt='US Flag'
+								/>
+								English (en-US)
+							</div>
+						</a>
+						<a
+							href='/es/'
+							class='block px-4 py-2 text-sm text-gray-700 hover:rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white transition-all hover:scale-105'
+							role='menuitem'>
+							<div class='inline-flex items-center'>
+								<img
+									src='/Images/Mexico.png'
+									class='w-5 h-5 me-2'
+									alt='Bandera de Mexico'
+								/>
+								Español (es-MX)
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>

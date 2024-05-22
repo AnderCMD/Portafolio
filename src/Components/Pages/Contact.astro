@@ -1,0 +1,12 @@
+---
+// Layouts
+import Plantilla from "../../Layouts/Plantilla.astro"
+
+// Lenguaje
+import { useLocale } from "../../Hooks/useLocale"
+const { t } = useLocale(Astro)
+---
+
+<Plantilla Titulo={`AnderCMD | ${t('Nav.Contact')}`}>
+
+</Plantilla>
