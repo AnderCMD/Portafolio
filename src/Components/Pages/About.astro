@@ -1,12 +1,44 @@
 ---
 // Layouts
-import Plantilla from "../../Layouts/Plantilla.astro"
+import Layout from '../../Layouts/Layout.astro';
+
+// Components
+import Text from '../Common/Text.astro';
+import Text2 from '../Common/Text2.astro';
+import WorkExperience from '../Common/WorkExperience.astro';
+import Divisor from '../Common/Divisor.astro';
 
 // Lenguaje
-import { useLocale } from "../../Hooks/useLocale"
-const { t } = useLocale(Astro)
+import { useLocale } from '../../Hooks/useLocale';
+import Social from '../Common/Social.astro';
+const { t } = useLocale(Astro);
 ---
 
-<Plantilla Titulo={`AnderCMD | ${t('Nav.About')}`}>
-
-</Plantilla>
+<Layout title={`AnderCMD | ${t('Nav.About')}`}>
+	<section class='flex max-xl:flex-col items-center gap-20 max-xl:gap-8'>
+		<img
+			src='/Images/Ander.jpg'
+			alt='Ander González'
+			class='w-60 h-60 rounded-3xl shadow-xl max-lg:w-40 max-lg:h-40'
+		/>
+		<Text
+			icon=''
+			title={t('About.Title')}
+			subtitle={t('About.Subtitle')}
+			description={t('About.Description')}
+		/>
+	</section>
+    <section>
+        <Social />
+    </section>
+    <Divisor />
+	<section>
+		<Text2
+			icon='fa-solid fa-briefcase'
+			title={t('WorkExperience.Title')}
+			subtitle=''
+			description={t('WorkExperience.Description')}
+		/>
+		<WorkExperience />
+	</section>
+</Layout>

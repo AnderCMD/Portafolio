@@ -3,7 +3,7 @@
 import DarkMode from './DarkMode';
 
 // Componentes
-import Divisor from './Divisor.astro';
+import DivisorNav from './DivisorNav.astro';
 
 // Lenguaje
 import { useLocale } from '../../Hooks/useLocale';
@@ -91,12 +91,12 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					></i>
 					<span>{t('Nav.Contact')}</span>
 				</a>
-				<Divisor />
+				<DivisorNav />
 				<div
 					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<DarkMode client:idle ThemeText={t('Nav.Theme')} />
+					<DarkMode client:idle />
 				</div>
-				<Divisor />
+				<DivisorNav />
 				<div
 					class='flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse'>
 					<button
@@ -111,7 +111,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 										class='w-5 h-5 me-2'
 										alt='US Flag'
 									/>
-									English (en-US)
+									English
 								</div>
 							) : (
 								<div class='inline-flex items-center'>
@@ -120,7 +120,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 										class='w-5 h-5 me-2'
 										alt='Bandera de Mexico'
 									/>
-									Español (es-MX)
+									Español
 								</div>
 							)
 						}
@@ -139,7 +139,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 									class='w-5 h-5 me-2'
 									alt='US Flag'
 								/>
-								English (en-US)
+								English
 							</div>
 						</a>
 						<a
@@ -152,7 +152,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 									class='w-5 h-5 me-2'
 									alt='Bandera de Mexico'
 								/>
-								Español (es-MX)
+								Español
 							</div>
 						</a>
 					</div>

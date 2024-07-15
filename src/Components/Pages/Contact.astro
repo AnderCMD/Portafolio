@@ -1,12 +1,33 @@
 ---
 // Layouts
-import Plantilla from "../../Layouts/Plantilla.astro"
+import Layout from '../../Layouts/Layout.astro';
+import Social from '../Common/Social.astro';
+import Text from '../Common/Text.astro';
+import Divisor from '../Common/Divisor.astro';
+import FormContact from '../Common/FormContact.astro';
 
 // Lenguaje
-import { useLocale } from "../../Hooks/useLocale"
-const { t } = useLocale(Astro)
+import { useLocale } from '../../Hooks/useLocale';
+const { t } = useLocale(Astro);
 ---
 
-<Plantilla Titulo={`AnderCMD | ${t('Nav.Contact')}`}>
-
-</Plantilla>
+<Layout title={`AnderCMD | ${t('Nav.Contact')}`}>
+	<section class='flex max-xl:flex-col items-center gap-20 max-xl:gap-8'>
+		<img
+			src='/Images/Ander.jpg'
+			alt='Ander González'
+			class='w-60 h-60 rounded-3xl shadow-xl max-lg:w-40 max-lg:h-40'
+		/>
+		<Text
+			icon='fa-solid fa-address-book'
+			title={t('Contact.Title')}
+			subtitle={t('Contact.Subtitle')}
+			description={t('Contact.Description')}
+		/>
+	</section>
+	<Social />
+	<Divisor />
+	<section class='mx-60 max-xl:mx-40 max-lg:mx-20 max-md:mx-10'>
+		<FormContact />
+	</section>
+</Layout>

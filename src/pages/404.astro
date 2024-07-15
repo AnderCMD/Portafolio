@@ -1,6 +1,6 @@
 ---
 // Layouts
-import Plantilla from '../Layouts/Plantilla.astro';
+import Layout from '../Layouts/Layout.astro';
 
 // Componentes
 import AButton from '../Components/Common/AButton.astro';
@@ -10,20 +10,19 @@ import { useLocale } from '../Hooks/useLocale';
 const { t } = useLocale(Astro);
 ---
 
-<Plantilla Titulo={`AnderCMD | ${t('Error.Message.404')}`}>
-	<section class='flex flex-row items-center md:gap-20 max-md:flex-col-reverse'>
-		<div class='flex flex-col gap-4'>
-			<div class='flex gap-2 items-center'>
-				<i class='fa-solid fa-triangle-exclamation text-yellow-400 text-2xl'></i>
-				<h2 class='text-2xl font-semibold text-yellow-400'>
-					{t('Error.Title.404')}
-				</h2>
+<Layout title={`AnderCMD | ${t('Error.Message.404')}`}>
+	<main class='flex flex-col justify-center gap-4'>
+		<section class='flex flex-col gap-12 items-center'>
+			<i class='fa-solid fa-triangle-exclamation text-9xl text-amber-500 dark:text-amber-400'
+			></i>
+			<div>
+				<h3 class='text-2xl font-bold max-2xl:text-center text-amber-500 dark:text-amber-400'>{t('Error.Title.404')}</h3>
+				<h1 class='text-4xl font-bold text-center'>
+					{t('Error.Message.404')}
+				</h1>
 			</div>
-			<p class='text-4xl'>{t('Error.Message.404')}</p>
-			<AButton href='/' Texto={t('Error.Button.404')} />
-		</div>
-		<div class="size-auto max-md:size-60">
-            <img src="/SVG/404.svg" alt="Error 404">
-        </div>
-	</section>
-</Plantilla>
+			<AButton texto={t('Error.Button.404')} href='/' />
+		</section>
+		<main></main>
+	</main>
+</Layout>

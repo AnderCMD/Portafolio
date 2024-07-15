@@ -1,12 +1,24 @@
 ---
 // Layouts
-import Plantilla from "../../Layouts/Plantilla.astro"
+import Layout from '../../Layouts/Layout.astro';
+
+// Components
+import Text2 from '../Common/Text2.astro'
+import Project from '../Common/Project.astro';
 
 // Lenguaje
-import { useLocale } from "../../Hooks/useLocale"
-const { t } = useLocale(Astro)
+import { useLocale } from '../../Hooks/useLocale';
+const { t } = useLocale(Astro);
 ---
 
-<Plantilla Titulo={`AnderCMD | ${t('Nav.Projects')}`}>
-
-</Plantilla>
+<Layout title={`AnderCMD | ${t('Nav.Projects')}`}>
+	<section>
+		<Text2
+			icon='fa-solid fa-diagram-project'
+			title={t('Projects.Title')}
+			subtitle=''
+			description={t('Projects.Description')}
+		/>
+		<Project />
+	</section>
+</Layout>
