@@ -48,13 +48,22 @@ export const ui = {
         'Projects.Title': 'Projects',
         'Projects.Subtitle': 'Some of my projects',
         'Projects.Description': 'Here are some of the projects I have worked on. You can see more on my GitHub profile.',
+        'Projects.ViewCode': 'View code',
+        'Projects.VisitProject': 'Visit project',
+
+        // Projects - Array
+        'Projects.Title.1': 'Horoscope',
+        'Projects.Description.1': 'Know your zodiac sign depending on your date of birth.',
+
+        'Projects.Title.2': 'Calculator',
+        'Projects.Description.2': 'Simple calculator to perform basic operations with graphic interface.',
 
         // Work Experience
         'WorkExperience.Title': 'Work Experience',
         'WorkExperience.Description': 'Here are some of the companies where I have worked and the projects I have developed.',
         'WorkExperience.Active': 'Latest',
         'WorkExperience.ReleaseDate': 'Date: ',
-        'WorkExperience.Visit': 'Visit project',
+        'WorkExperience.Visit': 'Visit',
 
         // Work Experience - Companies
         'WorkExperience.Companies.Position.1': 'Software Engineer Leader Contributor',
@@ -109,6 +118,16 @@ export const ui = {
         'Projects.Nav.Other': 'Otros',
         'Projects.Title': 'Proyectos',
         'Projects.Description': 'Aquí tienes algunos de los proyectos en los que he trabajado. Puedes ver más en mi perfil de GitHub.',
+        'Projects.ViewCode': 'Ver código',
+        'Projects.VisitProject': 'Visitar',
+
+        // Proyectos - Array
+        'Projects.Title.1': 'Horóscopo',
+        'Projects.Description.1': 'Conoce tu signo del zodiaco dependiendo de tu fecha de nacimiento.',
+
+        'Projects.Title.2': 'Calculadora',
+        'Projects.Description.2': 'Calculadora sencilla para realizar operaciones básicas con interfaz gráfica.',
+
 
         // Experiencia Laboral
         'WorkExperience.Title': 'Experiencia Laboral',
