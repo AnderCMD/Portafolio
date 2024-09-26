@@ -60,7 +60,7 @@ export default function DarkMode(props) {
 	const { ThemeText } = props;
 
     return (
-		<div className='flex lg:flex-col gap-2 items-center'>
+		<div className='flex items-center lg:flex-col gap-2'>
 			<label className='theme-switch'>
 				<input type='checkbox' className='theme-switch__checkbox' id="ToggleDarkMode" onClick={handleChangeTheme}/>
 				<div className='theme-switch__container'>

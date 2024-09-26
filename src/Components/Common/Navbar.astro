@@ -12,7 +12,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 
 <nav>
 	<div
-		class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
+		class='flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-xl'>
 		<!-- Logo -->
 		<a href='/' class='flex items-center space-x-3 rtl:space-x-reverse'>
 			<img id='LogoTheme' src='' class='h-8' alt='AnderCMD Logo' />
@@ -22,7 +22,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		<button
 			data-collapse-toggle='navbar-default'
 			type='button'
-			class='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+			class='inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
 			aria-controls='navbar-default'
 			aria-expanded='false'>
 			<span class='sr-only'>{t('Nav.OpenMenu')}</span>
@@ -44,11 +44,11 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		<!-- Paginas -->
 		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
 			<div
-				class='font-medium flex flex-col p-4 lg:p-0 mt-4 border border-gray-100 rounded-lg max-lg:bg-gray-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-gray-800 dark:border-gray-700'>
+				class='flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg lg:p-0 max-lg:bg-gray-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-gray-800 dark:border-gray-700'>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='fa-solid fa-house text-black dark:text-white'></i>
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-house dark:text-white'></i>
 					<span>{t('Nav.Index')}</span>
 				</a>
 				<a
@@ -56,8 +56,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.About')
 					)}
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='fa-solid fa-person text-black dark:text-white'
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-person dark:text-white'
 					></i>
 					<span>{t('Nav.About')}</span>
 				</a>
@@ -66,8 +66,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Posts')
 					)}
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='fa-solid fa-newspaper text-black dark:text-white'
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-newspaper dark:text-white'
 					></i>
 					<span>{t('Nav.Posts')}</span>
 				</a>
@@ -76,8 +76,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Projects')
 					)}
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='fa-solid fa-server text-black dark:text-white'
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-server dark:text-white'
 					></i>
 					<span>{t('Nav.Projects')}</span>
 				</a>
@@ -86,14 +86,14 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Contact')
 					)}
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='fa-solid fa-envelope text-black dark:text-white'
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-envelope dark:text-white'
 					></i>
 					<span>{t('Nav.Contact')}</span>
 				</a>
 				<DivisorNav />
 				<div
-					class='flex items-center gap-2 py-2 px-3 text-gray-900 rounded hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<DarkMode client:idle />
 				</div>
 				<DivisorNav />
@@ -102,7 +102,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<button
 						type='button'
 						data-dropdown-toggle='language-dropdown-menu'
-						class='inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white transition-all hover:scale-105'>
+						class='inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white transition-all hover:scale-105'>
 						{
 							Lang === 'en' ? (
 								<div class='inline-flex items-center'>
@@ -127,7 +127,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					</button>
 					<!-- Dropdown -->
 					<div
-						class='z-50 gap-4 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 dark:divide-gray-500 rounded-lg shadow dark:bg-gray-700'
+						class='z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-gray-100 dark:divide-gray-500 dark:bg-gray-700'
 						id='language-dropdown-menu'>
 						<a
 							href='/en/'
