@@ -8,5 +8,13 @@ export const useLocale = (Astro) => {
 	const t = useTranslations(Lang);
 	const { currentLocale } = Astro;
 
+	// Asegúrate de que Astro.locales está definido y contiene los locales esperados
+	const supportedLocales = Astro.locales || ['es', 'en'];
+
+	// Valida que el idioma actual sea uno de los idiomas soportados
+	if (!supportedLocales.includes(Lang)) {
+		throw new Error(`Invalid locale: ${Lang}`);
+	}
+
 	return { Lang, t, currentLocale, getRelativeLocaleUrl };
 };

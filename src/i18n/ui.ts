@@ -66,15 +66,14 @@ export const ui = {
         'WorkExperience.Visit': 'Visit',
 
         // Work Experience - Companies
-        'WorkExperience.Companies.Position.1': 'Software Engineer Leader Contributor',
-        'WorkExperience.Companies.Description.1': 'I develop web and mobile applications, transforming ideas into innovative and personalized solutions that elevate businesses. I continuously maintain applications, ensuring optimal functionality and robustness. I implement new features, bringing limitless innovation and delighting users. Additionally, I optimize performance and enhance security, ensuring efficient and protected applications.',
+        'WorkExperience.Companies.Position.3': 'Project Manager and Software Engineer',
+        'WorkExperience.Companies.Description.3': 'I develop web and mobile applications, transforming ideas into innovative and personalized solutions that elevate businesses. I continuously maintain applications, ensuring optimal functionality and robustness. I implement new features, bringing limitless innovation and delighting users. Additionally, I optimize performance and enhance security, ensuring efficient and protected applications.',
 
         'WorkExperience.Companies.Position.2': 'Software Engineer Freelance',
         'WorkExperience.Companies.Description.2': 'I develop and maintain the medical company’s website, creating innovative and personalized solutions. I ensure optimal functionality, add new features, and optimize performance and security for an exceptional user experience.',
 
-        'WorkExperience.Companies.Position.3': 'Software Engineer Internships I & II',
-        'WorkExperience.Companies.Description.3': 'I develop and maintain the website, creating innovative and personalized solutions. I ensure optimal functionality, add new features, and optimize performance and security for an exceptional user experience.',
-
+        'WorkExperience.Companies.Position.1': 'Software Engineer Internships I & II',
+        'WorkExperience.Companies.Description.1': 'I develop and maintain the website, creating innovative and personalized solutions. I ensure optimal functionality, add new features, and optimize performance and security for an exceptional user experience.',
     },
 
     // Español
@@ -137,13 +136,13 @@ export const ui = {
         'WorkExperience.Visit': 'Visitar proyecto',
 
         // Experiencia Laboral - Empresas
-        'WorkExperience.Companies.Position.1': 'Ingeniero en Software Contribuidor',
-        'WorkExperience.Companies.Description.1': 'Desarrollo aplicaciones web transformando ideas en soluciones innovadoras y personalizadas que elevan los negocios. Realizo el mantenimiento continuo de aplicaciones, garantizando su funcionamiento óptimo y robustez. Implemento nuevas funcionalidades, aportando innovación sin límites y sorprendiendo a los usuarios. Además, optimizo el rendimiento y refuerzo la seguridad, asegurando aplicaciones eficientes y protegidas.',
+        'WorkExperience.Companies.Position.3': 'Gerente de proyectos e Ingeniero en Software',
+        'WorkExperience.Companies.Description.3': 'Desarrollo aplicaciones web transformando ideas en soluciones innovadoras y personalizadas que elevan los negocios. Realizo el mantenimiento continuo de aplicaciones, garantizando su funcionamiento óptimo y robustez. Implemento nuevas funcionalidades, aportando innovación sin límites y sorprendiendo a los usuarios. Además, optimizo el rendimiento y refuerzo la seguridad, asegurando aplicaciones eficientes y protegidas.',
         
         'WorkExperience.Companies.Position.2': 'Ingeniero en Software Freelance',
         'WorkExperience.Companies.Description.2': 'Desarrollo y mantenimiento de la página web de la empresa médica, creando soluciones innovadoras y personalizadas. Garantizo su funcionamiento óptimo, añado nuevas funcionalidades, y optimizo el rendimiento y la seguridad para una experiencia de usuario excepcional.',
 
-        'WorkExperience.Companies.Position.3': 'Ingeniero en Software Estancias I & II',
-        'WorkExperience.Companies.Description.3': 'Desarrollo y mantenimiento de página web, creando soluciones innovadoras y personalizadas. Garantizo su funcionamiento óptimo, añado nuevas funcionalidades, y optimizo el rendimiento y la seguridad para una experiencia de usuario excepcional.',
+        'WorkExperience.Companies.Position.1': 'Ingeniero en Software Estancias I & II',
+        'WorkExperience.Companies.Description.1': 'Desarrollo y mantenimiento de página web, creando soluciones innovadoras y personalizadas. Garantizo su funcionamiento óptimo, añado nuevas funcionalidades, y optimizo el rendimiento y la seguridad para una experiencia de usuario excepcional.',
     }
 } as const;

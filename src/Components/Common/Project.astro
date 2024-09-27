@@ -70,7 +70,7 @@ const project = [
 		{t('Projects.Nav.Other')}
 	</button>
 </div>
-<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+<div class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
 	{
 		project.map((Project) => (
 			<div class={`filter-item all ${Project.type}`}>
@@ -92,12 +92,14 @@ const project = [
 						<div class='flex items-center justify-between gap-4 max-2xl:flex-col'>
 							<a
 								href={Project.linkCode}
+								target="_blank"
 								class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
 								{t('Projects.ViewCode')}
 								<i class='ml-2 fa-solid fa-file-code' />
 							</a>
 							<a
 								href={Project.linkView}
+								target="_blank"
 								class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
 								{t('Projects.VisitProject')}
 								<i class='ml-2 fa-solid fa-eye' />

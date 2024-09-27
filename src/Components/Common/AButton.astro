@@ -3,15 +3,16 @@
 interface Props {
 	href: string;
 	texto: string;
+	newPage?: boolean;
 }
 
 // Props
-const { href, texto } = Astro.props;
+const { href, texto, newPage } = Astro.props;
 ---
 
-<a href={href}>
+<a href={href} target={newPage === true ? '_blank' : '_self'}>
 	<button
-		class='w-full px-4 py-2 mt-4 font-bold text-white rounded-full bg-sky-500 hover:bg-sky-600 transition-all'>
+		class='w-full px-4 py-2 mt-4 font-bold text-white transition-all rounded-full bg-sky-500 hover:bg-sky-600'>
 		{texto}
 	</button>
 </a>

@@ -13,13 +13,13 @@
     "@astrojs/check": "^0.9.3",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.1.1",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
-    "astro": "^5.0.0-beta.2",
-    "flowbite": "^2.3.0",
+    "astro": "^4.15.9",
+    "flowbite": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5.6.2"
   }
 }
