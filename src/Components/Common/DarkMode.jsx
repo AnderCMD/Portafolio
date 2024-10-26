@@ -21,6 +21,7 @@ export default function DarkMode(props) {
 	useEffect(() => {
 		const LogoTheme = document.getElementById('LogoTheme');
 		const IconoLogoTheme = document.getElementById('IconoLogoTheme');
+		const IconoLogoThemeFooter = document.getElementById('IconoLogoThemeFooter');
 		const ToggleDarkMode = document.getElementById('ToggleDarkMode');
 
 		if (ToggleDarkMode !== null && ToggleDarkMode !== undefined) {
@@ -35,6 +36,7 @@ export default function DarkMode(props) {
 				if (LogoTheme) {
 					LogoTheme.src = '/Logos/Logo-Blanco.png';
 					IconoLogoTheme.src = '/Logos/Icono-Blanco.png';
+					IconoLogoThemeFooter.src = '/Logos/Icono-Blanco.png';
 				}
 			} else {
 				document.querySelector('html').classList.remove('dark');
@@ -47,6 +49,7 @@ export default function DarkMode(props) {
 				if (LogoTheme) {
 					LogoTheme.src = '/Logos/Logo-Negro.png';
 					IconoLogoTheme.src = '/Logos/Icono-Negro.png';
+					IconoLogoThemeFooter.src = '/Logos/Icono-Negro.png';
 				}
 			}
 		}
