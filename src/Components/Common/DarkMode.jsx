@@ -1,5 +1,5 @@
 // Dependencias
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 // CSS
 import '../../Styles/DarkMode.css';
@@ -9,71 +9,80 @@ export default function DarkMode(props) {
 		if (typeof window !== 'undefined' && localStorage.getItem('Theme')) {
 			return localStorage.getItem('Theme');
 		} else {
-			if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			if (
+				typeof window !== 'undefined' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches
+			) {
 				return 'dark';
 			} else {
 				return 'light';
 			}
 		}
 	});
-	
 
 	useEffect(() => {
 		const LogoTheme = document.getElementById('LogoTheme');
 		const IconoLogoTheme = document.getElementById('IconoLogoTheme');
-		const IconoLogoThemeFooter = document.getElementById('IconoLogoThemeFooter');
+		const IconoLogoThemeFooter = document.getElementById(
+			'IconoLogoThemeFooter'
+		);
 		const ToggleDarkMode = document.getElementById('ToggleDarkMode');
 
 		if (ToggleDarkMode !== null && ToggleDarkMode !== undefined) {
 			if (Theme === 'dark') {
 				document.querySelector('html').classList.add('dark');
 				ToggleDarkMode.checked = true;
-	
+
 				// Almacenar el tema en el localStorage
 				localStorage.setItem('Theme', 'dark');
-	
+
 				// Cambiar el logo
 				if (LogoTheme) {
-					LogoTheme.src = '/Logos/Logo-Blanco.png';
+					LogoTheme.src = '/Logos/Logo-Blanco.webp';
 				}
 				if (IconoLogoTheme) {
-					IconoLogoTheme.src = '/Logos/Icono-Blanco.png';
+					IconoLogoTheme.src = '/Logos/Icono-Blanco.webp';
 				}
 				if (IconoLogoThemeFooter) {
-					IconoLogoThemeFooter.src = '/Logos/Icono-Blanco.png';
+					IconoLogoThemeFooter.src = '/Logos/Icono-Blanco.webp';
 				}
 			} else {
 				document.querySelector('html').classList.remove('dark');
 				ToggleDarkMode.checked = false;
-				
+
 				// Almacenar el tema en el localStorage
 				localStorage.setItem('Theme', 'light');
-	
+
 				// Cambiar el logo
 				if (LogoTheme) {
-					LogoTheme.src = '/Logos/Logo-Negro.png';
+					LogoTheme.src = '/Logos/Logo-Negro.webp';
 				}
 				if (IconoLogoTheme) {
-					IconoLogoTheme.src = '/Logos/Icono-Negro.png';
+					IconoLogoTheme.src = '/Logos/Icono-Negro.webp';
 				}
 				if (IconoLogoThemeFooter) {
-					IconoLogoThemeFooter.src = '/Logos/Icono-Negro.png';
+					IconoLogoThemeFooter.src = '/Logos/Icono-Negro.webp';
 				}
 			}
 		}
 	}, [Theme]);
 
-    const handleChangeTheme = () => {
-        setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
+	const handleChangeTheme = () => {
+		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
 	// Props
 	const { ThemeText } = props;
 
-    return (
+	return (
 		<div className='flex items-center lg:flex-col gap-2'>
 			<label className='theme-switch'>
-				<input type='checkbox' className='theme-switch__checkbox' id="ToggleDarkMode" onClick={handleChangeTheme}/>
+				<input
+					type='checkbox'
+					className='theme-switch__checkbox'
+					id='ToggleDarkMode'
+					onClick={handleChangeTheme}
+				/>
 				<div className='theme-switch__container'>
 					<div className='theme-switch__clouds'></div>
 					<div className='theme-switch__stars-container'>
