@@ -10,7 +10,7 @@ const workExperience = [
 		position: t('WorkExperience.Companies.Position.3'),
 		date: '07/2024',
 		description: t('WorkExperience.Companies.Description.3'),
-        visit: 'https://www.amedigital.mx/'
+		visit: 'https://www.amedigital.mx/',
 	},
 	{
 		active: false,
@@ -18,7 +18,7 @@ const workExperience = [
 		position: t('WorkExperience.Companies.Position.2'),
 		date: '02/2023 - 2024',
 		description: t('WorkExperience.Companies.Description.2'),
-        visit: 'https://www.diagnosticomoderno.com/'
+		visit: 'https://www.diagnosticomoderno.com/',
 	},
 	{
 		active: false,
@@ -26,14 +26,14 @@ const workExperience = [
 		position: t('WorkExperience.Companies.Position.1'),
 		date: '2022 - 2023',
 		description: t('WorkExperience.Companies.Description.1'),
-        visit: ''
+		visit: '',
 	},
 ];
 ---
 
 <ol class='relative my-20 border-gray-200 border-s dark:border-gray-700'>
 	{
-		workExperience.map((WorkExperience) => 
+		workExperience.map((WorkExperience) => (
 			<li class='mb-10 ms-6'>
 				<span class='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900'>
 					<svg
@@ -47,27 +47,31 @@ const workExperience = [
 				</span>
 				<h3 class='flex flex-col justify-start mb-1 text-lg font-semibold text-gray-900 gap-1 xl:flex-row dark:text-white'>
 					{WorkExperience.position} &nbsp;
-					<span class="text-sky-500 dark:text-sky-400">{ WorkExperience.nameCompany}</span>
+					<span class='text-sky-500 dark:text-sky-400'>
+						{WorkExperience.nameCompany}
+					</span>
 					{WorkExperience.active ? (
 						<span class='bg-blue-100 text-blue-800 max-w-fit text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 xl:ms-2'>
 							{t('WorkExperience.Active')}
 						</span>
 					) : null}
 				</h3>
-				<time class='block my-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
+				<time class='block my-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-600'>
 					{t('WorkExperience.ReleaseDate')} {WorkExperience.date}
 				</time>
-				<p class='mb-4 text-base font-normal text-gray-500 dark:text-gray-400'>
+				<p class='mb-4 text-base font-normal text-gray-600 dark:text-gray-400'>
 					{WorkExperience.description}
 				</p>
-                {
-                    WorkExperience.visit ? (
-                        <div class="flex ">
-                            <AButton href={WorkExperience.visit} texto={t('WorkExperience.Visit')} newPage />
-                        </div>
-                    ) : null
-                }
+				{WorkExperience.visit ? (
+					<div class='flex '>
+						<AButton
+							href={WorkExperience.visit}
+							texto={t('WorkExperience.Visit')}
+							newPage
+						/>
+					</div>
+				) : null}
 			</li>
-		)
+		))
 	}
 </ol>

@@ -25,14 +25,6 @@ const TechStack = [
 		icon: 'python',
 	},
 	{
-		name: 'C#',
-		icon: 'csharp',
-	},
-	{
-		name: 'unity',
-		icon: 'unity',
-	},
-	{
 		name: 'React',
 		icon: 'react',
 	},
@@ -113,12 +105,12 @@ const TechStack = [
 ---
 
 <section
-	class='my-4 gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8'>
+	class='grid grid-cols-2 gap-4 my-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8'>
 	{
 		TechStack.map((tech) => (
-			<figure class='flex flex-col items-center justify-center max-w-lg text-center hover:scale-110 transition-all'>
+			<figure class='flex flex-col items-center justify-center max-w-lg text-center transition-all hover:scale-110'>
 				<img
-					class='rounded-lg w-14 h-14 hover:drop-shadow-xl transition-all'
+					class='transition-all rounded-lg w-14 h-14 hover:drop-shadow-xl'
 					src={
 						tech.iconImage
 							? tech.iconImage
@@ -126,7 +118,7 @@ const TechStack = [
 					}
 					alt={tech.name}
 				/>
-				<figcaption class='mt-2 text-center text-gray-500 text-md dark:text-slate-100'>
+				<figcaption class='mt-2 text-center text-gray-600 text-md dark:text-slate-100'>
 					{tech.name}
 				</figcaption>
 			</figure>
