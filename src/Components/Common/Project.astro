@@ -1,5 +1,6 @@
 ---
 // Languages
+import { date } from 'astro:schema';
 import { useLocale } from '../../Hooks/useLocale';
 const { t } = useLocale(Astro);
 
@@ -12,6 +13,7 @@ const project = [
 		linkView: 'https://andercmd.github.io/Desafios-Codedex/Horoscopo/',
 		linkCode:
 			'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
+		year: 2024,
 	},
 	{
 		type: 'web',
@@ -20,6 +22,75 @@ const project = [
 		image: '/Images/Projects/Calculator.png',
 		linkView: 'https://andercmd.github.io/Calculadora/',
 		linkCode: 'https://github.com/AnderCMD/Calculadora',
+		year: 2023,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.3'),
+		description: t('Projects.Description.3'),
+		image: '/Images/Projects/GPT-Local.png',
+		linkView: 'https://andercmd.github.io/GPT-Local/',
+		linkCode: 'https://github.com/AnderCMD/GPT-Local',
+		year: 2024,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.4'),
+		description: t('Projects.Description.4'),
+		image: '/Images/Projects/AMEDigital.png',
+		linkView: 'https://www.amedigital.mx/es/',
+		year: 2024,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.5'),
+		description: t('Projects.Description.5'),
+		image: '/Images/Projects/DiagnosticoModerno.png',
+		linkView: 'https://www.diagnosticomoderno.com/',
+		year: 2023,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.6'),
+		description: t('Projects.Description.6'),
+		image: '/Images/Projects/Portafolio.png',
+		linkView: 'https://www.andercmd.dev/',
+		linkCode: 'https://github.com/AnderCMD/Portafolio',
+		year: 2024,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.7'),
+		description: t('Projects.Description.7'),
+		image: '/Images/Projects/EcologiX.png',
+		linkCode: 'https://github.com/AnderCMD/EcologiX',
+		year: 2023,
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.8'),
+		description: t('Projects.Description.8'),
+		image: '/Images/Projects/FlappyBat.png',
+		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
+		year: 2022,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.9'),
+		description: t('Projects.Description.9'),
+		image: '/Images/Projects/ChatBot.png',
+		linkView: 'https://andercmd.github.io/Chat-Bot/',
+		linkCode: 'https://github.com/AnderCMD/Chat-Bot',
+		year: 2022,
+	},
+	{
+		type: 'web',
+		title: t('Projects.Title.10'),
+		description: t('Projects.Description.10'),
+		image: '/Images/Projects/Frontend-Mentor.png',
+		linkView: 'https://andercmd.github.io/Desafios-Frontend-Mentor/',
+		linkCode: 'https://github.com/AnderCMD/Desafios-Frontend-Mentor/',
+		year: 2023,
 	},
 ];
 ---
@@ -70,45 +141,61 @@ const project = [
 		{t('Projects.Nav.Other')}
 	</button>
 </div>
-<div class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
+
+<div
+	class='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch justify-center'>
 	{
-		project.map((Project) => (
-			<div class={`filter-item all ${Project.type}`}>
-				<div class='max-w-sm bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md dark:bg-gray-950 dark:border-gray-700 '>
-					<a href={Project.linkView}>
-						<img
-							class='rounded-t-lg'
-							src={Project.image}
-							alt={Project.description}
-						/>
-					</a>
-					<div class='p-5'>
-						<h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-							{Project.title}
-						</h5>
-						<p class='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-							{Project.description}
-						</p>
-						<div class='flex items-center justify-between gap-4 max-2xl:flex-col'>
-							<a
-								href={Project.linkCode}
-								target="_blank"
-								class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
-								{t('Projects.ViewCode')}
-								<i class='ml-2 fa-solid fa-file-code' />
-							</a>
-							<a
-								href={Project.linkView}
-								target="_blank"
-								class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
-								{t('Projects.VisitProject')}
-								<i class='ml-2 fa-solid fa-eye' />
-							</a>
+		project
+			.sort((a, b) => {
+				if (b.year !== a.year) {
+					return (b.year || 0) - (a.year || 0); // Sort by year in descending order
+				}
+				return a.title.localeCompare(b.title); // Sort by title in ascending order
+			})
+			.map((Project) => (
+				<div class={`min-h-full filter-item all ${Project.type}`}>
+					<div class='hover:scale-105 transition-all bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md dark:bg-gray-950 dark:border-gray-700 h-full flex flex-col'>
+						<a href={Project.linkView} class='flex-shrink-0'>
+							<img
+								class='rounded-t-lg w-full h-48 object-cover'
+								src={Project.image}
+								alt={Project.description}
+							/>
+						</a>
+						<div class='p-5 flex-grow flex flex-col'>
+							<span class='text-gray-500 dark:text-gray-400'>
+								{Project.year}
+							</span>
+							<h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+								{Project.title}
+							</h5>
+							<p class='mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow'>
+								{Project.description}
+							</p>
+							<div class='flex items-center justify-between gap-4 max-2xl:flex-col mt-auto'>
+								{Project.linkCode && (
+									<a
+										href={Project.linkCode}
+										target='_blank'
+										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
+										{t('Projects.ViewCode')}
+										<i class='ml-2 fa-solid fa-file-code' />
+									</a>
+								)}
+								{Project.linkView && (
+									<a
+										href={Project.linkView}
+										target='_blank'
+										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
+										{t('Projects.VisitProject')}
+										<i class='ml-2 fa-solid fa-eye' />
+									</a>
+								)}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		))
+			))
 	}
 </div>
 

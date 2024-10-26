@@ -1,0 +1,135 @@
+---
+const TechStack = [
+	{
+		name: 'HTML',
+		icon: 'html5',
+	},
+	{
+		name: 'CSS',
+		icon: 'css3',
+	},
+	{
+		name: 'JavaScript',
+		icon: 'javascript',
+	},
+	{
+		name: 'TypeScript',
+		icon: 'typescript',
+	},
+	{
+		name: 'Java',
+		icon: 'java',
+	},
+	{
+		name: 'Python',
+		icon: 'python',
+	},
+	{
+		name: 'C#',
+		icon: 'csharp',
+	},
+	{
+		name: 'unity',
+		icon: 'unity',
+	},
+	{
+		name: 'React',
+		icon: 'react',
+	},
+    {
+        name: 'Astro',
+        icon: 'astro',
+    },
+    {
+        name: 'Tailwind CSS',
+        icon: 'tailwindcss',
+    },
+    {
+        name: 'Next.js',
+        icon: 'nextjs',
+    },
+	{
+		name: 'NodeJS',
+		icon: 'nodejs',
+	},
+	{
+		name: 'Express',
+		icon: 'express',
+	},
+	{
+		name: 'NestJS',
+		icon: 'nestjs',
+	},
+	{
+		name: 'GraphQL',
+		icon: 'graphql',
+		iconImage:
+			'https://raw.githubusercontent.com/devicons/devicon/master/icons/graphql/graphql-plain.svg',
+	},
+	{
+		name: 'MySQL',
+		icon: 'mysql',
+	},
+	{
+		name: 'PostgreSQL',
+		icon: 'postgresql',
+	},
+	{
+		name: 'MongoDB',
+		icon: 'mongodb',
+	},
+	{
+		name: 'Firebase',
+		icon: 'firebase',
+	},
+	{
+		name: 'Git',
+		icon: 'git',
+	},
+	{
+		name: 'GitHub',
+		icon: 'github',
+	},
+	{
+		name: 'Vercel',
+		icon: 'vercel',
+	},
+	{
+		name: 'AWS',
+		icon: 'aws',
+		iconImage:
+			'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+	},
+	{
+		name: 'Azure',
+		icon: 'azure',
+	},
+	{
+		name: 'Hostinger',
+		icon: 'hostinger',
+		iconImage: 'https://cdn.worldvectorlogo.com/logos/hostinger.svg',
+	},
+];
+---
+
+<section
+	class='my-4 gap-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8'>
+	{
+		TechStack.map((tech) => (
+			<figure class='max-w-lg text-center flex flex-col justify-center items-center hover:scale-110 transition-all'>
+				<img
+					class='w-14 h-14 rounded-lg hover:drop-shadow-xl transition-all'
+					src={
+						tech.iconImage
+							? tech.iconImage
+							: `https://raw.githubusercontent.com/devicons/devicon/master/icons/${tech.icon}/${tech.icon}-original.svg`
+					}
+					alt={tech.name}
+				/>
+				<figcaption class='mt-2 text-md text-center text-gray-500 dark:text-slate-100'>
+					{tech.name}
+				</figcaption>
+			</figure>
+		))
+	}
+</section>

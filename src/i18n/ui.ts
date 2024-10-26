@@ -39,6 +39,10 @@ export const ui = {
         'Contact.Form.Message.Placeholder': 'Write your message here...',
         'Contact.Form.Submit': 'Send',
 
+        // Tech
+        'Tech.Title': 'Technologies',
+        'Tech.Description': 'Technologies I use in my projects and work.',
+
         // Projects
         'Projects.Nav.AllCategories': 'All categories',
         'Projects.Nav.Web': 'Web',
@@ -57,6 +61,30 @@ export const ui = {
 
         'Projects.Title.2': 'Calculator',
         'Projects.Description.2': 'Simple calculator to perform basic operations with graphic interface.',
+
+        'Projects.Title.3': 'GPT - Local',
+        'Projects.Description.3': 'Chatbot with artificial intelligence with Llama 3 model.',
+
+        'Projects.Title.4': 'AMEDigital A.C.',
+        'Projects.Description.4': 'Website of the company AMEDigital A.C.',
+
+        'Projects.Title.5': 'Diagnostico Moderno',
+        'Projects.Description.5': 'Website of the company Diagnostico Moderno.',
+
+        'Projects.Title.6': 'Portfolio',
+        'Projects.Description.6': 'My personal portfolio website.',
+
+        'Projects.Title.7': 'EcologiX Environmental Monitoring System',
+        'Projects.Description.7': 'EcologiX environmental monitoring system possibility to connect sensor by Arduino.',
+
+        'Projects.Title.8': 'Flappy Bat',
+        'Projects.Description.8': 'Flappy Bat game for android mobile developed with Unity in the style of Flappy Bird.',
+
+        'Projects.Title.9': 'Technical Challenge Chat Bot',
+        'Projects.Description.9': 'Technical challenge by Intellion for chatbot with predefined answers.',
+
+        'Projects.Title.10': 'Frontend-Mentor Challenges',
+        'Projects.Description.10': 'Frontend-Mentor challenges to improve my web development skills.',
 
         // Work Experience
         'WorkExperience.Title': 'Work Experience',
@@ -109,6 +137,10 @@ export const ui = {
         'Contact.Form.Message.Placeholder': 'Escribe tu mensaje aquí...',
         'Contact.Form.Submit': 'Enviar',
 
+        // Tecnologías
+        'Tech.Title': 'Tecnologías',
+        'Tech.Description': 'Tecnologías que utilizo en mis proyectos y trabajo.',
+
         // Proyectos
         'Projects.Nav.AllCategories': 'Todas las categorías',
         'Projects.Nav.Web': 'Web',
@@ -126,6 +158,30 @@ export const ui = {
 
         'Projects.Title.2': 'Calculadora',
         'Projects.Description.2': 'Calculadora sencilla para realizar operaciones básicas con interfaz gráfica.',
+
+        'Projects.Title.3': 'GPT - Local',
+        'Projects.Description.3': 'Chatbot con inteligencia artificial con modelo Llama 3.',
+
+        'Projects.Title.4': 'AMEDigital A.C.',
+        'Projects.Description.4': 'Página web de la empresa de AMEDigital A.C.',
+
+        'Projects.Title.5': 'Diagnostico Moderno',
+        'Projects.Description.5': 'Página web de la empresa de Diagnostico Moderno.',
+
+        'Projects.Title.6': 'Portafolio',
+        'Projects.Description.6': 'Mi página web de portafolio personal.',
+
+        'Projects.Title.7': 'Sistema de Monitoreo Ambiental EcologiX',
+        'Projects.Description.7': 'Sistema de monitoreo ambiental EcologiX posibilidad de conectar sensor por Arduino.',
+
+        'Projects.Title.8': 'Flappy Bat',
+        'Projects.Description.8': 'Juego de Flappy Bat para móviles android desarrollado con Unity al estilo de Flappy Bird.',
+
+        'Projects.Title.9': 'Chat Bot Desafió Técnico',
+        'Projects.Description.9': 'Desafió técnico por Intellion para chatbot con respuestas predefinidas',
+
+        'Projects.Title.10': 'Desafíos de Frontend-Mentor',
+        'Projects.Description.10': 'Desafíos de Frontend-Mentor para mejorar mis habilidades de desarrollo web.',
 
 
         // Experiencia Laboral

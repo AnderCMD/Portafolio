@@ -9,6 +9,7 @@ import Divisor from '../Common/Divisor.astro';
 import Project from '../Common/Project.astro';
 import WorkExperience from '../Common/WorkExperience.astro';
 import Social from '../Common/Social.astro';
+import Tech from '../Common/Tech.astro';
 
 // Lenguaje
 import { useLocale } from '../../Hooks/useLocale';
@@ -18,9 +19,10 @@ const { t } = useLocale(Astro);
 <Layout title={`AnderCMD | ${t('Nav.Index')}`}>
 	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8'>
 		<img
-			src='/Images/Ander.jpg'
-			alt='Ander González'
-			class='shadow-xl w-60 h-60 rounded-3xl max-lg:w-40 max-lg:h-40'
+			id='IconoLogoTheme'
+			src=''
+			alt='AnderCMD Logo'
+			class='drop-shadow-xl w-3/12 max-lg:w-40 max-lg:h-40'
 		/>
 		<Text
 			icon=''
@@ -35,21 +37,31 @@ const { t } = useLocale(Astro);
 	<Divisor />
 	<section>
 		<Text2
-			icon='fa-solid fa-diagram-project'
-			title={t('Projects.Title')}
-			subtitle=''
-			description={t('Projects.Description')}
-		/>
-		<Project />
-	</section>
-	<Divisor />
-	<section>
-		<Text2
 			icon='fa-solid fa-briefcase'
 			title={t('WorkExperience.Title')}
 			subtitle=''
 			description={t('WorkExperience.Description')}
 		/>
 		<WorkExperience />
+	</section>
+	<Divisor />
+	<section>
+		<Text2
+			icon='fa-solid fa-laptop-code'
+			title={t('Tech.Title')}
+			subtitle=''
+			description={t('Tech.Description')}
+		/>
+		<Tech />
+	</section>
+	<Divisor />
+	<section>
+		<Text2
+			icon='fa-solid fa-diagram-project'
+			title={t('Projects.Title')}
+			subtitle=''
+			description={t('Projects.Description')}
+		/>
+		<Project />
 	</section>
 </Layout>

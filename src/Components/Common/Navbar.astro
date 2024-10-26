@@ -61,7 +61,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					></i>
 					<span>{t('Nav.About')}</span>
 				</a>
-				<a
+				<!-- <a
 					href={getRelativeLocaleUrl(
 						currentLocale ?? '',
 						t('Nav.Posts')
@@ -70,7 +70,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<i class='text-black fa-solid fa-newspaper dark:text-white'
 					></i>
 					<span>{t('Nav.Posts')}</span>
-				</a>
+				</a> -->
 				<a
 					href={getRelativeLocaleUrl(
 						currentLocale ?? '',
@@ -107,7 +107,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							Lang === 'en' ? (
 								<div class='inline-flex items-center'>
 									<img
-										src='/Images/Estados-Unidos.png'
+										src='/Images/Brands/Estados-Unidos.png'
 										class='w-5 h-5 me-2'
 										alt='US Flag'
 									/>
@@ -116,7 +116,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							) : (
 								<div class='inline-flex items-center'>
 									<img
-										src='/Images/Mexico.png'
+										src='/Images/Brands/Mexico.png'
 										class='w-5 h-5 me-2'
 										alt='Bandera de Mexico'
 									/>
@@ -135,7 +135,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							role='menuitem'>
 							<div class='inline-flex items-center'>
 								<img
-									src='/Images/Estados-Unidos.png'
+									src='/Images/Brands/Estados-Unidos.png'
 									class='w-5 h-5 me-2'
 									alt='US Flag'
 								/>
@@ -148,7 +148,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							role='menuitem'>
 							<div class='inline-flex items-center'>
 								<img
-									src='/Images/Mexico.png'
+									src='/Images/Brands/Mexico.png'
 									class='w-5 h-5 me-2'
 									alt='Bandera de Mexico'
 								/>
