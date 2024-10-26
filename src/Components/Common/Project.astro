@@ -143,7 +143,7 @@ const project = [
 </div>
 
 <div
-	class='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch justify-center'>
+	class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
 		project
 			.sort((a, b) => {
@@ -154,25 +154,25 @@ const project = [
 			})
 			.map((Project) => (
 				<div class={`min-h-full filter-item all ${Project.type}`}>
-					<div class='hover:scale-105 transition-all bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md dark:bg-gray-950 dark:border-gray-700 h-full flex flex-col'>
+					<div class='flex flex-col h-full bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md hover:scale-105 transition-all dark:bg-gray-950 dark:border-gray-700'>
 						<a href={Project.linkView} class='flex-shrink-0'>
 							<img
-								class='rounded-t-lg w-full h-48 object-cover'
+								class='object-cover w-full h-48 rounded-t-lg'
 								src={Project.image}
 								alt={Project.description}
 							/>
 						</a>
-						<div class='p-5 flex-grow flex flex-col'>
+						<div class='flex flex-col flex-grow p-5'>
 							<span class='text-gray-500 dark:text-gray-400'>
 								{Project.year}
 							</span>
 							<h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
 								{Project.title}
 							</h5>
-							<p class='mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow'>
+							<p class='flex-grow mb-3 font-normal text-gray-700 dark:text-gray-400'>
 								{Project.description}
 							</p>
-							<div class='flex items-center justify-between gap-4 max-2xl:flex-col mt-auto'>
+							<div class='flex items-center justify-between mt-auto gap-4 max-2xl:flex-col'>
 								{Project.linkCode && (
 									<a
 										href={Project.linkCode}
