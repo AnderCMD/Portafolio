@@ -35,7 +35,11 @@ export default function DarkMode(props) {
 				// Cambiar el logo
 				if (LogoTheme) {
 					LogoTheme.src = '/Logos/Logo-Blanco.png';
+				}
+				if (IconoLogoTheme) {
 					IconoLogoTheme.src = '/Logos/Icono-Blanco.png';
+				}
+				if (IconoLogoThemeFooter) {
 					IconoLogoThemeFooter.src = '/Logos/Icono-Blanco.png';
 				}
 			} else {
@@ -48,7 +52,11 @@ export default function DarkMode(props) {
 				// Cambiar el logo
 				if (LogoTheme) {
 					LogoTheme.src = '/Logos/Logo-Negro.png';
+				}
+				if (IconoLogoTheme) {
 					IconoLogoTheme.src = '/Logos/Icono-Negro.png';
+				}
+				if (IconoLogoThemeFooter) {
 					IconoLogoThemeFooter.src = '/Logos/Icono-Negro.png';
 				}
 			}
