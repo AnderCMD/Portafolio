@@ -71,9 +71,6 @@ export const ui = {
         'Projects.Title.5': 'Diagnostico Moderno',
         'Projects.Description.5': 'Website of the company Diagnostico Moderno.',
 
-        'Projects.Title.6': 'Portfolio',
-        'Projects.Description.6': 'My personal portfolio website.',
-
         'Projects.Title.7': 'EcologiX Environmental Monitoring System',
         'Projects.Description.7': 'EcologiX environmental monitoring system possibility to connect sensor by Arduino.',
 
@@ -167,9 +164,6 @@ export const ui = {
 
         'Projects.Title.5': 'Diagnostico Moderno',
         'Projects.Description.5': 'Página web de la empresa de Diagnostico Moderno.',
-
-        'Projects.Title.6': 'Portafolio',
-        'Projects.Description.6': 'Mi página web de portafolio personal.',
 
         'Projects.Title.7': 'Sistema de Monitoreo Ambiental EcologiX',
         'Projects.Description.7': 'Sistema de monitoreo ambiental EcologiX posibilidad de conectar sensor por Arduino.',

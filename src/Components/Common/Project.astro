@@ -1,6 +1,5 @@
 ---
 // Languages
-import { date } from 'astro:schema';
 import { useLocale } from '../../Hooks/useLocale';
 const { t } = useLocale(Astro);
 
@@ -48,15 +47,6 @@ const project = [
 		image: '/Images/Projects/DiagnosticoModerno.webp',
 		linkView: 'https://www.diagnosticomoderno.com/',
 		year: 2023,
-	},
-	{
-		type: 'web',
-		title: t('Projects.Title.6'),
-		description: t('Projects.Description.6'),
-		image: '/Images/Projects/Portafolio.webp',
-		linkView: 'https://www.andercmd.dev/',
-		linkCode: 'https://github.com/AnderCMD/Portafolio',
-		year: 2024,
 	},
 	{
 		type: 'web',
