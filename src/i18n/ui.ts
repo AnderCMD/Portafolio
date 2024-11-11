@@ -8,6 +8,9 @@ export const defaultLang = 'es';
 export const ui = {
     // English
     en: {
+        // Description
+        'Description': 'I am Ander González (AnderCMD), Full Stack Software Engineer passionate with +2 years of experience, Web Development Expert.',
+
         // Navbar
         'Nav.Index': 'Home',
         'Nav.About': 'About',
@@ -103,6 +106,9 @@ export const ui = {
 
     // Español
     es: {
+        // Description
+        'Description': 'Soy Ander González (AnderCMD), Ingeniero en Software Full Stack apasionado con +2 años de experiencia, experto en desarrollo web.',
+
         // Navbar
         'Nav.Index': 'Inicio',
         'Nav.About': 'Conoceme',

@@ -17,14 +17,14 @@ import '../Assets/FontAwesome/css/all.css';
 
 // Lenguaje
 import { useLocale } from '../Hooks/useLocale';
-const { currentLocale } = useLocale(Astro);
+const { currentLocale, t } = useLocale(Astro);
 ---
 
 <html lang={currentLocale}>
 	<head>
 		<!-- Metas -->
 		<meta charset='UTF-8' />
-		<meta name='description' content='Astro description' />
+		<meta name='description' content={t('Description')} />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
 
