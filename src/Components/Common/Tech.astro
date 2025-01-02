@@ -28,18 +28,18 @@ const TechStack = [
 		name: 'React',
 		icon: 'react',
 	},
-    {
-        name: 'Astro',
-        icon: 'astro',
-    },
-    {
-        name: 'Tailwind CSS',
-        icon: 'tailwindcss',
-    },
-    {
-        name: 'Next.js',
-        icon: 'nextjs',
-    },
+	{
+		name: 'Astro',
+		icon: 'astro',
+	},
+	{
+		name: 'Tailwind CSS',
+		icon: 'tailwindcss',
+	},
+	{
+		name: 'Next.js',
+		icon: 'nextjs',
+	},
 	{
 		name: 'NodeJS',
 		icon: 'nodejs',
@@ -105,12 +105,12 @@ const TechStack = [
 ---
 
 <section
-	class='grid grid-cols-2 gap-4 my-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8'>
+	class='my-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8'>
 	{
 		TechStack.map((tech) => (
 			<figure class='flex flex-col items-center justify-center max-w-lg text-center transition-all hover:scale-110'>
 				<img
-					class='transition-all rounded-lg w-14 h-14 hover:drop-shadow-xl'
+					class='p-2 border-2 rounded-lg shadow-md transition-all w-14 h-14 hover:drop-shadow-xl bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'
 					src={
 						tech.iconImage
 							? tech.iconImage
@@ -118,7 +118,7 @@ const TechStack = [
 					}
 					alt={tech.name}
 				/>
-				<figcaption class='mt-2 text-center text-gray-600 text-md dark:text-slate-100'>
+				<figcaption class='mt-2 text-center text-slate-600 text-md dark:text-slate-100'>
 					{tech.name}
 				</figcaption>
 			</figure>

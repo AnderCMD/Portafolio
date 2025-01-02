@@ -22,7 +22,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		<button
 			data-collapse-toggle='navbar-default'
 			type='button'
-			class='inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-600 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+			class='inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-slate-600 lg:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:text-slate-400 dark:hover:bg-slate-700 dark:focus:ring-slate-600'
 			aria-controls='navbar-default'
 			aria-expanded='false'>
 			<span class='sr-only'>{t('Nav.OpenMenu')}</span>
@@ -44,10 +44,10 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		<!-- Paginas -->
 		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
 			<div
-				class='flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg lg:p-0 max-lg:bg-gray-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-gray-800 dark:border-gray-700'>
+				class='flex flex-col p-4 mt-4 font-medium border rounded-lg border-slate-100 lg:p-0 max-lg:bg-slate-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-slate-800 dark:border-slate-700'>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-house dark:text-white'></i>
 					<span>{t('Nav.Index')}</span>
 				</a>
@@ -56,7 +56,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.About')
 					)}
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-person dark:text-white'
 					></i>
 					<span>{t('Nav.About')}</span>
@@ -66,7 +66,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Posts')
 					)}
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-newspaper dark:text-white'
 					></i>
 					<span>{t('Nav.Posts')}</span>
@@ -76,7 +76,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Projects')
 					)}
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-server dark:text-white'
 					></i>
 					<span>{t('Nav.Projects')}</span>
@@ -86,14 +86,14 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						currentLocale ?? '',
 						t('Nav.Contact')
 					)}
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-envelope dark:text-white'
 					></i>
 					<span>{t('Nav.Contact')}</span>
 				</a>
 				<DivisorNav />
 				<div
-					class='flex items-center px-3 py-2 text-gray-900 rounded gap-2 hover:bg-gray-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<DarkMode client:idle />
 				</div>
 				<DivisorNav />
@@ -102,7 +102,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<button
 						type='button'
 						data-dropdown-toggle='language-dropdown-menu'
-						class='inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-900 rounded-lg cursor-pointer dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white transition-all hover:scale-105'>
+						class='inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg cursor-pointer text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 dark:hover:text-white transition-all hover:scale-105'>
 						{
 							Lang === 'en' ? (
 								<div class='inline-flex items-center'>
@@ -127,11 +127,11 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					</button>
 					<!-- Dropdown -->
 					<div
-						class='z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-gray-100 dark:divide-gray-500 dark:bg-gray-700'
+						class='z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-slate-100 dark:divide-slate-500 dark:bg-slate-700'
 						id='language-dropdown-menu'>
 						<a
 							href='/en/'
-							class='block px-4 py-2 text-sm text-gray-700 hover:rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white transition-all hover:scale-105'
+							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
 								<img
@@ -144,7 +144,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						</a>
 						<a
 							href='/'
-							class='block px-4 py-2 text-sm text-gray-700 hover:rounded-lg hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white transition-all hover:scale-105'
+							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
 								<img

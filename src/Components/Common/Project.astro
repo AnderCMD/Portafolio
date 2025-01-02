@@ -108,32 +108,32 @@ const project = [
 <div class='flex flex-wrap items-center justify-center py-4 md:py-8'>
 	<button
 		type='button'
-		class='filter-button text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-gray-900 dark:focus:ring-blue-800'
+		class='filter-button text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-slate-900 dark:focus:ring-blue-800'
 		data-filter='all'>
 		{t('Projects.Nav.AllCategories')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='web'>
 		{t('Projects.Nav.Web')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='mobile'>
 		{t('Projects.Nav.Mobile')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='other'>
 		{t('Projects.Nav.Other')}
 	</button>
 </div>
 
 <div
-	class='grid items-stretch justify-center grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+	class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
 		project
 			.sort((a, b) => {
@@ -144,25 +144,25 @@ const project = [
 			})
 			.map((Project) => (
 				<div class={`min-h-full filter-item all ${Project.type}`}>
-					<div class='flex flex-col h-full transition-all bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md hover:scale-105 dark:bg-gray-950 dark:border-gray-700'>
+					<div class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600'>
 						<a href={Project.linkView} class='flex-shrink-0'>
 							<img
-								class='object-cover w-full h-48 rounded-t-lg'
+								class='object-cover w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
 								src={Project.image}
 								alt={Project.description}
 							/>
 						</a>
 						<div class='flex flex-col flex-grow p-5'>
-							<span class='text-gray-600 dark:text-gray-400'>
+							<span class='text-slate-600 dark:text-slate-400'>
 								{Project.year}
 							</span>
-							<h5 class='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
+							<h5 class='mb-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
 								{Project.title}
 							</h5>
-							<p class='flex-grow mb-3 font-normal text-gray-700 dark:text-gray-400'>
+							<p class='flex-grow mb-3 font-normal text-slate-700 dark:text-slate-400'>
 								{Project.description}
 							</p>
-							<div class='flex items-center justify-between gap-4 mt-auto max-2xl:flex-col'>
+							<div class='flex items-center justify-between mt-auto gap-4 max-2xl:flex-col'>
 								{Project.linkCode && (
 									<a
 										href={Project.linkCode}
