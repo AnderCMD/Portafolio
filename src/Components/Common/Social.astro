@@ -1,60 +1,75 @@
-<section
-	class='flex justify-end max-sm:grid max-sm:grid-cols-4 max-md:justify-center gap-4'>
-	<a href='https://github.com/AnderCMD' aria-label='Github' target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-github dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<a
-		href='https://www.linkedin.com/in/andercmd/'
-		aria-label='LinkedIn'
-		target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-linkedin dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<a href='mailto:andercmd@outlook.com' aria-label='Correo' target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fa-solid fa-envelope dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<a href='https://x.com/AnderCMDs' aria-label='X - Twitter' target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-x-twitter dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<!-- <a href=''>
-		<i
-			class='text-3xl text-slate-900 fab fa-youtube dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a> -->
-	<a
-		href='https://www.twitch.tv/andercmds'
-		aria-label='Twitch'
-		target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-twitch dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<!-- <a href=''>
-		<i
-			class='text-3xl text-slate-900 fab fa-discord dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a> -->
-	<a
-		href='https://learn.microsoft.com/es-es/users/andercmd/'
-		aria-label='Microsoft Learn'
-		target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-microsoft dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
-	<a
-		href='https://developers.google.com/profile/u/AnderCMDs'
-		aria-label='Google Developers'
-		target='_blank'>
-		<i
-			class='text-3xl text-slate-900 fab fa-google dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
-		></i>
-	</a>
+---
+import { useLocale } from '../../Hooks/useLocale';
+const { t } = useLocale(Astro);
+---
+
+<section class="flex items-center justify-end gap-4">
+	<section class='flex justify-center mr-4'>
+		<a
+			href={t('About.CV.Link')}
+			class='w-full px-4 py-2 font-bold text-white rounded-full transition-all bg-sky-500 hover:bg-sky-600'
+			download>
+			{t('About.CV')}
+		</a>
+	</section>
+	<section
+		class='flex justify-end max-sm:grid max-sm:grid-cols-4 max-md:justify-center gap-4'>
+		<a href='https://github.com/AnderCMD' aria-label='Github' target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-github dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<a
+			href='https://www.linkedin.com/in/andercmd/'
+			aria-label='LinkedIn'
+			target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-linkedin dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<a href='mailto:andercmd@outlook.com' aria-label='Correo' target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fa-solid fa-envelope dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<a href='https://x.com/AnderCMDs' aria-label='X - Twitter' target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-x-twitter dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<!-- <a href=''>
+			<i
+				class='text-3xl text-slate-900 fab fa-youtube dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a> -->
+		<a
+			href='https://www.twitch.tv/andercmds'
+			aria-label='Twitch'
+			target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-twitch dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<!-- <a href=''>
+			<i
+				class='text-3xl text-slate-900 fab fa-discord dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a> -->
+		<a
+			href='https://learn.microsoft.com/es-es/users/andercmd/'
+			aria-label='Microsoft Learn'
+			target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-microsoft dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+		<a
+			href='https://developers.google.com/profile/u/AnderCMDs'
+			aria-label='Google Developers'
+			target='_blank'>
+			<i
+				class='text-3xl text-slate-900 fab fa-google dark:text-white hover:text-sky-500 dark:hover:text-sky-400 transition-all ease-in-out'
+			></i>
+		</a>
+	</section>
 </section>

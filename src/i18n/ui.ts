@@ -28,9 +28,11 @@ export const ui = {
         'Error.Button.404': 'Go back to home',
 
         // About
-        'About.Title': 'Hi! I am Ander González 👋🏻',
+        'About.Title': 'Hi! I am Ander González González 👋🏻',
         'About.Subtitle': 'Software Engineer',
-        'About.Description': 'Full Stack software engineer passionate with +2 years of experience, Web Development Expert. I provide innovative and efficient solutions, I am adaptable and I quickly learn, I combine effective leadership, resource management and decision and making capacity.',
+        'About.Description': 'Full Stack Software Engineer with 2+ years of experience designing scalable and optimized web applications. Proficient in modern technologies like React, NestJS, and PostgreSQL, with strong skills in leadership, problem-solving, and innovative solution development. Passionate about continuous learning and delivering strategic value to every project.', 
+        'About.CV': 'Download CV',
+        'About.CV.Link': '/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
 
         // Contact
         'Contact.Title': 'Contact me',
@@ -94,14 +96,14 @@ export const ui = {
         'WorkExperience.Visit': 'Visit',
 
         // Work Experience - Companies
-        'WorkExperience.Companies.Position.3': 'Project Manager and Software Engineer',
-        'WorkExperience.Companies.Description.3': 'I develop web and mobile applications, transforming ideas into innovative and personalized solutions that elevate businesses. I continuously maintain applications, ensuring optimal functionality and robustness. I implement new features, bringing limitless innovation and delighting users. Additionally, I optimize performance and enhance security, ensuring efficient and protected applications.',
+        'WorkExperience.Companies.Position.3': 'Full Stack Software Engineer',
+        'WorkExperience.Companies.Description.3': 'Design and development of innovative, secure, and highly optimized web applications, implementing new features to enhance user experience. Ensuring efficient performance through the use of modern technologies and best practices in software development.',
 
-        'WorkExperience.Companies.Position.2': 'Software Engineer Freelance',
-        'WorkExperience.Companies.Description.2': 'I develop and maintain the medical company’s website, creating innovative and personalized solutions. I ensure optimal functionality, add new features, and optimize performance and security for an exceptional user experience.',
+        'WorkExperience.Companies.Position.2': 'Full Stack Software Engineer (Freelance)',
+        'WorkExperience.Companies.Description.2': 'Development of dynamic and optimized medical web systems, integrating innovative features to improve user experience and operational efficiency. Focused on continuous improvement through the use of modern technologies and results-oriented strategies.',
 
-        'WorkExperience.Companies.Position.1': 'Software Engineer Internships I & II',
-        'WorkExperience.Companies.Description.1': 'I develop and maintain the website, creating innovative and personalized solutions. I ensure optimal functionality, add new features, and optimize performance and security for an exceptional user experience.',
+        'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Internships I & II)',
+        'WorkExperience.Companies.Description.1': 'Development of efficient and attractive web systems, implementing improvements and innovative features to maximize their impact.',
     },
 
     // Español
@@ -126,9 +128,11 @@ export const ui = {
         'Error.Button.404': 'Volver al inicio',
 
         // Acerca de mí
-        'About.Title': '¡Hola! Soy Ander González 👋🏻',
+        'About.Title': '¡Hola! Soy Ander González González 👋🏻',
         'About.Subtitle': 'Ingeniero en Software',
-        'About.Description': 'Ingeniero en Software Full Stack apasionado con +2 años de experiencia, experto en desarrollo web. Aporto soluciones innovadoras y eficientes, soy adaptable y aprendo rápidamente, combino liderazgo efectivo, gestión de recursos y capacidad de toma de decisiones.',
+        'About.Description': 'Ingeniero en Software Full Stack con más de 2 años de experiencia diseñando aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, NestJS y PostgreSQL, con sólidas habilidades en liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por aprender continuamente y aportar valor estratégico a cada proyecto.',
+        'About.CV': 'Descargar CV',
+        'About.CV.Link': '/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
 
         // Contacto
         'Contact.Title': 'Contáctame',
@@ -192,13 +196,13 @@ export const ui = {
         'WorkExperience.Visit': 'Visitar proyecto',
 
         // Experiencia Laboral - Empresas
-        'WorkExperience.Companies.Position.3': 'Gerente de proyectos e Ingeniero en Software',
-        'WorkExperience.Companies.Description.3': 'Desarrollo aplicaciones web transformando ideas en soluciones innovadoras y personalizadas que elevan los negocios. Realizo el mantenimiento continuo de aplicaciones, garantizando su funcionamiento óptimo y robustez. Implemento nuevas funcionalidades, aportando innovación sin límites y sorprendiendo a los usuarios. Además, optimizo el rendimiento y refuerzo la seguridad, asegurando aplicaciones eficientes y protegidas.',
-        
-        'WorkExperience.Companies.Position.2': 'Ingeniero en Software Freelance',
-        'WorkExperience.Companies.Description.2': 'Desarrollo y mantenimiento de la página web de la empresa médica, creando soluciones innovadoras y personalizadas. Garantizo su funcionamiento óptimo, añado nuevas funcionalidades, y optimizo el rendimiento y la seguridad para una experiencia de usuario excepcional.',
+        'WorkExperience.Companies.Position.3': 'Ingeniero en Software Full Stack',
+        'WorkExperience.Companies.Description.3': 'Diseño y desarrollo de aplicaciones web innovadoras, seguras y altamente optimizadas, implementando nuevas funcionalidades para mejorar la experiencia del usuario. Garantizo un rendimiento eficiente mediante el uso de tecnologías modernas y las mejores prácticas en desarrollo de software.',
 
-        'WorkExperience.Companies.Position.1': 'Ingeniero en Software Estancias I & II',
-        'WorkExperience.Companies.Description.1': 'Desarrollo y mantenimiento de página web, creando soluciones innovadoras y personalizadas. Garantizo su funcionamiento óptimo, añado nuevas funcionalidades, y optimizo el rendimiento y la seguridad para una experiencia de usuario excepcional.',
+        'WorkExperience.Companies.Position.2': 'Ingeniero en Software Full Stack (Freelance)',
+        'WorkExperience.Companies.Description.2': 'Desarrollo de sistemas web dinámicos y optimizados medicos, integrando funcionalidades innovadoras para mejorar la experiencia del usuario y la eficiencia operativa. Enfocado en la mejora continua mediante el uso de tecnologías modernas y estrategias centradas en resultados.',
+
+        'WorkExperience.Companies.Position.1': 'Practicante de Ingeniería en Software (Estancias I & II)',
+        'WorkExperience.Companies.Description.1': 'Desarrollo sistemas web eficientes y atractivos, implementando mejoras y funcionalidades innovadoras para maximizar su impacto.',
     }
 } as const;
