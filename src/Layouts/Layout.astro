@@ -23,10 +23,16 @@ const { currentLocale, t } = useLocale(Astro);
 <html lang={currentLocale}>
 	<head>
 		<!-- Metas -->
-		<meta charset='UTF-8' />
-		<meta name='description' content={t('Description')} />
+		<meta name='description' content={t('About.Description')} />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
+		<meta name='robots' content='index, follow' />
+		<link rel='canonical' href={Astro.url} />
+		<!-- Open Graph -->
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={t('About.Description')} />
+		<meta property='og:url' content={Astro.url} />
+		<meta property='og:type' content='website' />
 
 		<!-- title & Icono -->
 		<title>{title}</title>
