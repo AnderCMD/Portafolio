@@ -1,41 +1,60 @@
-# Portafolio
+# Portafolio Personal
 
-_Portafolio de Ander Gonzalez | @AnderCMD_
+🚀 **Portafolio web** desarrollado con **Astro, TailwindCSS y React**.
 
-## Comenzando 🚀
+## 📖 Descripción
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+Este es mi portafolio personal donde muestro mis proyectos, habilidades y experiencia como ingeniero en software. Fue desarrollado con **Astro** para un rendimiento óptimo, utilizando **TailwindCSS** para el diseño y **React** para componentes interactivos.
 
-## Despliegue 📦
-_Puedes visitar la ultima version de produccion del sitio web oficial mediante el siguiente enlace_
+## 🚀 Tecnologías utilizadas
 
-- **Portafolio| [Sitio web](PROXIMAMENTE)**
+- **[Astro](https://astro.build/)** - Framework estático para sitios web rápidos.
+- **[TailwindCSS](https://tailwindcss.com/)** - Framework de estilos moderno y eficiente.
+- **[React](https://react.dev/)** - Librería para componentes dinámicos.
 
-##  Comandos 🧞
+## 🔧 Instalación y ejecución
 
-_Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:_
+### 1. Clonar el repositorio
 
-| Comando                   | Acción                                                                            |
-| :------------------------ | :-------------------------------------------------------------------------------- |
-| `npm install`             | Instala las dependencias                                                          |
-| `npm run dev`             | Inicia el servidor de desarrollo local en `localhost:3000`                        |
-| `npm run build`           | Cree su sitio de producción para `./dist/`                                        |
-| `npm run preview`         | Obtenga una vista previa de su compilación localmente, antes de implementar       |
-| `npm run astro ...`       | Ejecute comandos CLI como `astro add`, `astro check`                              |
-| `npm run astro -- --help` | Obtenga ayuda para usar AstroCLI                                                  |
+```sh
+git clone https://github.com/AnderCMD/Portafolio.git
+cd Portafolio
+```
 
-## Construido con 🛠️
+### 2. Instalar dependencias
 
-_Tecnologias utilizadas_
+```sh
+pnpm install
+```
 
-- **[Astro](https://astro.build/)**
-- **[JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)**
-- **[TailwindCSS](https://tailwindcss.com/)**
-- **[NodeJS](https://nodejs.org/en)**
+### 3. Iniciar el entorno de desarrollo
 
-## Autores ✒️
+```sh
+pnpm run dev
+```
 
-- **Ander Gonzalez** | Ingeniero en Software | **[Github](https://github.com/AnderCMD "Github de @AnderCMD")**
+El sitio estará disponible en `http://localhost:4321/`.
+
+## 📦 Despliegue
+
+Para generar la versión optimizada para producción:
+
+```sh
+pnpm run build
+```
+
+## 💻 Producción
+
+Para visitar el proyecto en producción puedes entrar a:
+
+https://andercmd.dev
+
+## ✒️ Autor
+
+👤 **Ander González**  
+🛠️ Ingeniero en Software  
+🐙 **[@AnderCMD](https://github.com/AnderCMD)**
 
 ---
+
 ⌨️ con ❤️ por [AnderCMD](https://github.com/AnderCMD) 😊
