@@ -1,7 +1,7 @@
 {
   "name": "portafolio",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Portafolio de proyectos de AnderCMD",
   "author": {
     "name": "AnderCMD",
@@ -17,14 +17,14 @@
   "dependencies": {
     "@astrojs/check": "0.9.4",
     "@astrojs/react": "4.2.0",
-    "@astrojs/tailwind": "6.0.0",
+    "@tailwindcss/vite": "^4.0.5",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
-    "astro": "5.2.3",
-    "flowbite": "3.1.1",
+    "astro": "5.2.5",
+    "flowbite": "3.1.2",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tailwindcss": "4.0.2",
+    "tailwindcss": "4.0.5",
     "typescript": "5.7.3"
   }
 }
