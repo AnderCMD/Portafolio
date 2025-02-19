@@ -10,8 +10,7 @@ const project = [
 		description: t('Projects.Description.1'),
 		image: '/Images/Projects/Horoscope.webp',
 		linkView: 'https://andercmd.github.io/Desafios-Codedex/Horoscopo/',
-		linkCode:
-			'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
+		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
 		year: 2024,
 	},
 	{
@@ -62,6 +61,7 @@ const project = [
 		description: t('Projects.Description.8'),
 		image: '/Images/Projects/FlappyBat.webp',
 		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
+		linkDownload: '/APK/FlappyBat.apk',
 		year: 2022,
 	},
 	{
@@ -132,8 +132,7 @@ const project = [
 	</button>
 </div>
 
-<div
-	class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+<div class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
 		project
 			.sort((a, b) => {
@@ -153,9 +152,7 @@ const project = [
 							/>
 						</a>
 						<div class='flex flex-col flex-grow p-5'>
-							<span class='text-slate-600 dark:text-slate-400'>
-								{Project.year}
-							</span>
+							<span class='text-slate-600 dark:text-slate-400'>{Project.year}</span>
 							<h5 class='mb-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
 								{Project.title}
 							</h5>
@@ -179,6 +176,16 @@ const project = [
 										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
 										{t('Projects.VisitProject')}
 										<i class='ml-2 fa-solid fa-eye' />
+									</a>
+								)}
+								{Project.linkDownload && (
+									<a
+										href={Project.linkDownload}
+										target='_blank'
+										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'
+										download>
+										{t('Projects.Download')}
+										<i class='ml-2 fa-solid fa-download' />
 									</a>
 								)}
 							</div>

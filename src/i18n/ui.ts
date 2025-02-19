@@ -59,6 +59,7 @@ export const ui = {
         'Projects.Description': 'Here are some of the projects I have worked on. You can see more on my GitHub profile.',
         'Projects.ViewCode': 'View code',
         'Projects.VisitProject': 'Visit project',
+        'Projects.Download': 'Download',
 
         // Projects - Array
         'Projects.Title.1': 'Horoscope',
@@ -158,6 +159,7 @@ export const ui = {
         'Projects.Description': 'Aquí tienes algunos de los proyectos en los que he trabajado. Puedes ver más en mi perfil de GitHub.',
         'Projects.ViewCode': 'Ver código',
         'Projects.VisitProject': 'Visitar',
+        'Projects.Download': 'Descargar',
 
         // Proyectos - Array
         'Projects.Title.1': 'Horóscopo',
