@@ -32,7 +32,7 @@ export const ui = {
         'About.Subtitle': 'Software Engineer',
         'About.Description': 'Full Stack Software Engineer with 2+ years of experience designing scalable and optimized web applications. Proficient in modern technologies like React, NestJS, and PostgreSQL, with strong skills in leadership, problem-solving, and innovative solution development. Passionate about continuous learning and delivering strategic value to every project.', 
         'About.CV': 'Download CV',
-        'About.CV.Link': '/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
+        'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
 
         // Contact
         'Contact.Title': 'Contact me',
@@ -133,7 +133,7 @@ export const ui = {
         'About.Subtitle': 'Ingeniero en Software',
         'About.Description': 'Ingeniero en Software Full Stack con más de 2 años de experiencia diseñando aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, NestJS y PostgreSQL, con sólidas habilidades en liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por aprender continuamente y aportar valor estratégico a cada proyecto.',
         'About.CV': 'Descargar CV',
-        'About.CV.Link': '/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
+        'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
 
         // Contacto
         'Contact.Title': 'Contáctame',
