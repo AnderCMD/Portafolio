@@ -89,6 +89,9 @@ export const ui = {
         'Projects.Title.10': 'Frontend-Mentor Challenges',
         'Projects.Description.10': 'Frontend-Mentor challenges to improve my web development skills.',
 
+        'Projects.Title.11': 'Repair Windows Script',
+        'Projects.Description.11': 'Executable to repair Windows 10 and 11 files.',
+
         // Work Experience
         'WorkExperience.Title': 'Work Experience',
         'WorkExperience.Description': 'Here are some of the companies where I have worked and the projects I have developed.',
