@@ -56,12 +56,12 @@ const project = [
 		year: 2023,
 	},
 	{
-		type: 'other',
+		type: 'mobile other',
 		title: t('Projects.Title.8'),
 		description: t('Projects.Description.8'),
 		image: '/Images/Projects/FlappyBat.webp',
 		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
-		linkDownload: '/APK/FlappyBat.apk',
+		linkDownload: '/APK/Flappy-Bat.apk',
 		year: 2022,
 	},
 	{
@@ -81,6 +81,14 @@ const project = [
 		linkView: 'https://andercmd.github.io/Desafios-Frontend-Mentor/',
 		linkCode: 'https://github.com/AnderCMD/Desafios-Frontend-Mentor/',
 		year: 2023,
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.11'),
+		description: t('Projects.Description.11'),
+		image: '/Images/Projects/WindowsRepair.webp',
+		linkCode: 'https://github.com/AnderCMD/Fix-Windows',
+		year: 2024,
 	},
 ];
 ---
@@ -146,7 +154,7 @@ const project = [
 					<div class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600'>
 						<a href={Project.linkView} class='flex-shrink-0'>
 							<img
-								class='object-cover w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
+								class='object-fill w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
 								src={Project.image}
 								alt={Project.description}
 							/>

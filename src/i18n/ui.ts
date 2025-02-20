@@ -189,6 +189,8 @@ export const ui = {
         'Projects.Title.10': 'Desafíos de Frontend-Mentor',
         'Projects.Description.10': 'Desafíos de Frontend-Mentor para mejorar mis habilidades de desarrollo web.',
 
+        'Projects.Title.11': 'Reparar Windows Script',
+        'Projects.Description.11': 'Ejecutable para reparar ficheros de Windows 10 y 11.',
 
         // Experiencia Laboral
         'WorkExperience.Title': 'Experiencia Laboral',
