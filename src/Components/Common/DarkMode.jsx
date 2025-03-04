@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 // CSS
-import '../../Styles/DarkMode.css';
+import '@/Styles/DarkMode.css';
 
 export default function DarkMode(props) {
 	const [Theme, setTheme] = useState(() => {

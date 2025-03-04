@@ -8,21 +8,21 @@ interface Props {
 const { title } = Astro.props;
 
 // Componentes
-import SquareLines from '../Components/Common/Square/SquareLines.astro';
-import Navbar from '../Components/Common/Navbar.astro';
-import Footer from '../Components/Common/Footer.astro';
+import SquareLines from '@/Components/Common/Square/SquareLines.astro';
+import Navbar from '@/Components/Common/Navbar.astro';
+import Footer from '@/Components/Common/Footer.astro';
 
 // Tailwind CSS
-import '../Styles/Default.css';
+import '@/Styles/Default.css';
 
 // Font Awesome 6
-import '../Assets/FontAwesome/css/all.css';
+import '@/Assets/FontAwesome/css/all.css';
 
 // Lenguaje
-import { useLocale } from '../Hooks/useLocale';
+import { useLocale } from '@/Hooks/useLocale';
 const { currentLocale, t } = useLocale(Astro);
 
-// import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 ---
 
 <html lang={currentLocale}>
@@ -51,13 +51,10 @@ const { currentLocale, t } = useLocale(Astro);
 			<SquareLines />
 			<Navbar />
 			<div class='flex flex-col p-8 mx-60 max-lg:mx-40 max-md:mx-20 max-sm:mx-4 gap-10'>
-				<!-- <ClientRouter /> -->
+				<ClientRouter />
 				<slot />
 			</div>
 			<Footer />
 		</div>
-
-		<!-- Flowbite-->
-		<script is:inline src='https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js'></script>
 	</body>
 </html>

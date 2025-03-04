@@ -1,6 +1,6 @@
 // Dependencias
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
 // useLocale
 export const useLocale = (Astro) => {

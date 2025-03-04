@@ -1,25 +1,18 @@
 ---
-// Dark Mode
-import DarkMode from './DarkMode';
-
-// Componentes
-import DivisorNav from './DivisorNav.astro';
-
-// Lenguaje
-import { useLocale } from '../../Hooks/useLocale';
+import DarkMode from '@/Components/Common/DarkMode';
+import DivisorNav from '@/Components/Common/DivisorNav.astro';
+import { useLocale } from '@/Hooks/useLocale';
 const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 ---
 
 <nav>
-	<div
-		class='flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-xl'>
-		<!-- Logo -->
+	<div class='flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-xl'>
 		<a href='/' class='flex items-center space-x-3 rtl:space-x-reverse'>
 			<img id='LogoTheme' src='' class='h-8' alt='AnderCMD Logo' />
 		</a>
 
-		<!-- Movil -->
 		<button
+			id='mobile-menu-button'
 			data-collapse-toggle='navbar-default'
 			type='button'
 			class='inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-slate-600 lg:hidden hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-200 dark:text-slate-400 dark:hover:bg-slate-700 dark:focus:ring-slate-600'
@@ -41,10 +34,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			</svg>
 		</button>
 
-		<!-- Paginas -->
 		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
-			<div
-				class='flex flex-col p-4 mt-4 font-medium border rounded-lg border-slate-100 lg:p-0 max-lg:bg-slate-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-slate-800 dark:border-slate-700'>
+			<div class='flex flex-col p-4 mt-4 font-medium border rounded-lg border-slate-100 lg:p-0 max-lg:bg-slate-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-slate-800 dark:border-slate-700'>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
 					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
@@ -52,10 +43,19 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<span>{t('Nav.Index')}</span>
 				</a>
 				<a
-					href={getRelativeLocaleUrl(
-						currentLocale ?? '',
-						t('Nav.About')
-					)}
+					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.About'))}
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-person dark:text-white'></i>
+					<span>{t('Nav.About')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Projects'))}
+					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+					<i class='text-black fa-solid fa-server dark:text-white'></i>
+					<span>{t('Nav.Projects')}</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Contact'))}
 					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
 					<i class='text-black fa-solid fa-person dark:text-white'
 					></i>
