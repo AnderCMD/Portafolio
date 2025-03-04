@@ -1,77 +1,68 @@
-// Dependencias
 import { useEffect, useState } from 'react';
-
-// CSS
 import '@/Styles/DarkMode.css';
 
 export default function DarkMode(props) {
-	const [Theme, setTheme] = useState(() => {
-		if (typeof window !== 'undefined' && localStorage.getItem('Theme')) {
-			return localStorage.getItem('Theme');
-		} else {
-			if (
-				typeof window !== 'undefined' &&
-				window.matchMedia('(prefers-color-scheme: dark)').matches
-			) {
-				return 'dark';
-			} else {
-				return 'light';
+	const [theme, setTheme] = useState(() => {
+		if (typeof window !== 'undefined') {
+			const savedTheme = localStorage.getItem('Theme');
+			if (savedTheme) {
+				return savedTheme;
 			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 		}
+		return 'light';
 	});
 
 	useEffect(() => {
-		const LogoTheme = document.getElementById('LogoTheme');
-		const IconoLogoTheme = document.getElementById('IconoLogoTheme');
-		const IconoLogoThemeFooter = document.getElementById(
-			'IconoLogoThemeFooter'
-		);
-		const ToggleDarkMode = document.getElementById('ToggleDarkMode');
+		const handleThemeChange = (e) => {
+			setTheme(e.matches ? 'dark' : 'light');
+		};
 
-		if (ToggleDarkMode !== null && ToggleDarkMode !== undefined) {
-			if (Theme === 'dark') {
-				document.querySelector('html').classList.add('dark');
-				ToggleDarkMode.checked = true;
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		mediaQuery.addEventListener('change', handleThemeChange);
 
-				// Almacenar el tema en el localStorage
-				localStorage.setItem('Theme', 'dark');
+		return () => {
+			mediaQuery.removeEventListener('change', handleThemeChange);
+		};
+	}, []);
 
-				// Cambiar el logo
-				if (LogoTheme) {
-					LogoTheme.src = '/Logos/Logo-Blanco.webp';
-				}
-				if (IconoLogoTheme) {
-					IconoLogoTheme.src = '/Logos/Icono-Blanco.webp';
-				}
-				if (IconoLogoThemeFooter) {
-					IconoLogoThemeFooter.src = '/Logos/Icono-Blanco.webp';
-				}
-			} else {
-				document.querySelector('html').classList.remove('dark');
-				ToggleDarkMode.checked = false;
+	useEffect(() => {
+		const root = document.documentElement;
+		const logoTheme = document.getElementById('LogoTheme');
+		const iconoLogoTheme = document.getElementById('IconoLogoTheme');
+		const iconoLogoThemeFooter = document.getElementById('IconoLogoThemeFooter');
+		const toggleDarkMode = document.getElementById('ToggleDarkMode');
 
-				// Almacenar el tema en el localStorage
-				localStorage.setItem('Theme', 'light');
+		// Añadir clase para desactivar transiciones
+		root.classList.add('no-transition');
 
-				// Cambiar el logo
-				if (LogoTheme) {
-					LogoTheme.src = '/Logos/Logo-Negro.webp';
-				}
-				if (IconoLogoTheme) {
-					IconoLogoTheme.src = '/Logos/Icono-Negro.webp';
-				}
-				if (IconoLogoThemeFooter) {
-					IconoLogoThemeFooter.src = '/Logos/Icono-Negro.webp';
-				}
-			}
+		if (theme === 'dark') {
+			root.classList.add('dark');
+			localStorage.setItem('Theme', 'dark');
+			if (toggleDarkMode) toggleDarkMode.checked = true;
+			if (logoTheme) logoTheme.src = '/Logos/Logo-Blanco.webp';
+			if (iconoLogoTheme) iconoLogoTheme.src = '/Logos/Icono-Blanco.webp';
+			if (iconoLogoThemeFooter) iconoLogoThemeFooter.src = '/Logos/Icono-Blanco.webp';
+		} else {
+			root.classList.remove('dark');
+			localStorage.setItem('Theme', 'light');
+			if (toggleDarkMode) toggleDarkMode.checked = false;
+			if (logoTheme) logoTheme.src = '/Logos/Logo-Negro.webp';
+			if (iconoLogoTheme) iconoLogoTheme.src = '/Logos/Icono-Negro.webp';
+			if (iconoLogoThemeFooter) iconoLogoThemeFooter.src = '/Logos/Icono-Negro.webp';
 		}
-	}, [Theme]);
+
+		// Forzar un reflujo para asegurarse de que la clase se aplique
+		root.offsetHeight; // eslint-disable-line no-unused-expressions
+
+		// Quitar clase para permitir transiciones
+		root.classList.remove('no-transition');
+	}, [theme]);
 
 	const handleChangeTheme = () => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
-	// Props
 	const { ThemeText } = props;
 
 	return (
@@ -86,10 +77,7 @@ export default function DarkMode(props) {
 				<div className='theme-switch__container'>
 					<div className='theme-switch__clouds'></div>
 					<div className='theme-switch__stars-container'>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							viewBox='0 0 144 55'
-							fill='none'>
+						<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 144 55' fill='none'>
 							<path
 								fillRule='evenodd'
 								clipRule='evenodd'

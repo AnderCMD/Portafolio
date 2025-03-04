@@ -19,12 +19,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			aria-controls='navbar-default'
 			aria-expanded='false'>
 			<span class='sr-only'>{t('Nav.OpenMenu')}</span>
-			<svg
-				class='w-5 h-5'
-				aria-hidden='true'
-				xmlns='http://www.w3.org/2000/svg'
-				fill='none'
-				viewBox='0 0 17 14'>
+			<svg class='w-5 h-5' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 17 14'>
 				<path
 					stroke='currentColor'
 					stroke-linecap='round'
@@ -35,7 +30,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		</button>
 
 		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
-			<div class='flex flex-col p-4 mt-4 font-medium border rounded-lg border-slate-100 lg:p-0 max-lg:bg-slate-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-slate-800 dark:border-slate-700'>
+			<div
+				class='flex flex-col p-4 mt-4 font-medium border rounded-lg border-slate-100 lg:p-0 max-lg:bg-slate-50 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0 max-lg:dark:bg-slate-800 dark:border-slate-700'>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
 					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
@@ -54,13 +50,6 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<i class='text-black fa-solid fa-server dark:text-white'></i>
 					<span>{t('Nav.Projects')}</span>
 				</a>
-				<a
-					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Contact'))}
-					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='text-black fa-solid fa-person dark:text-white'
-					></i>
-					<span>{t('Nav.About')}</span>
-				</a>
 				<!-- <a
 					href={getRelativeLocaleUrl(
 						currentLocale ?? '',
@@ -72,23 +61,9 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<span>{t('Nav.Posts')}</span>
 				</a> -->
 				<a
-					href={getRelativeLocaleUrl(
-						currentLocale ?? '',
-						t('Nav.Projects')
-					)}
+					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Contact'))}
 					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='text-black fa-solid fa-server dark:text-white'
-					></i>
-					<span>{t('Nav.Projects')}</span>
-				</a>
-				<a
-					href={getRelativeLocaleUrl(
-						currentLocale ?? '',
-						t('Nav.Contact')
-					)}
-					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-500 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
-					<i class='text-black fa-solid fa-envelope dark:text-white'
-					></i>
+					<i class='text-black fa-solid fa-envelope dark:text-white'></i>
 					<span>{t('Nav.Contact')}</span>
 				</a>
 				<DivisorNav />
@@ -97,8 +72,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					<DarkMode client:idle />
 				</div>
 				<DivisorNav />
-				<div
-					class='flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse'>
+				<div class='relative flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse'>
 					<button
 						type='button'
 						data-dropdown-toggle='language-dropdown-menu'
@@ -106,11 +80,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						{
 							Lang === 'en' ? (
 								<div class='inline-flex items-center'>
-									<img
-										src='/Images/Brands/Estados-Unidos.webp'
-										class='w-5 h-5 me-2'
-										alt='US Flag'
-									/>
+									<img src='/Images/Brands/Estados-Unidos.webp' class='w-5 h-5 me-2' alt='US Flag' />
 									English
 								</div>
 							) : (
@@ -127,18 +97,15 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 					</button>
 					<!-- Dropdown -->
 					<div
-						class='z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-slate-100 dark:divide-slate-500 dark:bg-slate-700'
-						id='language-dropdown-menu'>
+						class='absolute z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-slate-100 dark:divide-slate-500 dark:bg-slate-700'
+						id='language-dropdown-menu'
+						style='top: 100%;'>
 						<a
 							href='/en/'
 							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
-								<img
-									src='/Images/Brands/Estados-Unidos.webp'
-									class='w-5 h-5 me-2'
-									alt='US Flag'
-								/>
+								<img src='/Images/Brands/Estados-Unidos.webp' class='w-5 h-5 me-2' alt='US Flag' />
 								English
 							</div>
 						</a>
@@ -147,11 +114,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
-								<img
-									src='/Images/Brands/Mexico.webp'
-									class='w-5 h-5 me-2'
-									alt='Bandera de Mexico'
-								/>
+								<img src='/Images/Brands/Mexico.webp' class='w-5 h-5 me-2' alt='Bandera de Mexico' />
 								Español
 							</div>
 						</a>
@@ -161,3 +124,21 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		</div>
 	</div>
 </nav>
+
+...
+<script>
+	document.addEventListener('astro:page-load', () => {
+		// Mobile menu toggle
+		document.getElementById('mobile-menu-button').addEventListener('click', () => {
+			const navbar = document.getElementById('navbar-default');
+			navbar.classList.toggle('hidden');
+		});
+	
+		// Language dropdown toggle
+		document.querySelector('[data-dropdown-toggle="language-dropdown-menu"]').addEventListener('click', () => {
+			const dropdown = document.getElementById('language-dropdown-menu');
+			dropdown.classList.toggle('hidden');
+		});
+	});
+</script>
+...

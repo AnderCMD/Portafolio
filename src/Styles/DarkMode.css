@@ -1,3 +1,7 @@
+.no-transition * {
+	transition: none !important;
+}
+
 .theme-switch {
 	--toggle-size: 12px;
 	/* the size is adjusted using font-size,
