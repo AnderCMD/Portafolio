@@ -65,6 +65,7 @@ Para desplegar este proyecto en un servidor web:
 * [React](https://reactjs.org/) - Librería para construir interfaces de usuario
 * [TailwindCSS](https://tailwindcss.com/) - Framework de CSS para diseño responsivo y modular
 * [i18n](https://react.i18next.com/) - Internacionalización para React, utilizado para soportar varios idiomas
+* [aos](https://michalsnik.github.io/aos/) - Librería de animación de scroll
 
 ## Contribuyendo 🖇️
 

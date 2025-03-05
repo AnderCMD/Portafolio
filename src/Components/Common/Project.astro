@@ -152,7 +152,9 @@ const project = [
 			})
 			.map((Project) => (
 				<div class={`min-h-full filter-item all ${Project.type}`}>
-					<div class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600' data-aos="fade-up">
+					<div
+						class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600'
+						data-aos='fade-up'>
 						<a href={Project.linkView} class='flex-shrink-0'>
 							<img
 								class='object-fill w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
@@ -206,6 +208,8 @@ const project = [
 </div>
 
 <script>
+	import AOS from 'aos';
+
 	document.addEventListener('astro:page-load', () => {
 		const filterButtons = document.querySelectorAll('.filter-button');
 		const filterItems = document.querySelectorAll('.filter-item');
@@ -242,6 +246,11 @@ const project = [
 						}
 					}
 				});
+
+				// Add a small delay before refreshing AOS
+				setTimeout(() => {
+					AOS.refresh();
+				}, 500);
 			});
 		});
 	});

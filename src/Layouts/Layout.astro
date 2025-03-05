@@ -64,7 +64,9 @@ import 'aos/dist/aos.css';
 			import AOS from 'aos';
 
 			document.addEventListener('astro:page-load', () => {
-				AOS.init();
+				setTimeout(() => {
+					AOS.init()
+				}, 200);
 			});
 		</script>
 	</body>
