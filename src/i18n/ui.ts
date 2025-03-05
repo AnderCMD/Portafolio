@@ -30,7 +30,7 @@ export const ui = {
         // About
         'About.Title': 'Hi! I am Ander González González 👋🏻',
         'About.Subtitle': 'Software Engineer',
-        'About.Description': 'Full Stack Software Engineer with 2+ years of experience designing scalable and optimized web applications. Proficient in modern technologies like React, NestJS, and PostgreSQL, with strong skills in leadership, problem-solving, and innovative solution development. Passionate about continuous learning and delivering strategic value to every project.', 
+        'About.Description': 'Full Stack Software Engineer with more than 2 years of experience in scalable and optimized web application design. Expert in modern technologies such as React, Astro, Postgresql and Mongodb, with solid leadership skills, problem solving and development of innovative solutions. Passionate about continuous learning and strategic contribution of value to each project.',
         'About.CV': 'Download CV',
         'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
 
@@ -134,7 +134,7 @@ export const ui = {
         // Acerca de mí
         'About.Title': '¡Hola! Soy Ander González González 👋🏻',
         'About.Subtitle': 'Ingeniero en Software',
-        'About.Description': 'Ingeniero en Software Full Stack con más de 2 años de experiencia diseñando aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, NestJS y PostgreSQL, con sólidas habilidades en liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por aprender continuamente y aportar valor estratégico a cada proyecto.',
+        'About.Description': 'Ingeniero de software full stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
         'About.CV': 'Descargar CV',
         'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
 
