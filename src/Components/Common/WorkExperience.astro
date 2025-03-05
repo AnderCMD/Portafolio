@@ -35,7 +35,7 @@ const workExperience = [
 	{
 		workExperience.map((WorkExperience) => (
 			<li class='mb-10 ms-6'>
-				<span class='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-slate-900 dark:bg-blue-900'>
+				<span class='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-slate-900 dark:bg-blue-900' data-aos='fade-up'>
 					<svg
 						class='w-2.5 h-2.5 text-blue-800 dark:text-blue-300'
 						aria-hidden='true'
@@ -45,7 +45,7 @@ const workExperience = [
 						<path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
 					</svg>
 				</span>
-				<h3 class='flex flex-col justify-start mb-1 text-lg font-semibold text-slate-900 gap-1 xl:flex-row dark:text-white'>
+				<h3 class='flex flex-col justify-start mb-1 text-lg font-semibold text-slate-900 gap-1 xl:flex-row dark:text-white' data-aos="fade-right">
 					{WorkExperience.position} &nbsp;
 					<span class='text-sky-500 dark:text-sky-400'>
 						{WorkExperience.nameCompany}
@@ -56,10 +56,10 @@ const workExperience = [
 						</span>
 					) : null}
 				</h3>
-				<time class='block my-2 text-sm font-normal leading-none text-slate-400 dark:text-slate-600'>
+				<time class='block my-2 text-sm font-normal leading-none text-slate-400 dark:text-slate-600' data-aos="fade-right">
 					{t('WorkExperience.ReleaseDate')} {WorkExperience.date}
 				</time>
-				<p class='mb-4 text-base font-normal text-slate-600 dark:text-slate-400'>
+				<p class='mb-4 text-base font-normal text-slate-600 dark:text-slate-400' data-aos="fade-right">
 					{WorkExperience.description}
 				</p>
 				{WorkExperience.visit ? (

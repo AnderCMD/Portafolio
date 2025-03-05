@@ -22,7 +22,10 @@ import '@/Assets/FontAwesome/css/all.css';
 import { useLocale } from '@/Hooks/useLocale';
 const { currentLocale, t } = useLocale(Astro);
 
+// Transiciones
 import { ClientRouter } from 'astro:transitions';
+
+import 'aos/dist/aos.css';
 ---
 
 <html lang={currentLocale}>
@@ -56,5 +59,13 @@ import { ClientRouter } from 'astro:transitions';
 			</div>
 			<Footer />
 		</div>
+
+		<script>
+			import AOS from 'aos';
+
+			document.addEventListener('astro:page-load', () => {
+				AOS.init();
+			});
+		</script>
 	</body>
 </html>

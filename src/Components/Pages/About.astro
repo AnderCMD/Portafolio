@@ -16,7 +16,7 @@ const { t } = useLocale(Astro);
 ---
 
 <Layout title={`AnderCMD | ${t('Nav.About')}`}>
-	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8'>
+	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8' data-aos='zoom-in'>
 		<img
 			id='IconoLogoTheme'
 			src=''
@@ -30,11 +30,11 @@ const { t } = useLocale(Astro);
 			description={t('About.Description')}
 		/>
 	</section>
-	<section>
+	<section data-aos='zoom-in'>
 		<Social />
 	</section>
 	<Divisor />
-	<section>
+	<section data-aos='zoom-in'>
 		<Text2
 			icon='fa-solid fa-laptop-code'
 			title={t('Tech.Title')}
@@ -44,7 +44,7 @@ const { t } = useLocale(Astro);
 		<Tech />
 	</section>
 	<Divisor />
-	<section>
+	<section data-aos='zoom-in'>
 		<Text2
 			icon='fa-solid fa-briefcase'
 			title={t('WorkExperience.Title')}
