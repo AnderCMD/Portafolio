@@ -7,68 +7,22 @@ const { t } = useLocale(Astro);
 import { CurrentYear } from '@/Scripts/CurrentTime';
 ---
 
-<style>
-	.social-icon {
-		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		background-color: rgba(14, 165, 233, 0.1);
-	}
-
-	.social-icon:hover {
-		transform: translateY(-5px);
-		background-color: rgb(14, 165, 233);
-		color: white;
-		box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
-	}
-
-	.footer-logo {
-		transition: all 0.3s ease;
-	}
-
-	.footer-logo:hover {
-		transform: scale(1.1);
-	}
-
-	.footer-name {
-		position: relative;
-		display: inline-block;
-	}
-
-	.footer-name::after {
-		content: '';
-		position: absolute;
-		width: 0;
-		height: 2px;
-		bottom: -2px;
-		left: 0;
-		background-color: rgb(14, 165, 233);
-		transition: width 0.3s ease;
-	}
-
-	.footer-name:hover::after {
-		width: 100%;
-	}
-
-	.footer-container {
-		background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05), transparent, rgba(14, 165, 233, 0.05));
-	}
-</style>
-
-<footer class='footer-container border-t-2 border-slate-300 dark:border-slate-600 pt-6 pb-6'>
+<footer
+	class='pt-5 pb-5 bg-gradient-to-r from-sky-500/5 via-transparent to-sky-500/5 border-t border-slate-200 dark:border-slate-800'>
 	<div class='max-w-screen-xl mx-auto px-4'>
-		<div class='flex flex-col md:flex-row items-center justify-between gap-5'>
-			<div class='flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0'>
-				<a href='/' class='footer-logo flex items-center'>
-					<img src='' alt='Icono Logo AnderCMD' id='IconoLogoThemeFooter' class='size-10' />
+		<div class='flex flex-col md:flex-row items-center justify-between gap-4'>
+			<div class='flex flex-col md:flex-row items-center gap-3 mb-3 md:mb-0'>
+				<a href='/' class='flex items-center transition-transform duration-300 ease-in-out hover:scale-105'>
+					<img src='' alt='Icono Logo AnderCMD' id='IconoLogoThemeFooter' class='size-9' />
 				</a>
 				<div class='text-center md:text-left'>
-					<a href='/' class='footer-name font-bold text-xl text-slate-800 dark:text-white transition-all'>
+					<a
+						href='/'
+						class='font-bold text-lg text-slate-800 dark:text-white transition-all duration-300 ease-in-out relative group'>
 						AnderCMD
+						<span
+							class='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-sky-500/50 group-hover:w-full transition-all duration-300 ease-in-out rounded'
+						></span>
 					</a>
 					<p class='text-slate-600 dark:text-slate-400 text-sm mt-1'>
 						{t('Footer.Copyright')} 2024{' '}
@@ -77,29 +31,58 @@ import { CurrentYear } from '@/Scripts/CurrentTime';
 				</div>
 			</div>
 
-			<div class='flex gap-4'>
+			<div class='flex gap-3'>
 				<a
 					href='https://www.linkedin.com/in/andercmd/'
 					target='_blank'
+					rel='noopener noreferrer'
 					aria-label='LinkedIn'
-					class='social-icon text-sky-500 dark:text-sky-400'>
-					<i class='fa-brands fa-linkedin text-xl'></i>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
+					<i class='fa-brands fa-linkedin text-lg'></i>
+					<span
+						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
+					></span>
 				</a>
 				<a
 					href='https://github.com/AnderCMD'
 					target='_blank'
+					rel='noopener noreferrer'
 					aria-label='GitHub'
-					class='social-icon text-sky-500 dark:text-sky-400'>
-					<i class='fa-brands fa-github text-xl'></i>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
+					<i class='fa-brands fa-github text-lg'></i>
+					<span
+						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
+					></span>
 				</a>
 				<a
 					href='https://x.com/AnderCMDs'
 					target='_blank'
+					rel='noopener noreferrer'
 					aria-label='Twitter'
-					class='social-icon text-sky-500 dark:text-sky-400'>
-					<i class='fa-brands fa-x-twitter text-xl'></i>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
+					<i class='fa-brands fa-x-twitter text-lg'></i>
+					<span
+						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
+					></span>
 				</a>
 			</div>
 		</div>
 	</div>
 </footer>
+
+<style>
+	@keyframes ripple {
+		0% {
+			transform: scale(0, 0);
+			opacity: 0.7;
+		}
+		100% {
+			transform: scale(4, 4);
+			opacity: 0;
+		}
+	}
+
+	.group-hover\:animate-ripple {
+		animation: ripple 0.7s ease-out;
+	}
+</style>

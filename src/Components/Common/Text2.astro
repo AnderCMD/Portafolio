@@ -37,98 +37,45 @@ const alignClass = {
 }[align];
 ---
 
+<section
+	class={`relative overflow-hidden transition-all duration-300 ease-in-out py-3 flex flex-col gap-5 ${alignClass} ${animationClass} ${hasShadow ? 'p-7 rounded-2xl' : ''}`}
+	role='region'
+	aria-label={title}
+	data-aos='fade-up'
+	data-aos-duration='600'
+	data-aos-once='true'>
+	<i
+		class={`text-4xl md:text-5xl ${icon} ${iconColor} transition-all duration-300 ease-in-out hover:scale-110 hover:-rotate-3 filter drop-shadow-md hover:drop-shadow-lg relative z-10 group`}>
+		<span
+			class='absolute inset-0 -z-10 bg-radial-gradient-emerald opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out scale-150'
+		></span>
+	</i>
+
+	<div class='relative mb-5'>
+		<h2 class='text-xl font-extrabold text-slate-900 dark:text-white md:text-2xl lg:text-3xl mb-2'>
+			<span class={titleClass}>{title}</span>
+		</h2>
+
+		<h3 class='text-lg font-bold text-slate-900 dark:text-white md:text-xl lg:text-2xl'>
+			<span class={subtitleClass}>{subtitle}</span>
+		</h3>
+
+		{
+			hasDecoration && (
+				<div
+					class={`h-0.5 w-15 mt-2 bg-gradient-to-r from-emerald-100 via-emerald-500/50 to-emerald-100 dark:from-emerald-900/10 dark:via-emerald-500/50 dark:to-emerald-900/10 rounded-full mx-auto ${align === 'left' ? 'ml-0 mr-auto' : align === 'right' ? 'mr-0 ml-auto' : ''}`}
+				/>
+			)
+		}
+	</div>
+
+	<p
+		class='font-normal text-slate-600 dark:text-slate-300 max-w-prose leading-7 text-base md:text-lg transition-transform duration-300 ease-in-out hover:-translate-y-0.5'>
+		{description}
+	</p>
+</section>
+
 <style>
-	.text-section {
-		position: relative;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		overflow: hidden;
-	}
-
-	.text-section.with-shadow {
-		padding: 2rem;
-		border-radius: 1rem;
-		background: transparent;
-		box-shadow: none;
-		border: none;
-	}
-
-	.text-section:hover .section-icon {
-		transform: scale(1.15) rotate(-5deg);
-		filter: drop-shadow(0 8px 16px rgba(16, 185, 129, 0.2));
-	}
-
-	.section-icon {
-		font-size: 2.5rem;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		position: relative;
-		z-index: 2;
-		filter: drop-shadow(0 4px 8px rgba(16, 185, 129, 0.1));
-	}
-
-	.section-icon::after {
-		content: '';
-		position: absolute;
-		width: 140%;
-		height: 140%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%);
-		border-radius: 50%;
-		z-index: -1;
-		opacity: 0;
-		transition: opacity 0.4s ease;
-	}
-
-	.text-section:hover .section-icon::after {
-		opacity: 1;
-	}
-
-	.title-container {
-		position: relative;
-		margin-bottom: 1.5rem;
-	}
-
-	.title-decoration {
-		position: absolute;
-		bottom: -10px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 80px;
-		height: 3px;
-		background: linear-gradient(90deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.8), rgba(16, 185, 129, 0.2));
-		border-radius: 3px;
-		z-index: 1;
-	}
-
-	.title-decoration.left {
-		left: 0;
-		transform: none;
-	}
-
-	.title-decoration.right {
-		left: auto;
-		right: 0;
-		transform: none;
-	}
-
-	.description {
-		line-height: 1.8;
-		transition: all 0.3s ease;
-	}
-
-	.text-section:hover .description {
-		transform: translateY(-3px);
-	}
-
-	.animate-fade-in {
-		animation: fadeIn 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
-
-	.animate-slide-in-bottom {
-		animation: slideInBottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
-
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -140,7 +87,7 @@ const alignClass = {
 
 	@keyframes slideInBottom {
 		from {
-			transform: translateY(30px);
+			transform: translateY(20px);
 			opacity: 0;
 		}
 		to {
@@ -149,53 +96,18 @@ const alignClass = {
 		}
 	}
 
-	/* Dark mode styles */
-	:global(.dark) .text-section.with-shadow {
-		background: transparent;
-		border-color: transparent;
+	.animate-fade-in {
+		animation: fadeIn 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 	}
 
-	/* Responsive adjustments */
-	@media (max-width: 768px) {
-		.section-icon {
-			font-size: 2rem;
-		}
+	.animate-slide-in-bottom {
+		animation: slideInBottom 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
 
-		.title-decoration {
-			width: 60px;
-		}
-
-		.text-section.with-shadow {
-			padding: 1.5rem;
-		}
+	.bg-radial-gradient-emerald {
+		background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0) 70%);
 	}
 </style>
-
-<section
-	class={`text-section flex flex-col gap-6 py-4 ${alignClass} ${animationClass} ${hasShadow ? 'with-shadow' : ''}`}
-	role='region'
-	aria-label={title}
-	data-aos='fade-up'
-	data-aos-duration='800'
-	data-aos-once='true'>
-	<i class={`section-icon ${icon} ${iconColor}`}></i>
-
-	<div class='title-container'>
-		<h2 class='text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl lg:text-4xl mb-2'>
-			<span class={titleClass}>{title}</span>
-		</h2>
-
-		<h3 class='text-xl font-bold text-slate-900 dark:text-white md:text-2xl lg:text-3xl'>
-			<span class={subtitleClass}>{subtitle}</span>
-		</h3>
-
-		{hasDecoration && <div class={`title-decoration ${align}`} />}
-	</div>
-
-	<p class='description text-lg font-normal text-slate-600 dark:text-slate-300 max-w-prose md:text-xl'>
-		{description}
-	</p>
-</section>
 
 <script>
 	import AOS from 'aos';
@@ -203,10 +115,11 @@ const alignClass = {
 	document.addEventListener('astro:page-load', () => {
 		// Initialize AOS with custom settings
 		AOS.init({
-			duration: 800,
+			duration: 600,
 			easing: 'ease-out-cubic',
 			once: true,
-			offset: 50,
+			offset: 30,
+			disableMutationObserver: false,
 		});
 	});
 </script>

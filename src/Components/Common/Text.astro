@@ -45,108 +45,47 @@ const textAlignClass = {
 }[align];
 ---
 
+<section
+	class={`relative overflow-hidden transition-all duration-300 ease-in-out py-3 flex flex-col gap-5 ${alignClass} ${animationClass} 
+	${hasShadow ? 'p-7 rounded-2xl bg-white/3 shadow-lg border border-slate-200/80 dark:border-slate-700/50 dark:bg-slate-900/3' : ''} 
+	${hasGlass ? 'bg-white/5 backdrop-blur-md dark:bg-slate-900/30 border border-white/10 dark:border-slate-700/20' : ''}`}
+	role='region'
+	aria-label={title}
+	data-aos='fade-up'
+	data-aos-duration='600'
+	data-aos-once='true'>
+	<i
+		class={`text-4xl md:text-5xl ${icon} ${iconColor} transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:rotate-3 filter drop-shadow-md hover:drop-shadow-lg relative z-10 group`}>
+		<span
+			class='absolute inset-0 -z-10 bg-radial-gradient-sky opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out scale-150'
+		></span>
+	</i>
+
+	<div class={`relative w-full mb-5 ${textAlignClass}`}>
+		<h2 class='text-xl font-extrabold text-slate-900 dark:text-white md:text-2xl lg:text-3xl mb-2'>
+			<span class={titleClass}>{title}</span>
+		</h2>
+
+		<h3 class='text-lg font-bold text-slate-900 dark:text-white md:text-xl lg:text-2xl'>
+			<span class={subtitleClass}>{subtitle}</span>
+		</h3>
+
+		{
+			hasDecoration && (
+				<div
+					class={`h-0.5 w-15 mt-2 bg-gradient-to-r from-sky-100 via-sky-500/50 to-sky-100 dark:from-sky-900/10 dark:via-sky-500/50 dark:to-sky-900/10 rounded-full mx-auto ${align === 'left' ? 'ml-0 mr-auto' : align === 'right' ? 'mr-0 ml-auto' : ''}`}
+				/>
+			)
+		}
+	</div>
+
+	<p
+		class='font-normal text-slate-600 dark:text-slate-300 max-w-prose leading-7 text-base md:text-lg transition-transform duration-300 ease-in-out hover:-translate-y-0.5 w-full'>
+		{description}
+	</p>
+</section>
+
 <style>
-	.text-section {
-		position: relative;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		overflow: hidden;
-	}
-
-	.text-section.with-shadow {
-		padding: 2rem;
-		border-radius: 1rem;
-		background: rgba(255, 255, 255, 0.03);
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-		border: 1px solid rgba(226, 232, 240, 0.8);
-	}
-
-	.text-section.with-glass {
-		background: rgba(255, 255, 255, 0.05);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
-	.text-section:hover .section-icon {
-		transform: scale(1.15) rotate(5deg);
-		filter: drop-shadow(0 8px 16px rgba(14, 165, 233, 0.2));
-	}
-
-	.section-icon {
-		font-size: 2.5rem;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		position: relative;
-		z-index: 2;
-		filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.1));
-	}
-
-	.section-icon::after {
-		content: '';
-		position: absolute;
-		width: 140%;
-		height: 140%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0) 70%);
-		border-radius: 50%;
-		z-index: -1;
-		opacity: 0;
-		transition: opacity 0.4s ease;
-	}
-
-	.text-section:hover .section-icon::after {
-		opacity: 1;
-	}
-
-	.title-container {
-		position: relative;
-		margin-bottom: 1.5rem;
-		width: 100%;
-	}
-
-	.title-decoration {
-		position: absolute;
-		bottom: -10px;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 80px;
-		height: 3px;
-		background: linear-gradient(90deg, rgba(14, 165, 233, 0.2), rgba(14, 165, 233, 0.8), rgba(14, 165, 233, 0.2));
-		border-radius: 3px;
-		z-index: 1;
-	}
-
-	.title-decoration.left {
-		left: 0;
-		transform: none;
-	}
-
-	.title-decoration.right {
-		left: auto;
-		right: 0;
-		transform: none;
-	}
-
-	.description {
-		line-height: 1.8;
-		transition: all 0.3s ease;
-		text-align: left;
-		width: 100%;
-	}
-
-	.text-section:hover .description {
-		transform: translateY(-3px);
-	}
-
-	.animate-fade-in {
-		animation: fadeIn 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
-
-	.animate-slide-in-bottom {
-		animation: slideInBottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
-
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -158,7 +97,7 @@ const textAlignClass = {
 
 	@keyframes slideInBottom {
 		from {
-			transform: translateY(30px);
+			transform: translateY(20px);
 			opacity: 0;
 		}
 		to {
@@ -167,58 +106,18 @@ const textAlignClass = {
 		}
 	}
 
-	/* Dark mode styles */
-	:global(.dark) .text-section.with-shadow {
-		background: rgba(30, 41, 59, 0.03);
-		border-color: rgba(51, 65, 85, 0.5);
+	.animate-fade-in {
+		animation: fadeIn 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 	}
 
-	:global(.dark) .text-section.with-glass {
-		background: rgba(15, 23, 42, 0.3);
-		border-color: rgba(51, 65, 85, 0.2);
+	.animate-slide-in-bottom {
+		animation: slideInBottom 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 	}
 
-	/* Responsive adjustments */
-	@media (max-width: 768px) {
-		.section-icon {
-			font-size: 2rem;
-		}
-
-		.title-decoration {
-			width: 60px;
-		}
-
-		.text-section.with-shadow {
-			padding: 1.5rem;
-		}
+	.bg-radial-gradient-sky {
+		background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, rgba(14, 165, 233, 0) 70%);
 	}
 </style>
-
-<section
-	class={`text-section flex flex-col gap-6 py-4 ${alignClass} ${animationClass} ${hasShadow ? 'with-shadow' : ''} ${hasGlass ? 'with-glass' : ''}`}
-	role='region'
-	aria-label={title}
-	data-aos='fade-up'
-	data-aos-duration='800'
-	data-aos-once='true'>
-	<i class={`section-icon ${icon} ${iconColor}`}></i>
-
-	<div class={`title-container ${textAlignClass}`}>
-		<h2 class='text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl lg:text-4xl mb-2'>
-			<span class={titleClass}>{title}</span>
-		</h2>
-
-		<h3 class='text-xl font-bold text-slate-900 dark:text-white md:text-2xl lg:text-3xl'>
-			<span class={subtitleClass}>{subtitle}</span>
-		</h3>
-
-		{hasDecoration && <div class={`title-decoration ${align}`} />}
-	</div>
-
-	<p class='description text-lg font-normal text-slate-600 dark:text-slate-300 max-w-prose md:text-xl'>
-		{description}
-	</p>
-</section>
 
 <script>
 	import AOS from 'aos';
@@ -226,10 +125,11 @@ const textAlignClass = {
 	document.addEventListener('astro:page-load', () => {
 		// Initialize AOS with custom settings
 		AOS.init({
-			duration: 800,
+			duration: 600,
 			easing: 'ease-out-cubic',
 			once: true,
-			offset: 50,
+			offset: 30,
+			disableMutationObserver: false,
 		});
 	});
 </script>

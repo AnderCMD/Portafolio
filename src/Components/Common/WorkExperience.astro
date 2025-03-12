@@ -41,260 +41,28 @@ const workExperience = [
 ];
 ---
 
-<style>
-	.timeline-container {
-		position: relative;
-		padding: 2rem 0;
-	}
-
-	.timeline-line {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 24px;
-		width: 2px;
-		background: linear-gradient(
-			to bottom,
-			rgba(14, 165, 233, 0.2),
-			rgba(14, 165, 233, 0.6) 20%,
-			rgba(14, 165, 233, 0.6) 80%,
-			rgba(14, 165, 233, 0.2)
-		);
-		z-index: 1;
-	}
-
-	.timeline-item {
-		position: relative;
-		padding-left: 3.5rem;
-		margin-bottom: 3rem;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-	}
-
-	.timeline-item:last-child {
-		margin-bottom: 0;
-	}
-
-	.timeline-dot {
-		position: absolute;
-		left: 0;
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		background: white;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-		z-index: 2;
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		border: 2px solid rgba(14, 165, 233, 0.3);
-	}
-
-	.timeline-dot.active {
-		box-shadow: 0 6px 16px rgba(14, 165, 233, 0.3);
-		border: 2px solid rgba(14, 165, 233, 0.8);
-	}
-
-	.timeline-dot svg,
-	.timeline-dot img {
-		width: 24px;
-		height: 24px;
-		color: rgb(14, 165, 233);
-	}
-
-	.timeline-content {
-		background: white;
-		border-radius: 12px;
-		padding: 1.5rem;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-		border: 1px solid rgba(226, 232, 240, 1);
-		position: relative;
-		overflow: hidden;
-	}
-
-	.timeline-content::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 4px;
-		height: 100%;
-		background: var(--company-color, rgb(14, 165, 233));
-		border-radius: 4px 0 0 4px;
-	}
-
-	.timeline-item:hover .timeline-content {
-		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-		transform: translateY(-5px);
-	}
-
-	.timeline-item:hover .timeline-dot {
-		transform: scale(1.1);
-		box-shadow: 0 8px 20px rgba(14, 165, 233, 0.2);
-	}
-
-	.company-name {
-		font-weight: 700;
-		background: linear-gradient(90deg, var(--company-color, rgb(14, 165, 233)), rgba(14, 165, 233, 0.7));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		text-fill-color: transparent;
-	}
-
-	.active-badge {
-		background: linear-gradient(90deg, rgb(14, 165, 233), rgba(14, 165, 233, 0.7));
-		color: white;
-		font-weight: 600;
-		padding: 0.25rem 0.75rem;
-		border-radius: 9999px;
-		font-size: 0.75rem;
-		box-shadow: 0 2px 6px rgba(14, 165, 233, 0.3);
-		display: inline-flex;
-		align-items: center;
-	}
-
-	.active-badge i {
-		margin-right: 0.25rem;
-	}
-
-	.date-badge {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.25rem 0.75rem;
-		background-color: rgba(226, 232, 240, 0.5);
-		border-radius: 9999px;
-		font-size: 0.875rem;
-		color: rgb(100, 116, 139);
-		margin-bottom: 1rem;
-	}
-
-	.date-badge i {
-		margin-right: 0.5rem;
-		color: rgb(100, 116, 139);
-	}
-
-	.skill-tag {
-		font-size: 0.7rem;
-		padding: 0.15rem 0.5rem;
-		border-radius: 4px;
-		background-color: rgba(100, 116, 139, 0.1);
-		color: rgb(100, 116, 139);
-		font-weight: 500;
-		margin-right: 0.35rem;
-		margin-bottom: 0.35rem;
-		display: inline-block;
-		transition: all 0.2s ease;
-	}
-
-	.timeline-item:hover .skill-tag {
-		background-color: rgba(100, 116, 139, 0.2);
-	}
-
-	.visit-button {
-		margin-top: 1rem;
-		display: inline-flex;
-		align-items: center;
-		padding: 0.5rem 1rem;
-		background: linear-gradient(135deg, var(--company-color, #0ea5e9) 0%, rgba(14, 165, 233, 0.8) 100%);
-		color: white;
-		border-radius: 8px;
-		font-weight: 600;
-		font-size: 0.875rem;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		position: relative;
-		overflow: hidden;
-		z-index: 1;
-	}
-
-	.visit-button:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-	}
-
-	.visit-button::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 5px;
-		height: 5px;
-		background: rgba(255, 255, 255, 0.6);
-		opacity: 0;
-		border-radius: 100%;
-		transform: scale(1, 1) translate(-50%);
-		transform-origin: 50% 50%;
-		z-index: -1;
-	}
-
-	.visit-button:hover::after {
-		animation: ripple 0.7s ease-out;
-	}
-
-	@keyframes ripple {
-		0% {
-			transform: scale(0, 0);
-			opacity: 0.7;
-		}
-		100% {
-			transform: scale(25, 25);
-			opacity: 0;
-		}
-	}
-
-	.visit-button i {
-		margin-left: 0.5rem;
-	}
-
-	/* Dark mode styles */
-	:global(.dark) .timeline-content {
-		background: rgb(30, 41, 59);
-		border-color: rgb(51, 65, 85);
-	}
-
-	:global(.dark) .timeline-dot {
-		background: rgb(30, 41, 59);
-	}
-
-	:global(.dark) .date-badge {
-		background-color: rgba(51, 65, 85, 0.5);
-		color: rgb(148, 163, 184);
-	}
-
-	:global(.dark) .date-badge i {
-		color: rgb(148, 163, 184);
-	}
-
-	:global(.dark) .skill-tag {
-		background-color: rgba(148, 163, 184, 0.1);
-		color: rgb(148, 163, 184);
-	}
-
-	:global(.dark) .timeline-item:hover .skill-tag {
-		background-color: rgba(148, 163, 184, 0.2);
-	}
-</style>
-
-<div class='container mx-auto px-4 py-8'>
-	<div class='timeline-container'>
-		<div class='timeline-line'></div>
+<div class='container mx-auto px-4 py-6'>
+	<div class='relative py-6'>
+		<!-- Timeline line -->
+		<div class='absolute top-0 bottom-0 left-6 w-0.5 bg-gradient-to-b from-sky-200 via-sky-500/60 to-sky-200 dark:from-sky-900/20 dark:via-sky-500/60 dark:to-sky-900/20 z-10'></div>
 
 		{
 			workExperience.map((experience, index) => (
 				<div
-					class='timeline-item'
+					class='relative pl-14 mb-10 last:mb-0 transition-all duration-300 ease-in-out'
 					data-aos='fade-up'
-					data-aos-duration='800'
+					data-aos-duration='600'
 					data-aos-delay={index * 100}
 					data-aos-once='true'>
-					<div class={`timeline-dot ${experience.active ? 'active' : ''}`}>
+					<!-- Timeline dot -->
+					<div 
+						class={`absolute left-0 w-12 h-12 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center shadow-md z-20 transition-all duration-300 ease-in-out border-2 ${experience.active ? 'border-sky-500 shadow-sky-200 dark:shadow-sky-900/20' : 'border-sky-300 dark:border-sky-700'} hover:scale-105 hover:shadow-lg`}
+						style={`--tw-shadow-color: ${experience.color}20;`}>
 						{experience.logo ? (
 							<img
 								src={experience.logo}
 								alt={experience.nameCompany}
-								class='rounded-full object-cover'
+								class='rounded-full object-cover w-6 h-6'
 								onerror={`this.onerror=null; this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(experience.nameCompany)}&background=0D8ABC&color=fff'`}
 							/>
 						) : (
@@ -302,44 +70,59 @@ const workExperience = [
 								aria-hidden='true'
 								xmlns='http://www.w3.org/2000/svg'
 								fill='currentColor'
+								class='w-6 h-6 text-sky-500'
 								viewBox='0 0 20 20'>
 								<path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
 							</svg>
 						)}
 					</div>
 
-					<div class='timeline-content' style={`--company-color: ${experience.color}`}>
+					<!-- Timeline content -->
+					<div 
+						class='bg-white dark:bg-slate-800 rounded-xl p-5 shadow-md transition-all duration-300 ease-in-out border border-slate-200 dark:border-slate-700 hover:-translate-y-1 hover:shadow-lg relative overflow-hidden group'
+						style={`--company-color: ${experience.color}`}>
+						<!-- Left border accent -->
+						<div class='absolute top-0 left-0 w-1 h-full rounded-l-xl' style={`background-color: ${experience.color}`}></div>
+						
 						<div class='flex flex-wrap items-center gap-2 mb-2'>
-							<h3 class='text-xl font-bold text-slate-900 dark:text-white'>{experience.position}</h3>
-							<span class='company-name'>@ {experience.nameCompany}</span>
+							<h3 class='text-lg font-bold text-slate-900 dark:text-white'>{experience.position}</h3>
+							<span class='font-bold bg-clip-text text-transparent bg-gradient-to-r' style={`--tw-gradient-from: ${experience.color}; --tw-gradient-to: ${experience.color}80;`}>@ {experience.nameCompany}</span>
 
 							{experience.active && (
-								<span class='active-badge ml-auto'>
-									<i class='fa-solid fa-circle-check' />
+								<span class='ml-auto text-xs font-semibold text-white px-3 py-1 rounded-full shadow-sm flex items-center bg-gradient-to-r from-sky-500 to-sky-400'>
+									<i class='fa-solid fa-circle-check mr-1' />
 									{t('WorkExperience.Active')}
 								</span>
 							)}
 						</div>
 
-						<div class='date-badge'>
-							<i class='fa-regular fa-calendar' />
+						<div class='inline-flex items-center px-3 py-1 bg-slate-100 dark:bg-slate-700/50 rounded-full text-xs text-slate-600 dark:text-slate-300 mb-3'>
+							<i class='fa-regular fa-calendar mr-2 text-slate-500 dark:text-slate-400' />
 							{t('WorkExperience.ReleaseDate')} {experience.date}
 						</div>
 
-						<p class='mb-4 text-slate-700 dark:text-slate-300 leading-relaxed'>{experience.description}</p>
+						<p class='mb-3 text-slate-700 dark:text-slate-300 leading-relaxed text-sm md:text-base'>
+							{experience.description}
+						</p>
 
 						{experience.skills && experience.skills.length > 0 && (
-							<div class='mb-4'>
+							<div class='mb-3'>
 								{experience.skills.map((skill) => (
-									<span class='skill-tag'>{skill}</span>
+									<span class='inline-block text-xs px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-medium mr-1.5 mb-1.5 transition-colors duration-200 ease-in-out group-hover:bg-slate-200 dark:group-hover:bg-slate-600'>{skill}</span>
 								))}
 							</div>
 						)}
 
 						{experience.visit && (
-							<a href={experience.visit} target='_blank' rel='noopener noreferrer' class='visit-button'>
+							<a 
+								href={experience.visit} 
+								target='_blank' 
+								rel='noopener noreferrer' 
+								class='inline-flex items-center px-3.5 py-1.5 mt-2 text-sm font-semibold text-white rounded-lg shadow-sm transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-md relative overflow-hidden group'
+								style={`background: linear-gradient(135deg, ${experience.color} 0%, ${experience.color}80 100%);`}>
 								{t('WorkExperience.Visit')}
-								<i class='fa-solid fa-external-link' />
+								<i class='fa-solid fa-external-link ml-2' />
+								<span class="absolute top-0 left-0 w-full h-full bg-white/20 opacity-0 scale-x-0 origin-left group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out"></span>
 							</a>
 						)}
 					</div>
@@ -355,10 +138,11 @@ const workExperience = [
 	document.addEventListener('astro:page-load', () => {
 		// Initialize AOS with custom settings
 		AOS.init({
-			duration: 800,
+			duration: 600,
 			easing: 'ease-out-cubic',
 			once: true,
-			offset: 50,
+			offset: 30,
+			disableMutationObserver: false,
 		});
 	});
 </script>
