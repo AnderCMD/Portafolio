@@ -8,91 +8,98 @@ import { CurrentYear } from '@/Scripts/CurrentTime';
 ---
 
 <style>
-    .social-icon {
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: rgba(14, 165, 233, 0.1);
-    }
-    
-    .social-icon:hover {
-        transform: translateY(-5px);
-        background-color: rgb(14, 165, 233);
-        color: white;
-        box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
-    }
-    
-    .footer-logo {
-        transition: all 0.3s ease;
-    }
-    
-    .footer-logo:hover {
-        transform: scale(1.1);
-    }
-    
-    .footer-name {
-        position: relative;
-        display: inline-block;
-    }
-    
-    .footer-name::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: rgb(14, 165, 233);
-        transition: width 0.3s ease;
-    }
-    
-    .footer-name:hover::after {
-        width: 100%;
-    }
-    
-    .footer-container {
-        background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05), transparent, rgba(14, 165, 233, 0.05));
-    }
+	.social-icon {
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: rgba(14, 165, 233, 0.1);
+	}
+
+	.social-icon:hover {
+		transform: translateY(-5px);
+		background-color: rgb(14, 165, 233);
+		color: white;
+		box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+	}
+
+	.footer-logo {
+		transition: all 0.3s ease;
+	}
+
+	.footer-logo:hover {
+		transform: scale(1.1);
+	}
+
+	.footer-name {
+		position: relative;
+		display: inline-block;
+	}
+
+	.footer-name::after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 2px;
+		bottom: -2px;
+		left: 0;
+		background-color: rgb(14, 165, 233);
+		transition: width 0.3s ease;
+	}
+
+	.footer-name:hover::after {
+		width: 100%;
+	}
+
+	.footer-container {
+		background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05), transparent, rgba(14, 165, 233, 0.05));
+	}
 </style>
 
-<footer class="footer-container border-t-2 border-slate-300 dark:border-slate-600 pt-6 pb-6">
-    <div class="max-w-screen-xl mx-auto px-4">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-5">
-            <div class="flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0">
-                <a href="/" class="footer-logo flex items-center">
-                    <img
-                        src=""
-                        alt="Icono Logo AnderCMD"
-                        id="IconoLogoThemeFooter"
-                        class="size-10"
-                    />
-                </a>
-                <div class="text-center md:text-left">
-                    <a href="/" class="footer-name font-bold text-xl text-slate-800 dark:text-white transition-all">
-                        AnderCMD
-                    </a>
-                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
-                        {t('Footer.Copyright')} 2024{" "}
-                        {CurrentYear !== "2024" && `${CurrentYear}`}
-                    </p>
-                </div>
-            </div>
-            
-            <div class="flex gap-4">
-                <a href="https://www.linkedin.com/in/andercmd/" target="_blank" aria-label="LinkedIn" class="social-icon text-sky-500 dark:text-sky-400">
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                </a>
-                <a href="https://github.com/AnderCMD" target="_blank" aria-label="GitHub" class="social-icon text-sky-500 dark:text-sky-400">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-                <a href="https://x.com/AnderCMDs" target="_blank" aria-label="Twitter" class="social-icon text-sky-500 dark:text-sky-400">
-                    <i class="fa-brands fa-x-twitter text-xl"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+<footer class='footer-container border-t-2 border-slate-300 dark:border-slate-600 pt-6 pb-6'>
+	<div class='max-w-screen-xl mx-auto px-4'>
+		<div class='flex flex-col md:flex-row items-center justify-between gap-5'>
+			<div class='flex flex-col md:flex-row items-center gap-4 mb-4 md:mb-0'>
+				<a href='/' class='footer-logo flex items-center'>
+					<img src='' alt='Icono Logo AnderCMD' id='IconoLogoThemeFooter' class='size-10' />
+				</a>
+				<div class='text-center md:text-left'>
+					<a href='/' class='footer-name font-bold text-xl text-slate-800 dark:text-white transition-all'>
+						AnderCMD
+					</a>
+					<p class='text-slate-600 dark:text-slate-400 text-sm mt-1'>
+						{t('Footer.Copyright')} 2024{' '}
+						{CurrentYear !== '2024' && `${CurrentYear}`}
+					</p>
+				</div>
+			</div>
+
+			<div class='flex gap-4'>
+				<a
+					href='https://www.linkedin.com/in/andercmd/'
+					target='_blank'
+					aria-label='LinkedIn'
+					class='social-icon text-sky-500 dark:text-sky-400'>
+					<i class='fa-brands fa-linkedin text-xl'></i>
+				</a>
+				<a
+					href='https://github.com/AnderCMD'
+					target='_blank'
+					aria-label='GitHub'
+					class='social-icon text-sky-500 dark:text-sky-400'>
+					<i class='fa-brands fa-github text-xl'></i>
+				</a>
+				<a
+					href='https://x.com/AnderCMDs'
+					target='_blank'
+					aria-label='Twitter'
+					class='social-icon text-sky-500 dark:text-sky-400'>
+					<i class='fa-brands fa-x-twitter text-xl'></i>
+				</a>
+			</div>
+		</div>
+	</div>
 </footer>

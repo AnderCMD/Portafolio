@@ -99,7 +99,7 @@ const project = [
 		linkView: 'https://andercmd.github.io/TasksFlow/',
 		linkCode: 'http://github.com/AnderCMD/TasksFlow',
 		year: 2025,
-	}
+	},
 ];
 ---
 
@@ -121,30 +121,30 @@ const project = [
 	.filter-item.hidden {
 		display: none;
 	}
-	
+
 	.project-card {
 		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		overflow: hidden;
 	}
-	
+
 	.project-card:hover {
 		transform: translateY(-5px);
 		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 	}
-	
+
 	.project-image {
 		overflow: hidden;
 	}
-	
+
 	.project-image img {
 		transition: transform 0.5s ease;
 		object-fit: cover;
 	}
-	
+
 	.project-card:hover .project-image img {
 		transform: scale(1.05);
 	}
-	
+
 	.project-tag {
 		font-size: 0.75rem;
 		padding: 0.25rem 0.75rem;
@@ -157,18 +157,18 @@ const project = [
 		align-items: center;
 		margin-bottom: 0.5rem;
 	}
-	
+
 	.project-tag i {
 		margin-right: 0.25rem;
 		font-size: 0.7rem;
 	}
-	
+
 	.btn-project {
 		transition: all 0.2s ease;
 		position: relative;
 		overflow: hidden;
 	}
-	
+
 	.btn-project:after {
 		content: '';
 		position: absolute;
@@ -182,11 +182,11 @@ const project = [
 		transform: scale(1, 1) translate(-50%);
 		transform-origin: 50% 50%;
 	}
-	
+
 	.btn-project:hover:after {
 		animation: ripple 0.6s ease-out;
 	}
-	
+
 	@keyframes ripple {
 		0% {
 			transform: scale(0, 0);
@@ -210,19 +210,22 @@ const project = [
 		type='button'
 		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='web'>
-		<i class="fa-solid fa-globe mr-1"></i> {t('Projects.Nav.Web')}
+		<i class='fa-solid fa-globe mr-1'></i>
+		{t('Projects.Nav.Web')}
 	</button>
 	<button
 		type='button'
 		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='mobile'>
-		<i class="fa-solid fa-mobile-screen mr-1"></i> {t('Projects.Nav.Mobile')}
+		<i class='fa-solid fa-mobile-screen mr-1'></i>
+		{t('Projects.Nav.Mobile')}
 	</button>
 	<button
 		type='button'
 		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='other'>
-		<i class="fa-solid fa-code mr-1"></i> {t('Projects.Nav.Other')}
+		<i class='fa-solid fa-code mr-1'></i>
+		{t('Projects.Nav.Other')}
 	</button>
 </div>
 
@@ -245,18 +248,30 @@ const project = [
 								class='w-full h-52 rounded-t-lg'
 								src={Project.image}
 								alt={Project.description}
-								loading="lazy"
+								loading='lazy'
 							/>
 						</a>
 						<div class='flex flex-col flex-grow p-5'>
-							<div class="flex items-center justify-between mb-2">
+							<div class='flex items-center justify-between mb-2'>
 								<span class='text-sm font-semibold text-slate-600 dark:text-slate-400'>
 									{Project.year}
 								</span>
-								<div class="project-tag dark:bg-opacity-20 dark:text-sky-400">
-									{Project.type === 'web' && <><i class="fa-solid fa-globe"></i> Web</>}
-									{Project.type === 'mobile' && <><i class="fa-solid fa-mobile-screen"></i> Mobile</>}
-									{Project.type === 'other' && <><i class="fa-solid fa-code"></i> Other</>}
+								<div class='project-tag dark:bg-opacity-20 dark:text-sky-400'>
+									{Project.type === 'web' && (
+										<>
+											<i class='fa-solid fa-globe' /> Web
+										</>
+									)}
+									{Project.type === 'mobile' && (
+										<>
+											<i class='fa-solid fa-mobile-screen' /> Mobile
+										</>
+									)}
+									{Project.type === 'other' && (
+										<>
+											<i class='fa-solid fa-code' /> Other
+										</>
+									)}
 								</div>
 							</div>
 							<h5 class='mb-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
@@ -312,7 +327,7 @@ const project = [
 		filterButtons.forEach((button) => {
 			button.addEventListener('click', () => {
 				// Remove active class from all buttons
-				filterButtons.forEach(btn => {
+				filterButtons.forEach((btn) => {
 					if (btn.getAttribute('data-filter') === 'all') {
 						btn.classList.remove('bg-blue-700', 'bg-blue-800', 'dark:bg-blue-500', 'text-white');
 						btn.classList.add('text-blue-700', 'dark:text-blue-500', 'bg-white', 'dark:bg-slate-900');
@@ -323,7 +338,14 @@ const project = [
 				});
 
 				// Add active class to clicked button
-				button.classList.remove('text-blue-700', 'text-slate-900', 'dark:text-blue-500', 'dark:text-white', 'bg-white', 'dark:bg-slate-900');
+				button.classList.remove(
+					'text-blue-700',
+					'text-slate-900',
+					'dark:text-blue-500',
+					'dark:text-white',
+					'bg-white',
+					'dark:bg-slate-900'
+				);
 				button.classList.add('bg-blue-700', 'dark:bg-blue-500', 'text-white');
 
 				const filter = button.getAttribute('data-filter');
