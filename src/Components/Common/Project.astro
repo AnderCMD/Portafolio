@@ -202,25 +202,25 @@ const project = [
 <div class='flex flex-wrap items-center justify-center py-4 md:py-8'>
 	<button
 		type='button'
-		class='filter-button text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-slate-900 dark:focus:ring-blue-800'
+		class='filter-button text-white bg-blue-700 hover:bg-blue-800 border border-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:bg-blue-500 dark:hover:bg-blue-600 dark:border-blue-500 dark:focus:ring-blue-800'
 		data-filter='all'>
 		{t('Projects.Nav.AllCategories')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='web'>
 		<i class="fa-solid fa-globe mr-1"></i> {t('Projects.Nav.Web')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='mobile'>
 		<i class="fa-solid fa-mobile-screen mr-1"></i> {t('Projects.Nav.Mobile')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
 		data-filter='other'>
 		<i class="fa-solid fa-code mr-1"></i> {t('Projects.Nav.Other')}
 	</button>
@@ -240,11 +240,12 @@ const project = [
 					<div
 						class='project-card flex flex-col h-full border rounded-lg shadow-md bg-slate-50 border-slate-300 dark:bg-slate-800 dark:border-slate-700'
 						data-aos='fade-up'>
-						<a href={Project.linkView} class='flex-shrink-0 project-image'>
+						<a href={Project.linkView || Project.linkCode} class='flex-shrink-0 project-image'>
 							<img
 								class='w-full h-52 rounded-t-lg'
 								src={Project.image}
 								alt={Project.description}
+								loading="lazy"
 							/>
 						</a>
 						<div class='flex flex-col flex-grow p-5'>
@@ -308,24 +309,22 @@ const project = [
 		const filterButtons = document.querySelectorAll('.filter-button');
 		const filterItems = document.querySelectorAll('.filter-item');
 
-		// Set active class on the "All categories" button initially
-		document.querySelector('.filter-button[data-filter="all"]')?.classList.add('bg-blue-700', 'text-white', 'dark:bg-blue-500');
-
 		filterButtons.forEach((button) => {
 			button.addEventListener('click', () => {
 				// Remove active class from all buttons
 				filterButtons.forEach(btn => {
-					btn.classList.remove('bg-blue-700', 'text-white', 'dark:bg-blue-500');
-					if (btn.getAttribute('data-filter') !== 'all') {
-						btn.classList.add('text-slate-900', 'dark:text-white');
+					if (btn.getAttribute('data-filter') === 'all') {
+						btn.classList.remove('bg-blue-700', 'bg-blue-800', 'dark:bg-blue-500', 'text-white');
+						btn.classList.add('text-blue-700', 'dark:text-blue-500', 'bg-white', 'dark:bg-slate-900');
 					} else {
-						btn.classList.add('text-blue-700', 'dark:text-blue-500');
+						btn.classList.remove('bg-blue-700', 'bg-blue-800', 'dark:bg-blue-600', 'text-white');
+						btn.classList.add('text-slate-900', 'dark:text-white', 'bg-white', 'dark:bg-slate-900');
 					}
 				});
 
 				// Add active class to clicked button
-				button.classList.add('bg-blue-700', 'text-white', 'dark:bg-blue-500');
-				button.classList.remove('text-slate-900', 'text-blue-700', 'dark:text-white', 'dark:text-blue-500');
+				button.classList.remove('text-blue-700', 'text-slate-900', 'dark:text-blue-500', 'dark:text-white', 'bg-white', 'dark:bg-slate-900');
+				button.classList.add('bg-blue-700', 'dark:bg-blue-500', 'text-white');
 
 				const filter = button.getAttribute('data-filter');
 
