@@ -6,7 +6,7 @@ const { t } = useLocale(Astro);
 // Enhanced work experience data with additional fields
 const workExperience = [
 	{
-		active: true,
+		active: false,
 		nameCompany: 'AMEDigital A.C.',
 		position: t('WorkExperience.Companies.Position.3'),
 		date: '07/2024 • 12/2024 ',
@@ -92,6 +92,14 @@ const workExperience = [
 								<span class='ml-auto text-xs font-semibold text-white px-3 py-1 rounded-full shadow-sm flex items-center bg-gradient-to-r from-sky-500 to-sky-400'>
 									<i class='fa-solid fa-circle-check mr-1' />
 									{t('WorkExperience.Active')}
+								</span>
+							)}
+
+							{/* Si es el mas reciente */}
+							{index === 0 && (
+								<span class='ml-auto text-xs font-semibold text-white px-3 py-1 rounded-full shadow-sm flex items-center bg-gradient-to-r from-sky-500 to-sky-400'>
+									<i class='fa-solid fa-calendar mr-1' />
+									{t('WorkExperience.Recent')}
 								</span>
 							)}
 						</div>
