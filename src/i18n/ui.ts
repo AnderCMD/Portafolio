@@ -62,6 +62,9 @@ export const ui = {
         'Projects.ViewCode': 'Explore Code',
         'Projects.VisitProject': 'Launch Project',
         'Projects.Download': 'Download',
+        'Projects.Type.Web': 'Web',
+        'Projects.Type.Mobile': 'Mobile',
+        'Projects.Type.Other': 'Other',
 
         // Projects - Array
         'Projects.Title.1': 'Horoscope',
@@ -171,6 +174,9 @@ export const ui = {
         'Projects.ViewCode': 'Explorar Código',
         'Projects.VisitProject': 'Ver Proyecto',
         'Projects.Download': 'Descargar',
+        'Projects.Type.Web': 'Web',
+        'Projects.Type.Mobile': 'Móvil',
+        'Projects.Type.Other': 'Otros',
 
         // Proyectos - Array
         'Projects.Title.1': 'Horóscopo',
