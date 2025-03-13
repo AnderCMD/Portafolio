@@ -1,0 +1,1 @@
+import{A as t}from"./aos.CY6ZkY5L.js";document.addEventListener("astro:page-load",()=>{t.init({duration:600,easing:"ease-out-cubic",once:!0,offset:30,disableMutationObserver:!1}),window.innerWidth<768&&document.querySelectorAll(".tooltip").forEach(e=>{e instanceof HTMLElement&&(e.style.display="none")})});
