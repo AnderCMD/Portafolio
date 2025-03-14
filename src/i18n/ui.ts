@@ -135,7 +135,7 @@ export const ui = {
         'Error.Button.404': 'Volver al inicio',
 
         // Acerca de mí
-        'About.Title': '¡Hola! Soy Ander González González',
+        'About.Title': '¡Hola! Soy Ander González González 👋🏻',
         'About.Subtitle': 'Ingeniero en Software',
         'About.Description': 'Ingeniero de software full stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
         'About.CV': 'Descargar CV',
