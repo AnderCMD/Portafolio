@@ -33,15 +33,9 @@ const animationClass =
 	animation === 'fade' ? 'animate-fade-in' : animation === 'slide' ? 'animate-slide-in-bottom' : '';
 
 const alignClass = {
-	center: 'items-center',
-	left: 'items-start',
-	right: 'items-end',
-}[align];
-
-const textAlignClass = {
-	center: 'text-center',
-	left: 'text-left',
-	right: 'text-right',
+	center: 'items-center text-center',
+	left: 'items-start text-left',
+	right: 'items-end text-right',
 }[align];
 ---
 
@@ -102,7 +96,6 @@ const textAlignClass = {
 	.title-container {
 		position: relative;
 		margin-bottom: 1.5rem;
-		width: 100%;
 	}
 
 	.title-decoration {
@@ -131,8 +124,6 @@ const textAlignClass = {
 	.description {
 		line-height: 1.8;
 		transition: all 0.3s ease;
-		text-align: left;
-		width: 100%;
 	}
 
 	.text-section:hover .description {
@@ -203,7 +194,7 @@ const textAlignClass = {
 	data-aos-once='true'>
 	<i class={`section-icon ${icon} ${iconColor}`}></i>
 
-	<div class={`title-container ${textAlignClass}`}>
+	<div class='title-container'>
 		<h2 class='text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl lg:text-4xl mb-2'>
 			<span class={titleClass}>{title}</span>
 		</h2>
