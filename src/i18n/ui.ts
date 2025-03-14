@@ -20,7 +20,7 @@ export const ui = {
         'Nav.OpenMenu': 'Open menu',
 
         // Footer
-        'Footer.Copyright': '© All rights reserved',
+        'Footer.Copyright': '©️ All rights reserved',
 
         // Errors
         'Error.Title.404': 'Error 404',
@@ -133,7 +133,7 @@ export const ui = {
         'Nav.OpenMenu': 'Abrir menú',
 
         // Footer
-        'Footer.Copyright': '© Todos los derechos reservados',
+        'Footer.Copyright': '©️ Todos los derechos reservados',
 
         // Errores
         'Error.Title.404': 'Error 404',

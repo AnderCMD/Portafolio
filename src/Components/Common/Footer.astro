@@ -5,41 +5,39 @@ const { t } = useLocale(Astro);
 
 // Scripts
 import { CurrentYear } from '@/Scripts/CurrentTime';
-
-// Importar la versión del package.json
-import packageJson from '../../../package.json';
-const { version } = packageJson;
 ---
 
 <footer
-	class='pt-6 pb-6 bg-gradient-to-r from-sky-500/5 via-transparent to-sky-500/5 border-t border-slate-200 dark:border-slate-800 backdrop-blur-sm'>
+	class='pt-5 pb-5 bg-gradient-to-r from-sky-500/5 via-transparent to-sky-500/5 border-t border-slate-200 dark:border-slate-800'>
 	<div class='max-w-screen-xl mx-auto px-4'>
-		<div class='flex flex-col md:flex-row items-center justify-between gap-5'>
+		<div class='flex flex-col md:flex-row items-center justify-between gap-4'>
 			<div class='flex flex-col md:flex-row items-center gap-3 mb-3 md:mb-0'>
+				<a href='/' class='flex items-center transition-transform duration-300 ease-in-out hover:scale-105'>
+					<img src='' alt='Icono Logo AnderCMD' id='IconoLogoThemeFooter' class='size-9' />
+				</a>
 				<div class='text-center md:text-left'>
-					<div class='flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2'>
-						<p class='text-slate-600 dark:text-slate-400 text-sm mt-1'>
-							AnderCMD {t('Footer.Copyright')} 2024{' '}
-							{CurrentYear !== '2024' && `${CurrentYear}`}
-						</p>
-						<div class='hidden sm:flex items-center'>
-							<span class='text-slate-400 dark:text-slate-500 mx-1'>•</span>
-							<span
-								class='text-slate-500 dark:text-slate-500 text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50'
-								>v{version}</span
-							>
-						</div>
-					</div>
+					<a
+						href='/'
+						class='font-bold text-lg text-slate-800 dark:text-white transition-all duration-300 ease-in-out relative group'>
+						AnderCMD
+						<span
+							class='absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-sky-500/50 group-hover:w-full transition-all duration-300 ease-in-out rounded'
+						></span>
+					</a>
+					<p class='text-slate-600 dark:text-slate-400 text-sm mt-1'>
+						{t('Footer.Copyright')} 2024{' '}
+						{CurrentYear !== '2024' && `${CurrentYear}`}
+					</p>
 				</div>
 			</div>
 
-			<div class='flex gap-4'>
+			<div class='flex gap-3'>
 				<a
 					href='https://www.linkedin.com/in/andercmd/'
 					target='_blank'
 					rel='noopener noreferrer'
 					aria-label='LinkedIn'
-					class='flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-sky-500/10 to-sky-400/5 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-lg hover:shadow-sky-500/20 relative group overflow-hidden'>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
 					<i class='fa-brands fa-linkedin text-lg'></i>
 					<span
 						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
@@ -50,7 +48,7 @@ const { version } = packageJson;
 					target='_blank'
 					rel='noopener noreferrer'
 					aria-label='GitHub'
-					class='flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-sky-500/10 to-sky-400/5 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-lg hover:shadow-sky-500/20 relative group overflow-hidden'>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
 					<i class='fa-brands fa-github text-lg'></i>
 					<span
 						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
@@ -61,7 +59,7 @@ const { version } = packageJson;
 					target='_blank'
 					rel='noopener noreferrer'
 					aria-label='Twitter'
-					class='flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-sky-500/10 to-sky-400/5 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-lg hover:shadow-sky-500/20 relative group overflow-hidden'>
+					class='flex items-center justify-center w-9 h-9 rounded-full bg-sky-500/10 text-sky-500 dark:text-sky-400 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:bg-sky-500 hover:text-white hover:shadow-md hover:shadow-sky-500/25 relative group overflow-hidden'>
 					<i class='fa-brands fa-x-twitter text-lg'></i>
 					<span
 						class='absolute top-0 left-0 w-full h-full bg-white/60 opacity-0 rounded-full scale-0 group-hover:animate-ripple'
@@ -86,20 +84,5 @@ const { version } = packageJson;
 
 	.group-hover\:animate-ripple {
 		animation: ripple 0.7s ease-out;
-	}
-
-	/* Nuevas animaciones */
-	@keyframes subtle-float {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(-3px);
-		}
-	}
-
-	footer a:hover i {
-		animation: subtle-float 2s ease-in-out infinite;
 	}
 </style>
