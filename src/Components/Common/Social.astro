@@ -68,54 +68,107 @@ const socialLinks = [
 ];
 ---
 
-<section
-	class={`relative overflow-hidden transition-all duration-300 ease-in-out py-2 px-3 ${animationClass} 
-	${hasGlass ? 'bg-white/5 backdrop-blur-md dark:bg-slate-900/30 border border-white/10 dark:border-slate-700/20' : ''} 
-	${hasShadow ? 'p-6 rounded-2xl bg-white/3 shadow-lg border border-slate-200/80 dark:border-slate-700/50 dark:bg-slate-900/3' : ''}`}
-	data-aos='fade-up'
-	data-aos-duration='600'
-	data-aos-once='true'>
-	<div class='flex items-center justify-between gap-4 max-md:flex-col'>
-		<div class='flex justify-center md:mr-3 w-full md:w-auto' data-aos='fade-right' data-aos-delay='50'>
-			<a
-				href={t('About.CV.Link')}
-				class={`w-full px-5 py-2.5 font-bold text-white rounded-full transition-all duration-300 ease-in-out relative overflow-hidden shadow-md hover:shadow-lg hover:-translate-y-1 ${buttonColor} group`}
-				download
-				aria-label={t('About.CV')}>
-				<span class='flex items-center justify-center gap-2'>
-					<i class='fas fa-file-download'></i>
-					{t('About.CV')}
-				</span>
-				<span
-					class='absolute top-0 left-0 w-full h-full bg-white/10 opacity-0 scale-x-0 origin-left group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out'
-				></span>
-			</a>
-		</div>
-
-		<div class='social-grid grid grid-cols-4 md:grid-cols-7 gap-3 w-full md:w-auto'>
-			{
-				socialLinks.map((link) => (
-					<a
-						href={link.url}
-						aria-label={link.label}
-						target='_blank'
-						rel='noopener noreferrer'
-						class={`flex items-center justify-center w-12 h-12 rounded-full ${buttonColor} transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-md relative group overflow-hidden`}
-						data-aos='zoom-in'
-						data-aos-duration='500'
-						data-aos-delay={link.delay}>
-						<i
-							class={` ${link.icon} text-white ${iconHoverColor} transition-all duration-300 ease-in-ou text-2xl`}
-						/>
-						<span class='absolute inset-0 bg-radial-gradient-sky opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out' />
-					</a>
-				))
-			}
-		</div>
-	</div>
-</section>
-
 <style>
+	.social-container {
+		position: relative;
+		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+		overflow: hidden;
+	}
+
+	.social-container.with-shadow {
+		padding: 1.5rem;
+		border-radius: 1rem;
+		background: rgba(255, 255, 255, 0.03);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+		border: 1px solid rgba(226, 232, 240, 0.8);
+	}
+
+	.social-container.with-glass {
+		background: rgba(255, 255, 255, 0.05);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.cv-button {
+		position: relative;
+		overflow: hidden;
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		z-index: 1;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.cv-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+	}
+
+	.cv-button::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.1);
+		z-index: -1;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
+	.cv-button:hover::after {
+		transform: scaleX(1);
+		transform-origin: left;
+	}
+
+	.social-icon {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+		background: rgba(255, 255, 255, 0.03);
+		overflow: hidden;
+	}
+
+	.social-icon:hover {
+		transform: translateY(-3px) scale(1.1);
+		box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+	}
+
+	.social-icon i {
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
+	.social-icon::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0) 70%);
+		opacity: 0;
+		transition: opacity 0.3s ease;
+		z-index: -1;
+	}
+
+	.social-icon:hover::before {
+		opacity: 1;
+	}
+
+	.animate-fade-in {
+		animation: fadeIn 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
+	.animate-slide-in-bottom {
+		animation: slideInBottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
@@ -136,18 +189,75 @@ const socialLinks = [
 		}
 	}
 
-	.animate-fade-in {
-		animation: fadeIn 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+	/* Dark mode styles */
+	:global(.dark) .social-container.with-shadow {
+		background: rgba(30, 41, 59, 0.03);
+		border-color: rgba(51, 65, 85, 0.5);
 	}
 
-	.animate-slide-in-bottom {
-		animation: slideInBottom 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+	:global(.dark) .social-container.with-glass {
+		background: rgba(15, 23, 42, 0.3);
+		border-color: rgba(51, 65, 85, 0.2);
 	}
 
-	.bg-radial-gradient-sky {
-		background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0) 70%);
+	:global(.dark) .social-icon {
+		background: rgba(30, 41, 59, 0.2);
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 768px) {
+		.social-grid {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 0.75rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.social-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
 	}
 </style>
+
+<section
+	class={`social-container ${animationClass} ${hasGlass ? 'with-glass' : ''} ${hasShadow ? 'with-shadow' : ''} p-4`}
+	data-aos='fade-up'
+	data-aos-duration='800'
+	data-aos-once='true'>
+	<div class='flex items-center justify-between gap-6 max-md:flex-col'>
+		<div class='flex justify-center md:mr-4 w-full md:w-auto' data-aos='fade-right' data-aos-delay='50'>
+			<a
+				href={t('About.CV.Link')}
+				class={`cv-button w-full px-6 py-3 font-bold text-white rounded-full transition-all ${buttonColor}`}
+				download
+				aria-label={t('About.CV')}>
+				<span class='flex items-center justify-center gap-2'>
+					<i class='fas fa-file-download'></i>
+					{t('About.CV')}
+				</span>
+			</a>
+		</div>
+
+		<div class='social-grid grid grid-cols-4 md:grid-cols-7 gap-4 w-full md:w-auto'>
+			{
+				socialLinks.map((link) => (
+					<a
+						href={link.url}
+						aria-label={link.label}
+						target='_blank'
+						rel='noopener noreferrer'
+						class='social-icon'
+						data-aos='zoom-in'
+						data-aos-delay={link.delay}>
+						<i
+							class={`text-2xl text-slate-900 ${link.icon} dark:text-white ${iconHoverColor} transition-all ease-in-out`}
+						/>
+					</a>
+				))
+			}
+		</div>
+	</div>
+</section>
 
 <script>
 	import AOS from 'aos';
@@ -155,21 +265,10 @@ const socialLinks = [
 	document.addEventListener('astro:page-load', () => {
 		// Initialize AOS with custom settings
 		AOS.init({
-			duration: 600,
+			duration: 800,
 			easing: 'ease-out-cubic',
 			once: true,
-			offset: 30,
-			disableMutationObserver: false,
+			offset: 50,
 		});
-
-		// Hide tooltips on mobile devices
-		if (window.innerWidth < 768) {
-			const tooltips = document.querySelectorAll('.tooltip');
-			tooltips.forEach((tooltip) => {
-				if (tooltip instanceof HTMLElement) {
-					tooltip.style.display = 'none';
-				}
-			});
-		}
 	});
 </script>
