@@ -106,7 +106,6 @@ export const ui = {
         'WorkExperience.Active': 'Current',
         'WorkExperience.ReleaseDate': 'Period: ',
         'WorkExperience.Visit': 'Visit',
-        'WorkExperience.Recent': 'Recent',
 
         // Work Experience - Companies
         'WorkExperience.Companies.Position.3': 'Full Stack Software Engineer',
@@ -219,7 +218,6 @@ export const ui = {
         'WorkExperience.Active': 'Actual',
         'WorkExperience.ReleaseDate': 'Período:',
         'WorkExperience.Visit': 'Visitar proyecto',
-        'WorkExperience.Recent': 'Reciente',
 
         // Experiencia Laboral - Empresas
         'WorkExperience.Companies.Position.3': 'Ingeniero en Software Full Stack',
