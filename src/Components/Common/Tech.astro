@@ -169,12 +169,12 @@ const { t } = useLocale(Astro);
 	}
 
 	.tech-item:hover {
-		transform: translateY(-4px);
+		transform: translateY(-8px);
 	}
 
 	.tech-item:hover .tech-icon {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+		transform: scale(1.1);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 	}
 
 	.tech-icon {
@@ -231,8 +231,8 @@ const { t } = useLocale(Astro);
 	.category-title {
 		position: relative;
 		display: inline-block;
-		margin-bottom: 1rem;
-		padding-bottom: 0.4rem;
+		margin-bottom: 1.5rem;
+		padding-bottom: 0.5rem;
 	}
 
 	.category-title::after {
@@ -240,24 +240,20 @@ const { t } = useLocale(Astro);
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 30px;
-		height: 2px;
+		width: 40px;
+		height: 3px;
 		background: linear-gradient(90deg, rgb(14, 165, 233), rgba(14, 165, 233, 0.3));
-		border-radius: 2px;
+		border-radius: 3px;
 	}
 
 	.tech-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-		gap: 1rem;
+		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+		gap: 1.5rem;
 	}
 
 	.category-section {
-		margin-bottom: 2rem;
-	}
-
-	.category-section:last-child {
-		margin-bottom: 0;
+		margin-bottom: 3rem;
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -270,13 +266,13 @@ const { t } = useLocale(Astro);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: 2rem;
 	}
 
 	.toggle-btn {
-		padding: 0.35rem 0.75rem;
+		padding: 0.5rem 1rem;
 		border-radius: 9999px;
-		font-size: 0.8rem;
+		font-size: 0.875rem;
 		font-weight: 500;
 		cursor: pointer;
 		transition: all 0.3s ease;
@@ -291,30 +287,14 @@ const { t } = useLocale(Astro);
 	.tech-container {
 		opacity: 0;
 		transition: opacity 0.5s ease;
-		margin-bottom: 0;
 	}
 
 	.tech-container.visible {
 		opacity: 1;
 	}
-
-	#gridContainer {
-		position: absolute;
-		width: 100%;
-		left: 0;
-		top: 0;
-		height: 0;
-		overflow: hidden;
-	}
-
-	#gridContainer.visible {
-		position: relative;
-		height: auto;
-		overflow: visible;
-	}
 </style>
 
-<div class='container mx-auto px-4 py-4 pb-0 relative'>
+<div class='container mx-auto px-4 py-8'>
 	<!-- View Toggle -->
 	<div class='view-toggle'>
 		<button id='categoryView' class='toggle-btn active mr-2 border border-slate-200 dark:border-slate-700'>
@@ -330,7 +310,7 @@ const { t } = useLocale(Astro);
 		{
 			techCategories.map((category) => (
 				<div class='category-section'>
-					<h3 class='category-title text-lg font-bold text-slate-800 dark:text-white'>{category.category}</h3>
+					<h3 class='category-title text-xl font-bold text-slate-800 dark:text-white'>{category.category}</h3>
 					<div class='tech-grid'>
 						{category.items.map((tech) => (
 							<div
@@ -340,10 +320,10 @@ const { t } = useLocale(Astro);
 								data-aos-once='true'
 								data-aos-delay={Math.floor(Math.random() * 300)}>
 								<div
-									class='tech-icon flex items-center justify-center p-2 border-2 rounded-xl shadow-md w-16 h-16 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 mb-2'
+									class='tech-icon flex items-center justify-center p-3 border-2 rounded-xl shadow-md w-20 h-20 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 mb-3'
 									style={`border-color: ${tech.color}20;`}>
 									<img
-										class={`w-10 h-10 object-contain ${tech.invert ? 'dark:invert' : ''}`}
+										class={`w-12 h-12 object-contain ${tech.invert ? 'dark:invert' : ''}`}
 										src={
 											tech.iconImage
 												? tech.iconImage
@@ -353,7 +333,7 @@ const { t } = useLocale(Astro);
 										loading='lazy'
 									/>
 								</div>
-								<span class='tech-name text-center text-slate-700 dark:text-slate-200 font-medium text-sm'>
+								<span class='tech-name text-center text-slate-700 dark:text-slate-200 font-medium'>
 									{tech.name}
 								</span>
 							</div>
@@ -366,7 +346,7 @@ const { t } = useLocale(Astro);
 
 	<!-- Grid View -->
 	<div id='gridContainer' class='tech-container'>
-		<div class='grid grid-cols-3 gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 mb-0'>
+		<div class='grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
 			{
 				TechStack.map((tech, index) => (
 					<div
@@ -376,10 +356,10 @@ const { t } = useLocale(Astro);
 						data-aos-once='true'
 						data-aos-delay={Math.floor(Math.random() * 300)}>
 						<div
-							class='tech-icon flex items-center justify-center p-2 border-2 rounded-xl shadow-md w-16 h-16 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 mb-2'
+							class='tech-icon flex items-center justify-center p-3 border-2 rounded-xl shadow-md w-20 h-20 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 mb-3'
 							style={`border-color: ${tech.color}20;`}>
 							<img
-								class={`w-10 h-10 object-contain ${tech.invert ? 'dark:invert' : ''}`}
+								class={`w-12 h-12 object-contain ${tech.invert ? 'dark:invert' : ''}`}
 								src={
 									tech.iconImage
 										? tech.iconImage
@@ -389,7 +369,7 @@ const { t } = useLocale(Astro);
 								loading='lazy'
 							/>
 						</div>
-						<span class='tech-name text-center text-slate-700 dark:text-slate-200 font-medium text-sm'>
+						<span class='tech-name text-center text-slate-700 dark:text-slate-200 font-medium'>
 							{tech.name}
 						</span>
 					</div>
@@ -408,8 +388,7 @@ const { t } = useLocale(Astro);
 			duration: 800,
 			easing: 'ease-out-cubic',
 			once: true,
-			offset: 30,
-			disableMutationObserver: false,
+			offset: 50,
 		});
 
 		// View toggle functionality
@@ -419,39 +398,34 @@ const { t } = useLocale(Astro);
 		const gridContainer = document.getElementById('gridContainer');
 
 		if (categoryView && gridView && categoryContainer && gridContainer) {
-			// Set initial state - grid container should be hidden by default
-			gridContainer.style.display = 'none';
-
 			categoryView.addEventListener('click', () => {
 				categoryView.classList.add('active');
 				gridView.classList.remove('active');
 
-				// Hide grid view first
 				gridContainer.classList.remove('visible');
-				gridContainer.style.display = 'none';
-
-				// Show category view
-				categoryContainer.style.display = 'block';
 				setTimeout(() => {
-					categoryContainer.classList.add('visible');
-					AOS.refresh();
-				}, 50);
+					gridContainer.style.display = 'none';
+					categoryContainer.style.display = 'block';
+					setTimeout(() => {
+						categoryContainer.classList.add('visible');
+						AOS.refresh();
+					}, 50);
+				}, 300);
 			});
 
 			gridView.addEventListener('click', () => {
 				gridView.classList.add('active');
 				categoryView.classList.remove('active');
 
-				// Hide category view first
 				categoryContainer.classList.remove('visible');
-				categoryContainer.style.display = 'none';
-
-				// Show grid view
-				gridContainer.style.display = 'block';
 				setTimeout(() => {
-					gridContainer.classList.add('visible');
-					AOS.refresh();
-				}, 50);
+					categoryContainer.style.display = 'none';
+					gridContainer.style.display = 'block';
+					setTimeout(() => {
+						gridContainer.classList.add('visible');
+						AOS.refresh();
+					}, 50);
+				}, 300);
 			});
 		}
 	});
