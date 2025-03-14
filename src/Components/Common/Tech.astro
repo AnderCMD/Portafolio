@@ -154,10 +154,6 @@ const techCategories = [
 
 // Flatten the categories for the grid view option
 const TechStack = techCategories.flatMap((category) => category.items);
-
-// Lenguaje
-import { useLocale } from '@/Hooks/useLocale';
-const { t } = useLocale(Astro);
 ---
 
 <style>
@@ -298,10 +294,10 @@ const { t } = useLocale(Astro);
 	<!-- View Toggle -->
 	<div class='view-toggle'>
 		<button id='categoryView' class='toggle-btn active mr-2 border border-slate-200 dark:border-slate-700'>
-			<i class='fa-solid fa-layer-group mr-2'></i>{t('Tech.CategoryView')}
+			<i class='fa-solid fa-layer-group mr-2'></i>Category View
 		</button>
 		<button id='gridView' class='toggle-btn border border-slate-200 dark:border-slate-700'>
-			<i class='fa-solid fa-table-cells mr-2'></i>{t('Tech.GridView')}
+			<i class='fa-solid fa-grid-2 mr-2'></i>Grid View
 		</button>
 	</div>
 

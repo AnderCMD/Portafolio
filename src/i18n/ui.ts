@@ -47,8 +47,6 @@ export const ui = {
         // Tech
         'Tech.Title': 'Technology Stack',
         'Tech.Description': 'Cutting-edge technologies powering my professional projects and development workflow.',
-        'Tech.CategoryView': 'Category View',
-        'Tech.GridView': 'Grid View',
 
         // Projects
         'Projects.Nav.AllCategories': 'All Categories',
@@ -122,7 +120,7 @@ export const ui = {
 
         // Navbar
         'Nav.Index': 'Inicio',
-        'Nav.About': 'Conoceme',
+        'Nav.About': 'Conóceme',
         'Nav.Posts': 'Publicaciones',
         'Nav.Projects': 'Proyectos',
         'Nav.Contact': 'Contacto',
@@ -156,8 +154,6 @@ export const ui = {
         // Tecnologías
         'Tech.Title': 'Stack Tecnológico',
         'Tech.Description': 'Tecnologías de vanguardia que potencian mis proyectos profesionales y flujo de desarrollo.',
-        'Tech.CategoryView': 'Vista por Categorías',
-        'Tech.GridView': 'Vista de Cuadrícula',
 
         // Proyectos
         'Projects.Nav.AllCategories': 'Todas las Categorías',
