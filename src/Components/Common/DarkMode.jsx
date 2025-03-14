@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '@/Styles/DarkMode.css';
 
-export default function DarkMode() {
+export default function DarkMode(props) {
 	const [theme, setTheme] = useState(() => {
 		if (typeof window !== 'undefined') {
 			const savedTheme = localStorage.getItem('Theme');
@@ -62,6 +62,8 @@ export default function DarkMode() {
 	const handleChangeTheme = () => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
+
+	const { ThemeText } = props;
 
 	return (
 		<div className='flex items-center lg:flex-col gap-2'>

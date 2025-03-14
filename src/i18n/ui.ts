@@ -63,37 +63,34 @@ export const ui = {
 
         // Projects - Array
         'Projects.Title.1': 'Horoscope',
-        'Projects.Description.1': 'Interactive web application built with HTML, CSS and JavaScript that determines your zodiac sign based on your birth date, offering an intuitive and engaging user interface.',
+        'Projects.Description.1': 'Know your zodiac sign depending on your date of birth.',
 
         'Projects.Title.2': 'Calculator',
-        'Projects.Description.2': 'Clean and functional calculator application developed with HTML, CSS and JavaScript that performs basic arithmetic operations with an intuitive graphic interface for seamless user interaction.',
+        'Projects.Description.2': 'Simple calculator to perform basic operations with graphic interface.',
 
         'Projects.Title.3': 'GPT - Local',
-        'Projects.Description.3': 'Locally-running chatbot application powered by the Llama 3 AI model, built with HTML, CSS and JavaScript, enabling intelligent conversations without requiring external API connections.',
+        'Projects.Description.3': 'Chatbot with artificial intelligence with Llama 3 model.',
 
         'Projects.Title.4': 'AMEDigital A.C.',
-        'Projects.Description.4': 'Modern, responsive corporate website for AMEDigital A.C. developed using Astro and TailwindCSS, featuring optimized performance and an elegant design that effectively showcases the organization\'s mission and services.',
+        'Projects.Description.4': 'Website of the company AMEDigital A.C.',
 
         'Projects.Title.5': 'Diagnostico Moderno',
-        'Projects.Description.5': 'Professional medical services website for Diagnostico Moderno built with Astro and TailwindCSS, providing a sleek, accessible interface with optimized performance for improved patient engagement and information delivery.',
+        'Projects.Description.5': 'Website of the company Diagnostico Moderno.',
 
         'Projects.Title.7': 'EcologiX Environmental Monitoring System',
-        'Projects.Description.7': 'Comprehensive environmental monitoring platform featuring Arduino sensor integration, with a robust backend built on ExpressJS and MongoDB, complemented by a responsive React Vite frontend styled with TailwindCSS for real-time data visualization.',
+        'Projects.Description.7': 'EcologiX environmental monitoring system possibility to connect sensor by Arduino.',
 
         'Projects.Title.8': 'Flappy Bat',
-        'Projects.Description.8': 'Engaging mobile game for Android devices developed in Unity (C#), offering a unique take on the classic Flappy Bird concept with enhanced graphics, customized gameplay mechanics, and progressive difficulty levels.',
+        'Projects.Description.8': 'Flappy Bat game for android mobile developed with Unity in the style of Flappy Bird.',
 
         'Projects.Title.9': 'Technical Challenge Chat Bot',
-        'Projects.Description.9': 'Custom chatbot solution developed for Intellion as a technical challenge, built with HTML, CSS and JavaScript, featuring predefined response patterns and an intuitive conversation interface for streamlined user interaction.',
+        'Projects.Description.9': 'Technical challenge by Intellion for chatbot with predefined answers.',
 
         'Projects.Title.10': 'Frontend-Mentor Challenges',
-        'Projects.Description.10': 'Collection of completed Frontend-Mentor challenges showcasing advanced CSS techniques, responsive design principles, and modern JavaScript functionality to demonstrate practical web development skills and creative problem-solving.',
+        'Projects.Description.10': 'Frontend-Mentor challenges to improve my web development skills.',
 
         'Projects.Title.11': 'Repair Windows Script',
-        'Projects.Description.11': 'Efficient batch script utility designed to automatically repair and restore corrupted Windows 10 and 11 system files, providing users with a simple one-click solution for common operating system issues.',
-
-        'Projects.Title.12': 'TasksFlow',
-        'Projects.Description.12': 'TasksFlow is a modern task management application built with React, Redux, Vite and TailwindCSS. It allows users to create, organize and track their tasks efficiently with an attractive and easy-to-use interface.',
+        'Projects.Description.11': 'Executable to repair Windows 10 and 11 files.',
 
         // Work Experience
         'WorkExperience.Title': 'Work Experience',
@@ -169,37 +166,34 @@ export const ui = {
 
         // Proyectos - Array
         'Projects.Title.1': 'Horóscopo',
-        'Projects.Description.1': 'Aplicación web interactiva construida con HTML, CSS y JavaScript que determina tu signo zodiacal según tu fecha de nacimiento, ofreciendo una interfaz de usuario intuitiva y atractiva.',
+        'Projects.Description.1': 'Conoce tu signo del zodiaco dependiendo de tu fecha de nacimiento.',
 
         'Projects.Title.2': 'Calculadora',
-        'Projects.Description.2': 'Aplicación de calculadora limpia y funcional desarrollada con HTML, CSS y JavaScript que realiza operaciones aritméticas básicas con una interfaz gráfica intuitiva para una interacción fluida del usuario.',
+        'Projects.Description.2': 'Calculadora sencilla para realizar operaciones básicas con interfaz gráfica.',
 
         'Projects.Title.3': 'GPT - Local',
-        'Projects.Description.3': 'Aplicación de chatbot de ejecución local impulsada por el modelo de IA Llama 3, construida con HTML, CSS y JavaScript, permitiendo conversaciones inteligentes sin requerir conexiones API externas.',
+        'Projects.Description.3': 'Chatbot con inteligencia artificial con modelo Llama 3.',
 
         'Projects.Title.4': 'AMEDigital A.C.',
-        'Projects.Description.4': 'Sitio web corporativo moderno y responsive para AMEDigital A.C. desarrollado con Astro y TailwindCSS, con un rendimiento optimizado y un diseño elegante que muestra eficazmente la misión y servicios de la organización.',
+        'Projects.Description.4': 'Página web de la empresa de AMEDigital A.C.',
 
         'Projects.Title.5': 'Diagnostico Moderno',
-        'Projects.Description.5': 'Sitio web profesional de servicios médicos para Diagnostico Moderno construido con Astro y TailwindCSS, proporcionando una interfaz elegante y accesible con rendimiento optimizado para mejorar la participación del paciente y la entrega de información.',
+        'Projects.Description.5': 'Página web de la empresa de Diagnostico Moderno.',
 
         'Projects.Title.7': 'Sistema de Monitoreo Ambiental EcologiX',
-        'Projects.Description.7': 'Plataforma integral de monitoreo ambiental con integración de sensores Arduino, respaldada por un backend robusto construido en ExpressJS y MongoDB, complementada con un frontend responsive en React Vite estilizado con TailwindCSS para visualización de datos en tiempo real.',
+        'Projects.Description.7': 'Sistema de monitoreo ambiental EcologiX posibilidad de conectar sensor por Arduino.',
 
         'Projects.Title.8': 'Flappy Bat',
-        'Projects.Description.8': 'Juego móvil atractivo para dispositivos Android desarrollado en Unity (C#), ofreciendo una versión única del concepto clásico de Flappy Bird con gráficos mejorados, mecánicas de juego personalizadas y niveles de dificultad progresivos.',
+        'Projects.Description.8': 'Juego de Flappy Bat para móviles android desarrollado con Unity al estilo de Flappy Bird.',
 
-        'Projects.Title.9': 'Chat Bot Desafío Técnico',
-        'Projects.Description.9': 'Solución de chatbot personalizada desarrollada para Intellion como desafío técnico, construida con HTML, CSS y JavaScript, con patrones de respuesta predefinidos y una interfaz de conversación intuitiva para una interacción fluida del usuario.',
+        'Projects.Title.9': 'Chat Bot Desafió Técnico',
+        'Projects.Description.9': 'Desafió técnico por Intellion para chatbot con respuestas predefinidas',
 
         'Projects.Title.10': 'Desafíos de Frontend-Mentor',
-        'Projects.Description.10': 'Colección de desafíos Frontend-Mentor completados que muestran técnicas avanzadas de CSS, principios de diseño responsive y funcionalidad JavaScript moderna para demostrar habilidades prácticas de desarrollo web y resolución creativa de problemas.',
+        'Projects.Description.10': 'Desafíos de Frontend-Mentor para mejorar mis habilidades de desarrollo web.',
 
         'Projects.Title.11': 'Reparar Windows Script',
-        'Projects.Description.11': 'Utilidad de script batch eficiente diseñada para reparar y restaurar automáticamente archivos de sistema corruptos de Windows 10 y 11, proporcionando a los usuarios una solución simple de un solo clic para problemas comunes del sistema operativo.',
-
-        'Projects.Title.12': 'TasksFlow',
-        'Projects.Description.12': 'TasksFlow es una aplicación moderna de gestión de tareas construida con React, Redux, Vite y TailwindCSS. Permite a los usuarios crear, organizar y realizar un seguimiento de sus tareas de manera eficiente con una interfaz atractiva y fácil de usar.',
+        'Projects.Description.11': 'Ejecutable para reparar ficheros de Windows 10 y 11.',
 
         // Experiencia Laboral
         'WorkExperience.Title': 'Experiencia Laboral',
