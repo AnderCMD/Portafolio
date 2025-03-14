@@ -12,7 +12,6 @@ const project = [
 		linkView: 'https://andercmd.github.io/Desafios-Codedex/Horoscopo/',
 		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
 		year: 2024,
-		technologies: ['HTML', 'CSS', 'JavaScript'],
 	},
 	{
 		type: 'web',
@@ -22,7 +21,6 @@ const project = [
 		linkView: 'https://andercmd.github.io/Calculadora/',
 		linkCode: 'https://github.com/AnderCMD/Calculadora',
 		year: 2023,
-		technologies: ['HTML', 'CSS', 'JavaScript'],
 	},
 	{
 		type: 'web',
@@ -32,7 +30,6 @@ const project = [
 		linkView: 'https://andercmd.github.io/GPT-Local/',
 		linkCode: 'https://github.com/AnderCMD/GPT-Local',
 		year: 2024,
-		technologies: ['HTML', 'CSS', 'JavaScript', 'Llama 3'],
 	},
 	{
 		type: 'web',
@@ -41,7 +38,6 @@ const project = [
 		image: '/Images/Projects/AMEDigital.webp',
 		linkView: 'https://www.amedigital.mx',
 		year: 2024,
-		technologies: ['Astro', 'TailwindCSS', 'JavaScript'],
 	},
 	{
 		type: 'web',
@@ -50,7 +46,6 @@ const project = [
 		image: '/Images/Projects/DiagnosticoModerno.webp',
 		linkView: 'https://www.diagnosticomoderno.com/',
 		year: 2023,
-		technologies: ['Astro', 'TailwindCSS', 'JavaScript'],
 	},
 	{
 		type: 'web',
@@ -59,7 +54,6 @@ const project = [
 		image: '/Images/Projects/EcologiX.webp',
 		linkCode: 'https://github.com/AnderCMD/EcologiX',
 		year: 2023,
-		technologies: ['ExpressJS', 'MongoDB', 'React', 'TailwindCSS', 'Arduino'],
 	},
 	{
 		type: 'mobile',
@@ -69,7 +63,6 @@ const project = [
 		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
 		linkDownload: '/Download/APK/Flappy-Bat.apk',
 		year: 2022,
-		technologies: ['Unity', 'C#', 'Android'],
 	},
 	{
 		type: 'web',
@@ -79,7 +72,6 @@ const project = [
 		linkView: 'https://andercmd.github.io/Chat-Bot/',
 		linkCode: 'https://github.com/AnderCMD/Chat-Bot',
 		year: 2022,
-		technologies: ['HTML', 'CSS', 'JavaScript'],
 	},
 	{
 		type: 'web',
@@ -89,7 +81,6 @@ const project = [
 		linkView: 'https://andercmd.github.io/Desafios-Frontend-Mentor/',
 		linkCode: 'https://github.com/AnderCMD/Desafios-Frontend-Mentor/',
 		year: 2023,
-		technologies: ['HTML', 'CSS', 'JavaScript'],
 	},
 	{
 		type: 'other',
@@ -99,7 +90,6 @@ const project = [
 		linkCode: 'https://github.com/AnderCMD/Fix-Windows',
 		linkDownload: '/Download/Scripts/FixWindows.bat',
 		year: 2024,
-		technologies: ['Batch Script', 'Windows'],
 	},
 	{
 		type: 'web',
@@ -109,7 +99,6 @@ const project = [
 		linkView: 'https://tasksflow.andercmd.dev',
 		linkCode: 'http://github.com/AnderCMD/TasksFlow',
 		year: 2025,
-		technologies: ['React', 'Redux', 'Vite', 'TailwindCSS'],
 	},
 ];
 ---
@@ -118,15 +107,15 @@ const project = [
 	.filter-item {
 		opacity: 1;
 		transition:
-			opacity 0.5s ease,
-			transform 0.5s ease;
+			opacity 0.3s ease,
+			transform 0.3s ease;
 		transform: scale(1);
 		display: block;
 	}
 
 	.filter-item.hide {
 		opacity: 0;
-		transform: scale(0.95);
+		transform: scale(0.9);
 	}
 
 	.filter-item.hidden {
@@ -134,45 +123,26 @@ const project = [
 	}
 
 	.project-card {
-		transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+		transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 		overflow: hidden;
-		position: relative;
-		isolation: isolate;
 	}
 
 	.project-card:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+		transform: translateY(-5px);
+		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 	}
 
 	.project-image {
 		overflow: hidden;
-		position: relative;
-	}
-
-	.project-image::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
-		opacity: 0;
-		transition: opacity 0.4s ease;
-	}
-
-	.project-card:hover .project-image::after {
-		opacity: 1;
 	}
 
 	.project-image img {
-		transition: transform 0.7s ease;
+		transition: transform 0.5s ease;
 		object-fit: cover;
 	}
 
 	.project-card:hover .project-image img {
-		transform: scale(1.08);
+		transform: scale(1.05);
 	}
 
 	.project-tag {
@@ -181,16 +151,11 @@ const project = [
 		border-radius: 9999px;
 		background-color: rgba(14, 165, 233, 0.15);
 		color: rgb(14, 165, 233);
-		font-weight: 600;
+		font-weight: 500;
 		margin-right: 0.5rem;
 		display: inline-flex;
 		align-items: center;
 		margin-bottom: 0.5rem;
-		transition: all 0.3s ease;
-	}
-
-	.project-card:hover .project-tag {
-		background-color: rgba(14, 165, 233, 0.25);
 	}
 
 	.project-tag i {
@@ -198,37 +163,10 @@ const project = [
 		font-size: 0.7rem;
 	}
 
-	.tech-tag {
-		font-size: 0.7rem;
-		padding: 0.15rem 0.5rem;
-		border-radius: 4px;
-		background-color: rgba(100, 116, 139, 0.1);
-		color: rgb(100, 116, 139);
-		font-weight: 500;
-		margin-right: 0.35rem;
-		margin-bottom: 0.35rem;
-		display: inline-block;
-		transition: all 0.2s ease;
-	}
-
-	.dark .tech-tag {
-		background-color: rgba(148, 163, 184, 0.1);
-		color: rgb(148, 163, 184);
-	}
-
-	.project-card:hover .tech-tag {
-		background-color: rgba(100, 116, 139, 0.2);
-	}
-
-	.dark .project-card:hover .tech-tag {
-		background-color: rgba(148, 163, 184, 0.2);
-	}
-
 	.btn-project {
-		transition: all 0.3s ease;
+		transition: all 0.2s ease;
 		position: relative;
 		overflow: hidden;
-		z-index: 1;
 	}
 
 	.btn-project:after {
@@ -238,245 +176,177 @@ const project = [
 		left: 50%;
 		width: 5px;
 		height: 5px;
-		background: rgba(255, 255, 255, 0.6);
+		background: rgba(255, 255, 255, 0.5);
 		opacity: 0;
 		border-radius: 100%;
 		transform: scale(1, 1) translate(-50%);
 		transform-origin: 50% 50%;
-		z-index: -1;
 	}
 
 	.btn-project:hover:after {
-		animation: ripple 0.7s ease-out;
-	}
-
-	.btn-project:hover {
-		transform: translateY(-2px);
-	}
-
-	.btn-primary {
-		background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-	}
-
-	.btn-primary:hover {
-		background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-	}
-
-	.btn-secondary {
-		background: linear-gradient(135deg, #64748b 0%, #475569 100%);
-	}
-
-	.btn-secondary:hover {
-		background: linear-gradient(135deg, #475569 0%, #334155 100%);
-	}
-
-	.filter-button {
-		transition: all 0.3s ease;
-	}
-
-	.filter-button.active {
-		transform: scale(1.05);
+		animation: ripple 0.6s ease-out;
 	}
 
 	@keyframes ripple {
 		0% {
 			transform: scale(0, 0);
-			opacity: 0.7;
+			opacity: 0.5;
 		}
 		100% {
-			transform: scale(25, 25);
+			transform: scale(20, 20);
 			opacity: 0;
 		}
 	}
-
-	.year-badge {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		background: rgba(14, 165, 233, 0.9);
-		color: white;
-		padding: 0.25rem 0.75rem;
-		border-radius: 9999px;
-		font-weight: 600;
-		font-size: 0.75rem;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		z-index: 10;
-		backdrop-filter: blur(4px);
-	}
 </style>
 
-<div class='container mx-auto px-4 mb-12'>
-	<div class='flex flex-wrap items-center justify-center py-6 md:py-10 gap-3'>
-		<button
-			type='button'
-			class='filter-button active text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 border border-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-6 py-3 text-center me-3 mb-3 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 dark:border-blue-500 dark:focus:ring-blue-800 shadow-md hover:shadow-lg transition-all duration-300'
-			data-filter='all'>
-			{t('Projects.Nav.AllCategories')}
-		</button>
-		<button
-			type='button'
-			class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-800 dark:bg-slate-800 dark:hover:border-slate-700 bg-white hover:bg-slate-50 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-6 py-3 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800 shadow-sm hover:shadow-md transition-all duration-300'
-			data-filter='web'>
-			<i class='fa-solid fa-globe mr-2'></i>
-			{t('Projects.Nav.Web')}
-		</button>
-		<button
-			type='button'
-			class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-800 dark:bg-slate-800 dark:hover:border-slate-700 bg-white hover:bg-slate-50 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-6 py-3 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800 shadow-sm hover:shadow-md transition-all duration-300'
-			data-filter='mobile'>
-			<i class='fa-solid fa-mobile-screen mr-2'></i>
-			{t('Projects.Nav.Mobile')}
-		</button>
-		<button
-			type='button'
-			class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-800 dark:bg-slate-800 dark:hover:border-slate-700 bg-white hover:bg-slate-50 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-6 py-3 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800 shadow-sm hover:shadow-md transition-all duration-300'
-			data-filter='other'>
-			<i class='fa-solid fa-code mr-2'></i>
-			{t('Projects.Nav.Other')}
-		</button>
-	</div>
+<div class='flex flex-wrap items-center justify-center py-4 md:py-8'>
+	<button
+		type='button'
+		class='filter-button text-white bg-blue-700 hover:bg-blue-800 border border-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:bg-blue-500 dark:hover:bg-blue-600 dark:border-blue-500 dark:focus:ring-blue-800'
+		data-filter='all'>
+		{t('Projects.Nav.AllCategories')}
+	</button>
+	<button
+		type='button'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		data-filter='web'>
+		<i class='fa-solid fa-globe mr-1'></i>
+		{t('Projects.Nav.Web')}
+	</button>
+	<button
+		type='button'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		data-filter='mobile'>
+		<i class='fa-solid fa-mobile-screen mr-1'></i>
+		{t('Projects.Nav.Mobile')}
+	</button>
+	<button
+		type='button'
+		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-slate-100 focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		data-filter='other'>
+		<i class='fa-solid fa-code mr-1'></i>
+		{t('Projects.Nav.Other')}
+	</button>
+</div>
 
-	<div class='items-stretch justify-center grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
-		{
-			project
-				.sort((a, b) => {
-					if (b.year !== a.year) {
-						return (b.year || 0) - (a.year || 0); // Sort by year in descending order
-					}
-					return a.title.localeCompare(b.title); // Sort by title in ascending order
-				})
-				.map((Project) => (
-					<div class={`min-h-full filter-item all ${Project.type}`}>
-						<div
-							class='project-card flex flex-col h-full border rounded-xl shadow-lg bg-white border-slate-200 dark:bg-slate-800 dark:border-slate-700'
-							data-aos='fade-up'
-							data-aos-duration='800'
-							data-aos-once='true'>
-							{Project.year && <div class='year-badge'>{Project.year}</div>}
-
-							<a href={Project.linkView || Project.linkCode} class='flex-shrink-0 project-image'>
-								<img
-									class='w-full h-56 rounded-t-xl object-cover'
-									src={Project.image}
-									alt={Project.title}
-									loading='lazy'
-								/>
-							</a>
-							<div class='flex flex-col flex-grow p-6'>
-								<div class='flex items-center justify-between mb-3'>
-									<div class='project-tag dark:bg-opacity-20 dark:text-sky-400'>
-										{Project.type === 'web' && (
-											<>
-												<i class='fa-solid fa-globe' /> Web
-											</>
-										)}
-										{Project.type === 'mobile' && (
-											<>
-												<i class='fa-solid fa-mobile-screen' /> Mobile
-											</>
-										)}
-										{Project.type === 'other' && (
-											<>
-												<i class='fa-solid fa-code' /> Other
-											</>
-										)}
-									</div>
-								</div>
-								<h3 class='mb-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
-									{Project.title}
-								</h3>
-								<p class='flex-grow mb-5 font-normal text-slate-700 dark:text-slate-300 line-clamp-4'>
-									{Project.description}
-								</p>
-
-								{Project.technologies && Project.technologies.length > 0 && (
-									<div class='mb-5'>
-										{Project.technologies.map((tech) => (
-											<span class='tech-tag'>{tech}</span>
-										))}
-									</div>
-								)}
-
-								<div class='flex items-center justify-between mt-auto gap-3 max-2xl:flex-col'>
-									{Project.linkCode && (
-										<a
-											href={Project.linkCode}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='btn-project btn-secondary inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-slate-300 dark:focus:ring-slate-700 shadow-md hover:shadow-lg'>
-											{t('Projects.ViewCode')}
-											<i class='ml-2 fa-solid fa-file-code' />
-										</a>
+<div class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+	{
+		project
+			.sort((a, b) => {
+				if (b.year !== a.year) {
+					return (b.year || 0) - (a.year || 0); // Sort by year in descending order
+				}
+				return a.title.localeCompare(b.title); // Sort by title in ascending order
+			})
+			.map((Project) => (
+				<div class={`min-h-full filter-item all ${Project.type}`}>
+					<div
+						class='project-card flex flex-col h-full border rounded-lg shadow-md bg-slate-50 border-slate-300 dark:bg-slate-800 dark:border-slate-700'
+						data-aos='fade-up'>
+						<a href={Project.linkView || Project.linkCode} class='flex-shrink-0 project-image'>
+							<img
+								class='w-full h-52 rounded-t-lg'
+								src={Project.image}
+								alt={Project.description}
+								loading='lazy'
+							/>
+						</a>
+						<div class='flex flex-col flex-grow p-5'>
+							<div class='flex items-center justify-between mb-2'>
+								<span class='text-sm font-semibold text-slate-600 dark:text-slate-400'>
+									{Project.year}
+								</span>
+								<div class='project-tag dark:bg-opacity-20 dark:text-sky-400'>
+									{Project.type === 'web' && (
+										<>
+											<i class='fa-solid fa-globe' /> Web
+										</>
 									)}
-									{Project.linkView && (
-										<a
-											href={Project.linkView}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='btn-project btn-primary inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-700 shadow-md hover:shadow-lg'>
-											{t('Projects.VisitProject')}
-											<i class='ml-2 fa-solid fa-eye' />
-										</a>
+									{Project.type === 'mobile' && (
+										<>
+											<i class='fa-solid fa-mobile-screen' /> Mobile
+										</>
 									)}
-									{Project.linkDownload && (
-										<a
-											href={Project.linkDownload}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='btn-project btn-primary inline-flex items-center justify-center w-full px-4 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-700 shadow-md hover:shadow-lg'
-											download>
-											{t('Projects.Download')}
-											<i class='ml-2 fa-solid fa-download' />
-										</a>
+									{Project.type === 'other' && (
+										<>
+											<i class='fa-solid fa-code' /> Other
+										</>
 									)}
 								</div>
 							</div>
+							<h5 class='mb-3 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
+								{Project.title}
+							</h5>
+							<p class='flex-grow mb-4 font-normal text-slate-700 dark:text-slate-300'>
+								{Project.description}
+							</p>
+							<div class='flex items-center justify-between mt-auto gap-3 max-2xl:flex-col'>
+								{Project.linkCode && (
+									<a
+										href={Project.linkCode}
+										target='_blank'
+										class='btn-project inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800'>
+										{t('Projects.ViewCode')}
+										<i class='ml-2 fa-solid fa-file-code' />
+									</a>
+								)}
+								{Project.linkView && (
+									<a
+										href={Project.linkView}
+										target='_blank'
+										class='btn-project inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800'>
+										{t('Projects.VisitProject')}
+										<i class='ml-2 fa-solid fa-eye' />
+									</a>
+								)}
+								{Project.linkDownload && (
+									<a
+										href={Project.linkDownload}
+										target='_blank'
+										class='btn-project inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-800'
+										download>
+										{t('Projects.Download')}
+										<i class='ml-2 fa-solid fa-download' />
+									</a>
+								)}
+							</div>
 						</div>
 					</div>
-				))
-		}
-	</div>
+				</div>
+			))
+	}
 </div>
 
 <script>
 	import AOS from 'aos';
 
 	document.addEventListener('astro:page-load', () => {
-		// Initialize AOS with custom settings
-		AOS.init({
-			duration: 800,
-			easing: 'ease-out-cubic',
-			once: true,
-			offset: 50,
-		});
-
 		const filterButtons = document.querySelectorAll('.filter-button');
 		const filterItems = document.querySelectorAll('.filter-item');
-
-		// Set initial active state
-		document.querySelector('[data-filter="all"]').classList.add('active');
 
 		filterButtons.forEach((button) => {
 			button.addEventListener('click', () => {
 				// Remove active class from all buttons
 				filterButtons.forEach((btn) => {
-					btn.classList.remove('active');
-
 					if (btn.getAttribute('data-filter') === 'all') {
-						btn.classList.remove('from-blue-600', 'to-blue-700', 'text-white');
-						btn.classList.add('text-slate-900', 'dark:text-white', 'bg-white', 'dark:bg-slate-800');
-						btn.classList.remove('bg-gradient-to-r');
+						btn.classList.remove('bg-blue-700', 'bg-blue-800', 'dark:bg-blue-500', 'text-white');
+						btn.classList.add('text-blue-700', 'dark:text-blue-500', 'bg-white', 'dark:bg-slate-900');
 					} else {
-						btn.classList.remove('from-blue-600', 'to-blue-700', 'text-white');
-						btn.classList.add('text-slate-900', 'dark:text-white', 'bg-white', 'dark:bg-slate-800');
-						btn.classList.remove('bg-gradient-to-r');
+						btn.classList.remove('bg-blue-700', 'bg-blue-800', 'dark:bg-blue-600', 'text-white');
+						btn.classList.add('text-slate-900', 'dark:text-white', 'bg-white', 'dark:bg-slate-900');
 					}
 				});
 
 				// Add active class to clicked button
-				button.classList.add('active');
-				button.classList.remove('text-slate-900', 'dark:text-white', 'bg-white', 'dark:bg-slate-800');
-				button.classList.add('bg-gradient-to-r', 'from-blue-600', 'to-blue-700', 'text-white');
+				button.classList.remove(
+					'text-blue-700',
+					'text-slate-900',
+					'dark:text-blue-500',
+					'dark:text-white',
+					'bg-white',
+					'dark:bg-slate-900'
+				);
+				button.classList.add('bg-blue-700', 'dark:bg-blue-500', 'text-white');
 
 				const filter = button.getAttribute('data-filter');
 
