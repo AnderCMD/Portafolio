@@ -155,7 +155,7 @@ const project = [
 					<div
 						class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600'
 						data-aos='fade-up'>
-						<a href={Project.linkView} class='flex-shrink-0'>
+						<a href={Project.linkView} class='flex-shrink-0' target="_blank">
 							<img
 								class='object-fill w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
 								src={Project.image}
@@ -171,6 +171,25 @@ const project = [
 								{Project.description}
 							</p>
 							<div class='flex items-center justify-between mt-auto gap-4 max-2xl:flex-col'>
+								{Project.linkView && (
+									<a
+									href={Project.linkView}
+									target='_blank'
+									class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
+										{t('Projects.VisitProject')}
+										<i class='ml-2 fa-solid fa-eye' />
+									</a>
+								)}
+								{Project.linkDownload && (
+									<a
+									href={Project.linkDownload}
+									target='_blank'
+									class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'
+									download>
+										{t('Projects.Download')}
+										<i class='ml-2 fa-solid fa-download' />
+									</a>
+								)}
 								{Project.linkCode && (
 									<a
 										href={Project.linkCode}
@@ -178,25 +197,6 @@ const project = [
 										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
 										{t('Projects.ViewCode')}
 										<i class='ml-2 fa-solid fa-file-code' />
-									</a>
-								)}
-								{Project.linkView && (
-									<a
-										href={Project.linkView}
-										target='_blank'
-										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
-										{t('Projects.VisitProject')}
-										<i class='ml-2 fa-solid fa-eye' />
-									</a>
-								)}
-								{Project.linkDownload && (
-									<a
-										href={Project.linkDownload}
-										target='_blank'
-										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'
-										download>
-										{t('Projects.Download')}
-										<i class='ml-2 fa-solid fa-download' />
 									</a>
 								)}
 							</div>
