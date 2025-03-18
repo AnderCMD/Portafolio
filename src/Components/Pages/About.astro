@@ -16,35 +16,20 @@ const { t } = useLocale(Astro);
 ---
 
 <Layout title={`AnderCMD | ${t('Nav.About')}`}>
-	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8' data-aos='zoom-in'>
-		<img
-			id='IconoLogoTheme'
-			src=''
-			alt='AnderCMD Logo'
-			class='w-3/12 drop-shadow-xl max-lg:w-40 max-lg:h-40'
-		/>
-		<Text
-			icon=''
-			title={t('About.Title')}
-			subtitle={t('About.Subtitle')}
-			description={t('About.Description')}
-		/>
+	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8'>
+		<img id='IconoLogoTheme' src='' alt='AnderCMD Logo' class='w-3/12 drop-shadow-xl max-lg:w-40 max-lg:h-40' />
+		<Text icon='' title={t('About.Title')} subtitle={t('About.Subtitle')} description={t('About.Description')} />
 	</section>
-	<section data-aos='zoom-in'>
+	<section>
 		<Social />
 	</section>
 	<Divisor />
-	<section data-aos='zoom-in'>
-		<Text2
-			icon='fa-solid fa-laptop-code'
-			title={t('Tech.Title')}
-			subtitle=''
-			description={t('Tech.Description')}
-		/>
+	<section>
+		<Text2 icon='fa-solid fa-laptop-code' title={t('Tech.Title')} subtitle='' description={t('Tech.Description')} />
 		<Tech />
 	</section>
 	<Divisor />
-	<section data-aos='zoom-in'>
+	<section>
 		<Text2
 			icon='fa-solid fa-briefcase'
 			title={t('WorkExperience.Title')}
