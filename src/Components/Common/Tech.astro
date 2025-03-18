@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 const TechStack = [
 	{
 		name: 'HTML',
@@ -111,7 +113,7 @@ const TechStack = [
 		TechStack.map((tech) => (
 			<figure class='flex flex-col items-center justify-center transition-all hover:scale-110 hover:drop-shadow-xl'>
 				<figure class='flex flex-col items-center justify-center max-w-lg text-center p-2 border-2 rounded-lg shadow-md w-14 h-14  bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600'>
-					<img
+					<Image
 						class={` ${tech.invert ? 'dark:invert' : ''}`}
 						src={
 							tech.iconImage
@@ -119,6 +121,8 @@ const TechStack = [
 								: `https://raw.githubusercontent.com/devicons/devicon/master/icons/${tech.icon}/${tech.icon}-original.svg`
 						}
 						alt={tech.name}
+						width={32}
+						height={32}
 					/>
 				</figure>
 				<figcaption class='mt-2 text-center text-slate-600 text-md dark:text-slate-100'>

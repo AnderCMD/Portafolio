@@ -1,14 +1,20 @@
 ---
 import DarkMode from '@/Components/Common/DarkMode';
 import DivisorNav from '@/Components/Common/DivisorNav.astro';
+
+// Imagenes
+import { Image } from 'astro:assets';
+import USImagen from '@/Assets/Images/Brands/Estados-Unidos.webp';
+import MXImagen from '@/Assets/Images/Brands/Mexico.webp';
+
 import { useLocale } from '@/Hooks/useLocale';
 const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 ---
 
 <nav>
 	<div class='flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-xl'>
-		<a href='/' class='flex items-center space-x-3 rtl:space-x-reverse'>
-			<img id='LogoTheme' src='' class='h-8' alt='AnderCMD Logo' />
+		<a href={getRelativeLocaleUrl(currentLocale ?? '', '/')}>
+			<img src='' id='LogoTheme' class='h-8' alt='AnderCMD Logo' />
 		</a>
 
 		<button
@@ -80,16 +86,12 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 						{
 							Lang === 'en' ? (
 								<div class='inline-flex items-center'>
-									<img src='/Images/Brands/Estados-Unidos.webp' class='w-5 h-5 me-2' alt='US Flag' />
+									<Image src={USImagen} class='w-5 h-5 me-2' alt='Ingles' loading='lazy' />
 									English
 								</div>
 							) : (
 								<div class='inline-flex items-center'>
-									<img
-										src='/Images/Brands/Mexico.webp'
-										class='w-5 h-5 me-2'
-										alt='Bandera de Mexico'
-									/>
+									<Image src={MXImagen} class='w-5 h-5 me-2' alt='Español' loading='lazy' />
 									Español
 								</div>
 							)
@@ -105,7 +107,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
-								<img src='/Images/Brands/Estados-Unidos.webp' class='w-5 h-5 me-2' alt='US Flag' />
+								<Image src={USImagen} class='w-5 h-5 me-2' alt='Ingles' loading='lazy' />
 								English
 							</div>
 						</a>
@@ -114,7 +116,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
 							role='menuitem'>
 							<div class='inline-flex items-center'>
-								<img src='/Images/Brands/Mexico.webp' class='w-5 h-5 me-2' alt='Bandera de Mexico' />
+								<Image src={MXImagen} class='w-5 h-5 me-2' alt='Español' loading='lazy' />
 								Español
 							</div>
 						</a>
@@ -132,7 +134,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			const navbar = document.getElementById('navbar-default');
 			navbar.classList.toggle('hidden');
 		});
-	
+
 		// Language dropdown toggle
 		document.querySelector('[data-dropdown-toggle="language-dropdown-menu"]').addEventListener('click', () => {
 			const dropdown = document.getElementById('language-dropdown-menu');

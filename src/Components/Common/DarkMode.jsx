@@ -1,30 +1,14 @@
 import { useEffect, useState } from 'react';
 import '@/Styles/DarkMode.css';
 
-export default function DarkMode(props) {
+export default function DarkMode() {
 	const [theme, setTheme] = useState(() => {
 		if (typeof window !== 'undefined') {
 			const savedTheme = localStorage.getItem('Theme');
-			if (savedTheme) {
-				return savedTheme;
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+			return savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 		}
 		return 'light';
 	});
-
-	useEffect(() => {
-		const handleThemeChange = (e) => {
-			setTheme(e.matches ? 'dark' : 'light');
-		};
-
-		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-		mediaQuery.addEventListener('change', handleThemeChange);
-
-		return () => {
-			mediaQuery.removeEventListener('change', handleThemeChange);
-		};
-	}, []);
 
 	useEffect(() => {
 		const root = document.documentElement;
@@ -33,37 +17,19 @@ export default function DarkMode(props) {
 		const iconoLogoThemeFooter = document.getElementById('IconoLogoThemeFooter');
 		const toggleDarkMode = document.getElementById('ToggleDarkMode');
 
-		// Añadir clase para desactivar transiciones
-		root.classList.add('no-transition');
-
-		if (theme === 'dark') {
-			root.classList.add('dark');
-			localStorage.setItem('Theme', 'dark');
-			if (toggleDarkMode) toggleDarkMode.checked = true;
-			if (logoTheme) logoTheme.src = '/Logos/Logo-Blanco.webp';
-			if (iconoLogoTheme) iconoLogoTheme.src = '/Logos/Icono-Blanco.webp';
-			if (iconoLogoThemeFooter) iconoLogoThemeFooter.src = '/Logos/Icono-Blanco.webp';
-		} else {
-			root.classList.remove('dark');
-			localStorage.setItem('Theme', 'light');
-			if (toggleDarkMode) toggleDarkMode.checked = false;
-			if (logoTheme) logoTheme.src = '/Logos/Logo-Negro.webp';
-			if (iconoLogoTheme) iconoLogoTheme.src = '/Logos/Icono-Negro.webp';
-			if (iconoLogoThemeFooter) iconoLogoThemeFooter.src = '/Logos/Icono-Negro.webp';
-		}
-
-		// Forzar un reflujo para asegurarse de que la clase se aplique
-		root.offsetHeight; // eslint-disable-line no-unused-expressions
-
-		// Quitar clase para permitir transiciones
-		root.classList.remove('no-transition');
+		const isDark = theme === 'dark';
+		root.classList.toggle('dark', isDark);
+		localStorage.setItem('Theme', theme);
+		if (toggleDarkMode) toggleDarkMode.checked = isDark;
+		if (logoTheme) logoTheme.src = isDark ? '/Logos/Logo-Blanco.webp' : '/Logos/Logo-Negro.webp';
+		if (iconoLogoTheme) iconoLogoTheme.src = isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
+		if (iconoLogoThemeFooter)
+			iconoLogoThemeFooter.src = isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
 	}, [theme]);
 
 	const handleChangeTheme = () => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
-
-	const { ThemeText } = props;
 
 	return (
 		<div className='flex items-center lg:flex-col gap-2'>

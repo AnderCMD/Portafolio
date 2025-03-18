@@ -9,7 +9,7 @@ export const ui = {
     // English
     en: {
         // Description
-        'Description': 'I am Ander González (AnderCMD), Full Stack Software Engineer passionate with +2 years of experience, Web Development Expert.',
+        'Description': 'I am Ander González González better known as AnderCMD, Full Stack Software Engineer passionate with +2 years of experience, expert in web development.',
 
         // Navbar
         'Nav.Index': 'Home',
@@ -20,7 +20,7 @@ export const ui = {
         'Nav.OpenMenu': 'Open menu',
 
         // Footer
-        'Footer.Copyright': '©️ All rights reserved',
+        'Footer.Copyright': '© All rights reserved',
 
         // Errors
         'Error.Title.404': 'Error 404',
@@ -30,7 +30,7 @@ export const ui = {
         // About
         'About.Title': 'Hi! I am Ander González González 👋🏻',
         'About.Subtitle': 'Software Engineer',
-        'About.Description': 'Full Stack Software Engineer with more than 2 years of experience in scalable and optimized web application design. Expert in modern technologies such as React, Astro, Postgresql and Mongodb, with solid leadership skills, problem solving and development of innovative solutions. Passionate about continuous learning and strategic contribution of value to each project.',
+        'About.Description': 'Full Stack Software Engineer with over 2 years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.',
         'About.CV': 'Download CV',
         'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
 
@@ -92,6 +92,9 @@ export const ui = {
         'Projects.Title.11': 'Repair Windows Script',
         'Projects.Description.11': 'Executable to repair Windows 10 and 11 files.',
 
+        'Projects.Title.12': 'TasksFlow',
+        'Projects.Description.12': 'Task management system that allows you to create, edit and delete tasks, as well as assign them a due date and priority.',
+
         // Work Experience
         'WorkExperience.Title': 'Work Experience',
         'WorkExperience.Description': 'Here are some of the companies where I have worked and the projects I have developed.',
@@ -113,7 +116,7 @@ export const ui = {
     // Español
     es: {
         // Description
-        'Description': 'Soy Ander González (AnderCMD), Ingeniero en Software Full Stack apasionado con +2 años de experiencia, experto en desarrollo web.',
+        'Description': 'Soy Ander González González mas conocido como AnderCMD, Ingeniero en Software Full Stack apasionado con +2 años de experiencia, experto en desarrollo web.',
 
         // Navbar
         'Nav.Index': 'Inicio',
@@ -124,7 +127,7 @@ export const ui = {
         'Nav.OpenMenu': 'Abrir menú',
 
         // Footer
-        'Footer.Copyright': '©️ Todos los derechos reservados',
+        'Footer.Copyright': '© Todos los derechos reservados',
 
         // Errores
         'Error.Title.404': 'Error 404',
@@ -134,7 +137,7 @@ export const ui = {
         // Acerca de mí
         'About.Title': '¡Hola! Soy Ander González González 👋🏻',
         'About.Subtitle': 'Ingeniero en Software',
-        'About.Description': 'Ingeniero de software full stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
+        'About.Description': 'Ingeniero en Software Full Stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
         'About.CV': 'Descargar CV',
         'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
 
@@ -194,6 +197,9 @@ export const ui = {
 
         'Projects.Title.11': 'Reparar Windows Script',
         'Projects.Description.11': 'Ejecutable para reparar ficheros de Windows 10 y 11.',
+
+        'Projects.Title.12': 'TasksFlow',
+        'Projects.Description.12': 'Sistema de gestion de tareas que permite crear, editar y eliminar tareas, ademas de asignarles una fecha de vencimiento y una prioridad.',
 
         // Experiencia Laboral
         'WorkExperience.Title': 'Experiencia Laboral',
