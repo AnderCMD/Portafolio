@@ -6,6 +6,13 @@ const { t } = useLocale(Astro);
 const workExperience = [
 	{
 		active: true,
+		nameCompany: 'Resser Tecnologías S.A. de C.V. ',
+		position: t('WorkExperience.Companies.Position.4'),
+		date: '06/2025',
+		description: t('WorkExperience.Companies.Description.4'),
+	},
+	{
+		active: false,
 		nameCompany: 'AMEDigital A.C.',
 		position: t('WorkExperience.Companies.Position.3'),
 		date: '07/2024 • 12/2024 ',
@@ -47,9 +54,7 @@ const workExperience = [
 				</span>
 				<h3 class='flex flex-col justify-start mb-1 text-lg font-semibold text-slate-900 gap-1 xl:flex-row dark:text-white'>
 					{WorkExperience.position} &nbsp;
-					<span class='text-sky-500 dark:text-sky-400'>
-						{WorkExperience.nameCompany}
-					</span>
+					<span class='text-sky-500 dark:text-sky-400'>{WorkExperience.nameCompany}</span>
 					{WorkExperience.active ? (
 						<span class='bg-blue-100 text-blue-800 max-w-fit text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 xl:ms-2'>
 							{t('WorkExperience.Active')}
@@ -64,11 +69,7 @@ const workExperience = [
 				</p>
 				{WorkExperience.visit ? (
 					<div class='flex '>
-						<AButton
-							href={WorkExperience.visit}
-							texto={t('WorkExperience.Visit')}
-							newPage
-						/>
+						<AButton href={WorkExperience.visit} texto={t('WorkExperience.Visit')} newPage />
 					</div>
 				) : null}
 			</li>

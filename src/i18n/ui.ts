@@ -113,6 +113,9 @@ export const ui = {
 		'WorkExperience.Visit': 'Visit',
 
 		// Work Experience - Companies
+		'WorkExperience.Companies.Position.4': 'Full Stack Software Engineer Junior',
+		'WorkExperience.Companies.Description.4': '',
+
 		'WorkExperience.Companies.Position.3': 'Full Stack Software Engineer',
 		'WorkExperience.Companies.Description.3':
 			'Design and development of innovative, secure, and highly optimized web applications, implementing new features to enhance user experience. Ensuring efficient performance through the use of modern technologies and best practices in software development.',
@@ -232,6 +235,9 @@ export const ui = {
 		'WorkExperience.Visit': 'Visitar proyecto',
 
 		// Experiencia Laboral - Empresas
+		'WorkExperience.Companies.Position.4': 'Ingeniero en Software Full Stack Junior',
+		'WorkExperience.Companies.Description.4': '',
+
 		'WorkExperience.Companies.Position.3': 'Ingeniero en Software Full Stack',
 		'WorkExperience.Companies.Description.3':
 			'Diseño y desarrollo de aplicaciones web innovadoras, seguras y altamente optimizadas, implementando nuevas funcionalidades para mejorar la experiencia del usuario. Garantizo un rendimiento eficiente mediante el uso de tecnologías modernas y las mejores prácticas en desarrollo de software.',
