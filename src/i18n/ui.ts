@@ -6,7 +6,7 @@ export const languages = {
 export const defaultLang = 'es';
 
 export const ui = {
-	// English
+	//#region English
 	en: {
 		// Description
 		Description:
@@ -67,42 +67,43 @@ export const ui = {
 
 		// Projects - Array
 		'Projects.Title.1': 'Horoscope',
-		'Projects.Description.1': 'Know your zodiac sign depending on your date of birth.',
+		'Projects.Description.1': 'Discover your zodiac sign based on your birth date.',
 
 		'Projects.Title.2': 'Calculator',
-		'Projects.Description.2': 'Simple calculator to perform basic operations with graphic interface.',
+		'Projects.Description.2': 'Simple calculator for basic operations with a graphical interface.',
 
 		'Projects.Title.3': 'GPT - Local',
-		'Projects.Description.3': 'Chatbot with artificial intelligence with Llama 3 model.',
+		'Projects.Description.3': 'AI chatbot powered by the Llama 3 model.',
 
 		'Projects.Title.4': 'AMEDigital A.C.',
-		'Projects.Description.4': 'Website of the company AMEDigital A.C.',
+		'Projects.Description.4': 'Corporate website for AMEDigital A.C.',
 
 		'Projects.Title.5': 'Diagnostico Moderno',
-		'Projects.Description.5': 'Website of the company Diagnostico Moderno.',
+		'Projects.Description.5': 'Corporate medical website for Diagnostico Moderno.',
 
 		'Projects.Title.7': 'EcologiX Environmental Monitoring System',
-		'Projects.Description.7': 'EcologiX environmental monitoring system possibility to connect sensor by Arduino.',
+		'Projects.Description.7': 'EcologiX environmental monitoring system with Arduino sensor connectivity.',
 
 		'Projects.Title.8': 'Flappy Bat',
-		'Projects.Description.8':
-			'Flappy Bat game for android mobile developed with Unity in the style of Flappy Bird.',
+		'Projects.Description.8': 'Flappy Bat game for Android devices developed with Unity, inspired by Flappy Bird.',
 
 		'Projects.Title.9': 'Technical Challenge Chat Bot',
-		'Projects.Description.9': 'Technical challenge by Intellion for chatbot with predefined answers.',
+		'Projects.Description.9': 'Technical challenge for Intellion: chatbot with predefined responses.',
 
 		'Projects.Title.10': 'Frontend-Mentor Challenges',
-		'Projects.Description.10': 'Frontend-Mentor challenges to improve my web development skills.',
+		'Projects.Description.10': 'Frontend-Mentor challenges to enhance my web development skills.',
 
 		'Projects.Title.11': 'Repair Windows Script',
-		'Projects.Description.11': 'Executable to repair Windows 10 and 11 files.',
+		'Projects.Description.11': 'Executable to repair files on Windows 10 and 11.',
 
 		'Projects.Title.12': 'TasksFlow',
-		'Projects.Description.12':
-			'Task management system that allows you to create, edit and delete tasks, as well as assign them a due date and priority.',
+		'Projects.Description.12': 'Task management system to create, edit, and delete tasks, assign due dates and priorities.',
 
 		'Projects.Title.13': 'SETI - Point of Sale System',
-		'Projects.Description.13': 'Point of sale system for the company Sistemas Empresariales en T.I.',
+		'Projects.Description.13': 'Point of sale system for Sistemas Empresariales en T.I.',
+
+		'Projects.Title.14': 'Resser Tecnologias SA de CV (SaaS)',
+		'Projects.Description.14': 'Resser Tecnologías SA de CV (SaaS) platform for internal and external administrative management.',
 
 		// Work Experience
 		'WorkExperience.Title': 'Work Experience',
@@ -111,25 +112,25 @@ export const ui = {
 		'WorkExperience.Active': 'Latest',
 		'WorkExperience.ReleaseDate': 'Date: ',
 		'WorkExperience.Visit': 'Visit',
+		'WorkExperience.Month': 'Month',
+		'WorkExperience.Months': 'Months',
 
 		// Work Experience - Companies
-		'WorkExperience.Companies.Position.4': 'Full Stack Software Engineer Junior',
-		'WorkExperience.Companies.Description.4': '',
+		'WorkExperience.Companies.Position.4': 'Junior Full Stack Software Engineer',
+		'WorkExperience.Companies.Description.4':
+			'As a Junior Full Stack Software Engineer I performed and developed:\n\n- Development of business management platform\n- Development of SaaS modules\n- Agile Scrum methodology\n- Migration of obsolete technologies to modern technologies\n\nSome of the technologies used are: (C# .Net8, TypeScript, React Vite, SQL Server, Azure DevOps, Git)',
 
 		'WorkExperience.Companies.Position.3': 'Full Stack Software Engineer',
-		'WorkExperience.Companies.Description.3':
-			'Design and development of innovative, secure, and highly optimized web applications, implementing new features to enhance user experience. Ensuring efficient performance through the use of modern technologies and best practices in software development.',
+		'WorkExperience.Companies.Description.3': 'Head of software department:\n\n- Development of business website\n- DevOps\n- Hiring and license management\n- Creation of cloud infrastructure\n- Corporate email administration\n- Support and maintenance\n\nSome of the technologies used are: (Astro with React, MongoDB, JavaScript, TypeScript, TailwindCSS)',
 
 		'WorkExperience.Companies.Position.2': 'Full Stack Software Engineer (Freelance)',
-		'WorkExperience.Companies.Description.2':
-			'Development of dynamic and optimized medical web systems, integrating innovative features to improve user experience and operational efficiency. Focused on continuous improvement through the use of modern technologies and results-oriented strategies.',
+		'WorkExperience.Companies.Description.2': 'As a freelance Full Stack Software Engineer I performed and developed:\n\n- Development of medical business website\n- Creation of cloud infrastructure\n- Corporate email administration\n- SEO\n\nSome of the technologies used are: (Astro with React, MongoDB, JavaScript, TailwindCSS)',
 
-		'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Internships I & II)',
-		'WorkExperience.Companies.Description.1':
-			'Development of efficient and attractive web systems, implementing improvements and innovative features to maximize their impact.',
+		'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Professional Internships I & II)',
+		'WorkExperience.Companies.Description.1': 'As a Software Engineering Intern I performed and developed:\n\n- Support in the development of web applications\n- Collaboration on AI projects \n- Implementation of improvements in existing systems\n\nSome of the technologies used are: (React Vite, CSS, JavaScript, Python)',
 	},
 
-	// Español
+	//#region Español
 	es: {
 		// Description
 		Description:
@@ -181,10 +182,11 @@ export const ui = {
 		'Projects.Nav.Desktop': 'Escritorio',
 		'Projects.Nav.Other': 'Otros',
 		'Projects.Title': 'Proyectos',
+		'Projects.Subtitle': 'Algunos de mis proyectos',
 		'Projects.Description':
 			'Aquí tienes algunos de los proyectos en los que he trabajado. Puedes ver más en mi perfil de GitHub.',
 		'Projects.ViewCode': 'Ver código',
-		'Projects.VisitProject': 'Visitar',
+		'Projects.VisitProject': 'Visitar proyecto',
 		'Projects.Download': 'Descargar',
 
 		// Proyectos - Array
@@ -198,17 +200,16 @@ export const ui = {
 		'Projects.Description.3': 'Chatbot con inteligencia artificial con modelo Llama 3.',
 
 		'Projects.Title.4': 'AMEDigital A.C.',
-		'Projects.Description.4': 'Página web de la empresa de AMEDigital A.C.',
+		'Projects.Description.4': 'Sitio web empresarial de AMEDigital A.C.',
 
 		'Projects.Title.5': 'Diagnostico Moderno',
-		'Projects.Description.5': 'Página web de la empresa de Diagnostico Moderno.',
+		'Projects.Description.5': 'Sitio web empresarial médico de Diagnostico Moderno.',
 
 		'Projects.Title.7': 'Sistema de Monitoreo Ambiental EcologiX',
 		'Projects.Description.7': 'Sistema de monitoreo ambiental EcologiX posibilidad de conectar sensor por Arduino.',
 
 		'Projects.Title.8': 'Flappy Bat',
-		'Projects.Description.8':
-			'Juego de Flappy Bat para móviles android desarrollado con Unity al estilo de Flappy Bird.',
+		'Projects.Description.8': 'Juego de Flappy Bat para móviles android desarrollado con Unity al estilo de Flappy Bird.',
 
 		'Projects.Title.9': 'Chat Bot Desafió Técnico',
 		'Projects.Description.9': 'Desafió técnico por Intellion para chatbot con respuestas predefinidas',
@@ -224,7 +225,10 @@ export const ui = {
 			'Sistema de gestion de tareas que permite crear, editar y eliminar tareas, ademas de asignarles una fecha de vencimiento y una prioridad.',
 
 		'Projects.Title.13': 'SETI - Sistema de Punto de Venta',
-		'Projects.Description.13': 'Sistema de punto de venta para la empresa de Sistemas Empresariales en T.I.',
+		'Projects.Description.13': 'Sistema de punto de venta (POS) para la empresa de Sistemas Empresariales en T.I.',
+
+		'Projects.Title.14': 'Resser Técnologias SA de CV (SaaS)',
+		'Projects.Description.14': 'Plataforma de Resser Tecnologías SA de CV (SaaS) para la gestión administrativa interna y externa.',
 
 		// Experiencia Laboral
 		'WorkExperience.Title': 'Experiencia Laboral',
@@ -233,21 +237,21 @@ export const ui = {
 		'WorkExperience.Active': 'Más reciente',
 		'WorkExperience.ReleaseDate': 'Fecha:',
 		'WorkExperience.Visit': 'Visitar proyecto',
+		'WorkExperience.Month': 'Mes',
+		'WorkExperience.Months': 'Meses',
 
 		// Experiencia Laboral - Empresas
 		'WorkExperience.Companies.Position.4': 'Ingeniero en Software Full Stack Junior',
-		'WorkExperience.Companies.Description.4': '',
+		'WorkExperience.Companies.Description.4':
+			'Como Ingeniero en Software Full Stack Junior desempeñé y desarrollé:\n\n- Desarrollo de plataforma de gestión empresarial\n- Desarrollo de módulos SaaS\n- Metodología ágil Scrum\n- Migración de tecnologías obsoletas a tecnologías modernas\n\nAlgunas de las tecnologías utilizadas son: (C# .Net8, TypeScript, React Vite, SQL Server, Azure DevOps, Git)',
 
 		'WorkExperience.Companies.Position.3': 'Ingeniero en Software Full Stack',
-		'WorkExperience.Companies.Description.3':
-			'Diseño y desarrollo de aplicaciones web innovadoras, seguras y altamente optimizadas, implementando nuevas funcionalidades para mejorar la experiencia del usuario. Garantizo un rendimiento eficiente mediante el uso de tecnologías modernas y las mejores prácticas en desarrollo de software.',
+		'WorkExperience.Companies.Description.3': 'Jefe de departamento de software:\n\n- Desarrollo de sitio web empresarial\n- DevOps\n- Contratación y gestión de licencias\n- Creación de infraestructura en la nube\n- Administración de correos corporativos\n- Soporte y mantenimiento\n\nAlgunas de las tecnologías utilizadas son: (Astro con React, MongoDB, JavaScript, TypeScript, TailwindCSS)',
 
 		'WorkExperience.Companies.Position.2': 'Ingeniero en Software Full Stack (Freelance)',
-		'WorkExperience.Companies.Description.2':
-			'Desarrollo de sistemas web dinámicos y optimizados medicos, integrando funcionalidades innovadoras para mejorar la experiencia del usuario y la eficiencia operativa. Enfocado en la mejora continua mediante el uso de tecnologías modernas y estrategias centradas en resultados.',
+		'WorkExperience.Companies.Description.2': 'Como Ingeniero en Software Full Stack freelance desempeñé y desarrollé:\n\n- Desarrollo de sitio web empresarial médico\n- Creación de infraestructura en la nube\n- Administración de correos corporativos\n- SEO\n\nAlgunas de las tecnologías utilizadas son: (Astro con React, MongoDB, JavaScript, TailwindCSS)',
 
-		'WorkExperience.Companies.Position.1': 'Practicante de Ingeniería en Software (Estancias I & II)',
-		'WorkExperience.Companies.Description.1':
-			'Desarrollo sistemas web eficientes y atractivos, implementando mejoras y funcionalidades innovadoras para maximizar su impacto.',
+		'WorkExperience.Companies.Position.1': 'Practicante de Ingeniería en Software (Estancias profesionales I & II)',
+		'WorkExperience.Companies.Description.1': 'Como Practicante de Ingeniería en Software desempeñé y desarrollé:\n\n- Apoyo en el desarrollo de aplicaciones web\n- Colaboración en proyectos de IA \n- Implementación de mejoras en sistemas existentes\n\nAlgunas de las tecnologías utilizadas son: (React Vite, CSS, JavaScript, Python)',
 	},
 } as const;

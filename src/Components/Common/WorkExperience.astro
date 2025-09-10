@@ -3,12 +3,21 @@ import { useLocale } from '@/Hooks/useLocale';
 import AButton from '@/Components/Common/AButton.astro';
 const { t } = useLocale(Astro);
 
+function getMonths(dateRange: string) {
+	const [start, end] = dateRange.split('•').map((d) => d.trim());
+	const [startMonth, startYear] = start.split('/').map(Number);
+	const [endMonth, endYear] = end.split('/').map(Number);
+
+	const months = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
+	return months;
+}
+
 const workExperience = [
 	{
 		active: true,
 		nameCompany: 'Resser Tecnologías S.A. de C.V. ',
 		position: t('WorkExperience.Companies.Position.4'),
-		date: '06/2025',
+		date: '06/2025 • 09/2025',
 		description: t('WorkExperience.Companies.Description.4'),
 	},
 	{
@@ -63,13 +72,26 @@ const workExperience = [
 				</h3>
 				<time class='block my-2 text-sm font-normal leading-none text-slate-400 dark:text-slate-600'>
 					{t('WorkExperience.ReleaseDate')} {WorkExperience.date}
+					<span class='inline-block align-middle ml-2 px-2 py-0.5 rounded bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-300 text-xs font-semibold'>
+						{getMonths(WorkExperience.date)}{' '}
+						{getMonths(WorkExperience.date) === 1 ? t('WorkExperience.Month') : t('WorkExperience.Months')}
+					</span>
 				</time>
 				<p class='mb-4 text-base font-normal text-slate-600 dark:text-slate-400'>
-					{WorkExperience.description}
+					{WorkExperience.description.split('\n').map((line, idx) => (
+						<>
+							{line}
+							{idx < WorkExperience.description.split('\n').length - 1 && <br />}
+						</>
+					))}
 				</p>
 				{WorkExperience.visit ? (
 					<div class='flex '>
-						<AButton href={WorkExperience.visit} texto={t('WorkExperience.Visit')} newPage />
+						<AButton
+							href={WorkExperience.visit}
+							texto={t('WorkExperience.Visit')}
+							newPage
+						/>
 					</div>
 				) : null}
 			</li>
