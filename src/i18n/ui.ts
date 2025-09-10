@@ -34,7 +34,7 @@ export const ui = {
 		'About.Description':
 			'Full Stack Software Engineer with over 2 years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.',
 		'About.CV': 'Download CV',
-		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN.pdf',
+		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
 
 		// Contact
 		'Contact.Title': 'Contact me',
@@ -158,7 +158,7 @@ export const ui = {
 		'About.Description':
 			'Ingeniero en Software Full Stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
 		'About.CV': 'Descargar CV',
-		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES.pdf',
+		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES_Web.pdf',
 
 		// Contacto
 		'Contact.Title': 'Contáctame',
