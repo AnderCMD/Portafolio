@@ -64,7 +64,7 @@ const schemaOrg = {
 ---
 
 <!doctype html>
-<html lang={currentLocale} class='scroll-smooth'>
+<html lang={currentLocale} class='scroll-smooth dark'>
 	<head>
 		<!-- Essential Meta Tags -->
 		<meta charset='UTF-8' />
@@ -99,14 +99,23 @@ const schemaOrg = {
 				});
 			};
 
-			// Aplicar tema inmediatamente
+			// Aplicar tema inmediatamente - Dark mode por defecto
 			(function () {
-				const theme =
-					localStorage.getItem('Theme') ||
-					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				const savedTheme = localStorage.getItem('Theme');
+				let theme;
+
+				if (savedTheme) {
+					// Si hay un tema guardado, usarlo
+					theme = savedTheme;
+				} else {
+					// Si no hay tema guardado, usar dark por defecto
+					theme = 'dark';
+				}
 
 				if (theme === 'dark') {
 					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
 				}
 
 				// Actualizar logos cuando el DOM esté listo
@@ -128,22 +137,66 @@ const schemaOrg = {
 				}
 			}
 
-			// Actualizar logos en cada transición de página
+			// Función para aplicar el tema completamente (clase dark + checkbox)
+			function applyTheme() {
+				const savedTheme = localStorage.getItem('Theme');
+				const theme = savedTheme || 'dark';
+				const isDark = theme === 'dark';
+
+				// Aplicar clase dark
+				if (isDark) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+
+				// Actualizar el estado del checkbox INMEDIATAMENTE
+				const toggleDarkMode = document.getElementById('ToggleDarkMode');
+				if (toggleDarkMode && toggleDarkMode instanceof HTMLInputElement) {
+					toggleDarkMode.checked = isDark;
+				}
+			}
+
+			// ANTES del swap - aplicar todo al nuevo documento
+			document.addEventListener('astro:before-swap', (event) => {
+				// Obtener el nuevo documento que se va a mostrar
+				const newDocument = event.newDocument;
+				const savedTheme = localStorage.getItem('Theme');
+				const theme = savedTheme || 'dark';
+				const isDark = theme === 'dark';
+
+				// Aplicar clase dark al nuevo documento ANTES de mostrarlo
+				if (isDark) {
+					newDocument.documentElement.classList.add('dark');
+				} else {
+					newDocument.documentElement.classList.remove('dark');
+				}
+
+				// Actualizar el checkbox en el nuevo documento ANTES de mostrarlo
+				const newToggle = newDocument.getElementById('ToggleDarkMode');
+				if (newToggle && newToggle instanceof HTMLInputElement) {
+					newToggle.checked = isDark;
+				}
+
+				// Actualizar logos en el nuevo documento
+				if (window.updateAllLogos) {
+					window.updateAllLogos();
+				}
+			});
+
+			// Después de que la página carga - asegurar consistencia
 			document.addEventListener('astro:page-load', () => {
+				applyTheme();
+
 				if (window.updateAllLogos) {
 					window.updateAllLogos();
 				}
 			});
 
-			// Actualizar logos ANTES del swap para evitar flickering
-			document.addEventListener('astro:before-swap', () => {
-				if (window.updateAllLogos) {
-					window.updateAllLogos();
-				}
-			});
-
-			// Actualizar logos DESPUÉS del swap por seguridad
+			// DESPUÉS del swap - verificación final
 			document.addEventListener('astro:after-swap', () => {
+				applyTheme();
+
 				if (window.updateAllLogos) {
 					window.updateAllLogos();
 				}
@@ -217,25 +270,45 @@ const schemaOrg = {
 		<div class='fixed inset-0 -z-10 overflow-hidden'>
 			<!-- Gradient Orbs con animación -->
 			<div class='absolute inset-0'>
-				<!-- Orb 1 - Sky Blue -->
+				<!-- Orb 1 - Neutral Light / Sky Dark -->
 				<div
-					class='absolute top-0 left-0 w-96 h-96 bg-sky-400/30 dark:bg-sky-500/20 rounded-full blur-3xl animate-float'
+					class='absolute top-0 left-0 w-96 h-96 bg-slate-200/40 dark:bg-sky-500/20 rounded-full blur-3xl animate-float'
 					style='animation-delay: 0s; animation-duration: 20s;'>
 				</div>
-				<!-- Orb 2 - Blue -->
+				<!-- Orb 2 - Neutral Light / Blue Dark -->
 				<div
-					class='absolute top-1/4 right-0 w-120 h-120 bg-blue-500/25 dark:bg-blue-600/15 rounded-full blur-3xl animate-float'
+					class='absolute top-1/4 right-0 w-120 h-120 bg-slate-300/35 dark:bg-blue-600/15 rounded-full blur-3xl animate-float'
 					style='animation-delay: 2s; animation-duration: 25s;'>
 				</div>
-				<!-- Orb 3 - Indigo -->
+				<!-- Orb 3 - Neutral Light / Indigo Dark -->
 				<div
-					class='absolute bottom-0 left-1/4 w-md h-112 bg-indigo-500/20 dark:bg-indigo-600/15 rounded-full blur-3xl animate-float'
+					class='absolute bottom-0 left-1/4 w-md h-112 bg-gray-200/30 dark:bg-indigo-600/15 rounded-full blur-3xl animate-float'
 					style='animation-delay: 4s; animation-duration: 22s;'>
 				</div>
-				<!-- Orb 4 - Purple -->
+				<!-- Orb 4 - Neutral Light / Purple Dark -->
 				<div
-					class='absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-float'
+					class='absolute bottom-1/4 right-1/4 w-80 h-80 bg-slate-300/30 dark:bg-purple-600/10 rounded-full blur-3xl animate-float'
 					style='animation-delay: 6s; animation-duration: 18s;'>
+				</div>
+				<!-- Orb 5 - Neutral Light / Cyan Dark -->
+				<div
+					class='absolute top-1/2 left-1/2 w-96 h-96 bg-gray-300/35 dark:bg-cyan-500/15 rounded-full blur-3xl animate-float'
+					style='animation-delay: 3s; animation-duration: 23s; transform: translate(-50%, -50%);'>
+				</div>
+				<!-- Orb 6 - Neutral Light / Teal Dark -->
+				<div
+					class='absolute top-1/3 left-1/3 w-72 h-72 bg-slate-200/30 dark:bg-teal-500/10 rounded-full blur-3xl animate-float'
+					style='animation-delay: 5s; animation-duration: 21s;'>
+				</div>
+				<!-- Orb 7 - Neutral Light / Violet Dark -->
+				<div
+					class='absolute bottom-1/3 right-1/3 w-80 h-80 bg-gray-200/30 dark:bg-violet-600/12 rounded-full blur-3xl animate-float'
+					style='animation-delay: 7s; animation-duration: 24s;'>
+				</div>
+				<!-- Orb 8 - Neutral Light / Pink Dark -->
+				<div
+					class='absolute top-2/3 left-1/4 w-64 h-64 bg-slate-300/25 dark:bg-pink-500/10 rounded-full blur-3xl animate-float'
+					style='animation-delay: 8s; animation-duration: 26s;'>
 				</div>
 			</div>
 
@@ -247,37 +320,116 @@ const schemaOrg = {
 				</div>
 			</div>
 
-			<!-- Partículas flotantes -->
-			<div class='absolute inset-0 overflow-hidden'>
+			<!-- Dots Pattern Layer -->
+			<div class='absolute inset-0 opacity-20 dark:opacity-10'>
 				<div
-					class='particle absolute w-1 h-1 bg-sky-500/40 dark:bg-sky-400/30 rounded-full'
-					style='top: 10%; left: 10%; animation: float-particle 15s infinite ease-in-out;'>
-				</div>
-				<div
-					class='particle absolute w-1.5 h-1.5 bg-blue-500/40 dark:bg-blue-400/30 rounded-full'
-					style='top: 20%; left: 80%; animation: float-particle 18s infinite ease-in-out 2s;'>
-				</div>
-				<div
-					class='particle absolute w-1 h-1 bg-indigo-500/40 dark:bg-indigo-400/30 rounded-full'
-					style='top: 60%; left: 20%; animation: float-particle 20s infinite ease-in-out 4s;'>
-				</div>
-				<div
-					class='particle absolute w-2 h-2 bg-purple-500/40 dark:bg-purple-400/30 rounded-full'
-					style='top: 80%; left: 70%; animation: float-particle 16s infinite ease-in-out 6s;'>
-				</div>
-				<div
-					class='particle absolute w-1 h-1 bg-sky-500/40 dark:bg-sky-400/30 rounded-full'
-					style='top: 40%; left: 60%; animation: float-particle 22s infinite ease-in-out 3s;'>
-				</div>
-				<div
-					class='particle absolute w-1.5 h-1.5 bg-blue-500/40 dark:bg-blue-400/30 rounded-full'
-					style='top: 70%; left: 40%; animation: float-particle 19s infinite ease-in-out 5s;'>
+					class='absolute inset-0'
+					style='background-image: radial-gradient(circle, rgba(148, 163, 184, 0.2) 1px, transparent 1px); background-size: 30px 30px; animation: grid-move 25s linear infinite reverse;'>
 				</div>
 			</div>
 
-			<!-- Líneas decorativas animadas -->
-			<svg class='absolute inset-0 w-full h-full opacity-20 dark:opacity-10' xmlns='http://www.w3.org/2000/svg'>
+			<!-- Partículas flotantes - Aumentadas a 20 -->
+			<div class='absolute inset-0 overflow-hidden'>
+				<!-- Partículas Neutrales en Light / Coloridas en Dark -->
+				<div
+					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-sky-400/30 rounded-full'
+					style='top: 10%; left: 10%; animation: float-particle 15s infinite ease-in-out;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-sky-300/40 rounded-full'
+					style='top: 15%; left: 85%; animation: float-particle 17s infinite ease-in-out 1s;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-slate-400/20 dark:bg-sky-400/35 rounded-full'
+					style='top: 50%; left: 5%; animation: float-particle 19s infinite ease-in-out 7s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-gray-400/25 dark:bg-blue-400/30 rounded-full'
+					style='top: 20%; left: 80%; animation: float-particle 18s infinite ease-in-out 2s;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-slate-400/20 dark:bg-blue-300/35 rounded-full'
+					style='top: 75%; left: 15%; animation: float-particle 21s infinite ease-in-out 9s;'>
+				</div>
+				<div
+					class='particle absolute w-1 h-1 bg-gray-400/25 dark:bg-blue-400/40 rounded-full'
+					style='top: 45%; left: 92%; animation: float-particle 16s infinite ease-in-out 5s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-indigo-400/30 rounded-full'
+					style='top: 60%; left: 20%; animation: float-particle 20s infinite ease-in-out 4s;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-gray-400/20 dark:bg-indigo-300/35 rounded-full'
+					style='top: 35%; left: 45%; animation: float-particle 22s infinite ease-in-out 6s;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-slate-400/25 dark:bg-indigo-400/40 rounded-full'
+					style='top: 85%; left: 88%; animation: float-particle 18s infinite ease-in-out 11s;'>
+				</div>
+
+				<div
+					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-purple-400/30 rounded-full'
+					style='top: 80%; left: 70%; animation: float-particle 16s infinite ease-in-out 6s;'>
+				</div>
+				<div
+					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-purple-300/35 rounded-full'
+					style='top: 25%; left: 55%; animation: float-particle 23s infinite ease-in-out 8s;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-gray-400/25 dark:bg-purple-400/40 rounded-full'
+					style='top: 65%; left: 35%; animation: float-particle 17s infinite ease-in-out 12s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1 h-1 bg-slate-400/20 dark:bg-cyan-400/30 rounded-full'
+					style='top: 40%; left: 60%; animation: float-particle 22s infinite ease-in-out 3s;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-gray-400/25 dark:bg-cyan-300/35 rounded-full'
+					style='top: 90%; left: 50%; animation: float-particle 19s infinite ease-in-out 10s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-slate-400/25 dark:bg-teal-400/30 rounded-full'
+					style='top: 30%; left: 25%; animation: float-particle 20s infinite ease-in-out 4s;'>
+				</div>
+				<div
+					class='particle absolute w-1 h-1 bg-gray-400/20 dark:bg-teal-300/35 rounded-full'
+					style='top: 55%; left: 75%; animation: float-particle 24s infinite ease-in-out 13s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-slate-400/25 dark:bg-violet-400/30 rounded-full'
+					style='top: 70%; left: 40%; animation: float-particle 19s infinite ease-in-out 5s;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-violet-300/35 rounded-full'
+					style='top: 12%; left: 65%; animation: float-particle 21s infinite ease-in-out 14s;'>
+				</div>
+
+				<div
+					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-pink-400/30 rounded-full'
+					style='top: 48%; left: 82%; animation: float-particle 18s infinite ease-in-out 7s;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-gray-400/20 dark:bg-pink-300/35 rounded-full'
+					style='top: 95%; left: 30%; animation: float-particle 20s infinite ease-in-out 15s;'>
+				</div>
+			</div>
+
+			<!-- Líneas decorativas animadas - Aumentadas -->
+			<svg class='absolute inset-0 w-full h-full opacity-0 dark:opacity-10' xmlns='http://www.w3.org/2000/svg'>
 				<defs>
+					<!-- Gradientes Neutrales para Light Mode -->
+					<linearGradient id='lineGradientLight1' x1='0%' y1='0%' x2='100%' y2='100%'>
+						<stop offset='0%' style='stop-color: rgb(148, 163, 184); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(148, 163, 184); stop-opacity: 0.3'></stop>
+						<stop offset='100%' style='stop-color: rgb(148, 163, 184); stop-opacity: 0'></stop>
+					</linearGradient>
+					<!-- Gradientes Coloridos para Dark Mode -->
 					<linearGradient id='lineGradient1' x1='0%' y1='0%' x2='100%' y2='100%'>
 						<stop offset='0%' style='stop-color: rgb(14, 165, 233); stop-opacity: 0'></stop>
 						<stop offset='50%' style='stop-color: rgb(14, 165, 233); stop-opacity: 0.5'></stop>
@@ -288,7 +440,24 @@ const schemaOrg = {
 						<stop offset='50%' style='stop-color: rgb(99, 102, 241); stop-opacity: 0.5'></stop>
 						<stop offset='100%' style='stop-color: rgb(99, 102, 241); stop-opacity: 0'></stop>
 					</linearGradient>
+					<linearGradient id='lineGradient3' x1='0%' y1='100%' x2='100%' y2='0%'>
+						<stop offset='0%' style='stop-color: rgb(6, 182, 212); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(6, 182, 212); stop-opacity: 0.5'></stop>
+						<stop offset='100%' style='stop-color: rgb(6, 182, 212); stop-opacity: 0'></stop>
+					</linearGradient>
+					<linearGradient id='lineGradient4' x1='50%' y1='0%' x2='50%' y2='100%'>
+						<stop offset='0%' style='stop-color: rgb(139, 92, 246); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(139, 92, 246); stop-opacity: 0.5'></stop>
+						<stop offset='100%' style='stop-color: rgb(139, 92, 246); stop-opacity: 0'></stop>
+					</linearGradient>
+					<linearGradient id='lineGradient5' x1='100%' y1='100%' x2='0%' y2='0%'>
+						<stop offset='0%' style='stop-color: rgb(236, 72, 153); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(236, 72, 153); stop-opacity: 0.5'></stop>
+						<stop offset='100%' style='stop-color: rgb(236, 72, 153); stop-opacity: 0'></stop>
+					</linearGradient>
 				</defs>
+
+				<!-- Línea ondulada superior -->
 				<path
 					d='M 0 100 Q 250 50 500 100 T 1000 100'
 					stroke='url(#lineGradient1)'
@@ -302,6 +471,8 @@ const schemaOrg = {
 						values='M 0 100 Q 250 50 500 100 T 1000 100; M 0 120 Q 250 70 500 120 T 1000 120; M 0 100 Q 250 50 500 100 T 1000 100'
 					></animate>
 				</path>
+
+				<!-- Línea ondulada media -->
 				<path
 					d='M 1000 300 Q 750 250 500 300 T 0 300'
 					stroke='url(#lineGradient2)'
@@ -315,7 +486,88 @@ const schemaOrg = {
 						values='M 1000 300 Q 750 250 500 300 T 0 300; M 1000 320 Q 750 270 500 320 T 0 320; M 1000 300 Q 750 250 500 300 T 0 300'
 					></animate>
 				</path>
+
+				<!-- Línea ondulada inferior -->
+				<path
+					d='M 0 500 Q 300 450 600 500 T 1200 500'
+					stroke='url(#lineGradient3)'
+					stroke-width='2'
+					fill='none'
+					class='animate-path-draw'>
+					<animate
+						attributeName='d'
+						dur='14s'
+						repeatCount='indefinite'
+						values='M 0 500 Q 300 450 600 500 T 1200 500; M 0 520 Q 300 470 600 520 T 1200 520; M 0 500 Q 300 450 600 500 T 1200 500'
+					></animate>
+				</path>
+
+				<!-- Línea vertical ondulada izquierda -->
+				<path
+					d='M 200 0 Q 150 200 200 400 T 200 800'
+					stroke='url(#lineGradient4)'
+					stroke-width='2'
+					fill='none'
+					class='animate-path-draw'>
+					<animate
+						attributeName='d'
+						dur='11s'
+						repeatCount='indefinite'
+						values='M 200 0 Q 150 200 200 400 T 200 800; M 220 0 Q 170 200 220 400 T 220 800; M 200 0 Q 150 200 200 400 T 200 800'
+					></animate>
+				</path>
+
+				<!-- Línea vertical ondulada derecha -->
+				<path
+					d='M 1000 0 Q 1050 250 1000 500 T 1000 1000'
+					stroke='url(#lineGradient5)'
+					stroke-width='2'
+					fill='none'
+					class='animate-path-draw'>
+					<animate
+						attributeName='d'
+						dur='13s'
+						repeatCount='indefinite'
+						values='M 1000 0 Q 1050 250 1000 500 T 1000 1000; M 980 0 Q 1030 250 980 500 T 980 1000; M 1000 0 Q 1050 250 1000 500 T 1000 1000'
+					></animate>
+				</path>
+
+				<!-- Círculos animados -->
+				<circle cx='150' cy='150' r='5' fill='url(#lineGradient1)' opacity='0.6'>
+					<animate attributeName='r' dur='3s' repeatCount='indefinite' values='5;8;5'></animate>
+					<animate attributeName='opacity' dur='3s' repeatCount='indefinite' values='0.6;0.3;0.6'></animate>
+				</circle>
+				<circle cx='850' cy='200' r='6' fill='url(#lineGradient2)' opacity='0.6'>
+					<animate attributeName='r' dur='4s' repeatCount='indefinite' values='6;10;6'></animate>
+					<animate attributeName='opacity' dur='4s' repeatCount='indefinite' values='0.6;0.3;0.6'></animate>
+				</circle>
+				<circle cx='400' cy='600' r='7' fill='url(#lineGradient3)' opacity='0.6'>
+					<animate attributeName='r' dur='3.5s' repeatCount='indefinite' values='7;11;7'></animate>
+					<animate attributeName='opacity' dur='3.5s' repeatCount='indefinite' values='0.6;0.3;0.6'></animate>
+				</circle>
+				<circle cx='700' cy='400' r='5' fill='url(#lineGradient4)' opacity='0.6'>
+					<animate attributeName='r' dur='4.5s' repeatCount='indefinite' values='5;9;5'></animate>
+					<animate attributeName='opacity' dur='4.5s' repeatCount='indefinite' values='0.6;0.3;0.6'></animate>
+				</circle>
 			</svg>
+
+			<!-- Shooting Stars - Solo en dark mode -->
+			<div class='absolute inset-0 overflow-hidden pointer-events-none hidden dark:block'>
+				<div class='shooting-star' style='top: 20%; left: -10%; animation: shooting-star 3s ease-out infinite;'>
+				</div>
+				<div
+					class='shooting-star'
+					style='top: 40%; left: -10%; animation: shooting-star 4s ease-out infinite 1.5s;'>
+				</div>
+				<div
+					class='shooting-star'
+					style='top: 60%; left: -10%; animation: shooting-star 3.5s ease-out infinite 3s;'>
+				</div>
+				<div
+					class='shooting-star'
+					style='top: 80%; left: -10%; animation: shooting-star 4.2s ease-out infinite 4.5s;'>
+				</div>
+			</div>
 		</div>
 
 		<div class='relative flex flex-col min-h-screen'>

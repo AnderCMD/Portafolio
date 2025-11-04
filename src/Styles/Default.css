@@ -464,3 +464,126 @@ textarea {
 		transform: translate(-30px, -15px) rotate(3deg);
 	}
 }
+
+/* Shooting Stars Animation */
+.shooting-star {
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	background: linear-gradient(90deg, rgba(14, 165, 233, 0) 0%, rgba(14, 165, 233, 1) 50%, rgba(14, 165, 233, 0) 100%);
+	border-radius: 50%;
+	opacity: 0;
+	will-change: transform, opacity;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+}
+
+.shooting-star::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 80px;
+	height: 2px;
+	background: linear-gradient(90deg, rgba(14, 165, 233, 0) 0%, rgba(14, 165, 233, 0.8) 100%);
+	transform: translateX(-80px) scaleX(0);
+	transform-origin: right;
+}
+
+.shooting-star::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 2px;
+	background: rgba(14, 165, 233, 1);
+	border-radius: 50%;
+	box-shadow: 0 0 10px 2px rgba(14, 165, 233, 0.8);
+}
+
+@keyframes shooting-star {
+	0% {
+		transform: translate(0, 0) rotate(45deg);
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	10.1% {
+		opacity: 0;
+	}
+	100% {
+		transform: translate(600px, 600px) rotate(45deg);
+		opacity: 0;
+	}
+}
+
+.shooting-star::before {
+	animation: shooting-star-trail 3s ease-out;
+}
+
+@keyframes shooting-star-trail {
+	0% {
+		transform: translateX(-80px) scaleX(0);
+	}
+	10% {
+		transform: translateX(-80px) scaleX(1);
+	}
+	10.1% {
+		transform: translateX(-80px) scaleX(0);
+	}
+	100% {
+		transform: translateX(-80px) scaleX(0);
+	}
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in {
+	animation: fade-in 0.6s ease-out;
+}
+
+/* Pulse animation para circles */
+@keyframes pulse-circle {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	50% {
+		transform: scale(1.5);
+		opacity: 0.3;
+	}
+}
+
+/* Rotate continuous */
+@keyframes rotate-continuous {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Scale pulse */
+@keyframes scale-pulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+}

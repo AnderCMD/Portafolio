@@ -3,12 +3,13 @@ import '@/Styles/DarkMode.css';
 
 // Función fuera del componente para evitar recreación
 const getInitialTheme = () => {
-	if (typeof window === 'undefined') return 'light';
+	if (typeof window === 'undefined') return 'dark';
 
 	const savedTheme = localStorage.getItem('Theme');
 	if (savedTheme) return savedTheme;
 
-	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	// Dark mode por defecto si no hay preferencia guardada
+	return 'dark';
 };
 
 // Cache de elementos DOM para mejor performance
