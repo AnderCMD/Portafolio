@@ -22,6 +22,9 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 				id='LogoTheme'
 				class='h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl'
 				alt='AnderCMD Logo'
+				loading='eager'
+				decoding='async'
+				fetchpriority='high'
 			/>
 		</a>
 
@@ -147,16 +150,59 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 
 <script>
 	document.addEventListener('astro:page-load', () => {
+		// Optimización: Cache de elementos DOM
+		const mobileMenuButton = document.getElementById('mobile-menu-button');
+		const navbar = document.getElementById('navbar-default');
+		const languageToggle = document.querySelector('[data-dropdown-toggle="language-dropdown-menu"]');
+		const dropdown = document.getElementById('language-dropdown-menu');
+
 		// Mobile menu toggle
-		document.getElementById('mobile-menu-button').addEventListener('click', () => {
-			const navbar = document.getElementById('navbar-default');
-			navbar.classList.toggle('hidden');
-		});
+		if (mobileMenuButton && navbar) {
+			mobileMenuButton.addEventListener(
+				'click',
+				() => {
+					navbar.classList.toggle('hidden');
+				},
+				{ passive: true }
+			);
+		}
 
 		// Language dropdown toggle
-		document.querySelector('[data-dropdown-toggle="language-dropdown-menu"]').addEventListener('click', () => {
-			const dropdown = document.getElementById('language-dropdown-menu');
-			dropdown.classList.toggle('hidden');
-		});
+		if (languageToggle && dropdown) {
+			languageToggle.addEventListener(
+				'click',
+				() => {
+					dropdown.classList.toggle('hidden');
+				},
+				{ passive: true }
+			);
+
+			// Cerrar dropdown al hacer click fuera
+			document.addEventListener(
+				'click',
+				(e) => {
+					const target = e.target as Node;
+					if (!languageToggle.contains(target) && !dropdown.contains(target)) {
+						dropdown.classList.add('hidden');
+					}
+				},
+				{ passive: true }
+			);
+		}
+
+		// Cerrar menú móvil al cambiar tamaño de ventana
+		let resizeTimeout;
+		window.addEventListener(
+			'resize',
+			() => {
+				clearTimeout(resizeTimeout);
+				resizeTimeout = setTimeout(() => {
+					if (window.innerWidth >= 1024 && navbar) {
+						navbar.classList.add('hidden');
+					}
+				}, 150);
+			},
+			{ passive: true }
+		);
 	});
 </script>

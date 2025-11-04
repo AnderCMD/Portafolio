@@ -5,12 +5,26 @@ export const languages = {
 
 export const defaultLang = 'es';
 
+// Función para calcular años de experiencia dinámicamente
+function getYearsOfExperience(): number {
+	const startMonth = 5; // Mayo
+	const startYear = 2023;
+
+	const now = new Date();
+	const currentYear = now.getFullYear();
+	const currentMonth = now.getMonth() + 1;
+
+	const totalMonths = (currentYear - startYear) * 12 + (currentMonth - startMonth);
+	const years = Math.round((totalMonths / 12) * 10) / 10;
+
+	return years;
+}
+
 export const ui = {
 	//#region English
 	en: {
 		// Description
-		Description:
-			'I am Ander González González better known as AnderCMD, Full Stack Software Engineer passionate with +2 years of experience, expert in web development.',
+		Description: `I am Ander González González better known as AnderCMD, Full Stack Software Engineer passionate with +${getYearsOfExperience()} years of experience, expert in web development.`,
 
 		// Navbar
 		'Nav.Index': 'Home',
@@ -33,8 +47,7 @@ export const ui = {
 		// About
 		'About.Title': 'Hi! I am Ander González González 👋🏻',
 		'About.Subtitle': 'Software Engineer',
-		'About.Description':
-			'Full Stack Software Engineer with over 2 years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.',
+		'About.Description': `Full Stack Software Engineer with over ${getYearsOfExperience()} years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
 		'About.CV': 'Download CV',
 		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
 
@@ -138,6 +151,10 @@ export const ui = {
 		'WorkExperience.Months': 'Months',
 
 		// Work Experience - Companies
+		'WorkExperience.Companies.Position.5': 'Software QA Tester',
+		'WorkExperience.Companies.Description.5':
+			'As a Software QA Tester I perform and develop:\n\n- Manual and automated testing of web and mobile applications\n- Test case design and execution\n- Bug reporting and tracking\n- Quality assurance in development lifecycle\n- Collaboration with development teams\n\nSome of the technologies used are: (Selenium, Jira, TestRail, API Testing, SQL, Git)',
+
 		'WorkExperience.Companies.Position.4': 'Junior Full Stack Software Engineer',
 		'WorkExperience.Companies.Description.4':
 			'As a Junior Full Stack Software Engineer I performed and developed:\n\n- Development of business management platform\n- Development of SaaS modules\n- Agile Scrum methodology\n- Migration of obsolete technologies to modern technologies\n\nSome of the technologies used are: (C# .Net8, TypeScript, React Vite, SQL Server, Azure DevOps, Git)',
@@ -158,8 +175,7 @@ export const ui = {
 	//#region Español
 	es: {
 		// Description
-		Description:
-			'Soy Ander González González mas conocido como AnderCMD, Ingeniero en Software Full Stack apasionado con +2 años de experiencia, experto en desarrollo web.',
+		Description: `Soy Ander González González mas conocido como AnderCMD, Ingeniero en Software Full Stack apasionado con +${getYearsOfExperience()} años de experiencia, experto en desarrollo web.`,
 
 		// Navbar
 		'Nav.Index': 'Inicio',
@@ -182,8 +198,7 @@ export const ui = {
 		// Acerca de mí
 		'About.Title': '¡Hola! Soy Ander González González 👋🏻',
 		'About.Subtitle': 'Ingeniero en Software',
-		'About.Description':
-			'Ingeniero en Software Full Stack con más de 2 años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.',
+		'About.Description': `Ingeniero en Software Full Stack con más de ${getYearsOfExperience()} años de experiencia en el diseño de aplicaciones web escalables y optimizadas. Experto en tecnologías modernas como React, Astro, PostgreSQL y MongoDB, con sólidas habilidades de liderazgo, resolución de problemas y desarrollo de soluciones innovadoras. Apasionado por el aprendizaje continuo y la aportación estratégica de valor a cada proyecto.`,
 		'About.CV': 'Descargar CV',
 		'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES_Web.pdf',
 
@@ -288,6 +303,10 @@ export const ui = {
 		'WorkExperience.Months': 'Meses',
 
 		// Experiencia Laboral - Empresas
+		'WorkExperience.Companies.Position.5': 'Probador de Software QA',
+		'WorkExperience.Companies.Description.5':
+			'Como Probador de Software QA desempeño y desarrollo:\n\n- Pruebas manuales y automatizadas de aplicaciones web y móviles\n- Diseño y ejecución de casos de prueba\n- Reporte y seguimiento de errores\n- Aseguramiento de calidad en el ciclo de desarrollo\n- Colaboración con equipos de desarrollo\n\nAlgunas de las tecnologías utilizadas son: (Selenium, Jira, TestRail, API Testing, SQL, Git)',
+
 		'WorkExperience.Companies.Position.4': 'Ingeniero en Software Full Stack Junior',
 		'WorkExperience.Companies.Description.4':
 			'Como Ingeniero en Software Full Stack Junior desempeñé y desarrollé:\n\n- Desarrollo de plataforma de gestión empresarial\n- Desarrollo de módulos SaaS\n- Metodología ágil Scrum\n- Migración de tecnologías obsoletas a tecnologías modernas\n\nAlgunas de las tecnologías utilizadas son: (C# .Net8, TypeScript, React Vite, SQL Server, Azure DevOps, Git)',

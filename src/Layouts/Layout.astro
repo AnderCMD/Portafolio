@@ -72,6 +72,19 @@ const schemaOrg = {
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 
+		<!-- Inline Theme Script - Evita FOUC (Flash of Unstyled Content) -->
+		<script is:inline>
+			(function () {
+				const theme =
+					localStorage.getItem('Theme') ||
+					(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+				if (theme === 'dark') {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
+
 		<!-- SEO Meta Tags -->
 		<title>{title}</title>
 		<meta name='description' content={seoDescription} />
@@ -106,8 +119,18 @@ const schemaOrg = {
 		<link rel='manifest' href='/manifest.json' />
 
 		<!-- Preconnect for Performance -->
-		<link rel='preconnect' href='https://fonts.googleapis.com' />
-		<link rel='dns-prefetch' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://raw.githubusercontent.com' crossorigin />
+		<link rel='preconnect' href='https://cdn.worldvectorlogo.com' crossorigin />
+		<link rel='dns-prefetch' href='https://raw.githubusercontent.com' />
+		<link rel='dns-prefetch' href='https://cdn.worldvectorlogo.com' />
+
+		<!-- Preload Critical Assets -->
+		<link rel='preload' href='/Logos/Icono-Negro.webp' as='image' type='image/webp' />
+		<link rel='preload' href='/Logos/Logo-Negro.webp' as='image' type='image/webp' />
+
+		<!-- Preload Critical Fonts -->
+		<link rel='preload' href='/src/Assets/Fonts/SF-Pro-Display-Regular.otf' as='font' type='font/otf' crossorigin />
+		<link rel='preload' href='/src/Assets/Fonts/SF-Pro-Display-Bold.otf' as='font' type='font/otf' crossorigin />
 
 		<!-- Schema.org JSON-LD -->
 		<script type='application/ld+json' set:html={JSON.stringify(schemaOrg)} />
@@ -188,21 +211,24 @@ const schemaOrg = {
 		</button>
 
 		<script>
-			// Scroll to top functionality with progress
+			// Scroll to top functionality with progress - Optimizado con requestAnimationFrame
 			const scrollBtn = document.getElementById('scroll-to-top');
 			const progressCircle = document.getElementById('scroll-progress');
 			const circumference = 150.8;
 
-			function updateScrollProgress() {
+			let ticking = false;
+			let lastKnownScrollPosition = 0;
+
+			function updateScrollProgress(scrollPos) {
 				const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
-				const scrollProgress = (window.scrollY / scrollTotal) * 100;
+				const scrollProgress = (scrollPos / scrollTotal) * 100;
 				const offset = circumference - (scrollProgress / 100) * circumference;
 
 				if (progressCircle) {
 					progressCircle.style.strokeDashoffset = offset.toString();
 				}
 
-				if (window.scrollY > 300) {
+				if (scrollPos > 300) {
 					scrollBtn?.classList.remove('hidden');
 					scrollBtn?.classList.add('animate-fade-in');
 				} else {
@@ -210,12 +236,41 @@ const schemaOrg = {
 				}
 			}
 
-			window.addEventListener('scroll', updateScrollProgress);
-			window.addEventListener('resize', updateScrollProgress);
+			function onScroll() {
+				lastKnownScrollPosition = window.scrollY;
+
+				if (!ticking) {
+					window.requestAnimationFrame(() => {
+						updateScrollProgress(lastKnownScrollPosition);
+						ticking = false;
+					});
+
+					ticking = true;
+				}
+			}
+
+			// Usar passive event listeners para mejor performance
+			window.addEventListener('scroll', onScroll, { passive: true });
+
+			// Debounce para resize
+			let resizeTimeout;
+			window.addEventListener(
+				'resize',
+				() => {
+					clearTimeout(resizeTimeout);
+					resizeTimeout = setTimeout(() => {
+						updateScrollProgress(window.scrollY);
+					}, 150);
+				},
+				{ passive: true }
+			);
 
 			scrollBtn?.addEventListener('click', () => {
 				window.scrollTo({ top: 0, behavior: 'smooth' });
 			});
+
+			// Inicializar
+			updateScrollProgress(window.scrollY);
 		</script>
 	</body>
 </html>

@@ -1,35 +1,89 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import '@/Styles/DarkMode.css';
 
+// Función fuera del componente para evitar recreación
+const getInitialTheme = () => {
+	if (typeof window === 'undefined') return 'light';
+
+	const savedTheme = localStorage.getItem('Theme');
+	if (savedTheme) return savedTheme;
+
+	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+// Cache de elementos DOM para mejor performance
+let cachedElements = null;
+
+const getElements = () => {
+	if (cachedElements) return cachedElements;
+
+	cachedElements = {
+		root: document.documentElement,
+		logoTheme: document.getElementById('LogoTheme'),
+		iconoLogoTheme: document.getElementById('IconoLogoTheme'),
+		iconoLogoThemeFooter: document.getElementById('IconoLogoThemeFooter'),
+		toggleDarkMode: document.getElementById('ToggleDarkMode'),
+	};
+
+	return cachedElements;
+};
+
 export default function DarkMode() {
-	const [theme, setTheme] = useState(() => {
-		if (typeof window !== 'undefined') {
-			const savedTheme = localStorage.getItem('Theme');
-			return savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-		}
-		return 'light';
-	});
+	const [theme, setTheme] = useState(getInitialTheme);
+
+	// Memoizar rutas de imágenes
+	const imagePaths = useMemo(
+		() => ({
+			dark: {
+				logo: '/Logos/Logo-Blanco.webp',
+				icono: '/Logos/Icono-Blanco.webp',
+			},
+			light: {
+				logo: '/Logos/Logo-Negro.webp',
+				icono: '/Logos/Icono-Negro.webp',
+			},
+		}),
+		[]
+	);
 
 	useEffect(() => {
-		const root = document.documentElement;
-		const logoTheme = document.getElementById('LogoTheme');
-		const iconoLogoTheme = document.getElementById('IconoLogoTheme');
-		const iconoLogoThemeFooter = document.getElementById('IconoLogoThemeFooter');
-		const toggleDarkMode = document.getElementById('ToggleDarkMode');
-
+		const elements = getElements();
 		const isDark = theme === 'dark';
-		root.classList.toggle('dark', isDark);
-		localStorage.setItem('Theme', theme);
-		if (toggleDarkMode) toggleDarkMode.checked = isDark;
-		if (logoTheme) logoTheme.src = isDark ? '/Logos/Logo-Blanco.webp' : '/Logos/Logo-Negro.webp';
-		if (iconoLogoTheme) iconoLogoTheme.src = isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
-		if (iconoLogoThemeFooter)
-			iconoLogoThemeFooter.src = isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
-	}, [theme]);
+		const paths = imagePaths[theme];
 
-	const handleChangeTheme = () => {
+		// Usar requestAnimationFrame para cambios visuales suaves
+		requestAnimationFrame(() => {
+			// Actualizar clase dark con transición
+			elements.root.classList.toggle('dark', isDark);
+
+			// Actualizar checkbox
+			if (elements.toggleDarkMode) {
+				elements.toggleDarkMode.checked = isDark;
+			}
+
+			// Actualizar imágenes con loading optimizado
+			if (elements.logoTheme && elements.logoTheme.src !== paths.logo) {
+				elements.logoTheme.src = paths.logo;
+			}
+			if (elements.iconoLogoTheme && elements.iconoLogoTheme.src !== paths.icono) {
+				elements.iconoLogoTheme.src = paths.icono;
+			}
+			if (elements.iconoLogoThemeFooter && elements.iconoLogoThemeFooter.src !== paths.icono) {
+				elements.iconoLogoThemeFooter.src = paths.icono;
+			}
+		});
+
+		// Guardar tema en localStorage de forma asíncrona
+		try {
+			localStorage.setItem('Theme', theme);
+		} catch (e) {
+			console.warn('Failed to save theme preference:', e);
+		}
+	}, [theme, imagePaths]);
+
+	const handleChangeTheme = useCallback(() => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-	};
+	}, []);
 
 	return (
 		<div className='flex items-center lg:flex-col gap-2'>
