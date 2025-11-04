@@ -12,7 +12,6 @@ interface Props {
 const { title, description, image = '/Icons/Icono-Negro.ico', type = 'website', keywords } = Astro.props;
 
 // Componentes
-import SquareLines from '@/Components/Common/Square/SquareLines.astro';
 import Navbar from '@/Components/Common/Navbar.astro';
 import Footer from '@/Components/Common/Footer.astro';
 
@@ -74,6 +73,33 @@ const schemaOrg = {
 
 		<!-- Inline Theme Script - Evita FOUC (Flash of Unstyled Content) -->
 		<script is:inline>
+			// Función global para obtener la ruta correcta del logo
+			window.getLogoPath = function (type, isDark) {
+				if (type === 'logo') {
+					return isDark ? '/Logos/Logo-Blanco.webp' : '/Logos/Logo-Negro.webp';
+				} else {
+					return isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
+				}
+			};
+
+			// Función global para actualizar todos los logos
+			window.updateAllLogos = function () {
+				const isDark = document.documentElement.classList.contains('dark');
+				const logos = document.querySelectorAll('[data-logo-theme]');
+
+				logos.forEach((logo) => {
+					const type = logo.getAttribute('data-logo-theme');
+					const correctPath = window.getLogoPath(type, isDark);
+					const fullPath = window.location.origin + correctPath;
+
+					// Solo actualizar si es diferente
+					if (logo.src !== fullPath) {
+						logo.src = correctPath;
+					}
+				});
+			};
+
+			// Aplicar tema inmediatamente
 			(function () {
 				const theme =
 					localStorage.getItem('Theme') ||
@@ -82,7 +108,46 @@ const schemaOrg = {
 				if (theme === 'dark') {
 					document.documentElement.classList.add('dark');
 				}
+
+				// Actualizar logos cuando el DOM esté listo
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', window.updateAllLogos);
+				} else {
+					window.updateAllLogos();
+				}
 			})();
+		</script>
+
+		<!-- Script para transiciones de Astro -->
+		<script>
+			// Extender el tipo Window
+			declare global {
+				interface Window {
+					updateAllLogos?: () => void;
+					getLogoPath?: (type: string, isDark: boolean) => string;
+				}
+			}
+
+			// Actualizar logos en cada transición de página
+			document.addEventListener('astro:page-load', () => {
+				if (window.updateAllLogos) {
+					window.updateAllLogos();
+				}
+			});
+
+			// Actualizar logos ANTES del swap para evitar flickering
+			document.addEventListener('astro:before-swap', () => {
+				if (window.updateAllLogos) {
+					window.updateAllLogos();
+				}
+			});
+
+			// Actualizar logos DESPUÉS del swap por seguridad
+			document.addEventListener('astro:after-swap', () => {
+				if (window.updateAllLogos) {
+					window.updateAllLogos();
+				}
+			});
 		</script>
 
 		<!-- SEO Meta Tags -->
@@ -148,22 +213,112 @@ const schemaOrg = {
 
 	<body
 		class='relative overflow-x-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 text-slate-900 dark:text-slate-100 transition-colors duration-300'>
-		<!-- Background Pattern -->
+		<!-- Modern Animated Background -->
 		<div class='fixed inset-0 -z-10 overflow-hidden'>
-			<div
-				class='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.15)_0%,transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.1)_0%,transparent_50%)]'>
+			<!-- Gradient Orbs con animación -->
+			<div class='absolute inset-0'>
+				<!-- Orb 1 - Sky Blue -->
+				<div
+					class='absolute top-0 left-0 w-96 h-96 bg-sky-400/30 dark:bg-sky-500/20 rounded-full blur-3xl animate-float'
+					style='animation-delay: 0s; animation-duration: 20s;'>
+				</div>
+				<!-- Orb 2 - Blue -->
+				<div
+					class='absolute top-1/4 right-0 w-120 h-120 bg-blue-500/25 dark:bg-blue-600/15 rounded-full blur-3xl animate-float'
+					style='animation-delay: 2s; animation-duration: 25s;'>
+				</div>
+				<!-- Orb 3 - Indigo -->
+				<div
+					class='absolute bottom-0 left-1/4 w-md h-112 bg-indigo-500/20 dark:bg-indigo-600/15 rounded-full blur-3xl animate-float'
+					style='animation-delay: 4s; animation-duration: 22s;'>
+				</div>
+				<!-- Orb 4 - Purple -->
+				<div
+					class='absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-float'
+					style='animation-delay: 6s; animation-duration: 18s;'>
+				</div>
 			</div>
-			<div
-				class='absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.15)_0%,transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.1)_0%,transparent_50%)]'>
+
+			<!-- Grid Pattern Animado -->
+			<div class='absolute inset-0 opacity-30 dark:opacity-10'>
+				<div
+					class='absolute inset-0'
+					style='background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px); background-size: 50px 50px; animation: grid-move 20s linear infinite;'>
+				</div>
 			</div>
-			<div
-				class='absolute inset-0 opacity-40 dark:opacity-20'
-				style='background-image: url("data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%2364748b%27 fill-opacity=%270.05%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");'>
+
+			<!-- Partículas flotantes -->
+			<div class='absolute inset-0 overflow-hidden'>
+				<div
+					class='particle absolute w-1 h-1 bg-sky-500/40 dark:bg-sky-400/30 rounded-full'
+					style='top: 10%; left: 10%; animation: float-particle 15s infinite ease-in-out;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-blue-500/40 dark:bg-blue-400/30 rounded-full'
+					style='top: 20%; left: 80%; animation: float-particle 18s infinite ease-in-out 2s;'>
+				</div>
+				<div
+					class='particle absolute w-1 h-1 bg-indigo-500/40 dark:bg-indigo-400/30 rounded-full'
+					style='top: 60%; left: 20%; animation: float-particle 20s infinite ease-in-out 4s;'>
+				</div>
+				<div
+					class='particle absolute w-2 h-2 bg-purple-500/40 dark:bg-purple-400/30 rounded-full'
+					style='top: 80%; left: 70%; animation: float-particle 16s infinite ease-in-out 6s;'>
+				</div>
+				<div
+					class='particle absolute w-1 h-1 bg-sky-500/40 dark:bg-sky-400/30 rounded-full'
+					style='top: 40%; left: 60%; animation: float-particle 22s infinite ease-in-out 3s;'>
+				</div>
+				<div
+					class='particle absolute w-1.5 h-1.5 bg-blue-500/40 dark:bg-blue-400/30 rounded-full'
+					style='top: 70%; left: 40%; animation: float-particle 19s infinite ease-in-out 5s;'>
+				</div>
 			</div>
+
+			<!-- Líneas decorativas animadas -->
+			<svg class='absolute inset-0 w-full h-full opacity-20 dark:opacity-10' xmlns='http://www.w3.org/2000/svg'>
+				<defs>
+					<linearGradient id='lineGradient1' x1='0%' y1='0%' x2='100%' y2='100%'>
+						<stop offset='0%' style='stop-color: rgb(14, 165, 233); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(14, 165, 233); stop-opacity: 0.5'></stop>
+						<stop offset='100%' style='stop-color: rgb(14, 165, 233); stop-opacity: 0'></stop>
+					</linearGradient>
+					<linearGradient id='lineGradient2' x1='100%' y1='0%' x2='0%' y2='100%'>
+						<stop offset='0%' style='stop-color: rgb(99, 102, 241); stop-opacity: 0'></stop>
+						<stop offset='50%' style='stop-color: rgb(99, 102, 241); stop-opacity: 0.5'></stop>
+						<stop offset='100%' style='stop-color: rgb(99, 102, 241); stop-opacity: 0'></stop>
+					</linearGradient>
+				</defs>
+				<path
+					d='M 0 100 Q 250 50 500 100 T 1000 100'
+					stroke='url(#lineGradient1)'
+					stroke-width='2'
+					fill='none'
+					class='animate-path-draw'>
+					<animate
+						attributeName='d'
+						dur='10s'
+						repeatCount='indefinite'
+						values='M 0 100 Q 250 50 500 100 T 1000 100; M 0 120 Q 250 70 500 120 T 1000 120; M 0 100 Q 250 50 500 100 T 1000 100'
+					></animate>
+				</path>
+				<path
+					d='M 1000 300 Q 750 250 500 300 T 0 300'
+					stroke='url(#lineGradient2)'
+					stroke-width='2'
+					fill='none'
+					class='animate-path-draw'>
+					<animate
+						attributeName='d'
+						dur='12s'
+						repeatCount='indefinite'
+						values='M 1000 300 Q 750 250 500 300 T 0 300; M 1000 320 Q 750 270 500 320 T 0 320; M 1000 300 Q 750 250 500 300 T 0 300'
+					></animate>
+				</path>
+			</svg>
 		</div>
 
 		<div class='relative flex flex-col min-h-screen'>
-			<SquareLines />
 			<Navbar />
 			<main class='flex-1 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 py-8 lg:py-12'>
 				<ClientRouter />
@@ -219,7 +374,7 @@ const schemaOrg = {
 			let ticking = false;
 			let lastKnownScrollPosition = 0;
 
-			function updateScrollProgress(scrollPos) {
+			function updateScrollProgress(scrollPos: number) {
 				const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
 				const scrollProgress = (scrollPos / scrollTotal) * 100;
 				const offset = circumference - (scrollProgress / 100) * circumference;
@@ -253,7 +408,7 @@ const schemaOrg = {
 			window.addEventListener('scroll', onScroll, { passive: true });
 
 			// Debounce para resize
-			let resizeTimeout;
+			let resizeTimeout: ReturnType<typeof setTimeout>;
 			window.addEventListener(
 				'resize',
 				() => {

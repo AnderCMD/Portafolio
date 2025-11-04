@@ -27,9 +27,13 @@ const { t } = useLocale(Astro);
 				class='absolute inset-0 bg-linear-to-r from-emerald-400 to-teal-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500'>
 			</div>
 			<img
+				data-logo-theme='icono'
 				id='IconoLogoTheme'
 				alt='AnderCMD Logo'
-				class='relative w-56 h-56 lg:w-72 lg:h-72 drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-full'
+				class='relative w-56 h-56 lg:w-72 lg:h-72 drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-full will-change-auto'
+				loading='eager'
+				decoding='async'
+				fetchpriority='high'
 			/>
 		</div>
 		<div class='flex-1 max-w-3xl'>

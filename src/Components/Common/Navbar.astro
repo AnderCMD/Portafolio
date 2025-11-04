@@ -18,9 +18,9 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
 			class='group flex items-center space-x-2 transition-transform hover:scale-105'>
 			<img
-				src=''
+				data-logo-theme='logo'
 				id='LogoTheme'
-				class='h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl'
+				class='h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl will-change-auto'
 				alt='AnderCMD Logo'
 				loading='eager'
 				decoding='async'
@@ -149,7 +149,20 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 </nav>
 
 <script>
+	// Extender el tipo Window
+	declare global {
+		interface Window {
+			updateAllLogos?: () => void;
+		}
+	}
+
+	// Ejecutar cuando la página carga
 	document.addEventListener('astro:page-load', () => {
+		// Usar la función global si está disponible
+		if (window.updateAllLogos) {
+			window.updateAllLogos();
+		}
+
 		// Optimización: Cache de elementos DOM
 		const mobileMenuButton = document.getElementById('mobile-menu-button');
 		const navbar = document.getElementById('navbar-default');
@@ -191,7 +204,7 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		}
 
 		// Cerrar menú móvil al cambiar tamaño de ventana
-		let resizeTimeout;
+		let resizeTimeout: ReturnType<typeof setTimeout>;
 		window.addEventListener(
 			'resize',
 			() => {
@@ -204,5 +217,12 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			},
 			{ passive: true }
 		);
+	});
+
+	// Escuchar evento personalizado de cambio de tema
+	window.addEventListener('theme-changed', () => {
+		if (window.updateAllLogos) {
+			window.updateAllLogos();
+		}
 	});
 </script>

@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://andercmd.com',
+	site: 'https://andercmd.dev',
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
@@ -55,7 +55,10 @@ export default defineConfig({
 	// Prefetch para mejorar navegación
 	prefetch: {
 		prefetchAll: true,
-		defaultStrategy: 'viewport',
+		defaultStrategy: 'hover',
+	},
+	experimental: {
+		clientPrerender: true,
 	},
 	// Optimización de imágenes
 	image: {

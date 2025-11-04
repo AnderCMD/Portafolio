@@ -384,3 +384,83 @@ textarea {
 		transform: none !important;
 	}
 }
+
+/* ========================================
+   MODERN ANIMATED BACKGROUND STYLES
+   ======================================== */
+
+/* Animación de movimiento de grid */
+@keyframes grid-move {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(50px, 50px);
+	}
+}
+
+/* Animación de partículas flotantes */
+@keyframes float-particle {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+		opacity: 0.3;
+	}
+	25% {
+		transform: translate(30px, -30px) scale(1.2);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translate(-20px, -60px) scale(0.8);
+		opacity: 0.4;
+	}
+	75% {
+		transform: translate(-40px, -30px) scale(1.1);
+		opacity: 0.5;
+	}
+}
+
+/* Animación de dibujo de path SVG */
+@keyframes path-draw {
+	0% {
+		stroke-dashoffset: 1000;
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		stroke-dashoffset: 0;
+		opacity: 0.5;
+	}
+}
+
+.animate-path-draw {
+	stroke-dasharray: 1000;
+	animation: path-draw 4s ease-in-out infinite;
+}
+
+/* Optimización de performance para animaciones */
+.particle,
+.animate-float > div {
+	will-change: transform, opacity;
+	backface-visibility: hidden;
+	transform: translateZ(0);
+}
+
+/* Mejora para los orbs animados */
+@keyframes float {
+	0%,
+	100% {
+		transform: translate(0, 0) rotate(0deg);
+	}
+	25% {
+		transform: translate(20px, -20px) rotate(5deg);
+	}
+	50% {
+		transform: translate(-15px, -40px) rotate(-5deg);
+	}
+	75% {
+		transform: translate(-30px, -15px) rotate(3deg);
+	}
+}

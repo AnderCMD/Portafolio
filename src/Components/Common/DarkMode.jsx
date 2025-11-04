@@ -47,29 +47,22 @@ export default function DarkMode() {
 	);
 
 	useEffect(() => {
-		const elements = getElements();
 		const isDark = theme === 'dark';
-		const paths = imagePaths[theme];
 
 		// Usar requestAnimationFrame para cambios visuales suaves
 		requestAnimationFrame(() => {
 			// Actualizar clase dark con transición
-			elements.root.classList.toggle('dark', isDark);
+			document.documentElement.classList.toggle('dark', isDark);
 
 			// Actualizar checkbox
-			if (elements.toggleDarkMode) {
-				elements.toggleDarkMode.checked = isDark;
+			const toggleDarkMode = document.getElementById('ToggleDarkMode');
+			if (toggleDarkMode) {
+				toggleDarkMode.checked = isDark;
 			}
 
-			// Actualizar imágenes con loading optimizado
-			if (elements.logoTheme && elements.logoTheme.src !== paths.logo) {
-				elements.logoTheme.src = paths.logo;
-			}
-			if (elements.iconoLogoTheme && elements.iconoLogoTheme.src !== paths.icono) {
-				elements.iconoLogoTheme.src = paths.icono;
-			}
-			if (elements.iconoLogoThemeFooter && elements.iconoLogoThemeFooter.src !== paths.icono) {
-				elements.iconoLogoThemeFooter.src = paths.icono;
+			// Usar la función global para actualizar logos si está disponible
+			if (window.updateAllLogos) {
+				window.updateAllLogos();
 			}
 		});
 
@@ -79,7 +72,10 @@ export default function DarkMode() {
 		} catch (e) {
 			console.warn('Failed to save theme preference:', e);
 		}
-	}, [theme, imagePaths]);
+
+		// Disparar evento personalizado para que otros componentes se actualicen
+		window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
+	}, [theme]);
 
 	const handleChangeTheme = useCallback(() => {
 		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
