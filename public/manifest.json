@@ -1,0 +1,28 @@
+{
+    "name": "AnderCMD Portfolio",
+    "short_name": "AnderCMD",
+    "description": "Portfolio de Ander González González - Full Stack Software Engineer",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#020618",
+    "theme_color": "#0ea5e9",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/Icons/Icono-Negro.ico",
+            "sizes": "48x48 72x72 96x96 144x144 192x192 256x256 384x384 512x512",
+            "type": "image/x-icon",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "portfolio",
+        "developer",
+        "software",
+        "engineering"
+    ],
+    "lang": "es-MX",
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false
+}

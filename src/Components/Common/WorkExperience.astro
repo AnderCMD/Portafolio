@@ -47,53 +47,78 @@ const workExperience = [
 ];
 ---
 
-<ol class='relative my-20 border-slate-200 border-s dark:border-slate-700'>
+<ol class='relative my-12 space-y-8'>
 	{
-		workExperience.map((WorkExperience) => (
-			<li class='mb-10 ms-6'>
-				<span class='absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-slate-900 dark:bg-blue-900'>
-					<svg
-						class='w-2.5 h-2.5 text-blue-800 dark:text-blue-300'
-						aria-hidden='true'
-						xmlns='http://www.w3.org/2000/svg'
-						fill='currentColor'
-						viewBox='0 0 20 20'>
-						<path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
-					</svg>
-				</span>
-				<h3 class='flex flex-col justify-start mb-1 text-lg font-semibold text-slate-900 gap-1 xl:flex-row dark:text-white'>
-					{WorkExperience.position} &nbsp;
-					<span class='text-sky-500 dark:text-sky-400'>{WorkExperience.nameCompany}</span>
-					{WorkExperience.active ? (
-						<span class='bg-blue-100 text-blue-800 max-w-fit text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 xl:ms-2'>
-							{t('WorkExperience.Active')}
-						</span>
-					) : null}
-				</h3>
-				<time class='block my-2 text-sm font-normal leading-none text-slate-400 dark:text-slate-600'>
-					{t('WorkExperience.ReleaseDate')} {WorkExperience.date}
-					<span class='inline-block align-middle ml-2 px-2 py-0.5 rounded bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-300 text-xs font-semibold'>
-						{getMonths(WorkExperience.date)}{' '}
-						{getMonths(WorkExperience.date) === 1 ? t('WorkExperience.Month') : t('WorkExperience.Months')}
-					</span>
-				</time>
-				<p class='mb-4 text-base font-normal text-slate-600 dark:text-slate-400'>
-					{WorkExperience.description.split('\n').map((line, idx) => (
-						<>
-							{line}
-							{idx < WorkExperience.description.split('\n').length - 1 && <br />}
-						</>
-					))}
-				</p>
-				{WorkExperience.visit ? (
-					<div class='flex '>
-						<AButton
-							href={WorkExperience.visit}
-							texto={t('WorkExperience.Visit')}
-							newPage
-						/>
+		workExperience.map((WorkExperience, index) => (
+			<li class='group relative animate-slide-up' style={`animation-delay: ${index * 0.1}s`}>
+				{/* Timeline connector */}
+				<div class='absolute left-0 top-0 bottom-0 w-0.5 bg-linear-to-b from-sky-500 via-blue-500 to-transparent dark:from-sky-400 dark:via-blue-400' />
+
+				{/* Timeline dot */}
+				<div class='absolute left-0 top-8 -translate-x-1/2 z-10'>
+					<div class='relative'>
+						<div class='absolute inset-0 bg-sky-500 dark:bg-sky-400 rounded-full blur-md animate-pulse' />
+						<div class='relative flex items-center justify-center w-10 h-10 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-full shadow-lg ring-4 ring-white dark:ring-slate-900 group-hover:scale-110 transition-transform duration-300'>
+							<i class='fa-solid fa-briefcase text-white text-sm' />
+						</div>
 					</div>
-				) : null}
+				</div>
+
+				{/* Content Card */}
+				<div class='ml-12 p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-lg hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 group-hover:-translate-y-1'>
+					{/* Header */}
+					<div class='flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 mb-4'>
+						<div class='space-y-2'>
+							<h3 class='text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors'>
+								{WorkExperience.position}
+							</h3>
+							<p class='text-base font-semibold text-transparent bg-clip-text bg-linear-to-r from-sky-600 to-blue-600 dark:from-sky-400 dark:to-blue-400'>
+								{WorkExperience.nameCompany}
+							</p>
+						</div>
+						{WorkExperience.active && (
+							<span class='inline-flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-linear-to-r from-emerald-500 to-teal-600 rounded-full shadow-md animate-pulse'>
+								<span class='w-2 h-2 bg-white rounded-full animate-ping' />
+								{t('WorkExperience.Active')}
+							</span>
+						)}
+					</div>
+
+					{/* Date & Duration */}
+					<time class='flex flex-wrap items-center gap-3 mb-4 text-sm text-slate-600 dark:text-slate-400'>
+						<span class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 font-medium'>
+							<i class='fa-regular fa-calendar text-sky-500' />
+							{WorkExperience.date}
+						</span>
+						<span class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-linear-to-r from-sky-100 to-blue-100 dark:from-sky-900/50 dark:to-blue-900/50 text-sky-700 dark:text-sky-300 font-semibold'>
+							<i class='fa-regular fa-clock' />
+							{getMonths(WorkExperience.date)}{' '}
+							{getMonths(WorkExperience.date) === 1
+								? t('WorkExperience.Month')
+								: t('WorkExperience.Months')}
+						</span>
+					</time>
+
+					{/* Description */}
+					<div class='prose prose-sm max-w-none mb-4'>
+						<p class='text-base leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-line'>
+							{WorkExperience.description}
+						</p>
+					</div>
+
+					{/* Action Button */}
+					{WorkExperience.visit && (
+						<div class='flex justify-start pt-4 border-t border-slate-200 dark:border-slate-700'>
+							<AButton
+								href={WorkExperience.visit}
+								texto={t('WorkExperience.Visit')}
+								newPage
+								icon='fa-solid fa-arrow-up-right-from-square'
+								variant='primary'
+							/>
+						</div>
+					)}
+				</div>
 			</li>
 		))
 	}

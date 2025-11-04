@@ -5,36 +5,108 @@ const { t } = useLocale(Astro);
 
 // Scripts
 import { CurrentYear } from '@/Scripts/CurrentTime';
+
+const footerLinks = [
+	{
+		href: 'https://www.linkedin.com/in/andercmd/',
+		icon: 'fa-brands fa-linkedin',
+		label: 'LinkedIn',
+		color: 'hover:text-blue-600 dark:hover:text-blue-400',
+	},
+	{
+		href: 'https://github.com/AnderCMD',
+		icon: 'fa-brands fa-github',
+		label: 'GitHub',
+		color: 'hover:text-slate-700 dark:hover:text-slate-300',
+	},
+	{
+		href: 'https://x.com/AnderCMDs',
+		icon: 'fa-brands fa-x-twitter',
+		label: 'X (Twitter)',
+		color: 'hover:text-slate-800 dark:hover:text-slate-200',
+	},
+];
 ---
 
 <footer
-	class='flex flex-row items-center justify-between w-full gap-4 p-4 border-t-2 border-slate-300 dark:border-slate-600 max-md:flex-col'>
-	<div class='flex items-center gap-4 max-sm:flex-col'>
-		<img
-			src=''
-			alt='Icono Logo AnderCMD'
-			id='IconoLogoThemeFooter'
-			class='size-8'
-		/>
-		<h1 class='text-center'>
-			<a href='/' class='font-semibold transition-all hover:text-sky-500'
-				>AnderCMD</a
-			>
-			| {t('Footer.Copyright')} 2024 {CurrentYear}
-		</h1>
-	</div>
-	<div class='flex gap-4 text-2xl'>
-		<a href='https://www.linkedin.com/in/andercmd/' target='_blank' aria-label='LinkedIn'>
-			<i class='transition-all fa-brands fa-linkedin hover:text-sky-500'
-			></i>
-		</a>
-		<a href='https://github.com/AnderCMD' target='_blank' aria-label='GitHub'>
-			<i class='transition-all fa-brands fa-github hover:text-sky-500'
-			></i>
-		</a>
-		<a href='https://x.com/AnderCMDs' target='_blank' aria-label='X'>
-			<i class='transition-all fa-brands fa-x-twitter hover:text-sky-500'
-			></i>
-		</a>
+	class='relative mt-16 border-t border-slate-200/50 dark:border-slate-700/50 backdrop-blur-lg bg-white/50 dark:bg-slate-900/50'>
+	<!-- Decorative gradient bar -->
+	<div class='absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 via-blue-500 to-indigo-500'></div>
+
+	<div class='container mx-auto px-4 py-8 lg:py-12'>
+		<div class='flex flex-col md:flex-row items-center justify-between gap-6'>
+			<!-- Logo & Copyright Section -->
+			<div class='flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left'>
+				<div class='relative group'>
+					<div
+						class='absolute inset-0 bg-sky-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+					</div>
+					<img
+						src=''
+						alt='AnderCMD Logo'
+						id='IconoLogoThemeFooter'
+						class='relative w-12 h-12 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 rounded-full'
+					/>
+				</div>
+				<div class='space-y-1'>
+					<p class='text-base font-bold'>
+						<a
+							href='/'
+							class='bg-linear-to-r from-sky-600 to-blue-600 dark:from-sky-400 dark:to-blue-400 bg-clip-text text-transparent hover:from-sky-500 hover:to-blue-500 transition-all duration-300'>
+							AnderCMD
+						</a>
+					</p>
+					<p class='text-sm text-slate-600 dark:text-slate-400'>
+						{t('Footer.Copyright')} 2024 - {CurrentYear}
+					</p>
+				</div>
+			</div>
+
+			<!-- Social Links -->
+			<nav class='flex items-center gap-3' aria-label='Redes sociales del footer'>
+				{
+					footerLinks.map((link) => (
+						<a
+							href={link.href}
+							target='_blank'
+							rel='noopener noreferrer'
+							aria-label={link.label}
+							class={`group relative flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 ${link.color} transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95`}>
+							<i class={`${link.icon} text-xl group-hover:scale-110 transition-transform duration-300`} />
+							<span class='absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 text-xs font-medium text-white bg-slate-900 dark:bg-slate-700 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none'>
+								{link.label}
+							</span>
+						</a>
+					))
+				}
+			</nav>
+		</div>
+
+		<!-- Additional Info -->
+		<div class='mt-6 pt-6 border-t border-slate-200/50 dark:border-slate-700/50'>
+			<p class='text-xs text-center text-slate-500 dark:text-slate-400'>
+				{t('Footer.MadeWith')}
+				<span class='text-red-500 animate-pulse'>❤️</span>
+				{t('Footer.Using')}
+				<a
+					href='https://astro.build'
+					target='_blank'
+					rel='noopener noreferrer'
+					class='font-semibold hover:text-sky-600 dark:hover:text-sky-400 transition-colors'>Astro</a
+				>,
+				<a
+					href='https://react.dev'
+					target='_blank'
+					rel='noopener noreferrer'
+					class='font-semibold hover:text-sky-600 dark:hover:text-sky-400 transition-colors'>React</a
+				>
+				& <a
+					href='https://tailwindcss.com'
+					target='_blank'
+					rel='noopener noreferrer'
+					class='font-semibold hover:text-sky-600 dark:hover:text-sky-400 transition-colors'>Tailwind CSS</a
+				>
+			</p>
+		</div>
 	</div>
 </footer>

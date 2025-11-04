@@ -1,0 +1,25 @@
+# robots.txt para AnderCMD Portfolio
+
+# Permitir acceso a todos los bots
+User-agent: *
+Allow: /
+
+# Optimizaciones para bots específicos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Bloquear páginas de error
+Disallow: /404
+Disallow: /en/404
+
+# Sitemap
+Sitemap: https://andercmd.com/sitemap-index.xml
+Sitemap: https://andercmd.com/sitemap-0.xml

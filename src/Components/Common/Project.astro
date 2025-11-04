@@ -166,32 +166,36 @@ const project = [
 	}
 </style>
 
-<div class='flex flex-wrap items-center justify-center py-4 md:py-8'>
+<nav class='flex flex-wrap items-center justify-center gap-3 py-6 md:py-10' aria-label='Filtros de proyectos'>
 	<button
 		type='button'
-		class='filter-button text-blue-700 hover:text-white border border-blue-600 bg-white hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:bg-slate-900 dark:focus:ring-blue-800'
+		class='filter-button group relative px-6 py-3 text-base font-bold text-white bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden'
 		data-filter='all'>
-		{t('Projects.Nav.AllCategories')}
+		<span class='relative z-10'>{t('Projects.Nav.AllCategories')}</span>
+		<div class='absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700'></div>
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
 		data-filter='web'>
+		<i class='fa-solid fa-globe mr-2 text-sky-500'></i>
 		{t('Projects.Nav.Web')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-emerald-50 hover:to-teal-50 dark:hover:from-emerald-950/50 dark:hover:to-teal-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
 		data-filter='mobile'>
+		<i class='fa-solid fa-mobile-screen-button mr-2 text-emerald-500'></i>
 		{t('Projects.Nav.Mobile')}
 	</button>
 	<button
 		type='button'
-		class='filter-button text-slate-900 border border-white hover:border-slate-200 dark:border-slate-900 dark:bg-slate-900 dark:hover:border-slate-700 bg-white focus:ring-4 focus:outline-none focus:ring-slate-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-slate-800'
+		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-950/50 dark:hover:to-pink-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
 		data-filter='other'>
+		<i class='fa-solid fa-folder mr-2 text-purple-500'></i>
 		{t('Projects.Nav.Other')}
 	</button>
-</div>
+</nav>
 
 <div class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
@@ -203,67 +207,86 @@ const project = [
 				return a.title.localeCompare(b.title); // Sort by title in ascending order
 			})
 			.map((Project) => (
-				<div class={`min-h-full filter-item all ${Project.type}`}>
-					<div
-						class='flex flex-col h-full border-2 rounded-lg shadow-md transition-all bg-slate-50 border-slate-300 hover:scale-105 dark:bg-slate-900 dark:border-slate-600'>
-						<a href={Project.linkView} class='flex-shrink-0' target="_blank">
+				<article class={`group min-h-full filter-item all ${Project.type}`}>
+					<div class='relative flex flex-col h-full rounded-2xl shadow-lg transition-all duration-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:shadow-sky-500/20 dark:hover:shadow-sky-500/10 hover:-translate-y-2 overflow-hidden'>
+						<!-- Glow effect on hover -->
+						<div class='absolute inset-0 bg-linear-to-br from-sky-500/0 to-blue-500/0 group-hover:from-sky-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none'></div>
+						
+						<!-- Image Container -->
+						<a href={Project.linkView || Project.linkCode} class='relative shrink-0 overflow-hidden' target="_blank">
+							<div class='absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'></div>
 							<Image
-								class='object-fill w-full h-48 border-b-2 rounded-t-lg border-slate-300 dark:border-slate-600'
+								class='object-cover w-full h-56 transition-transform duration-500 group-hover:scale-110'
 								src={Project.image}
 								alt={Project.description}
 								loading='lazy'
 							/>
+							{Project.year && (
+								<span class='absolute top-4 right-4 z-20 px-3 py-1.5 text-xs font-bold text-white bg-sky-600/90 dark:bg-sky-500/90 backdrop-blur-sm rounded-full shadow-lg'>
+									{Project.year}
+								</span>
+							)}
 						</a>
-						<div class='flex flex-col flex-grow p-5'>
-							<span class='text-slate-600 dark:text-slate-400'>{Project.year}</span>
-							<h4 class='mb-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white'>
-								{Project.title}
-							</h4>
-							<p class='flex-grow mb-3 font-normal text-slate-700 dark:text-slate-400'>
-								{Project.description}
-							</p>
+						
+						<!-- Content -->
+						<div class='relative flex flex-col grow p-6 space-y-4'>
+							<div class='space-y-2'>
+								<h3 class='text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 line-clamp-2'>
+									{Project.title}
+								</h3>
+								<p class='text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed'>
+									{Project.description}
+								</p>
+							</div>
+							
+							{/* Tech Stack */}
 							{Project.technologies && (
-								<div class="flex flex-wrap gap-2 mb-3">
+								<div class="flex flex-wrap gap-2">
 									{Project.technologies.map((tech) => (
-										<span class="inline-block bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-300 px-2 py-1 rounded text-xs font-semibold">
+										<span class="inline-flex items-center px-2.5 py-1 text-xs font-semibold rounded-lg bg-linear-to-r from-sky-100 to-blue-100 text-sky-700 dark:from-sky-900/50 dark:to-blue-900/50 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
 											{tech}
 										</span>
 									))}
 								</div>
 							)}
-							<div class='flex items-center justify-between mt-auto gap-4 max-2xl:flex-col'>
+							
+							{/* Action Buttons */}
+							<div class='flex items-center gap-2 pt-4 mt-auto border-t border-slate-200 dark:border-slate-700'>
 								{Project.linkView && (
 									<a
-									href={Project.linkView}
-									target='_blank'
-									class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
-										{t('Projects.VisitProject')}
-										<i class='ml-2 fa-solid fa-eye' />
+										href={Project.linkView}
+										target='_blank'
+										rel='noopener noreferrer'
+										class='flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'>
+										<i class='fa-solid fa-eye text-xs' />
+										<span class='hidden sm:inline'>{t('Projects.VisitProject')}</span>
 									</a>
 								)}
 								{Project.linkDownload && (
 									<a
-									href={Project.linkDownload}
-									target='_blank'
-									class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'
-									download>
-										{t('Projects.Download')}
-										<i class='ml-2 fa-solid fa-download' />
+										href={Project.linkDownload}
+										target='_blank'
+										rel='noopener noreferrer'
+										class='flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-white bg-linear-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
+										download>
+										<i class='fa-solid fa-download text-xs' />
+										<span class='hidden sm:inline'>{t('Projects.Download')}</span>
 									</a>
 								)}
 								{Project.linkCode && (
 									<a
 										href={Project.linkCode}
 										target='_blank'
-										class='inline-flex items-center justify-center w-full px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-sky-500 hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-sky-500 dark:hover:bg-sky-600 dark:focus:ring-blue-800'>
-										{t('Projects.ViewCode')}
-										<i class='ml-2 fa-solid fa-file-code' />
+										rel='noopener noreferrer'
+										class='flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'>
+										<i class='fa-solid fa-code text-xs' />
+										<span class='hidden sm:inline'>{t('Projects.ViewCode')}</span>
 									</a>
 								)}
 							</div>
 						</div>
 					</div>
-				</div>
+				</article>
 			))
 	}
 </div>

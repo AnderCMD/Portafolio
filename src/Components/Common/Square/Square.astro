@@ -1,3 +1,13 @@
-<div
-	class='w-full h-auto bg-slate-200 dark:bg-sky-950 transition-all aspect-square {classes}'>
+---
+const { index = 0 } = Astro.props;
+---
+
+<div 
+	class='relative w-full h-full aspect-square overflow-hidden transition-all duration-500 hover:bg-sky-50/30 dark:hover:bg-sky-950/20'
+	style={`animation-delay: ${index * 0.05}s;`}>
+	<!-- Efecto de brillo al hover -->
+	<div class='absolute inset-0 bg-linear-to-br from-sky-400/0 to-blue-500/0 group-hover:from-sky-400/5 group-hover:to-blue-500/5 transition-all duration-700'></div>
+	
+	<!-- Punto decorativo central (visible en hover) -->
+	<div class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-sky-500/0 dark:bg-sky-400/0 rounded-full group-hover:bg-sky-500/30 dark:group-hover:bg-sky-400/20 transition-all duration-300 group-hover:scale-150'></div>
 </div>

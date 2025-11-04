@@ -4,15 +4,36 @@ interface Props {
 	href: string;
 	texto: string;
 	newPage?: boolean;
+	variant?: 'primary' | 'secondary' | 'outline';
+	icon?: string;
 }
 
 // Props
-const { href, texto, newPage } = Astro.props;
+const { href, texto, newPage, variant = 'primary', icon } = Astro.props;
+
+const variantClasses = {
+	primary:
+		'bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white shadow-lg shadow-sky-500/50 hover:shadow-xl hover:shadow-sky-500/60',
+	secondary:
+		'bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/60',
+	outline:
+		'border-2 border-sky-500 text-sky-600 dark:text-sky-400 hover:bg-sky-500 hover:text-white dark:border-sky-400',
+};
 ---
 
-<a href={href} target={newPage === true ? '_blank' : '_self'}>
+<a
+	href={href}
+	target={newPage === true ? '_blank' : '_self'}
+	rel={newPage === true ? 'noopener noreferrer' : undefined}
+	class='inline-block w-full group'>
 	<button
-		class='w-full px-4 py-2 mt-4 font-bold text-white rounded-full transition-all bg-sky-500 hover:bg-sky-600'>
-		{texto}
+		class={`btn-modern relative w-full px-6 py-3.5 mt-4 font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${variantClasses[variant]} flex items-center justify-center gap-2.5`}>
+		{icon && <i class={icon + ' text-lg group-hover:scale-110 transition-transform'} />}
+		<span class='relative z-10'>{texto}</span>
+		{
+			newPage && (
+				<i class='fa-solid fa-arrow-up-right-from-square text-sm opacity-70 group-hover:opacity-100 transition-opacity' />
+			)
+		}
 	</button>
 </a>

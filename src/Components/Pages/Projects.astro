@@ -11,14 +11,59 @@ import { useLocale } from '@/Hooks/useLocale';
 const { t } = useLocale(Astro);
 ---
 
-<Layout title={`AnderCMD | ${t('Nav.Projects')}`}>
-	<section>
-		<Text2
-			icon='fa-solid fa-diagram-project'
-			title={t('Projects.Title')}
-			subtitle=''
-			description={t('Projects.Description')}
-		/>
-		<Project />
+<Layout
+	title={`AnderCMD | ${t('Nav.Projects')}`}
+	description={t('Projects.Description')}
+	keywords='Portfolio, Projects, Web Development, Mobile Apps, Software Projects, React Projects, Astro Projects'>
+	<!-- Header Section -->
+	<section class='py-12 space-y-8 animate-fade-in'>
+		<div class='text-center space-y-4'>
+			<Text2
+				icon='fa-solid fa-diagram-project'
+				title={t('Projects.Title')}
+				subtitle=''
+				description={t('Projects.Description')}
+			/>
+		</div>
+
+		<!-- Projects Grid -->
+		<div class='animate-slide-up'>
+			<Project />
+		</div>
+	</section>
+
+	<!-- Call to Action -->
+	<section class='py-12 text-center animate-fade-in'>
+		<div
+			class='relative overflow-hidden p-8 lg:p-12 rounded-3xl bg-linear-to-br from-sky-50 to-blue-50 dark:from-sky-950/30 dark:to-blue-950/30 border border-sky-200/50 dark:border-sky-700/30 shadow-xl'>
+			<div class='absolute top-0 right-0 w-64 h-64 bg-sky-400/10 dark:bg-sky-400/5 rounded-full blur-3xl'></div>
+			<div class='absolute bottom-0 left-0 w-64 h-64 bg-blue-400/10 dark:bg-blue-400/5 rounded-full blur-3xl'>
+			</div>
+
+			<div class='relative space-y-4'>
+				<h3 class='text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white'>
+					{t('Projects.CTA.Title')}
+				</h3>
+				<p class='text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
+					{t('Projects.CTA.Description')}
+				</p>
+				<div class='flex flex-wrap gap-4 justify-center pt-4'>
+					<a
+						href={`/${t('Nav.Contact')}`}
+						class='inline-flex items-center gap-2 px-8 py-4 text-base font-bold text-white bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 transition-all duration-300 transform hover:scale-105 active:scale-95'>
+						<i class='fa-solid fa-paper-plane'></i>
+						<span>{t('Projects.CTA.Contact')}</span>
+					</a>
+					<a
+						href='https://github.com/AnderCMD'
+						target='_blank'
+						rel='noopener noreferrer'
+						class='inline-flex items-center gap-2 px-8 py-4 text-base font-bold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border-2 border-slate-200 dark:border-slate-700 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'>
+						<i class='fa-brands fa-github'></i>
+						<span>{t('Projects.CTA.ViewGitHub')}</span>
+					</a>
+				</div>
+			</div>
+		</div>
 	</section>
 </Layout>

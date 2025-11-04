@@ -2,10 +2,14 @@
 // Tipos de datos de los props
 interface Props {
 	title: string;
+	description?: string;
+	image?: string;
+	type?: 'website' | 'article' | 'profile';
+	keywords?: string;
 }
 
 // Props
-const { title } = Astro.props;
+const { title, description, image = '/Icons/Icono-Negro.ico', type = 'website', keywords } = Astro.props;
 
 // Componentes
 import SquareLines from '@/Components/Common/Square/SquareLines.astro';
@@ -24,39 +28,194 @@ const { currentLocale, t } = useLocale(Astro);
 
 // Transiciones
 import { ClientRouter } from 'astro:transitions';
+
+// SEO defaults
+const seoDescription = description || t('About.Description');
+const siteUrl = Astro.url.origin;
+const canonicalURL = new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = new URL(image, siteUrl);
+const currentYear = new Date().getFullYear();
+
+// Keywords por defecto
+const defaultKeywords =
+	'Ander González, AnderCMD, Full Stack Developer, Software Engineer, React, Astro, TypeScript, Web Development, Desarrollador Web, Ingeniero en Software';
+const seoKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
+
+// Schema.org JSON-LD
+const schemaOrg = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Ander González González',
+	alternateName: 'AnderCMD',
+	jobTitle: 'Full Stack Software Engineer',
+	description: seoDescription,
+	url: siteUrl,
+	image: ogImageURL.href,
+	sameAs: ['https://github.com/AnderCMD', 'https://www.linkedin.com/in/andercmd/'],
+	knowsAbout: [
+		'Software Engineering',
+		'Web Development',
+		'React',
+		'Astro',
+		'TypeScript',
+		'JavaScript',
+		'Full Stack Development',
+	],
+};
 ---
 
-<html lang={currentLocale}>
+<!doctype html>
+<html lang={currentLocale} class='scroll-smooth'>
 	<head>
-		<!-- Metas -->
+		<!-- Essential Meta Tags -->
 		<meta charset='UTF-8' />
-		<meta name='description' content={t('About.Description')} />
-		<meta name='viewport' content='width=device-width' />
-		<meta name='generator' content={Astro.generator} />
-		<meta name='robots' content='index, follow' />
-		<link rel='canonical' href={Astro.url} />
+		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 
-		<!-- Open Graph -->
-		<meta property='og:title' content={title} />
-		<meta property='og:description' content={t('About.Description')} />
-		<meta property='og:url' content={Astro.url} />
-		<meta property='og:type' content='website' />
-
-		<!-- title & Icono -->
+		<!-- SEO Meta Tags -->
 		<title>{title}</title>
-		<link rel='icon' type='image/svg+xml' href='/Icons/Icono-Negro.ico' />
+		<meta name='description' content={seoDescription} />
+		<meta name='keywords' content={seoKeywords} />
+		<meta name='author' content='Ander González González (AnderCMD)' />
+		<meta name='generator' content={Astro.generator} />
+		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+		<link rel='canonical' href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property='og:type' content={type} />
+		<meta property='og:url' content={canonicalURL} />
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={seoDescription} />
+		<meta property='og:image' content={ogImageURL} />
+		<meta property='og:image:width' content='1200' />
+		<meta property='og:image:height' content='630' />
+		<meta property='og:site_name' content='AnderCMD Portfolio' />
+		<meta property='og:locale' content={currentLocale === 'es' ? 'es_MX' : 'en_US'} />
+
+		<!-- Twitter Card -->
+		<meta name='twitter:card' content='summary_large_image' />
+		<meta name='twitter:url' content={canonicalURL} />
+		<meta name='twitter:title' content={title} />
+		<meta name='twitter:description' content={seoDescription} />
+		<meta name='twitter:image' content={ogImageURL} />
+		<meta name='twitter:creator' content='@AnderCMD' />
+
+		<!-- Favicon & Icons -->
+		<link rel='icon' type='image/x-icon' href='/Icons/Icono-Negro.ico' />
+		<link rel='apple-touch-icon' sizes='180x180' href='/Icons/Icono-Negro.ico' />
+		<link rel='manifest' href='/manifest.json' />
+
+		<!-- Preconnect for Performance -->
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='dns-prefetch' href='https://fonts.googleapis.com' />
+
+		<!-- Schema.org JSON-LD -->
+		<script type='application/ld+json' set:html={JSON.stringify(schemaOrg)} />
+
+		<!-- Theme Color -->
+		<meta name='theme-color' content='#0ea5e9' media='(prefers-color-scheme: light)' />
+		<meta name='theme-color' content='#020618' media='(prefers-color-scheme: dark)' />
+
+		<!-- Additional SEO -->
+		<meta name='format-detection' content='telephone=no' />
+		<meta name='copyright' content={`© ${currentYear} Ander González González. All rights reserved.`} />
+		<meta name='language' content={currentLocale} />
+		<meta name='revisit-after' content='7 days' />
 	</head>
 
 	<body
-		class='bg-[radial-gradient(125%_125%_at_50%_10%,_#fff_60%,_#e2e8f0_100%)] dark:bg-[radial-gradient(125%_125%_at_50%_10%,_#020618_60%,_#052f4a_100%)] bg-fixed bg-cover bg-no-repeat text-slate-950 dark:text-slate-100'>
-		<div class='flex flex-col justify-between h-screen'>
+		class='relative overflow-x-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 text-slate-900 dark:text-slate-100 transition-colors duration-300'>
+		<!-- Background Pattern -->
+		<div class='fixed inset-0 -z-10 overflow-hidden'>
+			<div
+				class='absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.15)_0%,transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(14,165,233,0.1)_0%,transparent_50%)]'>
+			</div>
+			<div
+				class='absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.15)_0%,transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.1)_0%,transparent_50%)]'>
+			</div>
+			<div
+				class='absolute inset-0 opacity-40 dark:opacity-20'
+				style='background-image: url("data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%2364748b%27 fill-opacity=%270.05%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");'>
+			</div>
+		</div>
+
+		<div class='relative flex flex-col min-h-screen'>
 			<SquareLines />
 			<Navbar />
-			<div class='flex flex-col p-8 mx-60 max-lg:mx-40 max-md:mx-20 max-sm:mx-4 gap-10'>
+			<main class='flex-1 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 py-8 lg:py-12'>
 				<ClientRouter />
-				<slot />
-			</div>
+				<div class='animate-fade-in'>
+					<slot />
+				</div>
+			</main>
 			<Footer />
 		</div>
+
+		<!-- Scroll to Top Button with Progress -->
+		<button id='scroll-to-top' class='fixed bottom-8 right-8 z-50 hidden group' aria-label='Scroll to top'>
+			<div class='relative'>
+				<!-- Progress Ring -->
+				<svg class='w-14 h-14 transform -rotate-90' viewBox='0 0 56 56'>
+					<circle
+						cx='28'
+						cy='28'
+						r='24'
+						fill='none'
+						stroke='currentColor'
+						stroke-width='2'
+						class='text-slate-200 dark:text-slate-700'></circle>
+					<circle
+						id='scroll-progress'
+						cx='28'
+						cy='28'
+						r='24'
+						fill='none'
+						stroke='currentColor'
+						stroke-width='2'
+						stroke-dasharray='150.8'
+						stroke-dashoffset='150.8'
+						stroke-linecap='round'
+						class='text-sky-500 dark:text-sky-400 transition-all duration-200'></circle>
+				</svg>
+				<!-- Icon Button -->
+				<div class='absolute inset-0 flex items-center justify-center'>
+					<div
+						class='w-10 h-10 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-sky-500/50 transition-all duration-300 group-hover:scale-110'>
+						<i class='fa-solid fa-arrow-up text-white text-sm'></i>
+					</div>
+				</div>
+			</div>
+		</button>
+
+		<script>
+			// Scroll to top functionality with progress
+			const scrollBtn = document.getElementById('scroll-to-top');
+			const progressCircle = document.getElementById('scroll-progress');
+			const circumference = 150.8;
+
+			function updateScrollProgress() {
+				const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+				const scrollProgress = (window.scrollY / scrollTotal) * 100;
+				const offset = circumference - (scrollProgress / 100) * circumference;
+
+				if (progressCircle) {
+					progressCircle.style.strokeDashoffset = offset.toString();
+				}
+
+				if (window.scrollY > 300) {
+					scrollBtn?.classList.remove('hidden');
+					scrollBtn?.classList.add('animate-fade-in');
+				} else {
+					scrollBtn?.classList.add('hidden');
+				}
+			}
+
+			window.addEventListener('scroll', updateScrollProgress);
+			window.addEventListener('resize', updateScrollProgress);
+
+			scrollBtn?.addEventListener('click', () => {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
+		</script>
 	</body>
 </html>

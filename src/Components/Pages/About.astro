@@ -15,27 +15,65 @@ import { useLocale } from '@/Hooks/useLocale';
 const { t } = useLocale(Astro);
 ---
 
-<Layout title={`AnderCMD | ${t('Nav.About')}`}>
-	<section class='flex items-center max-xl:flex-col gap-20 max-xl:gap-8'>
-		<img id='IconoLogoTheme' alt='AnderCMD Logo' class='w-3/12 drop-shadow-xl max-lg:w-40 max-lg:h-40' />
-		<Text icon='' title={t('About.Title')} subtitle={t('About.Subtitle')} description={t('About.Description')} />
+<Layout
+	title={`AnderCMD | ${t('Nav.About')}`}
+	description={t('About.Description')}
+	type='profile'
+	keywords='Ander González, Full Stack Developer, Software Engineer, About Me, Perfil Profesional'>
+	<!-- Hero Section - About Me -->
+	<section class='flex items-center justify-center max-xl:flex-col gap-12 lg:gap-20 py-12 lg:py-20 min-h-[50vh]'>
+		<div class='relative group animate-float'>
+			<div
+				class='absolute inset-0 bg-linear-to-r from-emerald-400 to-teal-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500'>
+			</div>
+			<img
+				id='IconoLogoTheme'
+				alt='AnderCMD Logo'
+				class='relative w-56 h-56 lg:w-72 lg:h-72 drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-full'
+			/>
+		</div>
+		<div class='flex-1 max-w-3xl'>
+			<Text
+				icon=''
+				title={t('About.Title')}
+				subtitle={t('About.Subtitle')}
+				description={t('About.Description')}
+			/>
+		</div>
 	</section>
-	<section>
+
+	<!-- Social Links -->
+	<section class='py-8 animate-slide-up'>
 		<Social />
 	</section>
+
 	<Divisor />
-	<section>
-		<Text2 icon='fa-solid fa-laptop-code' title={t('Tech.Title')} subtitle='' description={t('Tech.Description')} />
+
+	<!-- Tech Stack Section -->
+	<section class='py-12 space-y-8 animate-fade-in'>
+		<div class='text-center space-y-4'>
+			<Text2
+				icon='fa-solid fa-laptop-code'
+				title={t('Tech.Title')}
+				subtitle=''
+				description={t('Tech.Description')}
+			/>
+		</div>
 		<Tech />
 	</section>
+
 	<Divisor />
-	<section>
-		<Text2
-			icon='fa-solid fa-briefcase'
-			title={t('WorkExperience.Title')}
-			subtitle=''
-			description={t('WorkExperience.Description')}
-		/>
+
+	<!-- Work Experience Section -->
+	<section class='py-12 space-y-8 animate-fade-in'>
+		<div class='text-center space-y-4'>
+			<Text2
+				icon='fa-solid fa-briefcase'
+				title={t('WorkExperience.Title')}
+				subtitle=''
+				description={t('WorkExperience.Description')}
+			/>
+		</div>
 		<WorkExperience />
 	</section>
 </Layout>

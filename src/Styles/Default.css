@@ -1,261 +1,534 @@
 /* Fuentes SF Pro Display */
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Black.otf') format('opentype');
-    font-weight: 900;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Black.otf') format('opentype');
+	font-weight: 900;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-BlackItalic.otf') format('opentype');
-    font-weight: 900;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-BlackItalic.otf') format('opentype');
+	font-weight: 900;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-BoldItalic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-BoldItalic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Heavy.otf') format('opentype');
-    font-weight: 800;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Heavy.otf') format('opentype');
+	font-weight: 800;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-HeavyItalic.otf') format('opentype');
-    font-weight: 800;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-HeavyItalic.otf') format('opentype');
+	font-weight: 800;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-LightItalic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-LightItalic.otf') format('opentype');
+	font-weight: 300;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-MediumItalic.otf') format('opentype');
-    font-weight: 500;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-MediumItalic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-RegularItalic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-RegularItalic.otf') format('opentype');
+	font-weight: 400;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Semibold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Semibold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
-    font-weight: 600;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
+	font-weight: 600;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-ThinItalic.otf') format('opentype');
-    font-weight: 100;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-ThinItalic.otf') format('opentype');
+	font-weight: 100;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-Ultralight.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-Ultralight.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Display';
-    src: url('../Assets/Fonts/SF-Pro-Display-UltralightItalic.otf') format('opentype');
-    font-weight: 200;
-    font-style: italic;
+	font-family: 'SF Pro Display';
+	src: url('../Assets/Fonts/SF-Pro-Display-UltralightItalic.otf') format('opentype');
+	font-weight: 200;
+	font-style: italic;
 }
 
 /* Fuentes SF Pro Text */
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Black.otf') format('opentype');
-    font-weight: 900;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Black.otf') format('opentype');
+	font-weight: 900;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-BlackItalic.otf') format('opentype');
-    font-weight: 900;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-BlackItalic.otf') format('opentype');
+	font-weight: 900;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Bold.otf') format('opentype');
-    font-weight: 700;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Bold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-BoldItalic.otf') format('opentype');
-    font-weight: 700;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-BoldItalic.otf') format('opentype');
+	font-weight: 700;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Heavy.otf') format('opentype');
-    font-weight: 800;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Heavy.otf') format('opentype');
+	font-weight: 800;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-HeavyItalic.otf') format('opentype');
-    font-weight: 800;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-HeavyItalic.otf') format('opentype');
+	font-weight: 800;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Light.otf') format('opentype');
-    font-weight: 300;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Light.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-LightItalic.otf') format('opentype');
-    font-weight: 300;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-LightItalic.otf') format('opentype');
+	font-weight: 300;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Medium.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-MediumItalic.otf') format('opentype');
-    font-weight: 500;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-MediumItalic.otf') format('opentype');
+	font-weight: 500;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Regular.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Regular.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-RegularItalic.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-RegularItalic.otf') format('opentype');
+	font-weight: 400;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Semibold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Semibold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-SemiboldItalic.otf') format('opentype');
-    font-weight: 600;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-SemiboldItalic.otf') format('opentype');
+	font-weight: 600;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Thin.otf') format('opentype');
-    font-weight: 100;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Thin.otf') format('opentype');
+	font-weight: 100;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-ThinItalic.otf') format('opentype');
-    font-weight: 100;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-ThinItalic.otf') format('opentype');
+	font-weight: 100;
+	font-style: italic;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-Ultralight.otf') format('opentype');
-    font-weight: 200;
-    font-style: normal;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-Ultralight.otf') format('opentype');
+	font-weight: 200;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'SF Pro Text';
-    src: url('../Assets/Fonts/SF-Pro-Text-UltralightItalic.otf') format('opentype');
-    font-weight: 200;
-    font-style: italic;
+	font-family: 'SF Pro Text';
+	src: url('../Assets/Fonts/SF-Pro-Text-UltralightItalic.otf') format('opentype');
+	font-weight: 200;
+	font-style: italic;
 }
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Variables CSS personalizadas */
+:root {
+	--color-primary: #0ea5e9;
+	--color-secondary: #6366f1;
+	--shadow-glow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+/* Estilos base */
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'SF Pro Display', sans-serif;
+	font-family: 'SF Pro Display', 'SF Pro Text', system-ui, -apple-system, sans-serif;
+	font-feature-settings: 'kern' 1, 'liga' 1;
+	text-rendering: optimizeLegibility;
+}
+
+/* Animaciones de scroll reveal */
+@keyframes reveal {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.reveal {
+	animation: reveal 0.6s ease-out;
+}
+
+/* Efectos de glassmorphism */
+.glass {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+	background: rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradientes de texto */
+.gradient-text {
+	background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Botones modernos */
+.btn-modern {
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.btn-modern::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+	transition: left 0.5s ease;
+}
+
+.btn-modern:hover::before {
+	left: 100%;
+}
+
+/* Cards con efectos hover */
+.card-modern {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-modern:hover {
+	transform: translateY(-8px);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-modern:hover {
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+	background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #0ea5e9, #6366f1);
+	border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg, #0284c7, #4f46e5);
+}
+
+/* Selection personalizada */
+::selection {
+	background-color: rgba(14, 165, 233, 0.3);
+	color: inherit;
+}
+
+.dark ::selection {
+	background-color: rgba(14, 165, 233, 0.4);
+}
+
+/* Links con animación */
+a {
+	transition: all 0.2s ease;
+}
+
+/* Focus visible para accesibilidad */
+*:focus-visible {
+	outline: 2px solid #0ea5e9;
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Loading skeleton */
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+.skeleton {
+	animation: shimmer 2s infinite;
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 1000px 100%;
+}
+
+.dark .skeleton {
+	background: linear-gradient(90deg, #2d3748 25%, #1a202c 50%, #2d3748 75%);
+}
+
+/* Parallax effect */
+.parallax {
+	transform: translateZ(0);
+	will-change: transform;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover lift effect */
+.hover-lift {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Text gradient animation */
+.text-shimmer {
+	background: linear-gradient(90deg, #64748b 0%, #0ea5e9 25%, #6366f1 50%, #0ea5e9 75%, #64748b 100%);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 0% center;
+	}
+	100% {
+		background-position: 200% center;
+	}
+}
+
+/* Stagger animation for lists */
+.stagger-item {
+	opacity: 0;
+	animation: fadeInUp 0.5s ease forwards;
+}
+
+.stagger-item:nth-child(1) {
+	animation-delay: 0.1s;
+}
+.stagger-item:nth-child(2) {
+	animation-delay: 0.2s;
+}
+.stagger-item:nth-child(3) {
+	animation-delay: 0.3s;
+}
+.stagger-item:nth-child(4) {
+	animation-delay: 0.4s;
+}
+.stagger-item:nth-child(5) {
+	animation-delay: 0.5s;
+}
+.stagger-item:nth-child(6) {
+	animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Glow pulse effect */
+.glow-pulse {
+	animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+	0%,
+	100% {
+		box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+	}
+	50% {
+		box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
+	}
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.parallax {
+		transform: none !important;
+	}
 }
