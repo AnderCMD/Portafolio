@@ -13,7 +13,7 @@
 ## Architecture Highlights
 
 -   Layout expects a `title` prop and derives meta descriptions from i18n (`t('About.Description')`); always supply localized titles when composing pages.
--   `src/Hooks/useLocale.js` orchestrates language detection and exposes `t`, `currentLocale`, and `getRelativeLocaleUrl`. Call it from Astro components to read translations and generate locale-aware links.
+-   `src/Hooks/useLocale.ts` orchestrates language detection and exposes `t`, `currentLocale`, and `getRelativeLocaleUrl`. Call it from Astro components to read translations and generate locale-aware links.
 -   Navigation (`Navbar.astro`) and other components assume specific element IDs (`LogoTheme`, `IconoLogoTheme`, etc.) so the dark-mode switch can swap assets; reuse those IDs if you move the elements.
 
 ## i18n & Routing

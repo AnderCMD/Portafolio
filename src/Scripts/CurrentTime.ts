@@ -1,9 +1,4 @@
-let currentYear = new Date().getFullYear();
-export let CurrentYear = '';
-
-if (currentYear > 2024) {
-    CurrentYear = new Date().getFullYear().toString();
-    CurrentYear = `${CurrentYear}`;
-} else {
-    CurrentYear = '';
-}
+export const getCurrentYear = (): string => {
+    const currentYear = new Date().getFullYear();
+    return currentYear > 2024 ? currentYear.toString() : '';
+};

@@ -4,7 +4,7 @@ import { useLocale } from '@/Hooks/useLocale';
 const { t } = useLocale(Astro);
 
 // Scripts
-import { CurrentYear } from '@/Scripts/CurrentTime';
+import { getCurrentYear } from '@/Scripts/CurrentTime';
 
 const footerLinks = [
 	{
@@ -57,7 +57,7 @@ const footerLinks = [
 						</a>
 					</p>
 					<p class='text-sm text-slate-600 dark:text-slate-400'>
-						{t('Footer.Copyright')} 2024 - {CurrentYear}
+						{t('Footer.Copyright')} 2024 - {getCurrentYear()}
 					</p>
 				</div>
 			</div>
