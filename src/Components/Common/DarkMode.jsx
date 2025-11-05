@@ -33,14 +33,15 @@ export default function DarkMode() {
 			const logos = document.querySelectorAll('[data-logo-theme]');
 			logos.forEach((logo) => {
 				const type = logo.getAttribute('data-logo-theme');
+				// Usar rutas optimizadas de Astro Assets
 				const path =
 					type === 'logo'
 						? isDark
-							? '/Logos/Logo-Blanco.webp'
-							: '/Logos/Logo-Negro.webp'
+							? '/src/Assets/Images/Logos/Logo-Blanco.webp'
+							: '/src/Assets/Images/Logos/Logo-Negro.webp'
 						: isDark
-						? '/Logos/Icono-Blanco.webp'
-						: '/Logos/Icono-Negro.webp';
+						? '/src/Assets/Images/Logos/Icono-Blanco.webp'
+						: '/src/Assets/Images/Logos/Icono-Negro.webp';
 
 				if (logo.getAttribute('src') !== path) {
 					logo.setAttribute('src', path);

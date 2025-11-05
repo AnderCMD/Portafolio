@@ -68,10 +68,6 @@ const schemaOrg = {
 		<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 
-		<!-- Preload Critical Assets - Dark Mode Logos (Default) -->
-		<link rel='preload' href='/Logos/Logo-Blanco.webp' as='image' type='image/webp' fetchpriority='high' />
-		<link rel='preload' href='/Logos/Icono-Blanco.webp' as='image' type='image/webp' fetchpriority='high' />
-
 		<!-- Font Awesome - Carga asíncrona para no bloquear renderizado -->
 		<link rel='preload' href='/FontAwesome/css/all.min.css' as='style' />
 		<link
@@ -95,15 +91,6 @@ const schemaOrg = {
 					document.documentElement.classList.remove('dark');
 				}
 			})();
-
-			// Función global para obtener la ruta correcta del logo
-			window.getLogoPath = function (type, isDark) {
-				if (type === 'logo') {
-					return isDark ? '/Logos/Logo-Blanco.webp' : '/Logos/Logo-Negro.webp';
-				} else {
-					return isDark ? '/Logos/Icono-Blanco.webp' : '/Logos/Icono-Negro.webp';
-				}
-			};
 
 			// Función global para actualizar todos los logos (optimizada)
 			window.updateAllLogos = function () {
@@ -250,42 +237,42 @@ const schemaOrg = {
 				<!-- Orb 1 - Neutral Light / Sky Dark -->
 				<div
 					class='absolute top-0 left-0 w-96 h-96 bg-slate-200/40 dark:bg-sky-500/20 rounded-full blur-3xl animate-float'
-					style='animation-delay: 0s; animation-duration: 20s;'>
+					style='animation-duration: 20s;'>
 				</div>
 				<!-- Orb 2 - Neutral Light / Blue Dark -->
 				<div
 					class='absolute top-1/4 right-0 w-120 h-120 bg-slate-300/35 dark:bg-blue-600/15 rounded-full blur-3xl animate-float'
-					style='animation-delay: 2s; animation-duration: 25s;'>
+					style='animation-duration: 25s;'>
 				</div>
 				<!-- Orb 3 - Neutral Light / Indigo Dark -->
 				<div
 					class='absolute bottom-0 left-1/4 w-md h-112 bg-gray-200/30 dark:bg-indigo-600/15 rounded-full blur-3xl animate-float'
-					style='animation-delay: 4s; animation-duration: 22s;'>
+					style='animation-duration: 22s;'>
 				</div>
 				<!-- Orb 4 - Neutral Light / Purple Dark -->
 				<div
 					class='absolute bottom-1/4 right-1/4 w-80 h-80 bg-slate-300/30 dark:bg-purple-600/10 rounded-full blur-3xl animate-float'
-					style='animation-delay: 6s; animation-duration: 18s;'>
+					style='animation-duration: 18s;'>
 				</div>
 				<!-- Orb 5 - Neutral Light / Cyan Dark -->
 				<div
 					class='absolute top-1/2 left-1/2 w-96 h-96 bg-gray-300/35 dark:bg-cyan-500/15 rounded-full blur-3xl animate-float'
-					style='animation-delay: 3s; animation-duration: 23s; transform: translate(-50%, -50%);'>
+					style='animation-duration: 23s; transform: translate(-50%, -50%);'>
 				</div>
 				<!-- Orb 6 - Neutral Light / Teal Dark -->
 				<div
 					class='absolute top-1/3 left-1/3 w-72 h-72 bg-slate-200/30 dark:bg-teal-500/10 rounded-full blur-3xl animate-float'
-					style='animation-delay: 5s; animation-duration: 21s;'>
+					style='animation-duration: 21s;'>
 				</div>
 				<!-- Orb 7 - Neutral Light / Violet Dark -->
 				<div
 					class='absolute bottom-1/3 right-1/3 w-80 h-80 bg-gray-200/30 dark:bg-violet-600/12 rounded-full blur-3xl animate-float'
-					style='animation-delay: 7s; animation-duration: 24s;'>
+					style='animation-duration: 24s;'>
 				</div>
 				<!-- Orb 8 - Neutral Light / Pink Dark -->
 				<div
 					class='absolute top-2/3 left-1/4 w-64 h-64 bg-slate-300/25 dark:bg-pink-500/10 rounded-full blur-3xl animate-float'
-					style='animation-delay: 8s; animation-duration: 26s;'>
+					style='animation-duration: 26s;'>
 				</div>
 			</div>
 
@@ -314,86 +301,86 @@ const schemaOrg = {
 				</div>
 				<div
 					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-sky-300/40 rounded-full'
-					style='top: 15%; left: 85%; animation: float-particle 17s infinite ease-in-out 1s;'>
+					style='top: 15%; left: 85%; animation: float-particle 17s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-slate-400/20 dark:bg-sky-400/35 rounded-full'
-					style='top: 50%; left: 5%; animation: float-particle 19s infinite ease-in-out 7s;'>
+					style='top: 50%; left: 5%; animation: float-particle 19s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-gray-400/25 dark:bg-blue-400/30 rounded-full'
-					style='top: 20%; left: 80%; animation: float-particle 18s infinite ease-in-out 2s;'>
+					style='top: 20%; left: 80%; animation: float-particle 18s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-2 h-2 bg-slate-400/20 dark:bg-blue-300/35 rounded-full'
-					style='top: 75%; left: 15%; animation: float-particle 21s infinite ease-in-out 9s;'>
+					style='top: 75%; left: 15%; animation: float-particle 21s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1 h-1 bg-gray-400/25 dark:bg-blue-400/40 rounded-full'
-					style='top: 45%; left: 92%; animation: float-particle 16s infinite ease-in-out 5s;'>
+					style='top: 45%; left: 92%; animation: float-particle 16s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-indigo-400/30 rounded-full'
-					style='top: 60%; left: 20%; animation: float-particle 20s infinite ease-in-out 4s;'>
+					style='top: 60%; left: 20%; animation: float-particle 20s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-gray-400/20 dark:bg-indigo-300/35 rounded-full'
-					style='top: 35%; left: 45%; animation: float-particle 22s infinite ease-in-out 6s;'>
+					style='top: 35%; left: 45%; animation: float-particle 22s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-2 h-2 bg-slate-400/25 dark:bg-indigo-400/40 rounded-full'
-					style='top: 85%; left: 88%; animation: float-particle 18s infinite ease-in-out 11s;'>
+					style='top: 85%; left: 88%; animation: float-particle 18s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-purple-400/30 rounded-full'
-					style='top: 80%; left: 70%; animation: float-particle 16s infinite ease-in-out 6s;'>
+					style='top: 80%; left: 70%; animation: float-particle 16s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-purple-300/35 rounded-full'
-					style='top: 25%; left: 55%; animation: float-particle 23s infinite ease-in-out 8s;'>
+					style='top: 25%; left: 55%; animation: float-particle 23s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-gray-400/25 dark:bg-purple-400/40 rounded-full'
-					style='top: 65%; left: 35%; animation: float-particle 17s infinite ease-in-out 12s;'>
+					style='top: 65%; left: 35%; animation: float-particle 17s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1 h-1 bg-slate-400/20 dark:bg-cyan-400/30 rounded-full'
-					style='top: 40%; left: 60%; animation: float-particle 22s infinite ease-in-out 3s;'>
+					style='top: 40%; left: 60%; animation: float-particle 22s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-2 h-2 bg-gray-400/25 dark:bg-cyan-300/35 rounded-full'
-					style='top: 90%; left: 50%; animation: float-particle 19s infinite ease-in-out 10s;'>
+					style='top: 90%; left: 50%; animation: float-particle 19s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-slate-400/25 dark:bg-teal-400/30 rounded-full'
-					style='top: 30%; left: 25%; animation: float-particle 20s infinite ease-in-out 4s;'>
+					style='top: 30%; left: 25%; animation: float-particle 20s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1 h-1 bg-gray-400/20 dark:bg-teal-300/35 rounded-full'
-					style='top: 55%; left: 75%; animation: float-particle 24s infinite ease-in-out 13s;'>
+					style='top: 55%; left: 75%; animation: float-particle 24s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-slate-400/25 dark:bg-violet-400/30 rounded-full'
-					style='top: 70%; left: 40%; animation: float-particle 19s infinite ease-in-out 5s;'>
+					style='top: 70%; left: 40%; animation: float-particle 19s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-2 h-2 bg-gray-400/20 dark:bg-violet-300/35 rounded-full'
-					style='top: 12%; left: 65%; animation: float-particle 21s infinite ease-in-out 14s;'>
+					style='top: 12%; left: 65%; animation: float-particle 21s infinite ease-in-out;'>
 				</div>
 
 				<div
 					class='particle absolute w-1 h-1 bg-slate-400/25 dark:bg-pink-400/30 rounded-full'
-					style='top: 48%; left: 82%; animation: float-particle 18s infinite ease-in-out 7s;'>
+					style='top: 48%; left: 82%; animation: float-particle 18s infinite ease-in-out;'>
 				</div>
 				<div
 					class='particle absolute w-1.5 h-1.5 bg-gray-400/20 dark:bg-pink-300/35 rounded-full'
-					style='top: 95%; left: 30%; animation: float-particle 20s infinite ease-in-out 15s;'>
+					style='top: 95%; left: 30%; animation: float-particle 20s infinite ease-in-out;'>
 				</div>
 			</div>
 

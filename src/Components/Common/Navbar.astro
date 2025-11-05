@@ -6,6 +6,7 @@ import DivisorNav from '@/Components/Common/DivisorNav.astro';
 import { Image } from 'astro:assets';
 import USImagen from '@/Assets/Images/Brands/Estados-Unidos.webp';
 import MXImagen from '@/Assets/Images/Brands/Mexico.webp';
+import LogoBlanco from '@/Assets/Images/Logos/Logo-Blanco.webp';
 
 import { useLocale } from '@/Hooks/useLocale';
 const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
@@ -17,14 +18,14 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 		<a
 			href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
 			class='group flex items-center space-x-2 transition-transform hover:scale-105'>
-			<img
+			<Image
 				data-logo-theme='logo'
 				id='LogoTheme'
-				src='/Logos/Logo-Blanco.webp'
+				src={LogoBlanco}
 				class='h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl will-change-auto'
 				alt='AnderCMD Logo'
-				width='150'
-				height='36'
+				width={150}
+				height={36}
 				loading='eager'
 				decoding='sync'
 				fetchpriority='high'

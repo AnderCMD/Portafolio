@@ -14,6 +14,10 @@ import Tech from '@/Components/Common/Tech.astro';
 // Lenguaje
 import { useLocale } from '@/Hooks/useLocale';
 const { t } = useLocale(Astro);
+
+// Logo optimizado
+import { Image } from 'astro:assets';
+import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
 ---
 
 <Layout
@@ -26,11 +30,14 @@ const { t } = useLocale(Astro);
 			<div
 				class='absolute inset-0 bg-linear-to-r from-sky-400 to-blue-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500'>
 			</div>
-			<img
+			<Image
 				data-logo-theme='icono'
 				id='IconoLogoTheme'
+				src={IconoBlanco}
 				alt='AnderCMD Logo'
 				class='relative w-64 h-64 lg:w-80 lg:h-80 drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-full will-change-auto'
+				width={320}
+				height={320}
 				loading='eager'
 				decoding='async'
 				fetchpriority='high'

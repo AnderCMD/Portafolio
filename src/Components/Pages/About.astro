@@ -13,6 +13,10 @@ import Social from '@/Components/Common/Social.astro';
 // Lenguaje
 import { useLocale } from '@/Hooks/useLocale';
 const { t } = useLocale(Astro);
+
+// Logo optimizado
+import { Image } from 'astro:assets';
+import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
 ---
 
 <Layout
@@ -26,11 +30,14 @@ const { t } = useLocale(Astro);
 			<div
 				class='absolute inset-0 bg-linear-to-r from-emerald-400 to-teal-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500'>
 			</div>
-			<img
+			<Image
 				data-logo-theme='icono'
 				id='IconoLogoTheme'
+				src={IconoBlanco}
 				alt='AnderCMD Logo'
 				class='relative w-56 h-56 lg:w-72 lg:h-72 drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-500 rounded-full will-change-auto'
+				width={288}
+				height={288}
 				loading='eager'
 				decoding='async'
 				fetchpriority='high'

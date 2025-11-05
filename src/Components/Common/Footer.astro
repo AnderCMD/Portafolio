@@ -6,6 +6,10 @@ const { t } = useLocale(Astro);
 // Scripts
 import { getCurrentYear } from '@/Scripts/CurrentTime';
 
+// Logo optimizado
+import { Image } from 'astro:assets';
+import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
+
 const footerLinks = [
 	{
 		href: 'https://www.linkedin.com/in/andercmd/',
@@ -41,14 +45,14 @@ const footerLinks = [
 					<div
 						class='absolute inset-0 bg-sky-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
 					</div>
-					<img
+					<Image
 						data-logo-theme='icono'
 						alt='AnderCMD Logo'
 						id='IconoLogoThemeFooter'
-						src='/Logos/Icono-Blanco.webp'
+						src={IconoBlanco}
 						class='relative w-12 h-12 drop-shadow-lg transition-transform duration-300 group-hover:scale-110 rounded-full will-change-auto'
-						width='48'
-						height='48'
+						width={48}
+						height={48}
 						loading='lazy'
 						decoding='async'
 					/>
