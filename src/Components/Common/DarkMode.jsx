@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import '@/Styles/DarkMode.css';
 
 // Función fuera del componente para evitar recreación
@@ -12,40 +12,8 @@ const getInitialTheme = () => {
 	return 'dark';
 };
 
-// Cache de elementos DOM para mejor performance
-let cachedElements = null;
-
-const getElements = () => {
-	if (cachedElements) return cachedElements;
-
-	cachedElements = {
-		root: document.documentElement,
-		logoTheme: document.getElementById('LogoTheme'),
-		iconoLogoTheme: document.getElementById('IconoLogoTheme'),
-		iconoLogoThemeFooter: document.getElementById('IconoLogoThemeFooter'),
-		toggleDarkMode: document.getElementById('ToggleDarkMode'),
-	};
-
-	return cachedElements;
-};
-
 export default function DarkMode() {
 	const [theme, setTheme] = useState(getInitialTheme);
-
-	// Memoizar rutas de imágenes
-	const imagePaths = useMemo(
-		() => ({
-			dark: {
-				logo: '/Logos/Logo-Blanco.webp',
-				icono: '/Logos/Icono-Blanco.webp',
-			},
-			light: {
-				logo: '/Logos/Logo-Negro.webp',
-				icono: '/Logos/Icono-Negro.webp',
-			},
-		}),
-		[]
-	);
 
 	useEffect(() => {
 		const isDark = theme === 'dark';
@@ -61,10 +29,23 @@ export default function DarkMode() {
 				toggleDarkMode.checked = isDark;
 			}
 
-			// Usar la función global para actualizar logos si está disponible
-			if (window.updateAllLogos) {
-				window.updateAllLogos();
-			}
+			// Actualizar logos directamente
+			const logos = document.querySelectorAll('[data-logo-theme]');
+			logos.forEach((logo) => {
+				const type = logo.getAttribute('data-logo-theme');
+				const path =
+					type === 'logo'
+						? isDark
+							? '/Logos/Logo-Blanco.webp'
+							: '/Logos/Logo-Negro.webp'
+						: isDark
+						? '/Logos/Icono-Blanco.webp'
+						: '/Logos/Icono-Negro.webp';
+
+				if (logo.getAttribute('src') !== path) {
+					logo.setAttribute('src', path);
+				}
+			});
 		});
 
 		// Guardar tema en localStorage de forma asíncrona
@@ -73,9 +54,6 @@ export default function DarkMode() {
 		} catch (e) {
 			console.warn('Failed to save theme preference:', e);
 		}
-
-		// Disparar evento personalizado para que otros componentes se actualicen
-		window.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
 	}, [theme]);
 
 	const handleChangeTheme = useCallback(() => {

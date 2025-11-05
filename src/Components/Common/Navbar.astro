@@ -20,10 +20,13 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			<img
 				data-logo-theme='logo'
 				id='LogoTheme'
+				src='/Logos/Logo-Blanco.webp'
 				class='h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl will-change-auto'
 				alt='AnderCMD Logo'
+				width='150'
+				height='36'
 				loading='eager'
-				decoding='async'
+				decoding='sync'
 				fetchpriority='high'
 			/>
 		</a>
@@ -149,20 +152,8 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 </nav>
 
 <script>
-	// Extender el tipo Window
-	declare global {
-		interface Window {
-			updateAllLogos?: () => void;
-		}
-	}
-
 	// Ejecutar cuando la página carga
 	document.addEventListener('astro:page-load', () => {
-		// Usar la función global si está disponible
-		if (window.updateAllLogos) {
-			window.updateAllLogos();
-		}
-
 		// Optimización: Cache de elementos DOM
 		const mobileMenuButton = document.getElementById('mobile-menu-button');
 		const navbar = document.getElementById('navbar-default');
@@ -217,12 +208,5 @@ const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 			},
 			{ passive: true }
 		);
-	});
-
-	// Escuchar evento personalizado de cambio de tema
-	window.addEventListener('theme-changed', () => {
-		if (window.updateAllLogos) {
-			window.updateAllLogos();
-		}
 	});
 </script>
