@@ -1,6 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import '@/Styles/DarkMode.css';
 
+// Importar logos desde Astro Assets
+import LogoBlanco from '@/Assets/Images/Logos/Logo-Blanco.webp';
+import LogoNegro from '@/Assets/Images/Logos/Logo-Negro.webp';
+import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
+import IconoNegro from '@/Assets/Images/Logos/Icono-Negro.webp';
+
 // Función fuera del componente para evitar recreación
 const getInitialTheme = () => {
 	if (typeof window === 'undefined') return 'dark';
@@ -37,11 +43,11 @@ export default function DarkMode() {
 				const path =
 					type === 'logo'
 						? isDark
-							? '/src/Assets/Images/Logos/Logo-Blanco.webp'
-							: '/src/Assets/Images/Logos/Logo-Negro.webp'
+							? LogoBlanco.src
+							: LogoNegro.src
 						: isDark
-						? '/src/Assets/Images/Logos/Icono-Blanco.webp'
-						: '/src/Assets/Images/Logos/Icono-Negro.webp';
+						? IconoBlanco.src
+						: IconoNegro.src;
 
 				if (logo.getAttribute('src') !== path) {
 					logo.setAttribute('src', path);
