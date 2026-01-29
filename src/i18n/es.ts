@@ -105,9 +105,12 @@ export const es = {
 	'Projects.Title.13': 'SETI - Sistema de Punto de Venta',
 	'Projects.Description.13': 'Sistema de punto de venta (POS) para la empresa de Sistemas Empresariales en T.I.',
 
-	'Projects.Title.14': 'Resser Técnologias SA de CV (SaaS)',
+	'Projects.Title.14': 'Resser Técnologias SA de CV (SaaS & ERP)',
 	'Projects.Description.14':
-		'Plataforma de Resser Tecnologías SA de CV (SaaS) para la gestión administrativa interna y externa.',
+		'Plataforma de Resser Tecnologías SA de CV (SaaS & ERP) para la gestión administrativa y monitoreo externo.',
+	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SETI)',
+	'Projects.Description.15':
+		'Sitio web empresarial de Sistemas Empresariales en T.I. (SETI)',
 
 	'WorkExperience.Title': 'Experiencia Laboral',
 	'WorkExperience.Description':
