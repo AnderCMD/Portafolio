@@ -99,11 +99,13 @@ const schemaOrg = {
 
 				logos.forEach((logo) => {
 					const type = logo.getAttribute('data-logo-theme');
-					const correctPath = window.getLogoPath!(type, isDark);
+					if (window.getLogoPath) {
+						const correctPath = window.getLogoPath(type, isDark);
 
-					// Solo actualizar si es diferente
-					if (logo.getAttribute('src') !== correctPath) {
-						logo.setAttribute('src', correctPath);
+						// Solo actualizar si es diferente
+						if (logo.getAttribute('src') !== correctPath) {
+							logo.setAttribute('src', correctPath);
+						}
 					}
 				});
 			};

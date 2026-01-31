@@ -12,6 +12,14 @@ export function useTranslations(lang: keyof typeof ui) {
 	};
 }
 
+export function getRelativeLocaleUrl(locale: string, path: string): string {
+	const currentPath = path.startsWith('/') ? path : `/${path}`;
+	if (locale === defaultLang) {
+		return currentPath;
+	}
+	return `/${locale}${currentPath}`;
+}
+
 // Función para calcular años de experiencia desde mayo 2023
 export function calculateYearsOfExperience(): number {
 	const startMonth = 5; // Mayo
