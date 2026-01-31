@@ -78,7 +78,7 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.8'),
 		image: FlappyBatImagen,
 		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
-		linkDownload: '/Download/APK/Flappy-Bat.apk',
+		linkDownload: 'https://1drv.ms/f/c/520c89d29ae3998b/IgBMU_9g6VKfQZw7eHa4z2YXAfcKjJ94gAIPsUTK0pgzzFk?e=znQZou',
 		year: 2022,
 		technologies: ['Unity', 'C#']
 	},
