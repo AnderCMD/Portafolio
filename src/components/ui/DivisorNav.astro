@@ -1,13 +1,19 @@
 <!-- Mobile Navigation Divider -->
-<div class='w-full my-2 lg:hidden relative'>
-	<div class='absolute inset-0 flex items-center'>
+<div class='w-full my-3 lg:hidden relative flex items-center justify-center group'>
+	<!-- Gradient Line -->
+	<div class='absolute inset-x-0 flex items-center'>
 		<div
-			class='w-full border-t-2 border-gradient-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent rounded-full'>
+			class='w-full h-px bg-linear-to-r from-transparent via-slate-300 dark:via-slate-600 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300'>
 		</div>
 	</div>
+
+	<!-- Center Element -->
 	<div class='relative flex justify-center'>
-		<span class='px-3 bg-white dark:bg-slate-900'>
-			<div class='w-2 h-2 bg-sky-500 rounded-full animate-pulse'></div>
+		<span class='px-3 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-full'>
+			<!-- Diamond with Glow -->
+			<div
+				class='w-1.5 h-1.5 rotate-45 bg-sky-500 rounded-[1px] shadow-[0_0_8px_rgba(14,165,233,0.5)] animate-pulse group-hover:scale-125 transition-transform duration-300'>
+			</div>
 		</span>
 	</div>
 </div>
