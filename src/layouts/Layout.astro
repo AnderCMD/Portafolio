@@ -74,7 +74,6 @@ const schemaOrg = {
 			rel='stylesheet'
 			href='/FontAwesome/css/all.min.css'
 			media='print'
-			onload="this.media='all'; this.onload=null;"
 		/>
 		<noscript><link rel='stylesheet' href='/FontAwesome/css/all.min.css' /></noscript>
 
@@ -166,8 +165,10 @@ const schemaOrg = {
 				const newLogos = newDocument.querySelectorAll('[data-logo-theme]');
 				newLogos.forEach((logo) => {
 					const type = logo.getAttribute('data-logo-theme');
-					const correctPath = window.getLogoPath(type, isDark);
-					logo.setAttribute('src', correctPath);
+					if (window.getLogoPath && type) {
+						const correctPath = window.getLogoPath(type, isDark);
+						logo.setAttribute('src', correctPath);
+					}
 				});
 			});
 
@@ -217,7 +218,7 @@ const schemaOrg = {
 		<link rel='dns-prefetch' href='https://cdn.worldvectorlogo.com' />
 
 		<!-- Schema.org JSON-LD -->
-		<script type='application/ld+json' set:html={JSON.stringify(schemaOrg)} />
+		<script is:inline type='application/ld+json' set:html={JSON.stringify(schemaOrg)} />
 
 		<!-- Theme Color -->
 		<meta name='theme-color' content='#0ea5e9' media='(prefers-color-scheme: light)' />
