@@ -9,7 +9,7 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/Icons/Icono-Negro.ico",
+            "src": "/favicon.ico",
             "sizes": "48x48 72x72 96x96 144x144 192x192 256x256 384x384 512x512",
             "type": "image/x-icon",
             "purpose": "any maskable"
