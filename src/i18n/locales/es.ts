@@ -21,6 +21,7 @@ export const es = {
 	'About.Title': '¡Hola! Soy Ander González González 👋🏻',
 	'About.Subtitle': 'Ingeniero en Software',
 	'About.Description': `Ingeniero en Software Full Stack con más de <span class="experience-years-count">${getYearsOfExperience()}</span> años de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
+	'About.SeoDescription': `Ingeniero en Software Full Stack con más de ${getYearsOfExperience()} años de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
 	'About.CV': 'Descargar CV',
 	'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES_Web.pdf',
 

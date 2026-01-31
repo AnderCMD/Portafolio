@@ -21,6 +21,7 @@ export const en = {
 	'About.Title': 'Hi! I am Ander González González 👋🏻',
 	'About.Subtitle': 'Software Engineer',
 	'About.Description': `Full Stack Software Engineer with over <span class="experience-years-count">${getYearsOfExperience()}</span> years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
+	'About.SeoDescription': `Full Stack Software Engineer with over ${getYearsOfExperience()} years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
 	'About.CV': 'Download CV',
 	'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
 

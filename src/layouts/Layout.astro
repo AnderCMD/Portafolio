@@ -26,7 +26,7 @@ const { currentLocale, t } = useLocale(Astro);
 import { ClientRouter } from 'astro:transitions';
 
 // SEO defaults
-const seoDescription = description || t('About.Description');
+const seoDescription = description || t('About.SeoDescription');
 const siteUrl = Astro.url.origin;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const ogImageURL = new URL(image, siteUrl);
