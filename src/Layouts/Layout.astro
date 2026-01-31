@@ -12,14 +12,14 @@ interface Props {
 const { title, description, image = '/Icons/Icono-Negro.ico', type = 'website', keywords } = Astro.props;
 
 // Componentes
-import Navbar from '@/Components/Common/Navbar.astro';
-import Footer from '@/Components/Common/Footer.astro';
+import Navbar from '@/components/sections/Navbar.astro';
+import Footer from '@/components/sections/Footer.astro';
 
 // Tailwind CSS
-import '@/Styles/Default.css';
+import '@/styles/Default.css';
 
 // Lenguaje
-import { useLocale } from '@/Hooks/useLocale';
+import { useLocale } from '@/hooks/useLocale';
 const { currentLocale, t } = useLocale(Astro);
 
 // Transiciones

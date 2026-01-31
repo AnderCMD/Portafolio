@@ -1,14 +1,14 @@
 ---
-import DarkMode from '@/Components/Common/DarkMode';
-import DivisorNav from '@/Components/Common/DivisorNav.astro';
+import DarkMode from '@/components/ui/darkMode';
+import DivisorNav from '@/components/ui/DivisorNav.astro';
 
 // Imagenes
 import { Image } from 'astro:assets';
-import USImagen from '@/Assets/Images/Brands/Estados-Unidos.webp';
-import MXImagen from '@/Assets/Images/Brands/Mexico.webp';
-import LogoBlanco from '@/Assets/Images/Logos/Logo-Blanco.webp';
+import USImagen from '@/assets/Images/Brands/Estados-Unidos.webp';
+import MXImagen from '@/assets/Images/Brands/Mexico.webp';
+import LogoBlanco from '@/assets/Images/Logos/Logo-Blanco.webp';
 
-import { useLocale } from '@/Hooks/useLocale';
+import { useLocale } from '@/hooks/useLocale';
 const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
 ---
 

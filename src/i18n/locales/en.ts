@@ -20,7 +20,7 @@ export const en = {
 
 	'About.Title': 'Hi! I am Ander González González 👋🏻',
 	'About.Subtitle': 'Software Engineer',
-	'About.Description': `Full Stack Software Engineer with over ${getYearsOfExperience()} years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
+	'About.Description': `Full Stack Software Engineer with over <span class="experience-years-count">${getYearsOfExperience()}</span> years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
 	'About.CV': 'Download CV',
 	'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
 
@@ -32,7 +32,7 @@ export const en = {
 	'Contact.Form.Email': 'Email',
 	'Contact.Form.Message': 'Message',
 	'Contact.Form.Message.Placeholder': 'Write your message here...',
-      
+
 	'Contact.Form.Submit': 'Send',
 	'Contact.Info.ResponseTime.Title': 'Response Time',
 	'Contact.Info.ResponseTime.Description': 'I usually respond within 24-48 hours',
@@ -121,24 +121,23 @@ export const en = {
 	'WorkExperience.Month': 'Month',
 	'WorkExperience.Months': 'Months',
 
-	'WorkExperience.Companies.Position.5': 'Software QA Tester',
+	'WorkExperience.Companies.Position.5': 'Software & QA Automation Engineer',
 	'WorkExperience.Companies.Description.5':
-		'As a Software QA Tester I perform and develop:\n\n- Manual and automated testing of web and mobile applications\n- Test case design and execution\n- Bug reporting and tracking\n- Quality assurance in development lifecycle\n- Collaboration with development teams\n\nSome of the technologies used are: (Selenium, Jira, TestRail, API Testing, SQL, Git)',
+		'Responsible for designing automated scripts, executing and analyzing tests, as well as documenting and preparing result reports, contributing to the improvement of software quality and reliability.\n\nSome of the technologies used are: (Java, Git, SQL, Jira, Selenium)',
 
 	'WorkExperience.Companies.Position.4': 'Junior Full Stack Software Engineer',
 	'WorkExperience.Companies.Description.4':
-		'As a Junior Full Stack Software Engineer I performed and developed:\n\n- Development of business management platform\n- Development of SaaS modules\n- Agile Scrum methodology\n- Migration of obsolete technologies to modern technologies\n\nSome of the technologies used are: (C# .Net8, TypeScript, React Vite, SQL Server, Azure DevOps, Git)',
+		'Participation in the development of a business management platform, including the creation of modules under the SaaS model, working with Agile Scrum methodology and collaborating in the migration of obsolete technologies to modern technologies.\n\nSome of the technologies used are: (C#, .NET 8, TypeScript, React, SQL Server, Azure, Git)',
 
 	'WorkExperience.Companies.Position.3': 'Full Stack Software Engineer',
 	'WorkExperience.Companies.Description.3':
-		'Head of software department:\n\n- Development of business website\n- DevOps\n- Hiring and license management\n- Creation of cloud infrastructure\n- Corporate email administration\n- Support and maintenance\n\nSome of the technologies used are: (Astro with React, MongoDB, JavaScript, TypeScript, TailwindCSS)',
+		'Participation in the development of a business website, implementation of DevOps practices, management and contracting of licenses, creation of cloud infrastructure, corporate email administration, as well as support and maintenance of the systems.\n\nSome of the technologies used are: (Astro, React, ExpressJS, MongoDB, JavaScript, TypeScript, TailwindCSS, Hostinger)',
 
 	'WorkExperience.Companies.Position.2': 'Full Stack Software Engineer (Freelance)',
 	'WorkExperience.Companies.Description.2':
-		'As a freelance Full Stack Software Engineer I performed and developed:\n\n- Development of medical business website\n- Creation of cloud infrastructure\n- Corporate email administration\n- SEO\n\nSome of the technologies used are: (Astro with React, MongoDB, JavaScript, TailwindCSS)',
+		'Participation in the development of websites for companies in the medical sector, creation of cloud infrastructure, corporate email administration, and SEO optimization.\n\nSome of the technologies used are: (Astro, React, ExpressJS, MongoDB, JavaScript, TypeScript, TailwindCSS, Hostinger)',
 
-	'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Professional Internships I & II)',
+	'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Internship I & II)',
 	'WorkExperience.Companies.Description.1':
-		'As a Software Engineering Intern I performed and developed:\n\n- Support in the development of web applications\n- Collaboration on AI projects \n- Implementation of improvements in existing systems\n\nSome of the technologies used are: (React Vite, CSS, JavaScript, Python)',
+		'Collaboration in the development of web applications, participation in artificial intelligence projects and implementation of improvements in existing systems.\n\nSome of the technologies used are: (React, CSS, HTML, JavaScript, Python, AWS)',
 } as const;
-

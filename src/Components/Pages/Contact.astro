@@ -1,17 +1,17 @@
 ---
 // Layouts
 import Layout from '@/Layouts/Layout.astro';
-import Social from '@/Components/Common/Social.astro';
-import Text from '@/Components/Common/Text.astro';
-import Divisor from '@/Components/Common/Divisor.astro';
+import Social from '@/components/ui/Social.astro';
+import Text from '@/components/ui/Text.astro';
+import Divisor from '@/components/ui/Divisor.astro';
 
 // Lenguaje
-import { useLocale } from '../../Hooks/useLocale';
+import { useLocale } from '../../hooks/useLocale';
 const { t } = useLocale(Astro);
 
 // Imagenes
 import { Image } from 'astro:assets';
-import ContactImagen from '@/Assets/Images/Contact.svg';
+import ContactImagen from '@/assets/Images/Contact.svg';
 ---
 
 <Layout

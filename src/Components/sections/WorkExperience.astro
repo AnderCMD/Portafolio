@@ -1,21 +1,12 @@
 ---
-import { useLocale } from '@/Hooks/useLocale';
+import { useLocale } from '@/hooks/useLocale';
+import { getWorkExperience } from '@/data/experience';
+
 const { t } = useLocale(Astro);
 
 interface Props {
 	limit?: number;
 	showViewAll?: boolean;
-}
-
-interface WorkExperienceItem {
-	active: boolean;
-	nameCompany: string;
-	position: string;
-	startDate: string;
-	cleanDescription: string;
-	technologies: string[];
-	location: string;
-	visit: string;
 }
 
 const { limit, showViewAll = false } = Astro.props;
@@ -36,7 +27,7 @@ function getMonths(dateRange: string, isActive: boolean = false) {
 		[endMonth, endYear] = parts[1].split('/').map(Number);
 	}
 
-	const months = (endYear - startYear) * 12 + (endMonth - startMonth) + 1;
+	const months = (endYear - startYear) * 12 + (endMonth - startMonth);
 	return months;
 }
 
@@ -48,8 +39,20 @@ function formatDateRange(startDate: string, isActive: boolean, currentLocale: st
 	return startDate; // Si no está activo, asumimos que ya tiene el formato completo
 }
 
+interface Experience {
+	active: boolean;
+	nameCompany: string;
+	position: string;
+	startDate: string;
+	cleanDescription: string;
+	technologies: string[];
+	location: string;
+	visit: string;
+	descriptionKey?: string;
+}
+
 // Función para calcular años de experiencia total desde la primera experiencia hasta ahora
-function calculateTotalYearsOfExperience(experiences: any[]) {
+function calculateTotalYearsOfExperience(experiences: Experience[]) {
 	if (experiences.length === 0) return 0;
 
 	// Obtener la fecha más antigua (última experiencia en el array)
@@ -69,85 +72,7 @@ function calculateTotalYearsOfExperience(experiences: any[]) {
 	return years;
 }
 
-// Función para extraer tecnologías de la descripción
-function extractTechnologies(description: string): { cleanDescription: string; technologies: string[] } {
-	// Buscar el patrón de tecnologías al final
-	const techMatch = description.match(
-		/Some of the technologies used are:|Algunas de las tecnologías utilizadas son:/i
-	);
-
-	if (!techMatch) {
-		return { cleanDescription: description, technologies: [] };
-	}
-
-	// Dividir en descripción y tecnologías
-	const parts = description.split(techMatch[0]);
-	const cleanDescription = parts[0].trim();
-
-	// Extraer tecnologías del paréntesis
-	const techString = parts[1] || '';
-	const techMatch2 = techString.match(/\(([^)]+)\)/);
-
-	if (!techMatch2) {
-		return { cleanDescription, technologies: [] };
-	}
-
-	// Dividir por comas y limpiar
-	const technologies = techMatch2[1]
-		.split(',')
-		.map((tech) => tech.trim())
-		.filter((tech) => tech.length > 0);
-
-	return { cleanDescription, technologies };
-}
-
-const allWorkExperience: WorkExperienceItem[] = [
-	{
-		active: true,
-		nameCompany: 'NTT DATA Europa & Latam',
-		position: t('WorkExperience.Companies.Position.5'),
-		startDate: '11/2025',
-		...extractTechnologies(t('WorkExperience.Companies.Description.5')),
-		location: 'Remoto',
-		visit: '',
-	},
-	{
-		active: false,
-		nameCompany: 'Resser Tecnologías S.A. de C.V.',
-		position: t('WorkExperience.Companies.Position.4'),
-		startDate: '06/2025 • 09/2025',
-		...extractTechnologies(t('WorkExperience.Companies.Description.4')),
-		location: 'Presencial',
-		visit: '',
-	},
-	{
-		active: false,
-		nameCompany: 'AMEDigital A.C.',
-		position: t('WorkExperience.Companies.Position.3'),
-		startDate: '07/2024 • 12/2024',
-		...extractTechnologies(t('WorkExperience.Companies.Description.3')),
-		location: 'Remoto',
-		visit: 'https://www.amedigital.mx/',
-	},
-	{
-		active: false,
-		nameCompany: 'Diagnostico Moderno',
-		position: t('WorkExperience.Companies.Position.2'),
-		startDate: '03/2023 • 12/2024',
-		...extractTechnologies(t('WorkExperience.Companies.Description.2')),
-		location: 'Remoto',
-		visit: 'https://www.diagnosticomoderno.com/',
-	},
-	{
-		active: false,
-		nameCompany: 'Intellion',
-		position: t('WorkExperience.Companies.Position.1'),
-		startDate: '05/2023 • 04/2024',
-		...extractTechnologies(t('WorkExperience.Companies.Description.1')),
-		location: 'Remoto',
-		visit: '',
-	},
-];
+const allWorkExperience = getWorkExperience(t);
 
 // Aplicar límite si se especifica
 const workExperience = limit ? allWorkExperience.slice(0, limit) : allWorkExperience;
@@ -232,7 +157,11 @@ const totalYears = calculateTotalYearsOfExperience(allWorkExperience);
 									{/* Duration */}
 									<div class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 text-sky-700 dark:text-sky-300'>
 										<i class='fa-regular fa-clock' />
-										<span class='font-semibold'>
+										<span
+											class={`font-semibold ${work.active ? 'active-duration' : ''}`}
+											data-start-date={work.active ? work.startDate : undefined}
+											data-label-month={t('WorkExperience.Month')}
+											data-label-months={t('WorkExperience.Months')}>
 											{getMonths(work.startDate, work.active)}{' '}
 											{getMonths(work.startDate, work.active) === 1
 												? t('WorkExperience.Month')
@@ -325,10 +254,48 @@ const totalYears = calculateTotalYearsOfExperience(allWorkExperience);
 				</a>
 				<p class='mt-4 text-base text-slate-600 dark:text-slate-400 font-medium'>
 					{Astro.currentLocale === 'es'
-						? `${totalYears}+ años de experiencia profesional`
-						: `${totalYears}+ years of professional experience`}
+						? ``
+						: ``}
+					<span class="experience-years-count">{totalYears}</span>+
+					{Astro.currentLocale === 'es'
+						? ` años de experiencia profesional`
+						: ` years of professional experience`}
 				</p>
 			</div>
 		)
 	}
 </div>
+
+<script>
+	function updateActiveDurations() {
+		const activeDurations = document.querySelectorAll('.active-duration');
+		const now = new Date();
+		const currentYear = now.getFullYear();
+		const currentMonth = now.getMonth() + 1;
+
+		activeDurations.forEach((el) => {
+			const startDate = el.getAttribute('data-start-date');
+			// startDate format: "MM/YYYY" from experience.ts
+			if (!startDate) return;
+
+			const parts = startDate.split('•')[0].trim().split('/');
+			const startMonth = parseInt(parts[0]);
+			const startYear = parseInt(parts[1]);
+
+			// Calculate months difference
+			const months = (currentYear - startYear) * 12 + (currentMonth - startMonth);
+
+			const labelMonth = el.getAttribute('data-label-month') || 'Mes';
+			const labelMonths = el.getAttribute('data-label-months') || 'Meses';
+			const label = months === 1 ? labelMonth : labelMonths;
+
+			el.textContent = `${months} ${label}`;
+		});
+	}
+
+	// Update on initial load
+	updateActiveDurations();
+
+	// Update on view transitions
+	document.addEventListener('astro:page-load', updateActiveDurations);
+</script>

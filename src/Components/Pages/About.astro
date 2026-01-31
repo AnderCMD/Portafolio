@@ -3,20 +3,20 @@
 import Layout from '@/Layouts/Layout.astro';
 
 // Components
-import Text from '@/Components/Common/Text.astro';
-import Text2 from '@/Components/Common/Text2.astro';
-import WorkExperience from '@/Components/Common/WorkExperience.astro';
-import Divisor from '@/Components/Common/Divisor.astro';
-import Tech from '@/Components/Common/Tech.astro';
-import Social from '@/Components/Common/Social.astro';
+import Text from '@/components/ui/Text.astro';
+import Text2 from '@/components/ui/Text2.astro';
+import WorkExperience from '@/components/sections/WorkExperience.astro';
+import Divisor from '@/components/ui/Divisor.astro';
+import Tech from '@/components/sections/Tech.astro';
+import Social from '@/components/ui/Social.astro';
 
 // Lenguaje
-import { useLocale } from '@/Hooks/useLocale';
+import { useLocale } from '@/hooks/useLocale';
 const { t } = useLocale(Astro);
 
 // Logo optimizado
 import { Image } from 'astro:assets';
-import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
+import IconoBlanco from '@/assets/Images/Logos/Icono-Blanco.webp';
 ---
 
 <Layout

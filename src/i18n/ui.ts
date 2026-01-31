@@ -1,5 +1,5 @@
-import { en } from '@/i18n/en';
-import { es } from '@/i18n/es';
+import { en } from '@/i18n/locales/en';
+import { es } from '@/i18n/locales/es';
 
 export const languages = {
 	en: 'English',
