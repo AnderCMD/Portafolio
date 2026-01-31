@@ -1,18 +1,18 @@
 // Imagenes
-import HoroscopoImagen from '@/assets/Images/Projects/Horoscope.webp';
-import CalculatorImagen from '@/assets/Images/Projects/Calculator.webp';
-import GPTLocalImagen from '@/assets/Images/Projects/GPT-Local.webp';
-import AMEDigitalImagen from '@/assets/Images/Projects/AMEDigital.webp';
-import DiagnosticoModernoImagen from '@/assets/Images/Projects/DiagnosticoModerno.webp';
-import EcologiXImagen from '@/assets/Images/Projects/EcologiX.webp';
-import FlappyBatImagen from '@/assets/Images/Projects/FlappyBat.webp';
-import ChatBotImagen from '@/assets/Images/Projects/ChatBot.webp';
-import FrontendMentorImagen from '@/assets/Images/Projects/Frontend-Mentor.webp';
-import WindowsRepairImagen from '@/assets/Images/Projects/WindowsRepair.webp';
-import TasksFlowImagen from '@/assets/Images/Projects/TasksFlow.webp';
-import SETIPOSImagen from '@/assets/Images/Projects/SETIPOS.webp';
-import ResserSaaSImagen from '@/assets/Images/Projects/ResserSaaS.webp';
-import SETIImagen from '@/assets/Images/Projects/SETI.webp';
+import HoroscopoImagen from '@/assets/images/projects/Horoscope.webp';
+import CalculatorImagen from '@/assets/images/projects/Calculator.webp';
+import GPTLocalImagen from '@/assets/images/projects/GPT-Local.webp';
+import AMEDigitalImagen from '@/assets/images/projects/AMEDigital.webp';
+import DiagnosticoModernoImagen from '@/assets/images/projects/DiagnosticoModerno.webp';
+import EcologiXImagen from '@/assets/images/projects/EcologiX.webp';
+import FlappyBatImagen from '@/assets/images/projects/FlappyBat.webp';
+import ChatBotImagen from '@/assets/images/projects/ChatBot.webp';
+import FrontendMentorImagen from '@/assets/images/projects/Frontend-Mentor.webp';
+import WindowsRepairImagen from '@/assets/images/projects/WindowsRepair.webp';
+import TasksFlowImagen from '@/assets/images/projects/TasksFlow.webp';
+import SETIPOSImagen from '@/assets/images/projects/SETIPOS.webp';
+import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
+import SETIImagen from '@/assets/images/projects/SETI.webp';
 
 export const getProjects = (t: (key: string) => string) => [
 	{
