@@ -2,10 +2,10 @@ import { useEffect, useState, useCallback } from 'react';
 import '@/styles/darkMode.css';
 
 // Importar logos desde Astro Assets
-import LogoBlanco from '@/Assets/Images/Logos/Logo-Blanco.webp';
-import LogoNegro from '@/Assets/Images/Logos/Logo-Negro.webp';
-import IconoBlanco from '@/Assets/Images/Logos/Icono-Blanco.webp';
-import IconoNegro from '@/Assets/Images/Logos/Icono-Negro.webp';
+import LogoBlanco from '@/assets/images/logos/Logo-Blanco.webp';
+import LogoNegro from '@/assets/images/logos/Logo-Negro.webp';
+import IconoBlanco from '@/assets/images/logos/Icono-Blanco.webp';
+import IconoNegro from '@/assets/images/logos/Icono-Negro.webp';
 
 // Función fuera del componente para evitar recreación
 const getInitialTheme = () => {
