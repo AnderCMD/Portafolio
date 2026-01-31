@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import '@/Styles/DarkMode.css';
+import '@/styles/darkMode.css';
 
 // Importar logos desde Astro Assets
 import LogoBlanco from '@/Assets/Images/Logos/Logo-Blanco.webp';
