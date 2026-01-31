@@ -7,7 +7,7 @@ const { t } = useLocale(Astro);
 import { Image } from 'astro:assets';
 import { getProjects } from '@/data/projects';
 
-const projects = getProjects(t);
+const projects = getProjects(t as (key: string) => string);
 ---
 
 <style>

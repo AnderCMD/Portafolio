@@ -9,7 +9,8 @@ import MXImagen from '@/assets/Images/Brands/Mexico.webp';
 import LogoBlanco from '@/assets/Images/Logos/Logo-Blanco.webp';
 
 import { useLocale } from '@/hooks/useLocale';
-const { Lang, t, currentLocale, getRelativeLocaleUrl } = useLocale(Astro);
+import { getRelativeLocaleUrl } from 'astro:i18n';
+const { Lang, t, currentLocale } = useLocale(Astro);
 ---
 
 <nav

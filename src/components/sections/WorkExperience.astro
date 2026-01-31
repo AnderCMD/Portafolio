@@ -72,7 +72,7 @@ function calculateTotalYearsOfExperience(experiences: Experience[]) {
 	return years;
 }
 
-const allWorkExperience = getWorkExperience(t);
+const allWorkExperience = getWorkExperience(t as (key: string) => string);
 
 // Aplicar límite si se especifica
 const workExperience = limit ? allWorkExperience.slice(0, limit) : allWorkExperience;
