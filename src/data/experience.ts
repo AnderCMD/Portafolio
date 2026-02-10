@@ -31,7 +31,7 @@ export const getWorkExperience = (t: (key: string) => string) => [
 		active: false,
 		nameCompany: 'Diagnostico Moderno',
 		position: t('WorkExperience.Companies.Position.2'),
-		startDate: '03/2023 • 12/2024',
+		startDate: '03/2023 • 05/2024',
 		...extractTechnologies(t('WorkExperience.Companies.Description.2')),
 		location: 'Remoto',
 		visit: 'https://www.diagnosticomoderno.com/',
