@@ -441,11 +441,20 @@ textarea {
 }
 
 /* Optimización de performance para animaciones */
-.particle,
-.animate-float > div {
-	will-change: transform, opacity;
-	backface-visibility: hidden;
-	transform: translateZ(0);
+@media (min-width: 768px) {
+	.particle,
+	.animate-float,
+	.animate-float > div {
+		will-change: transform, opacity;
+		backface-visibility: hidden;
+		transform: translateZ(0);
+	}
+}
+
+@media (max-width: 767px) {
+	.animate-float {
+		animation: none !important;
+	}
 }
 
 /* Mejora para los orbs animados */
