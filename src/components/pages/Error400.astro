@@ -1,0 +1,75 @@
+---
+// Layouts
+import Layout from '@/layouts/Layout.astro';
+
+// Components
+import AButton from '@/components/ui/AButton.astro';
+
+// Lenguaje
+import { useLocale } from '@/hooks/useLocale';
+const { t } = useLocale(Astro);
+---
+
+<Layout title={`AnderCMD | ${t('Error.Message.400')}`}>
+	<main class='flex flex-col justify-center items-center min-h-[70vh] py-12 animate-fade-in'>
+		<section class='flex flex-col items-center gap-12 max-w-4xl mx-auto text-center'>
+			<!-- Error Icon with Animation -->
+			<div class='relative group'>
+				<div
+					class='absolute inset-0 bg-linear-to-r from-amber-400 to-orange-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-pulse-slow'>
+				</div>
+				<div class='relative'>
+					<i
+						class='fa-solid fa-triangle-exclamation text-9xl text-amber-500 dark:text-amber-400 animate-bounce-slow drop-shadow-2xl'
+					></i>
+				</div>
+			</div>
+
+			<!-- Error Content -->
+			<div class='space-y-6'>
+				<!-- 400 Number -->
+				<div class='relative'>
+					<h2
+						class='text-8xl lg:text-9xl font-black text-transparent bg-clip-text bg-linear-to-r from-amber-500 via-orange-500 to-red-500 animate-gradient'>
+						400
+					</h2>
+				</div>
+
+				<!-- Error Title -->
+				<h1 class='text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white'>
+					{t('Error.Title.400')}
+				</h1>
+
+				<!-- Error Message -->
+				<p class='text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl'>
+					{t('Error.Message.400')}
+				</p>
+			</div>
+
+			<!-- Action Buttons -->
+			<div class='flex flex-wrap gap-4 justify-center pt-4'>
+				<AButton texto={t('Error.Button.Generic')} href='/' variant='primary' icon='fa-solid fa-house' />
+				<AButton
+					texto={t('Nav.Projects')}
+					href={`/${t('Nav.Projects')}`}
+					variant='secondary'
+					icon='fa-solid fa-diagram-project'
+				/>
+			</div>
+
+			<!-- Additional Help -->
+			<div
+				class='mt-8 p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700'>
+				<p class='text-sm text-slate-600 dark:text-slate-400'>
+					<i class='fa-solid fa-lightbulb text-amber-500 mr-2'></i>
+					Si crees que esto es un error, por favor
+					<a
+						href={`/${t('Nav.Contact')}`}
+						class='font-semibold text-sky-600 dark:text-sky-400 hover:underline'>
+						contáctame
+					</a>
+				</p>
+			</div>
+		</section>
+	</main>
+</Layout>
