@@ -80,7 +80,7 @@ const projects = getProjects(t as (key: string) => string);
 						<a href={Project.linkView || Project.linkCode} class='relative shrink-0 overflow-hidden' target="_blank">
 							<div class='absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'></div>
 							<Image
-								class='object-cover w-full h-56 transition-transform duration-500 group-hover:scale-110'
+								class='object-cover w-full aspect-video transition-transform duration-500 group-hover:scale-110'
 								src={Project.image}
 								alt={Project.description}
 								loading='lazy'

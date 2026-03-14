@@ -1,4 +1,8 @@
-/* Fuentes SF Pro Display - Solo las variantes más usadas para mejor performance */
+/* 
+  Fuentes SF Pro (.otf) comentadas temporalmente por peso excesivo (>22MB en total).
+  Se recae sobre la fuente del sistema (system-ui, -apple-system) hasta implementar formato web moderno (.woff2).
+*/
+/*
 @font-face {
 	font-family: 'SF Pro Display';
 	src: url('/Fonts/SF-Pro-Display-Regular.otf') format('opentype');
@@ -39,7 +43,6 @@
 	font-display: swap;
 }
 
-/* Fuentes SF Pro Text - Solo las variantes más usadas para mejor performance */
 @font-face {
 	font-family: 'SF Pro Text';
 	src: url('/Fonts/SF-Pro-Text-Regular.otf') format('opentype');
@@ -71,6 +74,7 @@
 	font-style: normal;
 	font-display: swap;
 }
+*/
 
 @import 'tailwindcss';
 
