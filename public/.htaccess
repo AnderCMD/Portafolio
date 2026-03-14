@@ -1,17 +1,3 @@
-# Redirigir todas las rutas no encontradas a index.html para soportar navegación SPA
-# (Astro con ClientRouter) y manejar correctamente las rutas dinámicas.
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
-</IfModule>
-
-# Además, evitar que Hostinger muestre sus páginas de error por defecto 
-# cuando ocurre un error grave del servidor.
 ErrorDocument 400 /400.html
 ErrorDocument 401 /401.html
 ErrorDocument 403 /403.html
