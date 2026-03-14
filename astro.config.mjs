@@ -11,14 +11,6 @@ export default defineConfig({
 		build: {
 			// Optimizaciones de build
 			cssCodeSplit: true,
-			rollupOptions: {
-				output: {
-					manualChunks: {
-						// Separar React en su propio chunk
-						'react-vendor': ['react', 'react-dom'],
-					},
-				},
-			},
 		},
 		optimizeDeps: {
 			include: ['react', 'react-dom'],
@@ -62,7 +54,7 @@ export default defineConfig({
 	},
 	// Optimización de imágenes
 	image: {
-		domains: ['raw.githubusercontent.com', 'cdn.worldvectorlogo.com'],
+		domains: ['raw.githubusercontent.com', 'cdn.worldvectorlogo.com', 'cdn.jsdelivr.net'],
 		remotePatterns: [
 			{
 				protocol: 'https',

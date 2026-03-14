@@ -47,7 +47,7 @@ export const techStack = [
 	},
 	{
 		name: '.Net 8+',
-		iconImage: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/dot-net/dot-net-original.svg',
+		iconImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg',
 	},
 	{
 		name: 'MySQL',
@@ -87,17 +87,17 @@ export const techStack = [
 		name: 'AWS',
 		icon: 'aws',
 		iconImage:
-			'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+			'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
 	},
 	{
 		name: 'Azure',
 		icon: 'azure',
-		iconImage: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/azure/azure-original.svg',
+		iconImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg',
 	},
 	{
 		name: 'Cloudflare',
 		icon: 'cloudflare',
-		iconImage: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/cloudflare/cloudflare-original.svg',
+		iconImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg',
 	},
 	{
 		name: 'Hostinger',
