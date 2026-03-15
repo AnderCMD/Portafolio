@@ -23,7 +23,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://andercmd.github.io/Desafios-Codedex/Horoscopo/',
 		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
 		year: 2024,
-		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub']
+		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
@@ -33,7 +33,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://andercmd.github.io/Calculadora/',
 		linkCode: 'https://github.com/AnderCMD/Calculadora',
 		year: 2023,
-		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub']
+		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
@@ -43,7 +43,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://andercmd.github.io/GPT-Local/',
 		linkCode: 'https://github.com/AnderCMD/GPT-Local',
 		year: 2024,
-		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub']
+		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
@@ -52,7 +52,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: AMEDigitalImagen,
 		linkView: 'https://www.amedigital.mx',
 		year: 2024,
-		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub']
+		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
@@ -61,7 +61,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: DiagnosticoModernoImagen,
 		linkView: 'https://www.diagnosticomoderno.com/',
 		year: 2023,
-		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub']
+		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
@@ -70,7 +70,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: EcologiXImagen,
 		linkCode: 'https://github.com/AnderCMD/EcologiX',
 		year: 2023,
-		technologies: ['React Vite', 'NodeJS Express', 'JavaScript', 'TailwindCSS', 'Arduino', 'Git & GitHub']
+		technologies: ['React Vite', 'NodeJS Express', 'JavaScript', 'TailwindCSS', 'Arduino', 'Git & GitHub'],
 	},
 	{
 		type: 'mobile',
@@ -80,7 +80,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Flappy-Bat',
 		linkDownload: 'https://1drv.ms/f/c/520c89d29ae3998b/IgBMU_9g6VKfQZw7eHa4z2YXAfcKjJ94gAIPsUTK0pgzzFk?e=znQZou',
 		year: 2022,
-		technologies: ['Unity', 'C#']
+		technologies: ['Unity', 'C#'],
 	},
 	{
 		type: 'web',
@@ -90,17 +90,17 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://andercmd.github.io/Chat-Bot/',
 		linkCode: 'https://github.com/AnderCMD/Chat-Bot',
 		year: 2022,
-		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub']
+		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 	},
 	{
 		type: 'web',
 		title: t('Projects.Title.10'),
 		description: t('Projects.Description.10'),
 		image: FrontendMentorImagen,
-		linkView: 'https://andercmd.github.io/Desafios-Frontend-Mentor/',
+		linkView: 'https://www.frontendmentor.io/profile/AnderCMD',
 		linkCode: 'https://github.com/AnderCMD/Desafios-Frontend-Mentor/',
 		year: 2023,
-		technologies: ['React Vite', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Git & GitHub']
+		technologies: ['React Vite', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Git & GitHub'],
 	},
 	{
 		type: 'other',
@@ -110,7 +110,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Fix-Windows',
 		linkDownload: '/Download/Scripts/FixWindows.bat',
 		year: 2024,
-		technologies: ['Batch']
+		technologies: ['Batch'],
 	},
 	{
 		type: 'web',
@@ -120,7 +120,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://tasksflow.andercmd.dev',
 		linkCode: 'https://github.com/AnderCMD/TasksFlow',
 		year: 2025,
-		technologies: ['Redux', 'React Vite', 'JavaScript', 'TailwindCSS', 'Git & Github']
+		technologies: ['Redux', 'React Vite', 'JavaScript', 'TailwindCSS', 'Git & Github'],
 	},
 	{
 		type: 'web',
@@ -128,7 +128,16 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.13'),
 		image: SETIPOSImagen,
 		year: 2025,
-		technologies: ['React Vite', 'JavaScript', 'TypeScript', 'TailwindCSS', 'NodeJS Express', 'MongoDB', 'Docker', 'Git & GitHub'],
+		technologies: [
+			'React Vite',
+			'JavaScript',
+			'TypeScript',
+			'TailwindCSS',
+			'NodeJS Express',
+			'MongoDB',
+			'Docker',
+			'Git & GitHub',
+		],
 	},
 	{
 		type: 'web',
