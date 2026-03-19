@@ -57,25 +57,31 @@ La lógica y la interfaz de usuario se organizan en:
     *   Componentes que arman la vista completa (Home, Projects, etc.).
     *   Reutilizables entre idiomas.
 
-*   **`src/components/common/` (Componentes Compartidos):**
-    *   Contiene tanto elementos de UI atómicos (Badge, Button) como secciones (Navbar, Footer, WorkExperience).
+*   **`src/components/sections/` (Secciones Estructurales):**
+    *   Contiene secciones de gran tamaño o partes de la página (Navbar, Footer, WorkExperience, Project).
+
+*   **`src/components/ui/` (Elementos UI Atómicos):**
+    *   Componentes pequeños y estrictamente de interfaz (Badge, AButton, Text, Tooltip).
     *   Incluye componentes interactivos de React (ej. `darkMode.jsx`).
 
 ### 4. Datos Estáticos (`src/data/`)
 Para mantener los componentes limpios, la información estática (experiencia, redes sociales, proyectos) se centraliza aquí:
 *   `experience.ts`: Datos de experiencia laboral.
-*   `socials.ts`: Enlaces a redes sociales.
-*   **Regla:** Si es un array de objetos con texto, muévelo a `src/data` (o `src/i18n` si requiere traducción directa en UI).
+*   `projects.ts`: Información detallada de los proyectos del portafolio.
+*   `socials.ts`: Enlaces a redes sociales y contacto.
+*   `tech.ts`: Datos para la sección de tecnologías usadas.
+*   **Regla:** Si es un array de objetos con texto o configuraciones globales, muévelo a `src/data` (o `src/i18n` si requiere traducción directa en UI).
 
 ---
 
 ## 🛠️ Stack Tecnológico Estricto
 
-*   **Framework Core:** Astro 5.0 (con `ClientRouter` activado para navegación SPA).
-*   **Interactividad:** React 19 (Solo para componentes que requieren estado complejo).
-*   **Estilos:** Tailwind CSS 4.0.
+*   **Framework Core:** Astro 6+ (con `ClientRouter` activado para navegación SPA).
+*   **Interactividad:** React 19+ (Solo para componentes que requieren estado complejo).
+*   **Estilos:** Tailwind CSS 4.2+ (optimizado vía `@tailwindcss/vite`).
 *   **Lenguaje:** TypeScript (Tipado estricto, **PROHIBIDO** el uso de `any` en archivos `.ts`, `.tsx`, `.jsx` y `.astro`).
-*   **Iconos:** FontAwesome 6 (vía CDN/Assets).
+*   **Imágenes:** Optimización obligatoria vía `astro:assets` (`<Image />`) con formatos modernos (`webp`/`avif`).
+*   **Iconos:** FontAwesome 6 (vía CDN/Assets) o SVG inline.
 *   **i18n:** Sistema nativo de Astro + `src/i18n/`.
 
 ---
@@ -105,12 +111,18 @@ Para mantener los componentes limpios, la información estática (experiencia, r
     *   Bordes sutiles (`border-white/20`).
 *   **Modo Oscuro:** Todo componente nuevo debe verse bien en Light y Dark mode.
 
+### 4. Rendimiento (Performance First) - CRÍTICO
+*   **Carga de Recursos:** Evita render-blocking requests innecesarios (css y scripts síncronos).
+*   **Pesos de Red:** Carga fuentes personalizadas eficientemente y pre-carga tipografías clave.
+*   **Imágenes:** Las imágenes siempre deben tener `loading="lazy"` (excepto hero inicial), un aspect-ratio definido implícita o explícitamente y usar resoluciones nativas optimizadas.
+*   **Animaciones:** Usa animaciones CSS o Tailwind con moderación, prioriza `transform` y `opacity` para evitar repaints, y prefiere `motion-safe` para respetar las configuraciones del usuario. Ojo con animaciones de fondo muy pesadas en móviles, ¡pueden bloquear el hilo principal!
+
 ---
 
 ## 🔄 Flujo de Trabajo para Tareas
 
 1.  **Analizar:** Revisar requerimientos y estructura actual.
-2.  **Estructura:** Crear/Modificar componentes en `@components/common/`.
-3.  **Datos:** Centralizar datos en `@data/` si aplica.
-4.  **Traducciones:** Agregar claves en `@i18n/locales/`.
-5.  **Verificación:** Compilar (`pnpm build`) y verificar en ambos idiomas y modos de color.
+2.  **Estructura:** Crear/Modificar componentes en `@components/ui/` o `@components/sections/`.
+3.  **Datos:** Centralizar datos estáticos o variables en `@data/` si aplica.
+4.  **Traducciones:** Agregar claves en `@i18n/locales/` (si interfiere el texto nuevo).
+5.  **Verificación:** Compilar (`pnpm check` && `pnpm build`) prestando especial atención en prevenir errores de compilación web o estática (ej. componentes React). Verificar en ambos idiomas y modos de color.
