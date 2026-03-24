@@ -1,0 +1,32 @@
+---
+// Layouts
+import Layout from '@/layouts/Layout.astro';
+
+// Components
+import Text2 from '@/components/ui/Text2.astro';
+import WorkExperience from '@/components/sections/WorkExperience.astro';
+
+// Lenguaje
+import { useLocale } from '@/hooks/useLocale';
+const { t } = useLocale(Astro);
+---
+
+<Layout
+	title={`AnderCMD | ${t('Nav.About')}`}
+	description={t('Experience.SeoDescription')}
+	type='profile'
+	keywords='Ander González, Full Stack Developer, Software Engineer, Experience, Experiencia Laboral, Perfil Profesional'>
+	
+	<!-- Work Experience Section -->
+	<section id='experience' class='py-12 lg:py-20 space-y-12 animate-fade-in scroll-mt-20'>
+		<div class='text-center space-y-4'>
+			<Text2
+				icon='fa-solid fa-briefcase'
+				title={t('WorkExperience.Title')}
+				subtitle=''
+				description={t('WorkExperience.Description')}
+			/>
+		</div>
+		<WorkExperience />
+	</section>
+</Layout>

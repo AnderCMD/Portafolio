@@ -1,10 +1,10 @@
 import { getYearsOfExperience } from '@/i18n/common';
 
 export const es = {
-	Description: `Soy Ander González González mas conocido como AnderCMD, Ingeniero en Software Full Stack apasionado con +${getYearsOfExperience()} años de experiencia, experto en desarrollo web.`,
+	Description: `Soy Ander González González mas conocido como AnderCMD, Ingeniero en Software Full Stack apasionado con +<span class="experience-years-count">${getYearsOfExperience('es')}</span> de experiencia, experto en desarrollo web.`,
 
 	'Nav.Index': 'Inicio',
-	'Nav.About': 'Conoceme',
+	'Nav.About': 'Experiencia',
 	'Nav.Posts': 'Publicaciones',
 	'Nav.Projects': 'Proyectos',
 	'Nav.Contact': 'Contacto',
@@ -31,12 +31,12 @@ export const es = {
 	'Error.Button.404': 'Volver al inicio',
 	'Error.Button.Generic': 'Volver al inicio',
 
-	'About.Title': '¡Hola! Soy Ander González González 👋🏻',
-	'About.Subtitle': 'Ingeniero en Software',
-	'About.Description': `Ingeniero en Software Full Stack con más de <span class="experience-years-count">${getYearsOfExperience()}</span> años de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
-	'About.SeoDescription': `Ingeniero en Software Full Stack con más de ${getYearsOfExperience()} años de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
-	'About.CV': 'Descargar CV',
-	'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES_Web.pdf',
+	'Experience.Title': '¡Hola! Soy Ander González González 👋🏻',
+	'Experience.Subtitle': 'Ingeniero en Software',
+	'Experience.Description': `Ingeniero en Software Full Stack con más de <span class="experience-years-count">${getYearsOfExperience('es')}</span> de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
+	'Experience.SeoDescription': `Ingeniero en Software Full Stack con más de <span class="experience-years-count">${getYearsOfExperience('es')}</span> de experiencia en el diseño y desarrollo de aplicaciones web escalables, optimizadas y orientadas a la experiencia del usuario. Especializado en JavaScript y TypeScript, con amplio dominio de React, Astro, Node.js, Express, PostgreSQL y MongoDB, así como experiencia en arquitecturas modernas, despliegues en la nube y buenas prácticas de rendimiento y SEO.`,
+	'Experience.CV': 'Descargar CV',
+	'Experience.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_ES_Web.pdf',
 
 	'Contact.Title': 'Contáctame',
 	'Contact.Subtitle': '¿Quieres trabajar conmigo? ¡Contáctame!',
@@ -80,6 +80,8 @@ export const es = {
 		'Trabajemos juntos para hacerlo realidad. Estoy siempre abierto a nuevas oportunidades y colaboraciones.',
 	'Projects.CTA.Contact': 'Contactar',
 	'Projects.CTA.ViewGitHub': 'Ver GitHub',
+	'Projects.Sort.ByStatus': 'Por Estado',
+	'Projects.Sort.ByDate': 'Por Fecha',
 
 	'Projects.Title.1': 'Horóscopo',
 	'Projects.Description.1': 'Conoce tu signo del zodiaco dependiendo de tu fecha de nacimiento.',
@@ -154,4 +156,10 @@ export const es = {
 	'WorkExperience.Companies.Position.1': 'Interno de Ingeniería en Software (Practicas I & II)',
 	'WorkExperience.Companies.Description.1':
 		'Colaboración en el desarrollo de aplicaciones web, participación en proyectos de inteligencia artificial e implementación de mejoras en sistemas existentes.\n\nAlgunas de las tecnologías utilizadas son: (React, CSS, HTML, JavaScript, Python, AWS)',
+	'Projects.Title.16': 'Folio Generator',
+	'Projects.Description.16':
+		'Librería robusta y flexible diseñada para generar códigos alfanuméricos secuenciales (folios) como A00001, A00002. Soporta padding, separadores personalizados y es Type-safe. Disponible en JS, TS y Python.',
+	'Projects.Status.OutOfService': 'Fuera de servicio',
+	'Projects.Status.Unmaintained': 'Sin mantenimiento',
+	'Projects.Status.Active': 'En servicio',
 } as const;

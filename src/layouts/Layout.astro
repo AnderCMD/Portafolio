@@ -26,7 +26,7 @@ const { currentLocale, t } = useLocale(Astro);
 import { ClientRouter } from 'astro:transitions';
 
 // SEO defaults
-const seoDescription = description || t('About.SeoDescription');
+const seoDescription = (description || t('Experience.SeoDescription')).replace(/<[^>]*>?/gm, '');
 const siteUrl = Astro.url.origin;
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const ogImageURL = new URL(image, siteUrl);
@@ -173,9 +173,12 @@ const schemaOrg = {
 				});
 			});
 
+			import { updateExperienceUI } from '@/scripts/experience';
+
 			// Después de que la página carga - solo una verificación ligera
 			document.addEventListener('astro:page-load', () => {
 				applyTheme();
+				updateExperienceUI();
 			});
 		</script>
 

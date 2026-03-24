@@ -1,10 +1,10 @@
 import { getYearsOfExperience } from '@/i18n/common';
 
 export const en = {
-	Description: `I am Ander González González better known as AnderCMD, Full Stack Software Engineer passionate with +${getYearsOfExperience()} years of experience, expert in web development.`,
+	Description: `I am Ander González González better known as AnderCMD, Full Stack Software Engineer passionate with +<span class="experience-years-count">${getYearsOfExperience('en')}</span> of experience, expert in web development.`,
 
 	'Nav.Index': 'Home',
-	'Nav.About': 'About',
+	'Nav.About': 'Experience',
 	'Nav.Posts': 'Posts',
 	'Nav.Projects': 'Projects',
 	'Nav.Contact': 'Contact',
@@ -31,12 +31,12 @@ export const en = {
 	'Error.Button.404': 'Go back to home',
 	'Error.Button.Generic': 'Go back to home',
 
-	'About.Title': 'Hi! I am Ander González González 👋🏻',
-	'About.Subtitle': 'Software Engineer',
-	'About.Description': `Full Stack Software Engineer with over <span class="experience-years-count">${getYearsOfExperience()}</span> years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
-	'About.SeoDescription': `Full Stack Software Engineer with over ${getYearsOfExperience()} years of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
-	'About.CV': 'Download CV',
-	'About.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
+	'Experience.Title': 'Hi! I am Ander González González 👋🏻',
+	'Experience.Subtitle': 'Software Engineer',
+	'Experience.Description': `Full Stack Software Engineer with over <span class="experience-years-count">${getYearsOfExperience('en')}</span> of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
+	'Experience.SeoDescription': `Full Stack Software Engineer with over <span class="experience-years-count">${getYearsOfExperience('en')}</span> of experience in designing scalable and optimized web applications. Expert in modern technologies such as React, Astro, PostgreSQL, and MongoDB, with strong leadership, problem-solving skills, and development of innovative solutions. Passionate about continuous learning and strategically adding value to every project.`,
+	'Experience.CV': 'Download CV',
+	'Experience.CV.Link': '/Download/CV/CV_Ander_Gonzalez_Gonzalez_EN_Web.pdf',
 
 	'Contact.Title': 'Contact me',
 	'Contact.Subtitle': 'Do you want to work with me? Contact me!',
@@ -81,6 +81,8 @@ export const en = {
 		"Let's work together to make it a reality. I'm always open to new opportunities and collaborations.",
 	'Projects.CTA.Contact': 'Contact',
 	'Projects.CTA.ViewGitHub': 'View GitHub',
+	'Projects.Sort.ByStatus': 'By Status',
+	'Projects.Sort.ByDate': 'By Date',
 
 	'Projects.Title.1': 'Horoscope',
 	'Projects.Description.1': 'Discover your zodiac sign based on your birth date.',
@@ -154,4 +156,10 @@ export const en = {
 	'WorkExperience.Companies.Position.1': 'Software Engineering Intern (Internship I & II)',
 	'WorkExperience.Companies.Description.1':
 		'Collaboration in the development of web applications, participation in artificial intelligence projects and implementation of improvements in existing systems.\n\nSome of the technologies used are: (React, CSS, HTML, JavaScript, Python, AWS)',
+	'Projects.Title.16': 'Folio Generator',
+	'Projects.Description.16':
+		'A robust and flexible library designed to generate sequential alphanumeric codes (folios). Supports automatic padding, custom separators, and is fully Type-safe. Available in JS, TS, and Python.',
+	'Projects.Status.OutOfService': 'Out of Service',
+	'Projects.Status.Unmaintained': 'Unmaintained',
+	'Projects.Status.Active': 'Active',
 } as const;

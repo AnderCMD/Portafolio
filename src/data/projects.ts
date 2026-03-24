@@ -13,7 +13,9 @@ import TasksFlowImagen from '@/assets/images/projects/TasksFlow.webp';
 import SETIPOSImagen from '@/assets/images/projects/SETIPOS.webp';
 import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
 import SETIImagen from '@/assets/images/projects/SETI.webp';
+import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 
+// Status: out-of-service, unmaintained, active
 export const getProjects = (t: (key: string) => string) => [
 	{
 		type: 'web',
@@ -24,6 +26,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
 		year: 2024,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
+		status: 'unmaintained',
 	},
 	{
 		type: 'web',
@@ -34,25 +37,27 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Calculadora',
 		year: 2023,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
+		status: 'unmaintained',
 	},
 	{
 		type: 'web',
 		title: t('Projects.Title.3'),
 		description: t('Projects.Description.3'),
 		image: GPTLocalImagen,
-		linkView: 'https://andercmd.github.io/GPT-Local/',
+		// linkView: 'https://andercmd.github.io/GPT-Local/',
 		linkCode: 'https://github.com/AnderCMD/GPT-Local',
 		year: 2024,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
+		status: 'active',
 	},
 	{
 		type: 'web',
 		title: t('Projects.Title.4'),
 		description: t('Projects.Description.4'),
 		image: AMEDigitalImagen,
-		linkView: 'https://www.amedigital.mx',
 		year: 2024,
 		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
+		status: 'out-of-service'
 	},
 	{
 		type: 'web',
@@ -62,6 +67,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://www.diagnosticomoderno.com/',
 		year: 2023,
 		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
+		status: 'active'
 	},
 	{
 		type: 'web',
@@ -71,6 +77,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/EcologiX',
 		year: 2023,
 		technologies: ['React Vite', 'NodeJS Express', 'JavaScript', 'TailwindCSS', 'Arduino', 'Git & GitHub'],
+		status: 'unmaintained',
 	},
 	{
 		type: 'mobile',
@@ -81,6 +88,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkDownload: 'https://1drv.ms/f/c/520c89d29ae3998b/IgBMU_9g6VKfQZw7eHa4z2YXAfcKjJ94gAIPsUTK0pgzzFk?e=znQZou',
 		year: 2022,
 		technologies: ['Unity', 'C#'],
+		status: 'unmaintained',
 	},
 	{
 		type: 'web',
@@ -91,6 +99,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Chat-Bot',
 		year: 2022,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
+		status: 'unmaintained',
 	},
 	{
 		type: 'web',
@@ -101,6 +110,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Desafios-Frontend-Mentor/',
 		year: 2023,
 		technologies: ['React Vite', 'JavaScript', 'HTML', 'CSS', 'TailwindCSS', 'Git & GitHub'],
+		status: 'active',
 	},
 	{
 		type: 'other',
@@ -111,6 +121,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkDownload: '/Download/Scripts/FixWindows.bat',
 		year: 2024,
 		technologies: ['Batch'],
+		status: 'active',
 	},
 	{
 		type: 'web',
@@ -121,6 +132,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/TasksFlow',
 		year: 2025,
 		technologies: ['Redux', 'React Vite', 'JavaScript', 'TailwindCSS', 'Git & Github'],
+		status: 'active',
 	},
 	{
 		type: 'web',
@@ -138,6 +150,7 @@ export const getProjects = (t: (key: string) => string) => [
 			'Docker',
 			'Git & GitHub',
 		],
+		status: 'active',
 	},
 	{
 		type: 'web',
@@ -146,6 +159,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: ResserSaaSImagen,
 		year: 2025,
 		technologies: ['React Vite', 'TypeScript', 'AntDesign', 'C# .Net 8', 'SQL Server', 'Azure', 'Git'],
+		status: 'out-of-service',
 	},
 	{
 		type: 'web',
@@ -155,5 +169,17 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://sistemasempresariales.com.mx',
 		year: 2026,
 		technologies: ['Astro', 'TypeScript', 'TailwindCSS', 'Git', 'i18n', 'React'],
+		status: 'active',
 	},
+	{
+		type: 'other',
+		title: t('Projects.Title.16'),
+		description: t('Projects.Description.16'),
+		image: FolioGeneratorImagen,
+		linkView: 'https://www.npmjs.com/package/folio-generator-ts',
+		linkCode: 'https://github.com/AnderCMD/Generador-de-folios',
+		year: 2026,
+		technologies: ['TypeScript', 'NPM', 'Node.js'],
+		status: 'active',
+	}
 ];

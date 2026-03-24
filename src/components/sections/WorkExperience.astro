@@ -51,32 +51,11 @@ interface Experience {
 	descriptionKey?: string;
 }
 
-// Función para calcular años de experiencia total desde la primera experiencia hasta ahora
-function calculateTotalYearsOfExperience(experiences: Experience[]) {
-	if (experiences.length === 0) return 0;
-
-	// Obtener la fecha más antigua (última experiencia en el array)
-	const firstExp = experiences[experiences.length - 1];
-	const firstDate = firstExp.startDate.split('•')[0].trim();
-	const [startMonth, startYear] = firstDate.split('/').map(Number);
-
-	// Fecha actual
-	const now = new Date();
-	const currentYear = now.getFullYear();
-	const currentMonth = now.getMonth() + 1;
-
-	// Calcular años con decimales (1 decimal)
-	const totalMonths = (currentYear - startYear) * 12 + (currentMonth - startMonth);
-	const years = Math.round((totalMonths / 12) * 10) / 10; // Redondear a 1 decimal
-
-	return years;
-}
+import { getYearsOfExperience } from '@/i18n/common';
 
 const allWorkExperience = getWorkExperience(t as (key: string) => string);
-
-// Aplicar límite si se especifica
 const workExperience = limit ? allWorkExperience.slice(0, limit) : allWorkExperience;
-const totalYears = calculateTotalYearsOfExperience(allWorkExperience);
+const totalYears = getYearsOfExperience((Astro.currentLocale as 'es' | 'en') || 'es');
 ---
 
 <div class='relative mx-auto'>
@@ -243,7 +222,7 @@ const totalYears = calculateTotalYearsOfExperience(allWorkExperience);
 		showViewAll && limit && allWorkExperience.length > limit && (
 			<div class='mt-16 text-center'>
 				<a
-					href={(Astro.currentLocale === 'es' ? '/Conoceme' : '/en/About') + '#experience'}
+					href={(Astro.currentLocale === 'es' ? '/Experiencia' : '/en/Experience') + '#experience'}
 					class='group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300'>
 					<span>
 						{Astro.currentLocale === 'es'
@@ -256,46 +235,13 @@ const totalYears = calculateTotalYearsOfExperience(allWorkExperience);
 					{Astro.currentLocale === 'es'
 						? ``
 						: ``}
-					<span class="experience-years-count">{totalYears}</span>+
+					<span class="experience-years-count">{totalYears}</span>
 					{Astro.currentLocale === 'es'
-						? ` años de experiencia profesional`
-						: ` years of professional experience`}
+						? ` de experiencia profesional`
+						: ` of professional experience`}
 				</p>
 			</div>
 		)
 	}
 </div>
 
-<script>
-	function updateActiveDurations() {
-		const activeDurations = document.querySelectorAll('.active-duration');
-		const now = new Date();
-		const currentYear = now.getFullYear();
-		const currentMonth = now.getMonth() + 1;
-
-		activeDurations.forEach((el) => {
-			const startDate = el.getAttribute('data-start-date');
-			// startDate format: "MM/YYYY" from experience.ts
-			if (!startDate) return;
-
-			const parts = startDate.split('•')[0].trim().split('/');
-			const startMonth = parseInt(parts[0]);
-			const startYear = parseInt(parts[1]);
-
-			// Calculate months difference
-			const months = (currentYear - startYear) * 12 + (currentMonth - startMonth);
-
-			const labelMonth = el.getAttribute('data-label-month') || 'Mes';
-			const labelMonths = el.getAttribute('data-label-months') || 'Meses';
-			const label = months === 1 ? labelMonth : labelMonths;
-
-			el.textContent = `${months} ${label}`;
-		});
-	}
-
-	// Update on initial load
-	updateActiveDurations();
-
-	// Update on view transitions
-	document.addEventListener('astro:page-load', updateActiveDurations);
-</script>

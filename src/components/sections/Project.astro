@@ -8,6 +8,12 @@ import { Image } from 'astro:assets';
 import { getProjects } from '@/data/projects';
 
 const projects = getProjects(t as (key: string) => string);
+
+const statusOrder = {
+	'active': 1,
+	'unmaintained': 2,
+	'out-of-service': 3
+};
 ---
 
 <style>
@@ -30,48 +36,68 @@ const projects = getProjects(t as (key: string) => string);
 	}
 </style>
 
-<nav class='flex flex-wrap items-center justify-center gap-3 py-6 md:py-10' aria-label='Filtros de proyectos'>
-	<button
-		type='button'
-		class='filter-button group relative px-6 py-3 text-base font-bold text-white bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden'
-		data-filter='all'>
-		<span class='relative z-10'>{t('Projects.Nav.AllCategories')}</span>
-		<div class='absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700'></div>
-	</button>
-	<button
-		type='button'
-		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
-		data-filter='web'>
-		<i class='fa-solid fa-globe mr-2 text-sky-500'></i>
-		{t('Projects.Nav.Web')}
-	</button>
-	<button
-		type='button'
-		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-emerald-50 hover:to-teal-50 dark:hover:from-emerald-950/50 dark:hover:to-teal-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
-		data-filter='mobile'>
-		<i class='fa-solid fa-mobile-screen-button mr-2 text-emerald-500'></i>
-		{t('Projects.Nav.Mobile')}
-	</button>
-	<button
-		type='button'
-		class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-950/50 dark:hover:to-pink-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
-		data-filter='other'>
-		<i class='fa-solid fa-folder mr-2 text-purple-500'></i>
-		{t('Projects.Nav.Other')}
-	</button>
-</nav>
+<div class='flex flex-wrap items-center justify-center gap-6 py-6 md:py-10' aria-label='Navegación de filtros'>
+	<nav class='flex flex-wrap items-center justify-center gap-3' aria-label='Filtros de proyectos'>
+		<button
+			type='button'
+			class='filter-button group relative px-6 py-3 text-base font-bold text-white bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 rounded-2xl shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 transition-all duration-300 transform hover:scale-105 active:scale-95 overflow-hidden'
+			data-filter='all'>
+			<span class='relative z-10'>{t('Projects.Nav.AllCategories')}</span>
+			<div class='absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700'></div>
+		</button>
+		<button
+			type='button'
+			class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
+			data-filter='web'>
+			<i class='fa-solid fa-globe mr-2 text-sky-500'></i>
+			{t('Projects.Nav.Web')}
+		</button>
+		<button
+			type='button'
+			class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-emerald-50 hover:to-teal-50 dark:hover:from-emerald-950/50 dark:hover:to-teal-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
+			data-filter='mobile'>
+			<i class='fa-solid fa-mobile-screen-button mr-2 text-emerald-500'></i>
+			{t('Projects.Nav.Mobile')}
+		</button>
+		<button
+			type='button'
+			class='filter-button group px-6 py-3 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-linear-to-r hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-950/50 dark:hover:to-pink-950/50 border-2 border-slate-200 dark:border-slate-700 hover:border-purple-400 dark:hover:border-purple-500 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95'
+			data-filter='other'>
+			<i class='fa-solid fa-folder mr-2 text-purple-500'></i>
+			{t('Projects.Nav.Other')}
+		</button>
+	</nav>
 
-<div class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+	<!-- Sorting Controls -->
+	<div class='flex items-center gap-3 px-4 py-2 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700'>
+		<span class="text-sm font-bold text-slate-500 dark:text-slate-400">
+			<i class="fa-solid fa-sort mr-1"></i>
+		</span>
+		<select id="sort-selector" class="bg-transparent text-sm font-bold text-slate-700 dark:text-slate-200 border-none focus:ring-0 cursor-pointer">
+			<option value="status">{t('Projects.Sort.ByStatus')}</option>
+			<option value="date">{t('Projects.Sort.ByDate')}</option>
+		</select>
+	</div>
+</div>
+
+<div id='projects-grid' class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
 		projects
 			.sort((a, b) => {
-				if (b.year !== a.year) {
-					return (b.year || 0) - (a.year || 0); // Sort by year in descending order
+				const status_a = statusOrder[a.status as keyof typeof statusOrder] || 99;
+				const status_b = statusOrder[b.status as keyof typeof statusOrder] || 99;
+				if (status_a !== status_b) {
+					return status_a - status_b; // Default sort by status
 				}
-				return a.title.localeCompare(b.title); // Sort by title in ascending order
+				return (b.year || 0) - (a.year || 0); // Then by year
 			})
 			.map((Project) => (
-				<article class={`group min-h-full filter-item all ${Project.type}`}>
+				<article 
+					class={`group min-h-full filter-item all ${Project.type}`}
+					data-year={Project.year}
+					data-status={Project.status || 'unknown'}
+					data-title={Project.title}
+				>
 					<div class='relative flex flex-col h-full rounded-2xl shadow-lg transition-all duration-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:shadow-sky-500/20 dark:hover:shadow-sky-500/10 hover:-translate-y-2 overflow-hidden'>
 						<!-- Glow effect on hover -->
 						<div class='absolute inset-0 bg-linear-to-br from-sky-500/0 to-blue-500/0 group-hover:from-sky-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none'></div>
@@ -87,6 +113,12 @@ const projects = getProjects(t as (key: string) => string);
 								decoding='async'
 								quality={85}
 							/>
+							{Project.status && (
+								<span class={`absolute top-4 left-4 z-20 px-3 py-1.5 text-xs font-bold text-white ${Project.status === 'out-of-service' ? 'bg-red-600/90' : Project.status === 'active' ? 'bg-emerald-600/90' : 'bg-slate-600/90'} backdrop-blur-sm rounded-full shadow-lg transition-transform group-hover:scale-105`}>
+									<i class={`fa-solid ${Project.status === 'out-of-service' ? 'fa-triangle-exclamation' : Project.status === 'active' ? 'fa-circle-check' : 'fa-box-archive'} mr-1.5`}></i>
+									{t(`Projects.Status.${Project.status === 'out-of-service' ? 'OutOfService' : Project.status === 'active' ? 'Active' : 'Unmaintained'}`)}
+								</span>
+							)}
 							{Project.year && (
 								<span class='absolute top-4 right-4 z-20 px-3 py-1.5 text-xs font-bold text-white bg-sky-600/90 dark:bg-sky-500/90 backdrop-blur-sm rounded-full shadow-lg'>
 									{Project.year}
@@ -100,7 +132,7 @@ const projects = getProjects(t as (key: string) => string);
 								<h3 class='text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 line-clamp-2'>
 									{Project.title}
 								</h3>
-								<p class='text-sm text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed'>
+								<p class='text-sm text-slate-600 dark:text-slate-400 leading-relaxed'>
 									{Project.description}
 								</p>
 							</div>
@@ -160,14 +192,47 @@ const projects = getProjects(t as (key: string) => string);
 <script>
 	document.addEventListener('astro:page-load', () => {
 		const filterButtons = document.querySelectorAll('.filter-button');
+		const sortSelector = document.getElementById('sort-selector') as HTMLSelectElement;
+		const grid = document.getElementById('projects-grid');
 		const filterItems = document.querySelectorAll('.filter-item');
+
+		const statusOrder: Record<string, number> = {
+			'active': 1,
+			'unmaintained': 2,
+			'out-of-service': 3,
+			'unknown': 4
+		};
+
+		const sortItems = () => {
+			if (!grid) return;
+			const items = Array.from(filterItems) as HTMLElement[];
+			const sortMode = sortSelector.value;
+
+			items.sort((a, b) => {
+				if (sortMode === 'status') {
+					const statusA = statusOrder[a.dataset.status || 'unknown'] || 99;
+					const statusB = statusOrder[b.dataset.status || 'unknown'] || 99;
+					if (statusA !== statusB) return statusA - statusB;
+					// Fallback to date
+					return (Number(b.dataset.year) || 0) - (Number(a.dataset.year) || 0);
+				} else {
+					const yearA = Number(a.dataset.year) || 0;
+					const yearB = Number(b.dataset.year) || 0;
+					if (yearA !== yearB) return yearB - yearA;
+					// Fallback to title
+					return (a.dataset.title || '').localeCompare(b.dataset.title || '');
+				}
+			});
+
+			items.forEach(item => grid.appendChild(item));
+		};
 
 		filterButtons.forEach((button) => {
 			button.addEventListener('click', () => {
 				const filter = button.getAttribute('data-filter');
 
 				filterItems.forEach((item) => {
-					const element = item;
+					const element = item as HTMLElement;
 
 					if (filter === 'all') {
 						element.classList.remove('hidden');
@@ -196,5 +261,9 @@ const projects = getProjects(t as (key: string) => string);
 				});
 			});
 		});
+
+		if (sortSelector) {
+			sortSelector.addEventListener('change', sortItems);
+		}
 	});
 </script>
