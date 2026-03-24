@@ -1,7 +1,6 @@
-import type { AstroGlobal } from 'astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 
-export const useLocale = (Astro: AstroGlobal) => {
+export const useLocale = (Astro: { url: URL; currentLocale?: string | undefined }) => {
 	const Lang = getLangFromUrl(Astro.url) as 'es' | 'en';
 	const t = useTranslations(Lang);
 	const currentLocale: string = Astro.currentLocale ?? 'es';

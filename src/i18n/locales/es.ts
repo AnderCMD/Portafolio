@@ -162,4 +162,5 @@ export const es = {
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',
+	'Projects.Status.Delivered': 'Entregado',
 } as const;

@@ -15,7 +15,7 @@ import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
 import SETIImagen from '@/assets/images/projects/SETI.webp';
 import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 
-// Status: out-of-service, unmaintained, active
+// Status: out-of-service, unmaintained, active, delivered
 export const getProjects = (t: (key: string) => string) => [
 	{
 		type: 'web',
@@ -159,7 +159,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: ResserSaaSImagen,
 		year: 2025,
 		technologies: ['React Vite', 'TypeScript', 'AntDesign', 'C# .Net 8', 'SQL Server', 'Azure', 'Git'],
-		status: 'out-of-service',
+		status: 'delivered',
 	},
 	{
 		type: 'web',

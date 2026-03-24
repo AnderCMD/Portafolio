@@ -7,12 +7,13 @@ const { t } = useLocale(Astro);
 import { Image } from 'astro:assets';
 import { getProjects } from '@/data/projects';
 
-const projects = getProjects(t as (key: string) => string);
+const projectsList = getProjects(t as (key: string) => string);
 
 const statusOrder = {
 	'active': 1,
-	'unmaintained': 2,
-	'out-of-service': 3
+	'delivered': 2,
+	'unmaintained': 3,
+	'out-of-service': 4
 };
 ---
 
@@ -82,7 +83,7 @@ const statusOrder = {
 
 <div id='projects-grid' class='items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 	{
-		projects
+		projectsList
 			.sort((a, b) => {
 				const status_a = statusOrder[a.status as keyof typeof statusOrder] || 99;
 				const status_b = statusOrder[b.status as keyof typeof statusOrder] || 99;
@@ -96,27 +97,37 @@ const statusOrder = {
 					class={`group min-h-full filter-item all ${Project.type}`}
 					data-year={Project.year}
 					data-status={Project.status || 'unknown'}
-					data-title={Project.title}
+					data-title={Project.title || ''}
 				>
 					<div class='relative flex flex-col h-full rounded-2xl shadow-lg transition-all duration-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:shadow-sky-500/20 dark:hover:shadow-sky-500/10 hover:-translate-y-2 overflow-hidden'>
-						<!-- Glow effect on hover -->
 						<div class='absolute inset-0 bg-linear-to-br from-sky-500/0 to-blue-500/0 group-hover:from-sky-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none'></div>
 						
-						<!-- Image Container -->
 						<a href={Project.linkView || Project.linkCode} class='relative shrink-0 overflow-hidden' target="_blank">
 							<div class='absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'></div>
 							<Image
 								class='object-cover w-full aspect-video transition-transform duration-500 group-hover:scale-110'
 								src={Project.image}
-								alt={Project.description}
+								alt={Project.description || Project.title || ''}
 								loading='lazy'
 								decoding='async'
 								quality={85}
 							/>
 							{Project.status && (
-								<span class={`absolute top-4 left-4 z-20 px-3 py-1.5 text-xs font-bold text-white ${Project.status === 'out-of-service' ? 'bg-red-600/90' : Project.status === 'active' ? 'bg-emerald-600/90' : 'bg-slate-600/90'} backdrop-blur-sm rounded-full shadow-lg transition-transform group-hover:scale-105`}>
-									<i class={`fa-solid ${Project.status === 'out-of-service' ? 'fa-triangle-exclamation' : Project.status === 'active' ? 'fa-circle-check' : 'fa-box-archive'} mr-1.5`}></i>
-									{t(`Projects.Status.${Project.status === 'out-of-service' ? 'OutOfService' : Project.status === 'active' ? 'Active' : 'Unmaintained'}`)}
+								<span class={`absolute top-4 left-4 z-20 px-3 py-1.5 text-xs font-bold text-white ${
+									Project.status === 'out-of-service' ? 'bg-red-600/90' : 
+									Project.status === 'active' ? 'bg-emerald-600/90' : 
+									Project.status === 'delivered' ? 'bg-indigo-600/90' :
+									'bg-slate-600/90'} backdrop-blur-sm rounded-full shadow-lg transition-transform group-hover:scale-105`}>
+									<i class={`fa-solid ${
+										Project.status === 'out-of-service' ? 'fa-triangle-exclamation' : 
+										Project.status === 'active' ? 'fa-circle-check' : 
+										Project.status === 'delivered' ? 'fa-truck-ramp-box' :
+										'fa-box-archive'} mr-1.5`}></i>
+									{t(`Projects.Status.${
+										Project.status === 'out-of-service' ? 'OutOfService' : 
+										Project.status === 'active' ? 'Active' : 
+										Project.status === 'delivered' ? 'Delivered' :
+										'Unmaintained'}`)}
 								</span>
 							)}
 							{Project.year && (
@@ -126,7 +137,6 @@ const statusOrder = {
 							)}
 						</a>
 						
-						<!-- Content -->
 						<div class='relative flex flex-col grow p-6 space-y-4'>
 							<div class='space-y-2'>
 								<h3 class='text-xl font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 line-clamp-2'>
@@ -137,7 +147,6 @@ const statusOrder = {
 								</p>
 							</div>
 							
-							{/* Tech Stack */}
 							{Project.technologies && (
 								<div class="flex flex-wrap gap-2">
 									{Project.technologies.map((tech) => (
@@ -148,7 +157,6 @@ const statusOrder = {
 								</div>
 							)}
 							
-							{/* Action Buttons */}
 							<div class='flex items-center gap-2 pt-4 mt-auto border-t border-slate-200 dark:border-slate-700'>
 								{Project.linkView && (
 									<a
@@ -198,9 +206,10 @@ const statusOrder = {
 
 		const statusOrder: Record<string, number> = {
 			'active': 1,
-			'unmaintained': 2,
-			'out-of-service': 3,
-			'unknown': 4
+			'delivered': 2,
+			'unmaintained': 3,
+			'out-of-service': 4,
+			'unknown': 5
 		};
 
 		const sortItems = () => {
@@ -213,13 +222,11 @@ const statusOrder = {
 					const statusA = statusOrder[a.dataset.status || 'unknown'] || 99;
 					const statusB = statusOrder[b.dataset.status || 'unknown'] || 99;
 					if (statusA !== statusB) return statusA - statusB;
-					// Fallback to date
 					return (Number(b.dataset.year) || 0) - (Number(a.dataset.year) || 0);
 				} else {
 					const yearA = Number(a.dataset.year) || 0;
 					const yearB = Number(b.dataset.year) || 0;
 					if (yearA !== yearB) return yearB - yearA;
-					// Fallback to title
 					return (a.dataset.title || '').localeCompare(b.dataset.title || '');
 				}
 			});

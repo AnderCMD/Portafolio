@@ -39,18 +39,6 @@ function formatDateRange(startDate: string, isActive: boolean, currentLocale: st
 	return startDate; // Si no está activo, asumimos que ya tiene el formato completo
 }
 
-interface Experience {
-	active: boolean;
-	nameCompany: string;
-	position: string;
-	startDate: string;
-	cleanDescription: string;
-	technologies: string[];
-	location: string;
-	visit: string;
-	descriptionKey?: string;
-}
-
 import { getYearsOfExperience } from '@/i18n/common';
 
 const allWorkExperience = getWorkExperience(t as (key: string) => string);
