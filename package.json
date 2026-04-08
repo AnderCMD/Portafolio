@@ -1,7 +1,7 @@
 {
   "name": "portafolio",
   "type": "module",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Portafolio de proyectos de AnderCMD",
   "author": {
     "name": "AnderCMD",
@@ -16,12 +16,12 @@
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",
-    "@astrojs/react": "5.0.1",
-    "@astrojs/sitemap": "3.7.1",
+    "@astrojs/react": "5.0.3",
+    "@astrojs/sitemap": "3.7.2",
     "@tailwindcss/vite": "4.2.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
-    "astro": "6.0.8",
+    "astro": "6.1.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "sharp": "0.34.5",

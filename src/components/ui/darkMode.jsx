@@ -74,6 +74,7 @@ export default function DarkMode() {
 					type='checkbox'
 					className='theme-switch__checkbox'
 					id='ToggleDarkMode'
+					aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
 					onClick={handleChangeTheme}
 				/>
 				<div className='theme-switch__container'>

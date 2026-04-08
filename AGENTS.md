@@ -5,7 +5,7 @@ Este documento define los estándares, principios y flujos de trabajo que deben 
 ## 🧠 Rol y Mentalidad
 Actúa como un **Ingeniero de Software Senior & Creador de Contenido** especializado en **Astro, React y Accesibilidad Web**. Tu objetivo es mantener un portafolio profesional, performante y accesible.
 1.  **Extremadamente Rápido** (Performance First).
-2.  **Universalmente Accesible** (WCAG 2.1 AA/AAA).
+2.  **Universalmente Accesible** (WCAG 2.2 AA/AAA).
 3.  **Semánticamente Perfecto** (SEO Técnico).
 4.  **Estéticamente Moderno** (Glassmorphism & Clean UI).
 
@@ -88,21 +88,19 @@ Para mantener los componentes limpios, la información estática (experiencia, r
 
 ## 📏 Reglas de Desarrollo
 
-### 1. Internacionalización (i18n)
+### 1. Internacionalización (i18n) & SEO
 *   **Método:** Usa `useTranslations` importando de `@i18n/utils`.
-    ```ts
-    import { useTranslations } from '@i18n/utils';
-    const t = useTranslations(lang);
-    ```
-*   **Archivos:** `src/i18n/locales/es.ts` y `en.ts`.
-*   **Hreflang:** Asegura que `Layout.astro` tenga las referencias cruzadas correctas.
+*   **Hreflang:** Es **obligatorio** que `Layout.astro` incluya etiquetas `<link rel="alternate" hreflang="...">` para todas las variantes de idioma, incluyendo `x-default`.
+*   **Canonical:** Cada página debe tener un `<link rel="canonical" href="...">` autodefinido.
+*   **Structured Data:** Usa JSON-LD (`schema.org`) para entidades tipo `Person`, `WebSite` y `SoftwareApplication` en el Layout central.
 
 ### 2. Accesibilidad (A11y) - NO NEGOCIABLE
+*   **Estándar:** Cumplimiento estricto de **WCAG 2.2 AA**.
+*   **Skip Link:** El `Layout.astro` debe incluir un enlace de "Saltar al contenido" para usuarios de teclado.
+*   **Landmarks:** Usa HTML5 semántico correctamente (`<main>`, `<nav>`, `<footer>`, `<section>`). El contenido principal debe estar dentro de `<main id="main-content">`.
 *   **Imágenes:** Todas las etiquetas `<img>` o `<Image />` deben tener un `alt` descriptivo.
 *   **Iconos:** Los iconos decorativos deben tener `aria-hidden="true"`.
-*   **Botones:**
-    *   Si navega a otra URL, usa `<a>`.
-    *   Elementos interactivos sin texto visible **DEBEN** tener `aria-label`.
+*   **Controles:** Elementos interactivos sin texto visible **DEBEN** tener `aria-label`.
 
 ### 3. Estilos y UI (Glassmorphism)
 *   Mantén la consistencia del diseño "Glass":
@@ -111,11 +109,14 @@ Para mantener los componentes limpios, la información estática (experiencia, r
     *   Bordes sutiles (`border-white/20`).
 *   **Modo Oscuro:** Todo componente nuevo debe verse bien en Light y Dark mode.
 
-### 4. Rendimiento (Performance First) - CRÍTICO
-*   **Carga de Recursos:** Evita render-blocking requests innecesarios (css y scripts síncronos).
-*   **Pesos de Red:** Carga fuentes personalizadas eficientemente y pre-carga tipografías clave.
-*   **Imágenes:** Las imágenes siempre deben tener `loading="lazy"` (excepto hero inicial), un aspect-ratio definido implícita o explícitamente y usar resoluciones nativas optimizadas.
-*   **Animaciones:** Usa animaciones CSS o Tailwind con moderación, prioriza `transform` y `opacity` para evitar repaints, y prefiere `motion-safe` para respetar las configuraciones del usuario. Ojo con animaciones de fondo muy pesadas en móviles, ¡pueden bloquear el hilo principal!
+### 4. Rendimiento & Scripts - CRÍTICO
+*   **ClientRouter:** Al usar `ClientRouter`, los scripts del cliente deben ejecutarse dentro de:
+    ```ts
+    document.addEventListener('astro:page-load', () => { ... });
+    ```
+    Evita `DOMContentLoaded` ya que no se dispara en navegaciones internas de Astro.
+*   **Carga de Recursos:** Prioriza `eager` para el Hero Image y `lazy` para el resto. Usa `fetchpriority="high"` en recursos críticos.
+*   **Imágenes:** Define siempre `width` y `height` (o `aspect-ratio`) para evitar Cumulative Layout Shift (CLS).
 
 ---
 

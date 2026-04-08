@@ -191,6 +191,11 @@ const schemaOrg = {
 		<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
 		<link rel='canonical' href={canonicalURL} />
 
+		<!-- Multi-language SEO (hreflang) -->
+		<link rel='alternate' hreflang='es' href={new URL(Astro.url.pathname.replace(/^\/en/, ''), siteUrl)} />
+		<link rel='alternate' hreflang='en' href={new URL(`/en${Astro.url.pathname.replace(/^\/en/, '')}`, siteUrl)} />
+		<link rel='alternate' hreflang='x-default' href={new URL(Astro.url.pathname.replace(/^\/en/, ''), siteUrl)} />
+
 		<!-- Open Graph / Facebook -->
 		<meta property='og:type' content={type} />
 		<meta property='og:url' content={canonicalURL} />
@@ -237,8 +242,15 @@ const schemaOrg = {
 
 	<body
 		class='relative overflow-x-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 text-slate-900 dark:text-slate-100 transition-colors duration-300'>
+		<!-- Skip Link for Keyboard Accessibility -->
+		<a
+			href='#main-content'
+			class='sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-6 focus:py-3 focus:bg-sky-500 focus:text-white focus:rounded-xl focus:shadow-2xl focus:outline-none transition-all duration-300'>
+			{currentLocale === 'es' ? 'Saltar al contenido principal' : 'Skip to main content'}
+		</a>
+
 		<!-- Modern Animated Background -->
-		<div class='fixed inset-0 -z-10 overflow-hidden'>
+		<div class='fixed inset-0 -z-10 overflow-hidden' aria-hidden='true'>
 			<!-- Gradient Orbs con animación -->
 			<div class='absolute inset-0'>
 				<!-- Orb 1 - Neutral Light / Sky Dark -->
@@ -543,7 +555,7 @@ const schemaOrg = {
 
 		<div class='relative flex flex-col min-h-screen'>
 			<Navbar />
-			<main class='flex-1 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 py-8 lg:py-12'>
+			<main id='main-content' class='flex-1 container mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 2xl:px-24 py-8 lg:py-12' tabindex='-1'>
 				<ClientRouter />
 				<div class='animate-fade-in'>
 					<slot />
@@ -582,7 +594,7 @@ const schemaOrg = {
 				<div class='absolute inset-0 flex items-center justify-center'>
 					<div
 						class='w-10 h-10 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-sky-500/50 transition-all duration-300 group-hover:scale-110'>
-						<i class='fa-solid fa-arrow-up text-white text-sm'></i>
+						<i class='fa-solid fa-arrow-up text-white text-sm' aria-hidden='true'></i>
 					</div>
 				</div>
 			</div>
