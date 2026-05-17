@@ -34,9 +34,7 @@
       "sharp"
     ],
     "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
-      "esbuild",
-      "sharp"
+      "@tailwindcss/oxide"
     ]
   }
 }
