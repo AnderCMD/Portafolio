@@ -1,0 +1,4 @@
+# Configuración de atributos de Git para la rama main
+# Evita que los archivos de bloqueo y workspace sobrescriban la exclusión de main al hacer merge desde dev
+pnpm-lock.yaml merge=ours
+pnpm-workspace.yaml merge=ours
