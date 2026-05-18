@@ -60,5 +60,6 @@ export default defineConfig({
 				protocol: 'https',
 			},
 		],
+		dangerouslyProcessSVG: true,
 	},
 });
