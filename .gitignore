@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# pnpm lock and workspace files (excluidos en main para Hostinger)
+pnpm-lock.yaml
+pnpm-workspace.yaml
