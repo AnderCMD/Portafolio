@@ -29,12 +29,7 @@
     "typescript": "6.0.3"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ],
     "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
       "esbuild",
       "sharp"
     ]
