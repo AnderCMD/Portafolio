@@ -22,8 +22,8 @@ export const getProjects = (t: (key: string) => string) => [
 		title: t('Projects.Title.1'),
 		description: t('Projects.Description.1'),
 		image: HoroscopoImagen,
-		linkView: 'https://andercmd.github.io/Desafios-Codedex/Horoscopo/',
-		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main/Horoscopo',
+		linkView: 'https://codedex.andercmd.dev/Horoscope',
+		linkCode: 'https://github.com/AnderCMD/Desafios-Codedex/tree/main',
 		year: 2024,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 		status: 'unmaintained',
@@ -57,7 +57,7 @@ export const getProjects = (t: (key: string) => string) => [
 		image: AMEDigitalImagen,
 		year: 2024,
 		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
-		status: 'out-of-service'
+		status: 'out-of-service',
 	},
 	{
 		type: 'web',
@@ -67,7 +67,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://www.diagnosticomoderno.com/',
 		year: 2023,
 		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
-		status: 'active'
+		status: 'active',
 	},
 	{
 		type: 'web',
@@ -181,5 +181,5 @@ export const getProjects = (t: (key: string) => string) => [
 		year: 2026,
 		technologies: ['TypeScript', 'NPM', 'Node.js'],
 		status: 'active',
-	}
+	},
 ];
