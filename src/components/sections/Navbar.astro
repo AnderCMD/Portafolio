@@ -13,138 +13,161 @@ import { getRelativeLocaleUrl } from '@/i18n/utils';
 const { Lang, t, currentLocale } = useLocale(Astro);
 ---
 
-<nav
-	class='sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/50 dark:border-slate-700/50 transition-all duration-300'>
-	<div class='flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-2xl'>
+<nav class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/50 dark:border-slate-700/50 transition-all duration-300">
+	<div class="flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-2xl">
 		<a
 			href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
-			class='group flex items-center space-x-2 transition-transform hover:scale-105'>
+			class="group flex items-center space-x-2 transition-transform hover:scale-105"
+		>
 			<Image
-				data-logo-theme='logo'
-				id='LogoTheme'
+				data-logo-theme="logo"
+				id="LogoTheme"
 				src={LogoBlanco}
-				class='h-8 w-auto md:h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl will-change-auto object-contain'
-				alt='AnderCMD Logo'
-				loading='eager'
-				decoding='sync'
-				fetchpriority='high'
+				class="h-8 w-auto md:h-9 drop-shadow-lg transition-all group-hover:drop-shadow-xl will-change-auto object-contain"
+				alt="AnderCMD Logo"
+				loading="eager"
+				decoding="sync"
+				fetchpriority="high"
 			/>
 		</a>
 
 		<button
-			id='mobile-menu-button'
-			data-collapse-toggle='navbar-default'
-			type='button'
-			class='inline-flex items-center justify-center w-11 h-11 p-2 text-sm rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 lg:hidden dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 transition-all hover:scale-105 focus:ring-2 focus:ring-sky-500'
-			aria-controls='navbar-default'
-			aria-expanded='false'>
-			<span class='sr-only'>{t('Nav.OpenMenu')}</span>
-			<svg class='w-6 h-6' aria-hidden='true' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 17 14'>
+			id="mobile-menu-button"
+			data-collapse-toggle="navbar-default"
+			type="button"
+			class="inline-flex items-center justify-center w-11 h-11 p-2 text-sm rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 lg:hidden dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 transition-all hover:scale-105 focus:ring-2 focus:ring-sky-500"
+			aria-controls="navbar-default"
+			aria-expanded="false"
+		>
+			<span class="sr-only">{t('Nav.OpenMenu')}</span>
+			<svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
 				<path
-					stroke='currentColor'
-					stroke-linecap='round'
-					stroke-linejoin='round'
-					stroke-width='2'
-					d='M1 1h15M1 7h15M1 13h15'></path>
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M1 1h15M1 7h15M1 13h15"
+				></path>
 			</svg>
 		</button>
 
-		<div class='hidden w-full lg:block lg:w-auto' id='navbar-default'>
-			<div
-				class='flex flex-col p-4 mt-4 font-medium rounded-2xl backdrop-blur-lg bg-white/90 lg:p-0 max-lg:shadow-lg lg:flex-row lg:space-x-2 rtl:space-x-reverse lg:mt-0 lg:bg-transparent max-lg:dark:bg-slate-800/90 dark:border-slate-700'>
+		<div class="hidden w-full lg:block lg:w-auto" id="navbar-default">
+			<div class="flex flex-col p-4 mt-4 font-medium rounded-2xl backdrop-blur-lg bg-white/90 lg:p-0 max-lg:shadow-lg lg:flex-row lg:space-x-2 rtl:space-x-reverse lg:mt-0 lg:bg-transparent max-lg:dark:bg-slate-800/90 dark:border-slate-700">
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
-					class='group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105'>
-					<i class='fa-solid fa-house text-sky-500 group-hover:scale-110 transition-transform' aria-hidden='true'></i>
-					<span class='relative'>
+					class="group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105"
+				>
+					<i
+						class="fa-solid fa-house text-sky-500 group-hover:scale-110 transition-transform"
+						aria-hidden="true"
+					></i>
+					<span class="relative">
 						{t('Nav.Index')}
-						<span
-							class='absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300'
-						></span>
+						<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
 					</span>
 				</a>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.About'))}
-					class='group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105'>
-					<i class='fa-solid fa-briefcase text-sky-500 group-hover:scale-110 transition-transform' aria-hidden='true'></i>
-					<span class='relative'>
+					class="group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105"
+				>
+					<i
+						class="fa-solid fa-briefcase text-sky-500 group-hover:scale-110 transition-transform"
+						aria-hidden="true"
+					></i>
+					<span class="relative">
 						{t('Nav.About')}
-						<span
-							class='absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300'
-						></span>
+						<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
 					</span>
 				</a>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Projects'))}
-					class='group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105'>
-					<i class='fa-solid fa-code text-sky-500 group-hover:scale-110 transition-transform' aria-hidden='true'></i>
-					<span class='relative'>
+					class="group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105"
+				>
+					<i
+						class="fa-solid fa-code text-sky-500 group-hover:scale-110 transition-transform"
+						aria-hidden="true"
+					></i>
+					<span class="relative">
 						{t('Nav.Projects')}
-						<span
-							class='absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300'
-						></span>
+						<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
+					</span>
+				</a>
+				<a
+					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Certificates'))}
+					class="group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105"
+				>
+					<i
+						class="fa-solid fa-certificate text-sky-500 group-hover:scale-110 transition-transform"
+						aria-hidden="true"
+					></i>
+					<span class="relative">
+						{t('Nav.Certificates')}
+						<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
 					</span>
 				</a>
 				<a
 					href={getRelativeLocaleUrl(currentLocale ?? '', t('Nav.Contact'))}
-					class='group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105'>
-					<i class='fa-solid fa-envelope text-sky-500 group-hover:scale-110 transition-transform' aria-hidden='true'></i>
-					<span class='relative'>
+					class="group flex items-center px-4 py-2.5 rounded-xl text-slate-700 dark:text-slate-300 gap-2.5 font-medium hover:bg-linear-to-r hover:from-sky-50 hover:to-blue-50 dark:hover:from-sky-950/50 dark:hover:to-blue-950/50 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-600 dark:lg:hover:text-sky-400 lg:p-2 transition-all duration-300 hover:scale-105"
+				>
+					<i
+						class="fa-solid fa-envelope text-sky-500 group-hover:scale-110 transition-transform"
+						aria-hidden="true"
+					></i>
+					<span class="relative">
 						{t('Nav.Contact')}
-						<span
-							class='absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300'
-						></span>
+						<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-sky-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
 					</span>
 				</a>
 				<DivisorNav />
-				<div
-					class='flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105'>
+				<div class="flex items-center px-3 py-2 rounded text-slate-900 gap-2 hover:bg-slate-100 lg:hover:bg-transparent lg:border-0 lg:hover:text-sky-700 lg:p-0 dark:text-white lg:dark:hover:text-sky-500 dark:hover:bg-slate-700 dark:hover:text-white lg:dark:hover:bg-transparent transition-all hover:scale-105">
 					<DarkMode client:idle />
 				</div>
 				<DivisorNav />
-				<div class='relative flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse'>
+				<div class="relative flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
 					<button
-						type='button'
-						data-dropdown-toggle='language-dropdown-menu'
-						aria-haspopup='true'
-						aria-expanded='false'
+						type="button"
+						data-dropdown-toggle="language-dropdown-menu"
+						aria-haspopup="true"
+						aria-expanded="false"
 						aria-label={Lang === 'en' ? 'Select language' : 'Seleccionar idioma'}
-						class='inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg cursor-pointer text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 dark:hover:text-white transition-all hover:scale-105'>
-						{
-							Lang === 'en' ? (
-								<div class='inline-flex items-center'>
-									<Image src={USImagen} class='w-5 h-5 me-2' alt='' aria-hidden='true' loading='lazy' />
-									English
-								</div>
-							) : (
-								<div class='inline-flex items-center'>
-									<Image src={MXImagen} class='w-5 h-5 me-2' alt='' aria-hidden='true' loading='lazy' />
-									Español
-								</div>
-							)
-						}
+						class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg cursor-pointer text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 dark:hover:text-white transition-all hover:scale-105"
+					>
+						{Lang === 'en' ? (
+							<div class="inline-flex items-center">
+								<Image src={USImagen} class="w-5 h-5 me-2" alt="" aria-hidden="true" loading="lazy" />
+								English
+							</div>
+						) : (
+							<div class="inline-flex items-center">
+								<Image src={MXImagen} class="w-5 h-5 me-2" alt="" aria-hidden="true" loading="lazy" />
+								Español
+							</div>
+						)}
 					</button>
 					<!-- Dropdown -->
 					<div
-						class='absolute z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-slate-100 dark:divide-slate-500 dark:bg-slate-700'
-						id='language-dropdown-menu'
-						role='menu'
-						style='top: 100%;'>
+						class="absolute z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow gap-4 divide-y divide-slate-100 dark:divide-slate-500 dark:bg-slate-700"
+						id="language-dropdown-menu"
+						role="menu"
+						style="top: 100%;"
+					>
 						<a
-							href='/en/'
-							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
-							role='menuitem'>
-							<div class='inline-flex items-center'>
-								<Image src={USImagen} class='w-5 h-5 me-2' alt='' aria-hidden='true' loading='lazy' />
+							href="/en/"
+							class="block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105"
+							role="menuitem"
+						>
+							<div class="inline-flex items-center">
+								<Image src={USImagen} class="w-5 h-5 me-2" alt="" aria-hidden="true" loading="lazy" />
 								English
 							</div>
 						</a>
 						<a
-							href='/'
-							class='block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105'
-							role='menuitem'>
-							<div class='inline-flex items-center'>
-								<Image src={MXImagen} class='w-5 h-5 me-2' alt='' aria-hidden='true' loading='lazy' />
+							href="/"
+							class="block px-4 py-2 text-sm text-slate-700 hover:rounded-lg hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-600 dark:hover:text-white transition-all hover:scale-105"
+							role="menuitem"
+						>
+							<div class="inline-flex items-center">
+								<Image src={MXImagen} class="w-5 h-5 me-2" alt="" aria-hidden="true" loading="lazy" />
 								Español
 							</div>
 						</a>

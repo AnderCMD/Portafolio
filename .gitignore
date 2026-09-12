@@ -23,6 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# pnpm lock and workspace files
+# pnpm lockfile (se genera por plataforma; se mantiene fuera de git para
+# evitar conflictos de merge entre main/dev, ver .gitattributes)
 pnpm-lock.yaml
-pnpm-workspace.yaml

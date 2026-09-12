@@ -1,36 +1,48 @@
 {
-  "name": "portafolio",
-  "type": "module",
-  "version": "2.2.2",
-  "description": "Portafolio de proyectos de AnderCMD",
-  "author": {
-    "name": "AnderCMD",
-    "email": "andercmd@outlook.com"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "chmod -R +x node_modules/@esbuild node_modules/esbuild node_modules/sharp node_modules/@tailwindcss 2>/dev/null || true; astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "0.9.9",
-    "@astrojs/react": "6.0.1",
-    "@astrojs/sitemap": "3.7.3",
-    "@tailwindcss/vite": "4.3.2",
-    "@types/react": "19.2.17",
-    "@types/react-dom": "19.2.3",
-    "astro": "7.2.8",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
-    "sharp": "0.35.4",
-    "tailwindcss": "4.3.2",
-    "typescript": "6.0.3"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@tailwindcss/oxide"
-    ]
-  }
+	"name": "portafolio",
+	"type": "module",
+	"version": "2.3.0",
+	"description": "Portafolio de proyectos de AnderCMD",
+	"author": {
+		"name": "AnderCMD",
+		"email": "andercmd@outlook.com"
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "chmod -R +x node_modules/@esbuild node_modules/esbuild node_modules/sharp node_modules/@tailwindcss 2>/dev/null || true; astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"dependencies": {
+		"@astrojs/check": "0.9.10",
+		"@astrojs/react": "6.0.5",
+		"@astrojs/sitemap": "3.7.4",
+		"@tailwindcss/vite": "4.3.3",
+		"@types/react": "19.3.0",
+		"@types/react-dom": "19.3.0",
+		"astro": "7.3.2",
+		"react": "19.3.0",
+		"react-dom": "19.3.0",
+		"sharp": "0.35.4",
+		"tailwindcss": "4.3.3"
+	},
+	"devDependencies": {
+		"@eslint/js": "10.0.1",
+		"eslint": "10.10.0",
+		"eslint-config-prettier": "10.1.8",
+		"eslint-plugin-astro": "3.1.0",
+		"eslint-plugin-jsx-a11y": "6.10.2",
+		"eslint-plugin-react": "7.37.5",
+		"globals": "17.12.0",
+		"prettier": "3.9.6",
+		"prettier-plugin-astro": "1.0.0",
+		"prettier-plugin-tailwindcss": "0.8.1",
+		"typescript": "6.0.3",
+		"typescript-eslint": "8.70.0"
+	}
 }

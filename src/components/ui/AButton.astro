@@ -25,15 +25,15 @@ const variantClasses = {
 	href={href}
 	target={newPage === true ? '_blank' : '_self'}
 	rel={newPage === true ? 'noopener noreferrer' : undefined}
-	class='inline-block w-full group'>
+	class="inline-block w-full group"
+>
 	<button
-		class={`btn-modern relative w-full px-6 py-3.5 mt-4 font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${variantClasses[variant]} flex items-center justify-center gap-2.5`}>
+		class={`btn-modern relative w-full px-6 py-3.5 mt-4 font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${variantClasses[variant]} flex items-center justify-center gap-2.5`}
+	>
 		{icon && <i class={icon + ' text-lg group-hover:scale-110 transition-transform'} />}
-		<span class='relative z-10'>{texto}</span>
-		{
-			newPage && (
-				<i class='fa-solid fa-arrow-up-right-from-square text-sm opacity-70 group-hover:opacity-100 transition-opacity' />
-			)
-		}
+		<span class="relative z-10">{texto}</span>
+		{newPage && (
+			<i class="fa-solid fa-arrow-up-right-from-square text-sm opacity-70 group-hover:opacity-100 transition-opacity" />
+		)}
 	</button>
 </a>

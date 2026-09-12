@@ -7,6 +7,7 @@ export const en = {
 	'Nav.About': 'Experience',
 	'Nav.Posts': 'Posts',
 	'Nav.Projects': 'Projects',
+	'Nav.Certificates': 'Certificates',
 	'Nav.Contact': 'Contact',
 	'Nav.OpenMenu': 'Open menu',
 
@@ -71,8 +72,7 @@ export const en = {
 	'Projects.Nav.Other': 'Other',
 	'Projects.Title': 'Projects',
 	'Projects.Subtitle': 'Some of my projects',
-	'Projects.Description':
-		'Here are some of the projects I have worked on. You can see more on my GitHub profile.',
+	'Projects.Description': 'Here are some of the projects I have worked on. You can see more on my GitHub profile.',
 	'Projects.ViewCode': 'View code',
 	'Projects.VisitProject': 'Visit project',
 	'Projects.Download': 'Download',
@@ -125,8 +125,7 @@ export const en = {
 	'Projects.Description.14':
 		'Resser Tecnologías SA de CV platform (SaaS and ERP) for administrative management and external monitoring.',
 	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SETI)',
-	'Projects.Description.15':
-		'Corporate website for Sistemas Empresariales en T.I. (SETI).',
+	'Projects.Description.15': 'Corporate website for Sistemas Empresariales en T.I. (SETI).',
 
 	'WorkExperience.Title': 'Work Experience',
 	'WorkExperience.Description':
@@ -159,8 +158,51 @@ export const en = {
 	'Projects.Title.16': 'Folio Generator',
 	'Projects.Description.16':
 		'A robust and flexible library designed to generate sequential alphanumeric codes (folios). Supports automatic padding, custom separators, and is fully Type-safe. Available in JS, TS, and Python.',
+	'Projects.Title.17': 'Vigilant',
+	'Projects.Description.17':
+		'Lightweight Windows system tray application that simulates user activity to prevent the system from going into sleep mode or changing its status to "Away".',
+	'Projects.Title.18': 'AutoSwitchMonitor',
+	'Projects.Description.18':
+		"Automatically switches your monitor's video input (DDC/CI) when you move a USB KVM switch between PCs, with configurable global hotkeys. Single Go binary for Windows and macOS.",
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
 	'Projects.Status.Delivered': 'Delivered',
+
+	'Certificates.Title': 'Certificates',
+	'Certificates.Description':
+		'Courses, diplomas, and recognitions I have earned throughout my journey as a Software Engineer.',
+	'Certificates.SeoDescription':
+		'Certificates, courses, and diplomas earned by Ander González (AnderCMD) on platforms such as Platzi, HackerRank, Fundación Carlos Slim, and more.',
+	'Certificates.ViewCertificate': 'View certificate',
+
+	'Certificates.Items.Title.1': 'JavaScript Fundamentals',
+	'Certificates.Items.Title.2': 'Problem Solving (Intermediate)',
+	'Certificates.Items.Title.3': 'C# (Basic)',
+	'Certificates.Items.Title.4': 'Node.js (Basic)',
+	'Certificates.Items.Title.5': 'Python (Basic)',
+	'Certificates.Items.Title.6': 'JavaScript (Intermediate)',
+	'Certificates.Items.Title.7': 'Software Engineer',
+	'Certificates.Items.Title.8': 'Problem Solving (Basic)',
+	'Certificates.Items.Title.9': 'JavaScript (Basic)',
+	'Certificates.Items.Title.10': 'CSS (Basic)',
+	'Certificates.Items.Title.11': 'Web Development School',
+	'Certificates.Items.Title.12': 'Pre-Work: Work Environment Setup',
+	'Certificates.Items.Title.13': 'Backend with NestJS',
+	'Certificates.Items.Title.14': 'Incubation & Entrepreneurship Program — Juventudes con Idea',
+	'Certificates.Items.Title.15': 'Introduction to Emerging Technologies: 2024 Edition',
+	'Certificates.Items.Title.16': 'Full Stack Developer with JavaScript',
+	'Certificates.Items.Title.17': 'Professional Git & GitHub Course',
+	'Certificates.Items.Title.18': 'Development Environment Setup on Linux',
+	'Certificates.Items.Title.19': 'Development Environment Setup on macOS',
+	'Certificates.Items.Title.20': 'Introduction to Terminal & Command Line',
+	'Certificates.Items.Title.21': 'Development Environment Setup on Windows',
+	'Certificates.Items.Title.22': 'Introduction to React Native',
+	'Certificates.Items.Title.23': 'Hack AI — Día de la Mentefactura 2024',
+	'Certificates.Items.Title.24': 'Día de la Mentefactura (DMF24)',
+	'Certificates.Items.Title.25': 'Fundamentals of Artificial Intelligence',
+	'Certificates.Items.Title.26': 'Comprehensive Web Development',
+	'Certificates.Items.Title.27': 'SIGA 2023 Award — Digital Public Innovation',
+	'Certificates.Items.Title.28': 'Valores del Ser',
+	'Certificates.Items.Title.29': 'Web Assistant',
 } as const;

@@ -46,190 +46,184 @@ const workExperience = limit ? allWorkExperience.slice(0, limit) : allWorkExperi
 const totalYears = getYearsOfExperience((Astro.currentLocale as 'es' | 'en') || 'es');
 ---
 
-<div class='relative mx-auto'>
+<div class="relative mx-auto">
 	{/* Decorative gradient background */}
-	<div class='absolute inset-0 -z-10 opacity-20 dark:opacity-10'>
-		<div class='absolute top-0 left-1/4 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl animate-float'></div>
+	<div class="absolute inset-0 -z-10 opacity-20 dark:opacity-10">
+		<div class="absolute top-0 left-1/4 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl animate-float"></div>
 		<div
-			class='absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float'
-			style='animation-delay: 1s;'>
-		</div>
+			class="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float"
+			style="animation-delay: 1s;"
+		></div>
 	</div>
 
-	<ol class='relative space-y-10 max-w-6xl mx-auto'>
-		{
-			workExperience.map((work, index) => (
-				<li class='group relative animate-slide-up' style={`animation-delay: ${index * 0.1}s;`}>
-					{/* Timeline Line */}
-					<div class='absolute left-6 top-0 bottom-0 w-0.5 bg-linear-to-b from-sky-400 via-blue-500 to-transparent dark:from-sky-500 dark:via-blue-600' />
+	<ol class="relative space-y-10 max-w-6xl mx-auto">
+		{workExperience.map((work, index) => (
+			<li class="group relative animate-slide-up" style={`animation-delay: ${index * 0.1}s;`}>
+				{/* Timeline Line */}
+				<div class="absolute left-6 top-0 bottom-0 w-0.5 bg-linear-to-b from-sky-400 via-blue-500 to-transparent dark:from-sky-500 dark:via-blue-600" />
 
-					{/* Timeline Node */}
-					<div class='absolute left-6 top-8 -translate-x-1/2 z-10'>
-						<div class='relative'>
-							{/* Icon container */}
-							<div class='relative flex items-center justify-center w-14 h-14 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-xl shadow-lg ring-4 ring-white dark:ring-slate-900 group-hover:scale-110 transition-transform duration-300'>
-								<i class='fa-solid fa-briefcase text-white text-lg' />
+				{/* Timeline Node */}
+				<div class="absolute left-6 top-8 -translate-x-1/2 z-10">
+					<div class="relative">
+						{/* Icon container */}
+						<div class="relative flex items-center justify-center w-14 h-14 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-xl shadow-lg ring-4 ring-white dark:ring-slate-900 group-hover:scale-110 transition-transform duration-300">
+							<i class="fa-solid fa-briefcase text-white text-lg" />
+						</div>
+
+						{/* Active indicator */}
+						{work.active && (
+							<div class="absolute -top-1 -right-1 flex h-3 w-3">
+								<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+								<span class="relative inline-flex h-3 w-3 rounded-full bg-emerald-500 shadow-lg" />
+							</div>
+						)}
+					</div>
+				</div>
+
+				{/* Content Card */}
+				<div class="ml-20 relative">
+					<div class="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:-translate-y-1">
+						{/* Top gradient bar */}
+						<div class="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500" />
+
+						{/* Card content */}
+						<div class="p-6">
+							{/* Header */}
+							<div class="flex items-start justify-between gap-4 mb-4">
+								<div class="flex-1 min-w-0">
+									<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2">
+										{work.position}
+									</h3>
+									<p class="text-lg font-semibold bg-linear-to-r from-sky-600 to-blue-600 dark:from-sky-400 dark:to-blue-400 bg-clip-text text-transparent">
+										{work.nameCompany}
+									</p>
+								</div>
+
+								{/* Active Badge */}
+								{work.active && (
+									<span class="shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500 rounded-full shadow-md">
+										<span class="w-2 h-2 rounded-full bg-white" />
+										<span class="text-sm font-bold text-white uppercase tracking-wide">
+											{t('WorkExperience.Active')}
+										</span>
+									</span>
+								)}
 							</div>
 
-							{/* Active indicator */}
-							{work.active && (
-								<div class='absolute -top-1 -right-1 flex h-3 w-3'>
-									<span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75' />
-									<span class='relative inline-flex h-3 w-3 rounded-full bg-emerald-500 shadow-lg' />
+							{/* Meta info - inline */}
+							<div class="flex flex-wrap items-center gap-2.5 mb-4 text-sm">
+								{/* Date */}
+								<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400">
+									<i class="fa-regular fa-calendar text-sky-500" />
+									<span class="font-medium">
+										{formatDateRange(work.startDate, work.active, Astro.currentLocale || 'es')}
+									</span>
+								</div>
+
+								{/* Duration */}
+								<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 text-sky-700 dark:text-sky-300">
+									<i class="fa-regular fa-clock" />
+									<span
+										class={`font-semibold ${work.active ? 'active-duration' : ''}`}
+										data-start-date={work.active ? work.startDate : undefined}
+										data-label-month={t('WorkExperience.Month')}
+										data-label-months={t('WorkExperience.Months')}
+									>
+										{getMonths(work.startDate, work.active)}{' '}
+										{getMonths(work.startDate, work.active) === 1
+											? t('WorkExperience.Month')
+											: t('WorkExperience.Months')}
+									</span>
+								</div>
+
+								{/* Location */}
+								{work.location && (
+									<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400">
+										<i class="fa-solid fa-location-dot text-sky-500" />
+										<span class="font-medium">{work.location}</span>
+									</div>
+								)}
+							</div>
+
+							{/* Description - formato de lista con bullets */}
+							<div class="mb-4">
+								<ul class="space-y-2 text-base text-slate-600 dark:text-slate-300">
+									{work.cleanDescription
+										.split('\n\n')
+										.slice(0, 3)
+										.map((item: string) => {
+											const cleanItem = item.replace(/^-\s*/, '').trim();
+											return (
+												cleanItem && (
+													<li class="flex items-start gap-2.5">
+														<span class="text-sky-500 mt-1.5 shrink-0 text-lg">•</span>
+														<span class="leading-relaxed">{cleanItem}</span>
+													</li>
+												)
+											);
+										})}
+								</ul>
+							</div>
+
+							{/* Technologies - badges modernos */}
+							{work.technologies && work.technologies.length > 0 && (
+								<div class="mb-4">
+									<div class="flex items-center gap-2 mb-3">
+										<i class="fa-solid fa-code text-sm text-sky-500" />
+										<span class="text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide">
+											{Astro.currentLocale === 'es' ? 'Tecnologías' : 'Technologies'}
+										</span>
+									</div>
+									<div class="flex flex-wrap gap-2">
+										{work.technologies.map((tech: string) => (
+											<span class="inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg bg-linear-to-br from-sky-50 to-blue-50 dark:from-sky-950/50 dark:to-blue-950/50 text-sky-700 dark:text-sky-300 border border-sky-200/50 dark:border-sky-800/50 hover:border-sky-300 dark:hover:border-sky-700 transition-colors duration-200">
+												{tech}
+											</span>
+										))}
+									</div>
+								</div>
+							)}
+
+							{/* Visit button */}
+							{work.visit && (
+								<div class="pt-4 border-t border-slate-200/60 dark:border-slate-700/60">
+									<a
+										href={work.visit}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="inline-flex items-center gap-2 text-base font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors group"
+									>
+										<span>{t('WorkExperience.Visit')}</span>
+										<i class="fa-solid fa-arrow-up-right text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+									</a>
 								</div>
 							)}
 						</div>
 					</div>
-
-					{/* Content Card */}
-					<div class='ml-20 relative'>
-						<div class='relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200/60 dark:border-slate-700/60 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:-translate-y-1'>
-							{/* Top gradient bar */}
-							<div class='absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500' />
-
-							{/* Card content */}
-							<div class='p-6'>
-								{/* Header */}
-								<div class='flex items-start justify-between gap-4 mb-4'>
-									<div class='flex-1 min-w-0'>
-										<h3 class='text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors line-clamp-2'>
-											{work.position}
-										</h3>
-										<p class='text-lg font-semibold bg-linear-to-r from-sky-600 to-blue-600 dark:from-sky-400 dark:to-blue-400 bg-clip-text text-transparent'>
-											{work.nameCompany}
-										</p>
-									</div>
-
-									{/* Active Badge */}
-									{work.active && (
-										<span class='shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-linear-to-r from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500 rounded-full shadow-md'>
-											<span class='w-2 h-2 rounded-full bg-white' />
-											<span class='text-sm font-bold text-white uppercase tracking-wide'>
-												{t('WorkExperience.Active')}
-											</span>
-										</span>
-									)}
-								</div>
-
-								{/* Meta info - inline */}
-								<div class='flex flex-wrap items-center gap-2.5 mb-4 text-sm'>
-									{/* Date */}
-									<div class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400'>
-										<i class='fa-regular fa-calendar text-sky-500' />
-										<span class='font-medium'>
-											{formatDateRange(work.startDate, work.active, Astro.currentLocale || 'es')}
-										</span>
-									</div>
-
-									{/* Duration */}
-									<div class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 text-sky-700 dark:text-sky-300'>
-										<i class='fa-regular fa-clock' />
-										<span
-											class={`font-semibold ${work.active ? 'active-duration' : ''}`}
-											data-start-date={work.active ? work.startDate : undefined}
-											data-label-month={t('WorkExperience.Month')}
-											data-label-months={t('WorkExperience.Months')}>
-											{getMonths(work.startDate, work.active)}{' '}
-											{getMonths(work.startDate, work.active) === 1
-												? t('WorkExperience.Month')
-												: t('WorkExperience.Months')}
-										</span>
-									</div>
-
-									{/* Location */}
-									{work.location && (
-										<div class='inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400'>
-											<i class='fa-solid fa-location-dot text-sky-500' />
-											<span class='font-medium'>{work.location}</span>
-										</div>
-									)}
-								</div>
-
-								{/* Description - formato de lista con bullets */}
-								<div class='mb-4'>
-									<ul class='space-y-2 text-base text-slate-600 dark:text-slate-300'>
-										{work.cleanDescription
-											.split('\n\n')
-											.slice(0, 3)
-											.map((item: string) => {
-												const cleanItem = item.replace(/^-\s*/, '').trim();
-												return (
-													cleanItem && (
-														<li class='flex items-start gap-2.5'>
-															<span class='text-sky-500 mt-1.5 shrink-0 text-lg'>•</span>
-															<span class='leading-relaxed'>{cleanItem}</span>
-														</li>
-													)
-												);
-											})}
-									</ul>
-								</div>
-
-								{/* Technologies - badges modernos */}
-								{work.technologies && work.technologies.length > 0 && (
-									<div class='mb-4'>
-										<div class='flex items-center gap-2 mb-3'>
-											<i class='fa-solid fa-code text-sm text-sky-500' />
-											<span class='text-sm font-semibold text-slate-600 dark:text-slate-400 uppercase tracking-wide'>
-												{Astro.currentLocale === 'es' ? 'Tecnologías' : 'Technologies'}
-											</span>
-										</div>
-										<div class='flex flex-wrap gap-2'>
-											{work.technologies.map((tech: string) => (
-												<span class='inline-flex items-center px-3 py-1.5 text-sm font-medium rounded-lg bg-linear-to-br from-sky-50 to-blue-50 dark:from-sky-950/50 dark:to-blue-950/50 text-sky-700 dark:text-sky-300 border border-sky-200/50 dark:border-sky-800/50 hover:border-sky-300 dark:hover:border-sky-700 transition-colors duration-200'>
-													{tech}
-												</span>
-											))}
-										</div>
-									</div>
-								)}
-
-								{/* Visit button */}
-								{work.visit && (
-									<div class='pt-4 border-t border-slate-200/60 dark:border-slate-700/60'>
-										<a
-											href={work.visit}
-											target='_blank'
-											rel='noopener noreferrer'
-											class='inline-flex items-center gap-2 text-base font-semibold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 transition-colors group'>
-											<span>{t('WorkExperience.Visit')}</span>
-											<i class='fa-solid fa-arrow-up-right text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform' />
-										</a>
-									</div>
-								)}
-							</div>
-						</div>
-					</div>
-				</li>
-			))
-		}
+				</div>
+			</li>
+		))}
 	</ol>
 
 	{/* View All Button */}
-	{
-		showViewAll && limit && allWorkExperience.length > limit && (
-			<div class='mt-16 text-center'>
-				<a
-					href={(Astro.currentLocale === 'es' ? '/Experiencia' : '/en/Experience') + '#experience'}
-					class='group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300'>
-					<span>
-						{Astro.currentLocale === 'es'
-							? `Ver todas las experiencias (${allWorkExperience.length})`
-							: `View all experiences (${allWorkExperience.length})`}
-					</span>
-					<i class='fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300' />
-				</a>
-				<p class='mt-4 text-base text-slate-600 dark:text-slate-400 font-medium'>
+	{showViewAll && limit && allWorkExperience.length > limit && (
+		<div class="mt-16 text-center">
+			<a
+				href={(Astro.currentLocale === 'es' ? '/Experiencia' : '/en/Experience') + '#experience'}
+				class="group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+			>
+				<span>
 					{Astro.currentLocale === 'es'
-						? ``
-						: ``}
-					<span class="experience-years-count">{totalYears}</span>
-					{Astro.currentLocale === 'es'
-						? ` de experiencia profesional`
-						: ` of professional experience`}
-				</p>
-			</div>
-		)
-	}
+						? `Ver todas las experiencias (${allWorkExperience.length})`
+						: `View all experiences (${allWorkExperience.length})`}
+				</span>
+				<i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300" />
+			</a>
+			<p class="mt-4 text-base text-slate-600 dark:text-slate-400 font-medium">
+				{Astro.currentLocale === 'es' ? `` : ``}
+				<span class="experience-years-count">{totalYears}</span>
+				{Astro.currentLocale === 'es' ? ` de experiencia profesional` : ` of professional experience`}
+			</p>
+		</div>
+	)}
 </div>
-

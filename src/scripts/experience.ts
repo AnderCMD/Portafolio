@@ -46,16 +46,18 @@ export function updateExperienceUI() {
 		// startDate format: "MM/YYYY" from experience.ts
 		const parts = startDateAttr.split('•')[0].trim().split('/');
 		if (parts.length < 2) return;
-		
+
 		const startMonth = parseInt(parts[0]);
 		const startYear = parseInt(parts[1]);
 
 		if (isNaN(startMonth) || isNaN(startYear)) return;
 
 		const monthsTotal = (currentYear - startYear) * 12 + (currentMonth - startMonth);
-		
-		const labelMonth = el.getAttribute('data-label-month') || (document.documentElement.lang === 'en' ? 'Month' : 'Mes');
-		const labelMonths = el.getAttribute('data-label-months') || (document.documentElement.lang === 'en' ? 'Months' : 'Meses');
+
+		const labelMonth =
+			el.getAttribute('data-label-month') || (document.documentElement.lang === 'en' ? 'Month' : 'Mes');
+		const labelMonths =
+			el.getAttribute('data-label-months') || (document.documentElement.lang === 'en' ? 'Months' : 'Meses');
 		const label = monthsTotal === 1 ? labelMonth : labelMonths;
 
 		el.textContent = `${monthsTotal} ${label}`;

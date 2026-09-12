@@ -21,10 +21,11 @@ const arrowClasses = {
 };
 ---
 
-<div class='tooltip-container relative inline-block group'>
+<div class="tooltip-container relative inline-block group">
 	<slot />
 	<div
-		class={`absolute ${positionClasses[position]} px-3 py-2 text-xs font-medium text-white bg-slate-900 dark:bg-slate-700 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap pointer-events-none z-50 shadow-lg`}>
+		class={`absolute ${positionClasses[position]} px-3 py-2 text-xs font-medium text-white bg-slate-900 dark:bg-slate-700 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap pointer-events-none z-50 shadow-lg`}
+	>
 		{text}
 		<div class={`absolute ${arrowClasses[position]} w-0 h-0 border-4`}></div>
 	</div>

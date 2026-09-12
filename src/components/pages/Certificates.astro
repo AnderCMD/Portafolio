@@ -1,0 +1,32 @@
+---
+// Layouts
+import Layout from '@/layouts/Layout.astro';
+
+// Components
+import Text2 from '@/components/ui/Text2.astro';
+import Certificates from '@/components/sections/Certificates.astro';
+
+// Lenguaje
+import { useLocale } from '@/hooks/useLocale';
+const { t } = useLocale(Astro);
+---
+
+<Layout
+	title={`AnderCMD | ${t('Certificates.Title')}`}
+	description={t('Certificates.SeoDescription')}
+	type="profile"
+	keywords="Ander González, Full Stack Developer, Software Engineer, Certificates, Certificados, Platzi, HackerRank, Fundación Carlos Slim"
+>
+	<!-- Certificates Section -->
+	<section id="certificates" class="py-12 lg:py-20 space-y-12 animate-fade-in scroll-mt-20">
+		<div class="text-center space-y-4">
+			<Text2
+				icon="fa-solid fa-certificate"
+				title={t('Certificates.Title')}
+				subtitle=""
+				description={t('Certificates.Description')}
+			/>
+		</div>
+		<Certificates />
+	</section>
+</Layout>

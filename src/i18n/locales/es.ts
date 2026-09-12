@@ -7,6 +7,7 @@ export const es = {
 	'Nav.About': 'Experiencia',
 	'Nav.Posts': 'Publicaciones',
 	'Nav.Projects': 'Proyectos',
+	'Nav.Certificates': 'Certificados',
 	'Nav.Contact': 'Contacto',
 	'Nav.OpenMenu': 'Abrir menú',
 
@@ -125,8 +126,7 @@ export const es = {
 	'Projects.Description.14':
 		'Plataforma de Resser Tecnologías SA de CV (SaaS & ERP) para la gestión administrativa y monitoreo externo.',
 	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SETI)',
-	'Projects.Description.15':
-		'Sitio web empresarial de Sistemas Empresariales en T.I. (SETI)',
+	'Projects.Description.15': 'Sitio web empresarial de Sistemas Empresariales en T.I. (SETI)',
 
 	'WorkExperience.Title': 'Experiencia Laboral',
 	'WorkExperience.Description':
@@ -159,8 +159,51 @@ export const es = {
 	'Projects.Title.16': 'Folio Generator',
 	'Projects.Description.16':
 		'Librería robusta y flexible diseñada para generar códigos alfanuméricos secuenciales (folios) como A00001, A00002. Soporta padding, separadores personalizados y es Type-safe. Disponible en JS, TS y Python.',
+	'Projects.Title.17': 'Vigilant',
+	'Projects.Description.17':
+		'Aplicación ligera para la bandeja del sistema en Windows que simula actividad del usuario para evitar que el equipo entre en reposo o cambie el estado a "Ausente".',
+	'Projects.Title.18': 'AutoSwitchMonitor',
+	'Projects.Description.18':
+		'Cambia automáticamente la entrada de video del monitor (DDC/CI) al mover un switch KVM por USB entre equipos, con atajos de teclado configurables. Binario único en Go para Windows y macOS.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',
 	'Projects.Status.Delivered': 'Entregado',
+
+	'Certificates.Title': 'Certificados',
+	'Certificates.Description':
+		'Cursos, diplomados y reconocimientos que he obtenido a lo largo de mi formación como Ingeniero en Software.',
+	'Certificates.SeoDescription':
+		'Certificados, cursos y diplomados obtenidos por Ander González (AnderCMD) en plataformas como Platzi, HackerRank, Fundación Carlos Slim y más.',
+	'Certificates.ViewCertificate': 'Ver certificado',
+
+	'Certificates.Items.Title.1': 'JavaScript Fundamentals',
+	'Certificates.Items.Title.2': 'Resolución de Problemas (Intermedio)',
+	'Certificates.Items.Title.3': 'C# (Básico)',
+	'Certificates.Items.Title.4': 'Node.js (Básico)',
+	'Certificates.Items.Title.5': 'Python (Básico)',
+	'Certificates.Items.Title.6': 'JavaScript (Intermedio)',
+	'Certificates.Items.Title.7': 'Ingeniería de Software',
+	'Certificates.Items.Title.8': 'Resolución de Problemas (Básico)',
+	'Certificates.Items.Title.9': 'JavaScript (Básico)',
+	'Certificates.Items.Title.10': 'CSS (Básico)',
+	'Certificates.Items.Title.11': 'Escuela de Desarrollo Web',
+	'Certificates.Items.Title.12': 'Pre-Work: Configuración de Entorno de Trabajo',
+	'Certificates.Items.Title.13': 'Backend con NestJS',
+	'Certificates.Items.Title.14': 'Programa de Incubación y Emprendimiento — Juventudes con Idea',
+	'Certificates.Items.Title.15': 'Introducción a las Tecnologías Emergentes: Edición 2024',
+	'Certificates.Items.Title.16': 'Full Stack Developer con JavaScript',
+	'Certificates.Items.Title.17': 'Curso Profesional de Git y GitHub',
+	'Certificates.Items.Title.18': 'Configuración de Entorno de Desarrollo en Linux',
+	'Certificates.Items.Title.19': 'Configuración de Entorno de Desarrollo en macOS',
+	'Certificates.Items.Title.20': 'Introducción a la Terminal y Línea de Comandos',
+	'Certificates.Items.Title.21': 'Configuración de Entorno de Desarrollo en Windows',
+	'Certificates.Items.Title.22': 'Introducción a React Native',
+	'Certificates.Items.Title.23': 'Hack AI — Día de la Mentefactura 2024',
+	'Certificates.Items.Title.24': 'Día de la Mentefactura (DMF24)',
+	'Certificates.Items.Title.25': 'Fundamentos de Inteligencia Artificial',
+	'Certificates.Items.Title.26': 'Desarrollo Web Integral',
+	'Certificates.Items.Title.27': 'Premio SIGA 2023 — Innovación Pública Digital',
+	'Certificates.Items.Title.28': 'Valores del Ser',
+	'Certificates.Items.Title.29': 'Asistente Web',
 } as const;
