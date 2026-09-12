@@ -9,40 +9,34 @@ interface Props {
 const { icon, title, subtitle, description } = Astro.props;
 ---
 
-<section class='flex flex-col items-center gap-6 mb-8 animate-slide-up'>
-	{
-		icon && (
-			<div class='relative group'>
-				<div class='absolute inset-0 bg-linear-to-r from-emerald-500/20 to-cyan-500/20 dark:from-emerald-400/20 dark:to-cyan-400/20 blur-2xl rounded-full animate-pulse-slow' />
-				<div class='relative flex items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br from-emerald-50 to-cyan-50 dark:from-emerald-950/50 dark:to-cyan-950/50 shadow-lg group-hover:shadow-xl transition-all duration-300'>
-					<i
-						class={
-							icon +
-							' relative text-3xl text-transparent bg-clip-text bg-linear-to-r from-emerald-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 group-hover:scale-110 transition-transform duration-300'
-						}
-						aria-hidden='true'
-					/>
-				</div>
+<section class="flex flex-col items-center gap-6 mb-8 animate-slide-up">
+	{icon && (
+		<div class="relative group">
+			<div class="absolute inset-0 bg-linear-to-r from-emerald-500/20 to-cyan-500/20 dark:from-emerald-400/20 dark:to-cyan-400/20 blur-2xl rounded-full animate-pulse-slow" />
+			<div class="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-linear-to-br from-emerald-50 to-cyan-50 dark:from-emerald-950/50 dark:to-cyan-950/50 shadow-lg group-hover:shadow-xl transition-all duration-300">
+				<i
+					class={
+						icon +
+						' relative text-3xl text-transparent bg-clip-text bg-linear-to-r from-emerald-500 to-cyan-500 dark:from-emerald-400 dark:to-cyan-400 group-hover:scale-110 transition-transform duration-300'
+					}
+					aria-hidden="true"
+				/>
 			</div>
-		)
-	}
-	<div class='space-y-2'>
-		<h2
-			class='text-3xl sm:text-4xl md:text-5xl font-black text-center bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent animate-gradient bg-300%'>
+		</div>
+	)}
+	<div class="space-y-2">
+		<h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-center bg-linear-to-r from-emerald-500 via-teal-500 to-cyan-500 dark:from-emerald-400 dark:via-teal-400 dark:to-cyan-400 bg-clip-text text-transparent animate-gradient bg-300%">
 			{title}
 		</h2>
-		{
-			subtitle && (
-				<h3 class='text-xl sm:text-2xl md:text-3xl font-bold text-center'>
-					<span class='bg-linear-to-r from-cyan-500 via-teal-500 to-emerald-500 dark:from-cyan-400 dark:via-teal-400 dark:to-emerald-400 bg-clip-text text-transparent'>
-						{subtitle}
-					</span>
-				</h3>
-			)
-		}
+		{subtitle && (
+			<h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-center">
+				<span class="bg-linear-to-r from-cyan-500 via-teal-500 to-emerald-500 dark:from-cyan-400 dark:via-teal-400 dark:to-emerald-400 bg-clip-text text-transparent">
+					{subtitle}
+				</span>
+			</h3>
+		)}
 	</div>
-	<p
-		class='max-w-2xl text-base sm:text-lg font-medium text-center text-slate-600 dark:text-slate-300 leading-relaxed'>
+	<p class="max-w-2xl text-base sm:text-lg font-medium text-center text-slate-600 dark:text-slate-300 leading-relaxed">
 		{description}
 	</p>
 </section>

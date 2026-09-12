@@ -19,4 +19,3 @@ export function getRelativeLocaleUrl(locale: string, path: string): string {
 	}
 	return `/${locale}${currentPath}`;
 }
-

@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import { useLocale } from '@/hooks/useLocale';
+import { getCertificates } from '@/data/certificates';
+
+const { t } = useLocale(Astro);
+
+interface Props {
+	limit?: number;
+	showViewAll?: boolean;
+}
+
+const { limit, showViewAll = false } = Astro.props;
+
+const allCertificates = getCertificates(t as (key: string) => string);
+const certificates = limit ? allCertificates.slice(0, limit) : allCertificates;
+---
+
+<div id="certificates-grid" class="items-stretch justify-center grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+	{certificates.map((certificate) => (
+		<article class="group min-h-full">
+			<div class="relative flex flex-col h-full rounded-2xl shadow-lg transition-all duration-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-2xl hover:shadow-sky-500/20 dark:hover:shadow-sky-500/10 hover:-translate-y-2 overflow-hidden">
+				<div class="absolute inset-0 bg-linear-to-br from-sky-500/0 to-blue-500/0 group-hover:from-sky-500/5 group-hover:to-blue-500/5 transition-all duration-300 pointer-events-none" />
+
+				<a
+					href={certificate.image.src}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="relative shrink-0 overflow-hidden"
+				>
+					<div class="absolute inset-0 bg-linear-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+					<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+						<span class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-slate-900/80 rounded-xl backdrop-blur-sm">
+							<i class="fa-solid fa-magnifying-glass-plus" />
+							{t('Certificates.ViewCertificate')}
+						</span>
+					</div>
+					<Image
+						class="object-cover w-full aspect-video transition-transform duration-500 group-hover:scale-110"
+						src={certificate.image}
+						alt={certificate.title}
+						loading="lazy"
+						decoding="async"
+						quality={85}
+					/>
+					<span class="absolute top-4 right-4 z-20 px-3 py-1.5 text-xs font-bold text-white bg-sky-600/90 dark:bg-sky-500/90 backdrop-blur-sm rounded-full shadow-lg">
+						{certificate.date}
+					</span>
+				</a>
+
+				<div class="relative flex flex-col grow p-6 space-y-2">
+					<h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300 line-clamp-2">
+						{certificate.title}
+					</h3>
+					<p class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 dark:text-slate-400">
+						<i class="fa-solid fa-award text-sky-500" />
+						{certificate.issuer}
+					</p>
+				</div>
+			</div>
+		</article>
+	))}
+</div>
+
+{showViewAll && limit && allCertificates.length > limit && (
+	<div class="mt-16 text-center">
+		<a
+			href={(Astro.currentLocale === 'es' ? '/Certificados' : '/en/Certificates') + '#certificates'}
+			class="group inline-flex items-center gap-3 px-8 py-4 bg-linear-to-r from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+		>
+			<span>
+				{Astro.currentLocale === 'es'
+					? `Ver todos los certificados (${allCertificates.length})`
+					: `View all certificates (${allCertificates.length})`}
+			</span>
+			<i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform duration-300" />
+		</a>
+	</div>
+)}

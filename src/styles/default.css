@@ -98,8 +98,15 @@ html {
 }
 
 body {
-	font-family: 'SF Pro Display', 'SF Pro Text', system-ui, -apple-system, sans-serif;
-	font-feature-settings: 'kern' 1, 'liga' 1;
+	font-family:
+		'SF Pro Display',
+		'SF Pro Text',
+		system-ui,
+		-apple-system,
+		sans-serif;
+	font-feature-settings:
+		'kern' 1,
+		'liga' 1;
 	text-rendering: optimizeLegibility;
 }
 
@@ -290,7 +297,9 @@ textarea {
 
 /* Hover lift effect */
 .hover-lift {
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	transition:
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {

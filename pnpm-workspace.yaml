@@ -1,3 +1,26 @@
+# Paquetes con binarios nativos a los que se permite ejecutar scripts de
+# instalación (preinstall/install/postinstall). Este es el archivo que
+# actualiza `pnpm approve-builds` y DEBE permanecer versionado en git: si no
+# viaja con el repositorio, Hostinger (o cualquier otro CI/CD) nunca ve la
+# aprobación y pnpm se niega a instalar con `ERR_PNPM_IGNORED_BUILDS`.
+#
+# - esbuild: su postinstall (install.js) coloca y da permisos de ejecución al
+#   binario nativo. Sin esto, `astro build` falla con EACCES/"Cannot find
+#   module .../esbuild/bin/esbuild".
+# - sharp / @tailwindcss/oxide: no siempre tienen postinstall (usan
+#   optionalDependencies por plataforma), pero pnpm puede seguir marcándolos
+#   como pendientes de aprobación; se incluyen para evitar advertencias.
+#
+# Se declaran ambas claves porque distintas versiones de pnpm usan un formato
+# distinto (pnpm >=10 lee `onlyBuiltDependencies`, pnpm >=12 migró a
+# `allowBuilds`); mantener las dos es inofensivo y evita romper el deploy
+# cuando la versión de pnpm cambie.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - '@tailwindcss/oxide'
+
 allowBuilds:
-  esbuild: set this to true or false
-  sharp: set this to true or false
+  esbuild: true
+  sharp: true
+  '@tailwindcss/oxide': true

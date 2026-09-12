@@ -14,6 +14,8 @@ import SETIPOSImagen from '@/assets/images/projects/SETIPOS.webp';
 import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
 import SETIImagen from '@/assets/images/projects/SETI.webp';
 import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
+import VigilantImagen from '@/assets/images/projects/Vigilant.webp';
+import AutoSwitchMonitorImagen from '@/assets/images/projects/AutoSwitchMonitor.webp';
 
 // Status: out-of-service, unmaintained, active, delivered
 export const getProjects = (t: (key: string) => string) => [
@@ -113,7 +115,7 @@ export const getProjects = (t: (key: string) => string) => [
 		status: 'active',
 	},
 	{
-		type: 'other',
+		type: 'desktop',
 		title: t('Projects.Title.11'),
 		description: t('Projects.Description.11'),
 		image: WindowsRepairImagen,
@@ -177,9 +179,29 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.16'),
 		image: FolioGeneratorImagen,
 		linkView: 'https://www.npmjs.com/package/folio-generator-ts',
-		linkCode: 'https://github.com/AnderCMD/Generador-de-folios',
+		linkCode: 'https://github.com/AnderCMD/Folio-Generator',
 		year: 2026,
-		technologies: ['TypeScript', 'NPM', 'Node.js'],
+		technologies: ['TypeScript', 'JavaScript', 'Python', 'NPM', 'Node.js'],
+		status: 'active',
+	},
+	{
+		type: 'desktop',
+		title: t('Projects.Title.17'),
+		description: t('Projects.Description.17'),
+		image: VigilantImagen,
+		linkCode: 'https://github.com/AnderCMD/Vigilant',
+		year: 2025,
+		technologies: ['Python', 'Windows'],
+		status: 'active',
+	},
+	{
+		type: 'desktop',
+		title: t('Projects.Title.18'),
+		description: t('Projects.Description.18'),
+		image: AutoSwitchMonitorImagen,
+		linkCode: 'https://github.com/AnderCMD/AutoSwitchMonitor',
+		year: 2025,
+		technologies: ['Go', 'Windows', 'macOS'],
 		status: 'active',
 	},
 ];
