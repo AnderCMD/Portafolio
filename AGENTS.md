@@ -153,7 +153,13 @@ Paquetes con binarios nativos (`esbuild`, `sharp`, `@tailwindcss/oxide`) necesit
 pnpm approve-builds
 ```
 
-Esto escribe la aprobación en **`pnpm-workspace.yaml`** (clave `onlyBuiltDependencies` en pnpm 10-11, `allowBuilds` en pnpm ≥12 — este repo declara ambas por compatibilidad). A diferencia del lockfile, **`pnpm-workspace.yaml` SÍ debe commitearse**: si no viaja con el repo, Hostinger (o cualquier CI/CD) nunca ve la aprobación y el build falla. Ver también `.npmrc`: `ignore-scripts` debe quedarse en `false`, porque en `true` anula esta allowlist por completo (fue la causa real de que `esbuild` fallara con `EACCES` en despliegues anteriores).
+Esto escribe la aprobación en **`pnpm-workspace.yaml`** (clave `onlyBuiltDependencies` en pnpm 10-11, `allowBuilds` en pnpm ≥12 — este repo declara ambas por compatibilidad). A diferencia del lockfile, **`pnpm-workspace.yaml` SÍ debe commitearse**: si no viaja con el repo, Hostinger (o cualquier CI/CD) nunca ve la aprobación y `pnpm install` falla con `ERR_PNPM_IGNORED_BUILDS`.
+
+⚠️ **`ignore-scripts` en `.npmrc` DEBE quedarse en `true`.** Se probó ponerlo en `false` confiando solo en la allowlist de arriba y el deploy en Hostinger se rompió: el postinstall de `esbuild` valida el binario nativo ejecutándolo (`--version`), y en el entorno de build de Hostinger ese binario llega **sin permiso de ejecución** (no preservan el bit `+x` de los paquetes con binarios nativos al extraerlos). Ese postinstall revienta con `EACCES` **durante** `pnpm install`, antes de que el script `build` (que hace `chmod -R +x node_modules/...`) tenga oportunidad de corregir los permisos. `ignore-scripts=true` salta ese postinstall que revienta; el `chmod` manual en el script `build` es el que de verdad deja los binarios ejecutables justo antes de `astro build`. No lo cambies a `false` sin antes confirmar (con un build real en Hostinger) que ya preservan el bit `+x`.
+
+### Overrides de dependencias transitivas
+
+`pnpm-workspace.yaml` también fija versiones mínimas parcheadas (`overrides:`) para dependencias transitivas señaladas por Dependabot que no se pueden actualizar bumpeando un paquete directo (`browserslist`, `fast-uri`, `nanoid`, `postcss`, `@babel/core`, `yaml`, arrastradas por `astro`/`vite`/`@astrojs/check`). Usa siempre rango `^` (no `>=`) para quedarte dentro de la misma major — con `>=` pnpm puede saltar a una major nueva con breaking changes (p. ej. `fast-uri` 3→4, `nanoid` 3→6, `@babel/core` 7→8).
 
 ---
 

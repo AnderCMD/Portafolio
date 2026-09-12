@@ -4,10 +4,18 @@
 # viaja con el repositorio, Hostinger (o cualquier otro CI/CD) nunca ve la
 # aprobación y pnpm se niega a instalar con `ERR_PNPM_IGNORED_BUILDS`.
 #
-# - esbuild: su postinstall (install.js) coloca y da permisos de ejecución al
-#   binario nativo. Sin esto, `astro build` falla con EACCES/"Cannot find
-#   module .../esbuild/bin/esbuild".
-# - sharp / @tailwindcss/oxide: no siempre tienen postinstall (usan
+# - esbuild: su postinstall (install.js) valida el binario nativo ejecutándolo
+#   (`--version`). En Hostinger el binario llega SIN permiso de ejecución
+#   (el entorno de build no preserva el bit +x de los paquetes con binarios
+#   nativos), así que ese postinstall falla con EACCES y tumba `pnpm install`
+#   por completo. Por eso `ignore-scripts` en .npmrc debe quedarse en `true`
+#   pase lo que pase aquí: así se salta ese postinstall que revienta, y el
+#   script `build` de package.json es el que de verdad arregla los permisos
+#   (`chmod -R +x node_modules/...`) justo antes de `astro build`. Esta
+#   aprobación queda declarada solo por si algún día se puede activar
+#   ignore-scripts=false seguro (p. ej. si Hostinger empieza a preservar el
+#   bit +x), y para que `pnpm install` local no avise de builds ignorados.
+# - sharp / @tailwindcss/oxide: no tienen postinstall (usan
 #   optionalDependencies por plataforma), pero pnpm puede seguir marcándolos
 #   como pendientes de aprobación; se incluyen para evitar advertencias.
 #
@@ -24,3 +32,18 @@ allowBuilds:
   esbuild: true
   sharp: true
   '@tailwindcss/oxide': true
+
+# Fuerza versiones mínimas parcheadas de dependencias transitivas señaladas
+# por Dependabot (astro/vite/@astrojs/check las arrastran indirectamente).
+# Se mantienen dentro de la misma major que la resolución original para no
+# arriesgar romper a los paquetes que las usan.
+overrides:
+  browserslist: '^4.28.9'
+  fast-uri: '^3.1.7'
+  nanoid: '^3.3.19'
+  postcss: '^8.5.28'
+  '@babel/core': '^7.29.7'
+  yaml: '^2.9.1'
+
+minimumReleaseAgeExclude:
+  - yaml@2.9.1
