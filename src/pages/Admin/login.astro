@@ -6,7 +6,7 @@ import { SESSION_COOKIE, verifySessionToken } from '@lib/shortener/auth';
 
 const token = Astro.cookies.get(SESSION_COOKIE)?.value;
 if (verifySessionToken(token)) {
-	return Astro.redirect('/admin');
+	return Astro.redirect('/Admin');
 }
 
 const hasError = Astro.url.searchParams.get('error') === '1';

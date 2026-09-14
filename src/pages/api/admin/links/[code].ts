@@ -24,5 +24,5 @@ export const POST: APIRoute = async (context: APIContext) => {
 		await setLinkActive(code, form.get('active') === '1');
 	}
 
-	return context.redirect('/admin', 303);
+	return context.redirect('/Admin', 303);
 };

@@ -9,8 +9,8 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
-		"start": "node ./dist/server/entry.mjs",
-		"build": "chmod -R +x node_modules/@esbuild node_modules/esbuild node_modules/sharp node_modules/@tailwindcss 2>/dev/null || true; astro check && astro build && cp scripts/debug-entry.mjs dist/server/debug-entry.mjs",
+		"start": "node ./dist/server/hostinger-entry.mjs",
+		"build": "chmod -R +x node_modules/@esbuild node_modules/esbuild node_modules/sharp node_modules/@tailwindcss 2>/dev/null || true; astro check && astro build && cp scripts/hostinger-entry.mjs dist/server/hostinger-entry.mjs",
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "eslint .",

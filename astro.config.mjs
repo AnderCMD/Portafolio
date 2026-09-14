@@ -44,7 +44,7 @@ export default defineConfig({
 					en: 'en-US',
 				},
 			},
-			filter: (page) => !page.match(/\/(400|401|403|404|500|502|503)/) && !page.includes('/admin'),
+			filter: (page) => !page.match(/\/(400|401|403|404|500|502|503)/) && !page.includes('/Admin'),
 		}),
 	],
 	i18n: {

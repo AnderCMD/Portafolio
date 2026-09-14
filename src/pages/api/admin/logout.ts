@@ -5,5 +5,5 @@ import { SESSION_COOKIE } from '@lib/shortener/auth';
 
 export const POST: APIRoute = async ({ cookies, redirect }) => {
 	cookies.delete(SESSION_COOKIE, { path: '/' });
-	return redirect('/admin/login', 303);
+	return redirect('/Admin/login', 303);
 };
