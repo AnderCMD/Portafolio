@@ -25,7 +25,7 @@ export default [
 	...eslintPluginAstro.configs['flat/jsx-a11y-recommended'],
 
 	{
-		files: ['**/*.{js,jsx,ts,tsx}'],
+		files: ['**/*.{js,jsx,ts,tsx,mjs}'],
 		plugins: { react, 'jsx-a11y': jsxA11y },
 		languageOptions: {
 			globals: { ...globals.browser, ...globals.node },
