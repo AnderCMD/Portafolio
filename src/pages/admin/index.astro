@@ -1,0 +1,105 @@
+---
+export const prerender = false;
+
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { SESSION_COOKIE, verifySessionToken } from '@lib/shortener/auth';
+import { listLinks } from '@lib/shortener/db';
+
+const token = Astro.cookies.get(SESSION_COOKIE)?.value;
+if (!verifySessionToken(token)) {
+	return Astro.redirect('/admin/login');
+}
+
+const links = await listLinks();
+const error = Astro.url.searchParams.get('error');
+
+const errorMessages: Record<string, string> = {
+	url: 'La URL de destino no es válida (debe ser http o https).',
+	code: 'El código solo puede tener letras, números, guiones y guion bajo (3-32 caracteres), y no puede ser una palabra reservada.',
+	duplicate: 'Ese código ya está en uso.',
+	unknown: 'Ocurrió un error al guardar el enlace.',
+};
+---
+
+<AdminLayout title="Enlaces">
+	<main class="mx-auto max-w-4xl space-y-8 p-6">
+		<header class="flex items-center justify-between gap-4">
+			<h1 class="text-2xl font-semibold">Acortador · andercmd.link</h1>
+			<form method="POST" action="/api/admin/logout">
+				<button type="submit" class="text-sm text-slate-400 hover:text-slate-200">
+					Cerrar sesión
+				</button>
+			</form>
+		</header>
+
+		{error && errorMessages[error] && (
+			<p class="rounded-lg border border-red-400/30 bg-red-500/10 px-4 py-2 text-sm text-red-300" role="alert">
+				{errorMessages[error]}
+			</p>
+		)}
+
+		<form
+			method="POST"
+			action="/api/admin/links"
+			class="grid gap-3 rounded-2xl border border-white/10 bg-white/5 p-6 sm:grid-cols-[2fr_1fr_auto]"
+		>
+			<input
+				type="url"
+				name="targetUrl"
+				placeholder="https://destino.com/pagina"
+				required
+				class="rounded-lg border border-white/10 bg-slate-900 px-3 py-2 text-slate-100"
+			/>
+			<input
+				type="text"
+				name="code"
+				placeholder="código (opcional)"
+				pattern="[a-zA-Z0-9_-]{3,32}"
+				class="rounded-lg border border-white/10 bg-slate-900 px-3 py-2 text-slate-100"
+			/>
+			<button type="submit" class="rounded-lg bg-indigo-500 px-4 py-2 font-medium text-white hover:bg-indigo-400">
+				Crear enlace
+			</button>
+		</form>
+
+		<ul class="space-y-3">
+			{links.map((link) => (
+				<li class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+					<div class="min-w-0">
+						<p class="font-mono text-indigo-300">andercmd.link/{link.code}</p>
+						<p class="truncate text-sm text-slate-400">{link.targetUrl}</p>
+						<p class="text-xs text-slate-500">
+							{link.clicks} clics · {link.isActive ? 'activo' : 'pausado'}
+						</p>
+					</div>
+					<div class="flex gap-2">
+						<form method="POST" action={`/api/admin/links/${link.code}`}>
+							<input type="hidden" name="action" value="toggle" />
+							<input type="hidden" name="active" value={link.isActive ? '0' : '1'} />
+							<button
+								type="submit"
+								class="rounded-lg border border-white/10 px-3 py-1.5 text-sm hover:bg-white/10"
+							>
+								{link.isActive ? 'Pausar' : 'Activar'}
+							</button>
+						</form>
+						<form
+							method="POST"
+							action={`/api/admin/links/${link.code}`}
+							onsubmit="return confirm('¿Eliminar este enlace?');"
+						>
+							<input type="hidden" name="action" value="delete" />
+							<button
+								type="submit"
+								class="rounded-lg border border-red-400/30 px-3 py-1.5 text-sm text-red-300 hover:bg-red-500/10"
+							>
+								Eliminar
+							</button>
+						</form>
+					</div>
+				</li>
+			))}
+			{links.length === 0 && <p class="text-slate-400">Aún no hay enlaces.</p>}
+		</ul>
+	</main>
+</AdminLayout>

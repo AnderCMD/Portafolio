@@ -1,0 +1,60 @@
+---
+export const prerender = false;
+
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { SESSION_COOKIE, verifySessionToken } from '@lib/shortener/auth';
+
+const token = Astro.cookies.get(SESSION_COOKIE)?.value;
+if (verifySessionToken(token)) {
+	return Astro.redirect('/admin');
+}
+
+const hasError = Astro.url.searchParams.get('error') === '1';
+---
+
+<AdminLayout title="Iniciar sesión">
+	<main class="flex min-h-screen items-center justify-center p-6">
+		<form
+			method="POST"
+			action="/api/admin/login"
+			class="w-full max-w-sm space-y-4 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+		>
+			<h1 class="text-xl font-semibold">Acceso administrador</h1>
+
+			{hasError && (
+				<p class="text-sm text-red-400" role="alert">
+					Usuario o contraseña incorrectos.
+				</p>
+			)}
+
+			<label class="block text-sm">
+				Usuario
+				<input
+					type="text"
+					name="username"
+					required
+					autocomplete="username"
+					class="mt-1 w-full rounded-lg border border-white/10 bg-slate-900 px-3 py-2 text-slate-100 focus:border-indigo-400 focus:outline-none"
+				/>
+			</label>
+
+			<label class="block text-sm">
+				Contraseña
+				<input
+					type="password"
+					name="password"
+					required
+					autocomplete="current-password"
+					class="mt-1 w-full rounded-lg border border-white/10 bg-slate-900 px-3 py-2 text-slate-100 focus:border-indigo-400 focus:outline-none"
+				/>
+			</label>
+
+			<button
+				type="submit"
+				class="w-full rounded-lg bg-indigo-500 px-4 py-2 font-medium text-white hover:bg-indigo-400"
+			>
+				Entrar
+			</button>
+		</form>
+	</main>
+</AdminLayout>
