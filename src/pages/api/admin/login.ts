@@ -33,7 +33,7 @@ export const POST: APIRoute = async (context) => {
 
 	if (!valid) {
 		registerFailedAttempt(key);
-		return redirect('/Admin/login?error=1', 303);
+		return redirect('/Admin/Login?error=1', 303);
 	}
 
 	clearAttempts(key);
