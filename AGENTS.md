@@ -132,6 +132,18 @@ Para mantener los componentes limpios, la información estática (experiencia, r
 
 ---
 
+## 🕸️ Exploración del Código con Graphify
+
+Antes de hacer cambios estructurales o explorar un área desconocida del proyecto, considera usar la skill **Graphify** (`/graphify`) para generar un grafo de conocimiento del repositorio (o de la carpeta relevante). Es especialmente útil para:
+
+- Entender relaciones entre componentes, páginas, layouts y datos (`src/components/`, `src/pages/`, `src/data/`, `src/i18n/`) sin tener que leer archivo por archivo.
+- Ubicar rápidamente qué componentes reutiliza una página (ej. `Text2.astro`, `Layout.astro`) antes de duplicar lógica.
+- Verificar el impacto de un cambio (qué archivos referencian una clave de `src/i18n/locales/` o un alias de importación) antes de renombrar o eliminar algo.
+
+Si existe la carpeta `graphify-out/` en el repo, trátala como fuente de verdad para preguntas sobre arquitectura antes de responder solo con `grep`/`find`.
+
+---
+
 ## 🧹 Calidad de Código (Linting & Formato)
 
 El proyecto usa **Prettier** para formato y **ESLint (flat config)** para linting. Se eligió ESLint sobre alternativas más rápidas (oxlint) porque `eslint-plugin-astro` es, a la fecha, la única opción con soporte real para analizar archivos `.astro` (frontmatter + plantilla); oxlint solo cubre `.js/.jsx/.ts/.tsx`, que en este repo es una minoría del código.

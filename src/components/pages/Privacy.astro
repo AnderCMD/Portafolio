@@ -1,0 +1,62 @@
+---
+// Layouts
+import Layout from '@/layouts/Layout.astro';
+
+// Components
+import Text2 from '@/components/ui/Text2.astro';
+
+// Lenguaje
+import { useLocale } from '@/hooks/useLocale';
+import { getRelativeLocaleUrl } from '@/i18n/utils';
+const { t, currentLocale } = useLocale(Astro);
+
+// Secciones del aviso de privacidad
+const sections = Array.from({ length: 9 }, (_, index) => {
+	const number = index + 1;
+	return {
+		title: t(`Legal.Privacy.Section.${number}.Title` as Parameters<typeof t>[0]),
+		body: t(`Legal.Privacy.Section.${number}.Body` as Parameters<typeof t>[0]),
+	};
+});
+
+const lastUpdated = currentLocale === 'en' ? 'September 2026' : 'Septiembre 2026';
+---
+
+<Layout
+	title={`AnderCMD | ${t('Legal.Privacy.Title')}`}
+	description={t('Legal.Privacy.SeoDescription')}
+	keywords="Privacy Policy, Aviso de Privacidad, Data Protection, Protección de Datos"
+>
+	<section id="privacy" class="py-12 lg:py-20 space-y-12 animate-fade-in scroll-mt-20">
+		<div class="text-center space-y-4">
+			<Text2
+				icon="fa-solid fa-shield-halved"
+				title={t('Legal.Privacy.Title')}
+				subtitle=""
+				description={t('Legal.Privacy.Description')}
+			/>
+			<p class="text-sm text-slate-500 dark:text-slate-400">
+				{t('Legal.LastUpdated')}: {lastUpdated}
+			</p>
+		</div>
+
+		<div class="max-w-3xl mx-auto space-y-8 rounded-2xl border border-slate-200/50 dark:border-slate-700/50 bg-white/50 dark:bg-slate-900/50 backdrop-blur-lg p-6 lg:p-10">
+			{sections.map((section) => (
+				<div class="space-y-2">
+					<h2 class="text-xl font-bold text-slate-900 dark:text-white">{section.title}</h2>
+					<p class="text-slate-600 dark:text-slate-300 leading-relaxed">{section.body}</p>
+				</div>
+			))}
+		</div>
+
+		<div class="text-center">
+			<a
+				href={getRelativeLocaleUrl(currentLocale ?? '', '/')}
+				class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+			>
+				<i class="fa-solid fa-house" aria-hidden="true"></i>
+				{t('Legal.BackHome')}
+			</a>
+		</div>
+	</section>
+</Layout>
