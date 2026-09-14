@@ -50,7 +50,8 @@
 - **Proyectos** - Cards con filtros por categoría y efectos hover
 - **Certificados** - Cursos y diplomados obtenidos, agrupados por institución
 - **Tech Stack Grid** - Iconos interactivos con animaciones
-- **Footer Mejorado** - Con enlaces sociales y tooltips
+- **Footer Mejorado** - Con enlaces sociales, tooltips y enlaces legales
+- **Aviso de Privacidad y Términos y Condiciones** - Páginas legales, disponibles en español e inglés
 
 _Este proyecto es un portafolio personal desarrollado con Astro, React, TailwindCSS y soporte para internacionalización (i18n). Permite mostrar tus proyectos, experiencia, certificados y habilidades, con la capacidad de cambiar entre diferentes idiomas._
 
@@ -150,8 +151,12 @@ Este sitio en particular corre en **Hostinger (Node.js PaaS)** desplegando direc
 
 ### Calidad de código
 
-- **[Prettier](https://prettier.io/)** (+ `prettier-plugin-astro`, `prettier-plugin-tailwindcss`) - Formato consistente en todo el repo.
-- **[ESLint](https://eslint.org/)** (+ `eslint-plugin-astro`, `typescript-eslint`, `eslint-plugin-jsx-a11y`, `eslint-plugin-react`) - Linting de `.astro`, `.ts` y `.jsx`, incluyendo reglas de accesibilidad.
+- **[Prettier](https://prettier.io/)** (+ `prettier-plugin-astro`, `prettier-plugin-tailwindcss`) - Formato consistente en todo el repo (`pnpm format` / `pnpm format:check`).
+- **[ESLint](https://eslint.org/)** (+ `eslint-plugin-astro`, `typescript-eslint`, `eslint-plugin-jsx-a11y`, `eslint-plugin-react`) - Linting de `.astro`, `.ts` y `.jsx`, incluyendo reglas de accesibilidad (`pnpm lint` / `pnpm lint:fix`).
+
+### Herramientas para agentes de IA
+
+- **Graphify** - Skill que convierte el código de este repositorio en un grafo de conocimiento persistente (nodos "god", detección de comunidades y consultas de rutas/relaciones). Útil para que un agente de IA entienda rápidamente la arquitectura y las relaciones entre archivos antes de hacer cambios. Ver [AGENTS.md](AGENTS.md) para más contexto sobre el flujo de trabajo con agentes.
 
 ### DevOps & Deployment
 

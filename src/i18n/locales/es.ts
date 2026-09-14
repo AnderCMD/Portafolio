@@ -12,8 +12,76 @@ export const es = {
 	'Nav.OpenMenu': 'Abrir menú',
 
 	'Footer.Copyright': '© Todos los derechos reservados',
-	'Footer.MadeWith': 'Hecho con',
-	'Footer.Using': 'usando',
+	'Footer.Privacy': 'Aviso de Privacidad',
+	'Footer.Terms': 'Términos y Condiciones',
+
+	'Legal.LastUpdated': 'Última actualización',
+	'Legal.BackHome': 'Volver al inicio',
+
+	'Legal.Privacy.Title': 'Aviso de Privacidad',
+	'Legal.Privacy.SeoDescription':
+		'Aviso de privacidad del portafolio de Ander González (AnderCMD): qué datos se recopilan, con qué fin se utilizan y cómo ejercer tus derechos.',
+	'Legal.Privacy.Description':
+		'Cómo se recopila, utiliza y protege tu información personal al visitar este sitio web.',
+	'Legal.Privacy.Section.1.Title': '1. Responsable del tratamiento de datos',
+	'Legal.Privacy.Section.1.Body':
+		'Ander González González (AnderCMD) es el responsable del tratamiento de los datos personales que se recaban a través de este sitio web (andercmd.dev), con domicilio en México y correo de contacto andercmd@outlook.com.',
+	'Legal.Privacy.Section.2.Title': '2. Datos personales que recopilamos',
+	'Legal.Privacy.Section.2.Body':
+		'Este sitio no cuenta con formularios que envíen datos a un servidor propio para fines de contacto: los enlaces de la sección de contacto te redirigen a servicios de terceros (correo electrónico, LinkedIn, GitHub, X/Twitter, WhatsApp) mediante los cuales tú decides qué información compartir directamente con esos servicios. Únicamente en la sección de administración (de uso interno y restringido) se procesan credenciales de acceso, y en el acortador de enlaces se registran los enlaces creados y su fecha de uso, sin asociarlos a datos personales de los visitantes.',
+	'Legal.Privacy.Section.3.Title': '3. Finalidad del tratamiento de datos',
+	'Legal.Privacy.Section.3.Body':
+		'Los datos técnicos generados por tu navegación (por ejemplo, registros del servidor de hosting) se utilizan únicamente para mantener la disponibilidad, seguridad y correcto funcionamiento del sitio, así como para diagnosticar errores. No se utilizan con fines publicitarios ni se venden o ceden a terceros.',
+	'Legal.Privacy.Section.4.Title': '4. Uso de cookies y almacenamiento local',
+	'Legal.Privacy.Section.4.Body':
+		'Este sitio utiliza el almacenamiento local del navegador (localStorage) únicamente para recordar tu preferencia de modo claro/oscuro. No se utilizan cookies de rastreo, publicidad ni analítica de terceros. Puedes borrar esta información en cualquier momento desde la configuración de tu navegador.',
+	'Legal.Privacy.Section.5.Title': '5. Compartición de información con terceros',
+	'Legal.Privacy.Section.5.Body':
+		'No compartimos, vendemos ni cedemos datos personales a terceros. El sitio se aloja en Hostinger y utiliza servicios externos como Font Awesome (iconos) y redes sociales (LinkedIn, GitHub, X); al interactuar con esos servicios, sus propias políticas de privacidad son aplicables.',
+	'Legal.Privacy.Section.6.Title': '6. Derechos ARCO y cómo ejercerlos',
+	'Legal.Privacy.Section.6.Body':
+		'Si en algún momento nos compartes datos personales de forma directa (por ejemplo, por correo electrónico), tienes derecho a Acceder, Rectificar, Cancelar u Oponerte (derechos ARCO) al tratamiento de dichos datos. Para ejercerlos, escríbenos a andercmd@outlook.com indicando tu solicitud.',
+	'Legal.Privacy.Section.7.Title': '7. Seguridad de la información',
+	'Legal.Privacy.Section.7.Body':
+		'Se aplican medidas razonables de seguridad (conexión HTTPS, cabeceras de seguridad y acceso restringido a los paneles administrativos) para proteger la información contra accesos no autorizados, pérdida o alteración.',
+	'Legal.Privacy.Section.8.Title': '8. Cambios al presente aviso',
+	'Legal.Privacy.Section.8.Body':
+		'Este aviso de privacidad puede actualizarse periódicamente para reflejar cambios en el sitio o en la normativa aplicable. La fecha de la última actualización se indica al inicio de esta página.',
+	'Legal.Privacy.Section.9.Title': '9. Contacto',
+	'Legal.Privacy.Section.9.Body':
+		'Para dudas o comentarios sobre este aviso de privacidad, puedes contactarnos a través de andercmd@outlook.com.',
+
+	'Legal.Terms.Title': 'Términos y Condiciones',
+	'Legal.Terms.SeoDescription':
+		'Términos y condiciones de uso del portafolio de Ander González (AnderCMD): propiedad intelectual, uso del sitio y limitación de responsabilidad.',
+	'Legal.Terms.Description': 'Condiciones que rigen el acceso y uso de este sitio web.',
+	'Legal.Terms.Section.1.Title': '1. Aceptación de los términos',
+	'Legal.Terms.Section.1.Body':
+		'Al acceder y utilizar este sitio web (andercmd.dev), aceptas los presentes Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, te pedimos no continuar utilizando el sitio.',
+	'Legal.Terms.Section.2.Title': '2. Uso del sitio web',
+	'Legal.Terms.Section.2.Body':
+		'Este sitio tiene fines informativos: mostrar la experiencia profesional, proyectos y certificados de Ander González González. Queda prohibido su uso para fines ilícitos, intentar vulnerar su seguridad o acceder sin autorización a las secciones administrativas.',
+	'Legal.Terms.Section.3.Title': '3. Propiedad intelectual',
+	'Legal.Terms.Section.3.Body':
+		'El código fuente de este proyecto está disponible bajo la Licencia Apache 2.0 en su repositorio de GitHub. El contenido personal (textos biográficos, imágenes, logotipos, proyectos y certificados mostrados) es propiedad de Ander González González y no debe reproducirse sin autorización, salvo lo permitido por la licencia del código.',
+	'Legal.Terms.Section.4.Title': '4. Enlaces a sitios de terceros',
+	'Legal.Terms.Section.4.Body':
+		'Este sitio incluye enlaces a plataformas de terceros (LinkedIn, GitHub, X/Twitter, WhatsApp, repositorios de proyectos, entre otros). No tenemos control sobre el contenido ni las políticas de dichos sitios y no nos hacemos responsables de los mismos.',
+	'Legal.Terms.Section.5.Title': '5. Limitación de responsabilidad',
+	'Legal.Terms.Section.5.Body':
+		'El sitio se ofrece "tal cual", sin garantías de ningún tipo. No nos hacemos responsables por daños derivados del uso o la imposibilidad de uso del sitio, ni por interrupciones del servicio.',
+	'Legal.Terms.Section.6.Title': '6. Privacidad',
+	'Legal.Terms.Section.6.Body':
+		'El tratamiento de datos personales se rige por nuestro Aviso de Privacidad, el cual forma parte integral de estos Términos y Condiciones.',
+	'Legal.Terms.Section.7.Title': '7. Modificaciones a los términos',
+	'Legal.Terms.Section.7.Body':
+		'Nos reservamos el derecho de modificar estos Términos y Condiciones en cualquier momento. Los cambios entrarán en vigor a partir de su publicación en esta misma página.',
+	'Legal.Terms.Section.8.Title': '8. Ley aplicable y jurisdicción',
+	'Legal.Terms.Section.8.Body':
+		'Estos Términos y Condiciones se rigen por las leyes de los Estados Unidos Mexicanos. Cualquier controversia se someterá a los tribunales competentes correspondientes.',
+	'Legal.Terms.Section.9.Title': '9. Contacto',
+	'Legal.Terms.Section.9.Body':
+		'Para dudas o comentarios sobre estos Términos y Condiciones, puedes contactarnos a través de andercmd@outlook.com.',
 
 	'Error.Title.400': 'Error 400',
 	'Error.Message.400': 'Solicitud incorrecta. El servidor no pudo entender la solicitud.',
