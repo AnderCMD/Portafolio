@@ -58,7 +58,7 @@ export const es = {
 	'Card.MetaTitle': 'Ander González · Tarjeta de contacto',
 	'Card.Name': 'Ing. Ander González',
 	'Card.Handle': '@AnderCMD',
-	'Card.JobTitle': 'Full Stack Software Engineer',
+	'Card.JobTitle': 'Ingeniero en Software Full Stack',
 	'Card.Call': 'Llamar',
 	'Card.WhatsApp': 'WhatsApp',
 	'Card.Email': 'Correo',
