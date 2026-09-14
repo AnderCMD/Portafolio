@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Ander González
+N:González;Ander;;;
+TITLE:Full Stack Software Engineer
+ORG:AnderCMD
+TEL;TYPE=CELL,VOICE:+524625950820
+EMAIL;TYPE=INTERNET:andercmd@outlook.com
+URL:https://andercmd.dev
+item1.URL:https://www.linkedin.com/in/andercmd/
+item1.X-ABLabel:LinkedIn
+item2.URL:https://github.com/AnderCMD
+item2.X-ABLabel:GitHub
+END:VCARD
