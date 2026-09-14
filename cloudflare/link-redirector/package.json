@@ -1,0 +1,14 @@
+{
+	"name": "andercmd-link-redirector",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"deploy": "wrangler deploy"
+	},
+	"dependencies": {
+		"mysql2": "^3.24.4"
+	},
+	"devDependencies": {
+		"wrangler": "^4.31.1"
+	}
+}
