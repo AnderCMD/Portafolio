@@ -1,15 +1,64 @@
 ---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import QRCode from 'qrcode';
 import '@styles/default.css';
 import { Image } from 'astro:assets';
 import IconoBlanco from '@assets/images/logos/Icono-Blanco.webp';
 
 const cardUrl = new URL('/Contacto/Tarjeta', 'https://andercmd.dev').toString();
-const qrSvg = await QRCode.toString(cardUrl, {
-	type: 'svg',
-	margin: 1,
-	color: { dark: '#0f172a', light: '#ffffff' },
-});
+const DARK = '#0f172a';
+const LIGHT = '#ffffff';
+const MARGIN = 2;
+
+// Se genera la matriz cruda (no el SVG ya armado) para poder redibujar a mano
+// los "ojos" de las esquinas con bordes redondeados; el resto de los módulos
+// se dibuja como cuadrados normales.
+const qrData = QRCode.create(cardUrl, { errorCorrectionLevel: 'H' });
+const moduleCount = qrData.modules.size;
+const modules = qrData.modules.data;
+const qrSize = moduleCount + MARGIN * 2;
+
+function isDark(row: number, col: number): boolean {
+	if (row < 0 || col < 0 || row >= moduleCount || col >= moduleCount) return false;
+	return Boolean(modules[row * moduleCount + col]);
+}
+
+function isInFinderZone(row: number, col: number): boolean {
+	const inTopLeft = row < 7 && col < 7;
+	const inTopRight = row < 7 && col >= moduleCount - 7;
+	const inBottomLeft = row >= moduleCount - 7 && col < 7;
+	return inTopLeft || inTopRight || inBottomLeft;
+}
+
+let dataModulesPath = '';
+for (let row = 0; row < moduleCount; row += 1) {
+	for (let col = 0; col < moduleCount; col += 1) {
+		if (isDark(row, col) && !isInFinderZone(row, col)) {
+			const x = col + MARGIN;
+			const y = row + MARGIN;
+			dataModulesPath += `M${x},${y}h1v1h-1z`;
+		}
+	}
+}
+
+function finderEye(topLeftCol: number, topLeftRow: number): string {
+	const x = topLeftCol + MARGIN;
+	const y = topLeftRow + MARGIN;
+	return `<rect x="${x}" y="${y}" width="7" height="7" rx="2" ry="2" fill="${DARK}" /><rect x="${x + 1}" y="${y + 1}" width="5" height="5" rx="1.4" ry="1.4" fill="${LIGHT}" /><rect x="${x + 2}" y="${y + 2}" width="3" height="3" rx="0.9" ry="0.9" fill="${DARK}" />`;
+}
+
+const finderEyes = finderEye(0, 0) + finderEye(moduleCount - 7, 0) + finderEye(0, moduleCount - 7);
+
+// Incrusta el logo al centro del QR (nivel de corrección H tolera hasta ~30% de obstrucción).
+const logoPath = join(process.cwd(), 'src/assets/images/logos/Icono-Blanco.webp');
+const logoDataUri = `data:image/webp;base64,${readFileSync(logoPath).toString('base64')}`;
+const center = qrSize / 2;
+const logoSize = qrSize * 0.24;
+const badgeRadius = logoSize / 2 + qrSize * 0.025;
+const logoOverlay = `<circle cx="${center}" cy="${center}" r="${badgeRadius}" fill="${DARK}" stroke="${LIGHT}" stroke-width="${qrSize * 0.015}" /><image href="${logoDataUri}" x="${center - logoSize / 2}" y="${center - logoSize / 2}" width="${logoSize}" height="${logoSize}" />`;
+
+const qrSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${qrSize} ${qrSize}"><rect width="${qrSize}" height="${qrSize}" fill="${LIGHT}" /><path d="${dataModulesPath}" fill="${DARK}" />${finderEyes}${logoOverlay}</svg>`;
 
 const contactButtons = [
 	{ href: 'tel:+524625950820', icon: 'fa-solid fa-phone', label: 'Llamar', accent: 'from-sky-500 to-blue-600' },
@@ -26,9 +75,9 @@ const contactButtons = [
 		accent: 'from-indigo-500 to-purple-600',
 	},
 	{
-		href: 'https://www.linkedin.com/in/andercmd/',
-		icon: 'fa-brands fa-linkedin',
-		label: 'LinkedIn',
+		href: 'https://andercmd.dev',
+		icon: 'fa-solid fa-briefcase',
+		label: 'Portafolio',
 		accent: 'from-blue-600 to-sky-700',
 	},
 ];
