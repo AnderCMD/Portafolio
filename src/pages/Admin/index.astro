@@ -168,7 +168,7 @@ const errorMessages: Record<string, string> = {
 						method="POST"
 						action={`/api/admin/links/${link.code}`}
 						data-edit-form={link.code}
-						class="mt-4 hidden gap-3 border-t border-slate-200/60 pt-4 sm:grid sm:grid-cols-[1fr_auto] dark:border-slate-700/60"
+						class="mt-4 hidden grid-cols-1 gap-3 border-t border-slate-200/60 pt-4 sm:grid-cols-[1fr_auto] dark:border-slate-700/60"
 					>
 						<input type="hidden" name="action" value="edit" />
 						<div class="relative">
@@ -186,7 +186,7 @@ const errorMessages: Record<string, string> = {
 						</div>
 						<button
 							type="submit"
-							class="btn-modern inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-sky-500/30 transition-all duration-300 hover:scale-105 hover:from-sky-600 hover:to-blue-700 hover:shadow-xl hover:shadow-sky-500/40 active:scale-95"
+							class="inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-2.5 font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:from-sky-600 hover:to-blue-700 active:scale-95"
 						>
 							<i class="fa-solid fa-check" aria-hidden="true"></i>Guardar
 						</button>
@@ -209,9 +209,10 @@ const errorMessages: Record<string, string> = {
 			const code = button.getAttribute('data-toggle-edit');
 			const form = document.querySelector<HTMLFormElement>(`[data-edit-form="${code}"]`);
 			if (!form) return;
-			const isHidden = form.classList.contains('hidden');
-			form.classList.toggle('hidden', !isHidden);
-			if (isHidden) {
+			const willShow = form.classList.contains('hidden');
+			form.classList.toggle('hidden', !willShow);
+			form.classList.toggle('grid', willShow);
+			if (willShow) {
 				form.querySelector<HTMLInputElement>('input[name="targetUrl"]')?.focus();
 			}
 		});
