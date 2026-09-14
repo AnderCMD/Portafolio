@@ -156,6 +156,10 @@ export async function setLinkActive(code: string, isActive: boolean): Promise<vo
 	await getPool().query('UPDATE links SET is_active = ? WHERE code = ?', [isActive ? 1 : 0, code]);
 }
 
+export async function updateLinkTargetUrl(code: string, targetUrl: string): Promise<void> {
+	await getPool().query('UPDATE links SET target_url = ? WHERE code = ?', [targetUrl, code]);
+}
+
 export async function deleteLinkByCode(code: string): Promise<void> {
 	await getPool().query('DELETE FROM links WHERE code = ?', [code]);
 }

@@ -93,7 +93,8 @@ const errorMessages: Record<string, string> = {
 
 		<ul class="space-y-3">
 			{links.map((link) => (
-				<li class="glass card-modern flex flex-wrap items-center justify-between gap-4 rounded-2xl p-5 shadow-lg">
+				<li class="glass card-modern rounded-2xl p-5 shadow-lg">
+					<div class="flex flex-wrap items-center justify-between gap-4">
 					<div class="min-w-0 flex-1">
 						<div class="flex flex-wrap items-center gap-2">
 							<p class="font-mono font-semibold text-sky-600 dark:text-sky-400">
@@ -119,7 +120,23 @@ const errorMessages: Record<string, string> = {
 							{link.clicks} {link.clicks === 1 ? 'clic' : 'clics'}
 						</p>
 					</div>
-					<div class="flex gap-2">
+					<div class="flex flex-wrap gap-2">
+						<button
+							type="button"
+							data-copy-link={`https://andercmd.link/${link.code}`}
+							class="copy-link-btn inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+						>
+							<i class="fa-regular fa-copy" aria-hidden="true" />
+							<span class="copy-link-label">Copiar</span>
+						</button>
+						<button
+							type="button"
+							data-toggle-edit={link.code}
+							class="edit-link-btn inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+						>
+							<i class="fa-solid fa-pen" aria-hidden="true" />
+							Editar
+						</button>
 						<form method="POST" action={`/api/admin/links/${link.code}`}>
 							<input type="hidden" name="action" value="toggle" />
 							<input type="hidden" name="active" value={link.isActive ? '0' : '1'} />
@@ -146,6 +163,34 @@ const errorMessages: Record<string, string> = {
 							</button>
 						</form>
 					</div>
+					</div>
+					<form
+						method="POST"
+						action={`/api/admin/links/${link.code}`}
+						data-edit-form={link.code}
+						class="mt-4 hidden gap-3 border-t border-slate-200/60 pt-4 sm:grid sm:grid-cols-[1fr_auto] dark:border-slate-700/60"
+					>
+						<input type="hidden" name="action" value="edit" />
+						<div class="relative">
+							<i
+								class="fa-solid fa-globe pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-400"
+								aria-hidden="true"
+							></i>
+							<input
+								type="url"
+								name="targetUrl"
+								value={link.targetUrl}
+								required
+								class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pr-4 pl-10 text-slate-900 transition-all focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+							/>
+						</div>
+						<button
+							type="submit"
+							class="btn-modern inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-sky-500/30 transition-all duration-300 hover:scale-105 hover:from-sky-600 hover:to-blue-700 hover:shadow-xl hover:shadow-sky-500/40 active:scale-95"
+						>
+							<i class="fa-solid fa-check" aria-hidden="true"></i>Guardar
+						</button>
+					</form>
 				</li>
 			))}
 			{links.length === 0 && (
@@ -157,3 +202,40 @@ const errorMessages: Record<string, string> = {
 		</ul>
 	</div>
 </AdminLayout>
+
+<script>
+	document.querySelectorAll<HTMLButtonElement>('[data-toggle-edit]').forEach((button) => {
+		button.addEventListener('click', () => {
+			const code = button.getAttribute('data-toggle-edit');
+			const form = document.querySelector<HTMLFormElement>(`[data-edit-form="${code}"]`);
+			if (!form) return;
+			const isHidden = form.classList.contains('hidden');
+			form.classList.toggle('hidden', !isHidden);
+			if (isHidden) {
+				form.querySelector<HTMLInputElement>('input[name="targetUrl"]')?.focus();
+			}
+		});
+	});
+
+	document.querySelectorAll<HTMLButtonElement>('[data-copy-link]').forEach((button) => {
+		button.addEventListener('click', async () => {
+			const url = button.getAttribute('data-copy-link');
+			if (!url) return;
+
+			const label = button.querySelector('.copy-link-label');
+			const icon = button.querySelector('i');
+			try {
+				await navigator.clipboard.writeText(url);
+				if (label) label.textContent = '¡Copiado!';
+				icon?.classList.replace('fa-copy', 'fa-check');
+			} catch {
+				if (label) label.textContent = 'Error';
+			}
+
+			setTimeout(() => {
+				if (label) label.textContent = 'Copiar';
+				icon?.classList.replace('fa-check', 'fa-copy');
+			}, 1800);
+		});
+	});
+</script>

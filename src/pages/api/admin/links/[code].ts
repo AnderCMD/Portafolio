@@ -1,8 +1,9 @@
 export const prerender = false;
 
 import type { APIContext, APIRoute } from 'astro';
-import { deleteLinkByCode, setLinkActive } from '@lib/shortener/db';
+import { deleteLinkByCode, setLinkActive, updateLinkTargetUrl } from '@lib/shortener/db';
 import { requireSession } from '@lib/shortener/guard';
+import { isValidTargetUrl } from '@lib/shortener/validate';
 
 export const POST: APIRoute = async (context: APIContext) => {
 	const unauthorized = requireSession(context);
@@ -22,6 +23,12 @@ export const POST: APIRoute = async (context: APIContext) => {
 		await deleteLinkByCode(code);
 	} else if (action === 'toggle') {
 		await setLinkActive(code, form.get('active') === '1');
+	} else if (action === 'edit') {
+		const targetUrl = String(form.get('targetUrl') ?? '').trim();
+		if (!isValidTargetUrl(targetUrl)) {
+			return context.redirect('/Admin?error=url', 303);
+		}
+		await updateLinkTargetUrl(code, targetUrl);
 	}
 
 	return context.redirect('/Admin', 303);
