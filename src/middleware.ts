@@ -10,7 +10,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 	const path = context.url.pathname;
 
 	// El panel de administración solo se expone en el dominio principal del portafolio.
-	if (path.startsWith('/admin') || path.startsWith('/api/admin')) {
+	if (path.startsWith('/Admin') || path.startsWith('/api/admin')) {
 		return new Response('Not found', { status: 404 });
 	}
 

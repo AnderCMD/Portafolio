@@ -21,7 +21,7 @@ Disallow: /404
 Disallow: /en/404
 
 # Panel de administración (uso exclusivo del propietario)
-Disallow: /admin
+Disallow: /Admin
 Disallow: /api/admin
 
 # Sitemap

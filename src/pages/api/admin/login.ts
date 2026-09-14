@@ -31,7 +31,7 @@ export const POST: APIRoute = async ({ request, clientAddress, cookies, redirect
 
 	if (!valid) {
 		registerFailedAttempt(key);
-		return redirect('/admin/login?error=1', 303);
+		return redirect('/Admin/login?error=1', 303);
 	}
 
 	clearAttempts(key);
@@ -42,5 +42,5 @@ export const POST: APIRoute = async ({ request, clientAddress, cookies, redirect
 		path: '/',
 	});
 
-	return redirect('/admin', 303);
+	return redirect('/Admin', 303);
 };
