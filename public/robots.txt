@@ -26,6 +26,7 @@ Disallow: /api/admin
 
 # Tarjeta de contacto personal (enlace privado, no debe indexarse)
 Disallow: /Contacto/Tarjeta
+Disallow: /en/Contacto/Tarjeta
 Disallow: /Contacto/ander-gonzalez.vcf
 
 # Sitemap

@@ -55,6 +55,18 @@ export const es = {
 	'Contact.Info.Location.Title': 'Ubicación',
 	'Contact.Info.Location.Description': 'Trabajo remoto desde cualquier zona horaria',
 
+	'Card.MetaTitle': 'Ander González · Tarjeta de contacto',
+	'Card.Name': 'Ing. Ander González',
+	'Card.Handle': '@AnderCMD',
+	'Card.JobTitle': 'Full Stack Software Engineer',
+	'Card.Call': 'Llamar',
+	'Card.WhatsApp': 'WhatsApp',
+	'Card.Email': 'Correo',
+	'Card.Portfolio': 'Portafolio',
+	'Card.ScanToShare': 'Escanea para compartir esta tarjeta',
+	'Card.SaveContact': 'Guardar contacto',
+	'Card.BackHome': 'Volver al inicio',
+
 	'Common.Loading': 'Cargando...',
 	'Common.ViewMore': 'Ver más',
 	'Common.ViewLess': 'Ver menos',
