@@ -7,7 +7,7 @@ import { listLinks } from '@lib/shortener/db';
 
 const token = Astro.cookies.get(SESSION_COOKIE)?.value;
 if (!verifySessionToken(token)) {
-	return Astro.redirect('/Admin/login');
+	return Astro.redirect('/Admin/Login');
 }
 
 const links = await listLinks();
