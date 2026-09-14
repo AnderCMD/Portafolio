@@ -1,0 +1,144 @@
+---
+import QRCode from 'qrcode';
+import '@styles/default.css';
+import { Image } from 'astro:assets';
+import IconoBlanco from '@assets/images/logos/Icono-Blanco.webp';
+
+const cardUrl = new URL('/Contacto/Tarjeta', 'https://andercmd.dev').toString();
+const qrSvg = await QRCode.toString(cardUrl, {
+	type: 'svg',
+	margin: 1,
+	color: { dark: '#0f172a', light: '#ffffff' },
+});
+
+const contactButtons = [
+	{ href: 'tel:+524625950820', icon: 'fa-solid fa-phone', label: 'Llamar', accent: 'from-sky-500 to-blue-600' },
+	{
+		href: 'https://wa.me/524625950820',
+		icon: 'fa-brands fa-whatsapp',
+		label: 'WhatsApp',
+		accent: 'from-emerald-500 to-teal-600',
+	},
+	{
+		href: 'mailto:andercmd@outlook.com',
+		icon: 'fa-solid fa-envelope',
+		label: 'Correo',
+		accent: 'from-indigo-500 to-purple-600',
+	},
+	{
+		href: 'https://www.linkedin.com/in/andercmd/',
+		icon: 'fa-brands fa-linkedin',
+		label: 'LinkedIn',
+		accent: 'from-blue-600 to-sky-700',
+	},
+];
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+		<title>Ander González · Tarjeta de contacto</title>
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+		<link rel="preload" href="/FontAwesome/css/all.min.css" as="style" />
+		<link
+			rel="stylesheet"
+			href="/FontAwesome/css/all.min.css"
+			media="print"
+			onload="this.setAttribute('media', 'all')"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="/FontAwesome/css/all.min.css" />
+		</noscript>
+
+		<script is:inline>
+			(function () {
+				const savedTheme = localStorage.getItem('Theme');
+				const theme = savedTheme || 'dark';
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+			})();
+		</script>
+	</head>
+
+	<body class="relative min-h-screen overflow-x-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900 transition-colors duration-300 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 dark:text-slate-100">
+		<div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+			<div
+				class="absolute top-0 left-0 h-96 w-96 rounded-full bg-slate-200/40 blur-3xl animate-float dark:bg-sky-500/20"
+				style="animation-duration: 20s;"
+			></div>
+			<div
+				class="absolute top-1/4 right-0 h-120 w-120 rounded-full bg-slate-300/35 blur-3xl animate-float dark:bg-blue-600/15"
+				style="animation-duration: 25s;"
+			></div>
+			<div
+				class="hidden md:block absolute bottom-0 left-1/4 h-112 w-md rounded-full bg-gray-200/30 blur-3xl animate-float dark:bg-indigo-600/15"
+				style="animation-duration: 22s;"
+			></div>
+		</div>
+
+		<main class="flex min-h-screen items-center justify-center px-4 py-12">
+			<div class="glass card-modern w-full max-w-sm overflow-hidden rounded-3xl shadow-2xl">
+				<div class="relative h-24 bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600">
+					<Image
+						src={IconoBlanco}
+						alt=""
+						aria-hidden="true"
+						width={80}
+						height={80}
+						class="absolute -bottom-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full border-4 border-white bg-slate-900 object-contain p-2 shadow-lg dark:border-slate-900"
+					/>
+				</div>
+
+				<div class="px-6 pt-14 pb-6 text-center">
+					<h1 class="text-xl font-bold text-slate-900 dark:text-white">Ander González</h1>
+					<p class="mt-1 font-medium text-sky-600 dark:text-sky-400">Full Stack Software Engineer</p>
+					<p class="text-sm text-slate-500 dark:text-slate-400">AnderCMD</p>
+
+					<div class="mt-6 grid grid-cols-2 gap-3">
+						{contactButtons.map((btn) => (
+							<a
+								href={btn.href}
+								target={btn.href.startsWith('http') ? '_blank' : undefined}
+								rel={btn.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+								class={`btn-modern flex flex-col items-center gap-1.5 rounded-xl bg-linear-to-br ${btn.accent} px-3 py-3.5 text-white shadow-lg transition-all duration-300 hover:scale-105`}
+							>
+								<i class={`${btn.icon} text-lg`} aria-hidden="true" />
+								<span class="text-xs font-semibold">{btn.label}</span>
+							</a>
+						))}
+					</div>
+
+					<div class="mt-6 flex justify-center">
+						<div class="qr-wrapper h-44 w-44 rounded-2xl bg-white p-3 shadow-lg" set:html={qrSvg} />
+					</div>
+					<p class="mt-2 text-xs text-slate-500 dark:text-slate-400">Escanea para compartir esta tarjeta</p>
+
+					<a
+						href="/Contacto/ander-gonzalez.vcf"
+						download
+						class="btn-modern mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-sky-500/30 transition-all duration-300 hover:scale-[1.02] hover:from-sky-600 hover:to-blue-700"
+					>
+						<i class="fa-solid fa-user-plus" aria-hidden="true"></i>Guardar contacto
+					</a>
+
+					<a
+						href="/"
+						class="mt-4 inline-flex items-center gap-1.5 text-sm text-slate-500 transition-colors hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400"
+					>
+						<i class="fa-solid fa-arrow-left" aria-hidden="true"></i>Volver al inicio
+					</a>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	.qr-wrapper :global(svg) {
+		width: 100%;
+		height: 100%;
+	}
+</style>

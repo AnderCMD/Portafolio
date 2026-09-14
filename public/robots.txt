@@ -24,6 +24,10 @@ Disallow: /en/404
 Disallow: /Admin
 Disallow: /api/admin
 
+# Tarjeta de contacto personal (enlace privado, no debe indexarse)
+Disallow: /Contacto/Tarjeta
+Disallow: /Contacto/ander-gonzalez.vcf
+
 # Sitemap
 Sitemap: https://andercmd.dev/sitemap-index.xml
 Sitemap: https://andercmd.dev/sitemap-0.xml
