@@ -6,11 +6,11 @@
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
-			"id": "0aac14ada6184e2c971319e560dc02fe"
-		}
+			"id": "0aac14ada6184e2c971319e560dc02fe",
+		},
 	],
 	"routes": [
 		{ "pattern": "andercmd.link/*", "zone_name": "andercmd.link" },
-		{ "pattern": "www.andercmd.link/*", "zone_name": "andercmd.link" }
-	]
+		{ "pattern": "www.andercmd.link/*", "zone_name": "andercmd.link" },
+	],
 }

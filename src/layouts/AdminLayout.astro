@@ -5,18 +5,91 @@ interface Props {
 
 const { title } = Astro.props;
 
+import DarkMode from '@components/ui/darkMode';
 import '@styles/default.css';
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
+<html lang="es" class="scroll-smooth dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="robots" content="noindex, nofollow" />
-		<title>{title} · Admin</title>
+		<title>{title} · Admin · AnderCMD</title>
+
+		<link rel="preload" href="/FontAwesome/css/all.min.css" as="style" />
+		<link
+			rel="stylesheet"
+			href="/FontAwesome/css/all.min.css"
+			media="print"
+			onload="this.setAttribute('media', 'all')"
+		/>
+		<noscript>
+			<link rel="stylesheet" href="/FontAwesome/css/all.min.css" />
+		</noscript>
+
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+		<script is:inline>
+			(function () {
+				const savedTheme = localStorage.getItem('Theme');
+				const theme = savedTheme || 'dark';
+				document.documentElement.classList.toggle('dark', theme === 'dark');
+			})();
+		</script>
 	</head>
-	<body class="min-h-screen bg-slate-950 text-slate-100">
-		<slot />
+
+	<body class="relative min-h-screen overflow-x-hidden bg-linear-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900 transition-colors duration-300 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950 dark:text-slate-100">
+		<a
+			href="#main-content"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-xl focus:bg-sky-500 focus:px-6 focus:py-3 focus:text-white focus:shadow-2xl focus:outline-none"
+		>
+			Saltar al contenido principal
+		</a>
+
+		<!-- Fondo con orbes de gradiente, igual paleta que el sitio público -->
+		<div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+			<div
+				class="absolute top-0 left-0 h-96 w-96 rounded-full bg-slate-200/40 blur-3xl animate-float dark:bg-sky-500/20"
+				style="animation-duration: 20s;"
+			></div>
+			<div
+				class="absolute top-1/4 right-0 h-120 w-120 rounded-full bg-slate-300/35 blur-3xl animate-float dark:bg-blue-600/15"
+				style="animation-duration: 25s;"
+			></div>
+			<div
+				class="hidden md:block absolute bottom-0 left-1/4 h-112 w-md rounded-full bg-gray-200/30 blur-3xl animate-float dark:bg-indigo-600/15"
+				style="animation-duration: 22s;"
+			></div>
+		</div>
+
+		<header class="sticky top-0 z-50 border-b border-slate-200/50 bg-white/80 backdrop-blur-lg transition-all duration-300 dark:border-slate-700/50 dark:bg-slate-900/80">
+			<div class="mx-auto flex max-w-screen-2xl items-center justify-between p-4">
+				<a href="/" class="group flex items-center gap-2.5">
+					<span class="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/30 transition-transform group-hover:scale-105">
+						<i class="fa-solid fa-link text-sm" aria-hidden="true"></i>
+					</span>
+					<span class="font-bold text-slate-900 dark:text-white">
+						AnderCMD <span class="gradient-text">Admin</span>
+					</span>
+				</a>
+
+				<div class="flex items-center gap-4">
+					<a
+						href="/"
+						class="hidden text-sm font-medium text-slate-600 transition-colors hover:text-sky-600 sm:inline dark:text-slate-400 dark:hover:text-sky-400"
+					>
+						<i class="fa-solid fa-arrow-left mr-1.5" aria-hidden="true"></i>Volver al sitio
+					</a>
+					<DarkMode client:idle />
+				</div>
+			</div>
+		</header>
+
+		<main id="main-content" class="relative mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8" tabindex="-1">
+			<div class="animate-fade-in">
+				<slot />
+			</div>
+		</main>
 	</body>
 </html>
