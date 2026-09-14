@@ -20,6 +20,10 @@ Crawl-delay: 0
 Disallow: /404
 Disallow: /en/404
 
+# Panel de administración (uso exclusivo del propietario)
+Disallow: /admin
+Disallow: /api/admin
+
 # Sitemap
 Sitemap: https://andercmd.dev/sitemap-index.xml
 Sitemap: https://andercmd.dev/sitemap-0.xml
