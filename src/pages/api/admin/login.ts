@@ -5,10 +5,12 @@ import { createSessionToken, SESSION_COOKIE, verifyPassword, verifyUsername } fr
 import { getClientKey } from '@lib/shortener/guard';
 import { clearAttempts, isRateLimited, registerFailedAttempt } from '@lib/shortener/rateLimit';
 
-export const POST: APIRoute = async ({ request, clientAddress, cookies, redirect }) => {
+export const POST: APIRoute = async (context) => {
+	const { request, cookies, redirect } = context;
+
 	let address: string | undefined;
 	try {
-		address = clientAddress;
+		address = context.clientAddress;
 	} catch {
 		address = undefined;
 	}
