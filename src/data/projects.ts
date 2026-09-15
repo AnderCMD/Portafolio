@@ -168,7 +168,7 @@ export const getProjects = (t: (key: string) => string) => [
 		title: t('Projects.Title.15'),
 		description: t('Projects.Description.15'),
 		image: SIEMTIImagen,
-		linkView: 'https://sistemasempresariales.com.mx',
+		linkView: 'https://siemti.com',
 		year: 2026,
 		technologies: ['Astro', 'TypeScript', 'TailwindCSS', 'Git', 'i18n', 'React'],
 		status: 'active',
