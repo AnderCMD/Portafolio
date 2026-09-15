@@ -198,14 +198,14 @@ export const en = {
 	'Projects.Description.12':
 		'Task management system to create, edit, and delete tasks, assign due dates and priorities.',
 
-	'Projects.Title.13': 'SETI - Point of Sale System',
+	'Projects.Title.13': 'SIEMTI - Point of Sale System',
 	'Projects.Description.13': 'Point of sale system (POS) for Sistemas Empresariales en T.I.',
 
 	'Projects.Title.14': 'Resser Tecnologias SA de CV (SaaS & ERP)',
 	'Projects.Description.14':
 		'Resser Tecnologías SA de CV platform (SaaS and ERP) for administrative management and external monitoring.',
-	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SETI)',
-	'Projects.Description.15': 'Corporate website for Sistemas Empresariales en T.I. (SETI).',
+	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SIEMTI)',
+	'Projects.Description.15': 'Corporate website for Sistemas Empresariales en T.I. (SIEMTI).',
 
 	'WorkExperience.Title': 'Work Experience',
 	'WorkExperience.Description':

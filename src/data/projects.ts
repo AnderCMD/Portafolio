@@ -10,9 +10,9 @@ import ChatBotImagen from '@/assets/images/projects/ChatBot.webp';
 import FrontendMentorImagen from '@/assets/images/projects/Frontend-Mentor.webp';
 import WindowsRepairImagen from '@/assets/images/projects/WindowsRepair.webp';
 import TasksFlowImagen from '@/assets/images/projects/TasksFlow.webp';
-import SETIPOSImagen from '@/assets/images/projects/SETIPOS.webp';
+import SIEMTIPOSImagen from '@/assets/images/projects/SIEMTIPOS.webp';
 import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
-import SETIImagen from '@/assets/images/projects/SETI.webp';
+import SIEMTIImagen from '@/assets/images/projects/SIEMTI.webp';
 import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 import VigilantImagen from '@/assets/images/projects/Vigilant.webp';
 import AutoSwitchMonitorImagen from '@/assets/images/projects/AutoSwitchMonitor.webp';
@@ -140,7 +140,7 @@ export const getProjects = (t: (key: string) => string) => [
 		type: 'web',
 		title: t('Projects.Title.13'),
 		description: t('Projects.Description.13'),
-		image: SETIPOSImagen,
+		image: SIEMTIPOSImagen,
 		year: 2025,
 		technologies: [
 			'React Vite',
@@ -167,7 +167,7 @@ export const getProjects = (t: (key: string) => string) => [
 		type: 'web',
 		title: t('Projects.Title.15'),
 		description: t('Projects.Description.15'),
-		image: SETIImagen,
+		image: SIEMTIImagen,
 		linkView: 'https://sistemasempresariales.com.mx',
 		year: 2026,
 		technologies: ['Astro', 'TypeScript', 'TailwindCSS', 'Git', 'i18n', 'React'],
