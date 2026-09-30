@@ -18,12 +18,12 @@ const LIGHT = '#ffffff';
 const MARGIN = 2;
 
 // Se genera la matriz cruda (no el SVG ya armado) para poder redibujar a mano
-// los "ojos" de las esquinas con bordes redondeados; el resto de los módulos
-// se dibuja como cuadrados normales.
+// los "ojos" de las esquinas y los módulos de datos como círculos (estilo "dots").
 const qrData = QRCode.create(cardUrl, { errorCorrectionLevel: 'H' });
 const moduleCount = qrData.modules.size;
 const modules = qrData.modules.data;
 const qrSize = moduleCount + MARGIN * 2;
+const DOT_RADIUS = 0.5;
 
 function isDark(row: number, col: number): boolean {
 	if (row < 0 || col < 0 || row >= moduleCount || col >= moduleCount) return false;
@@ -37,21 +37,21 @@ function isInFinderZone(row: number, col: number): boolean {
 	return inTopLeft || inTopRight || inBottomLeft;
 }
 
-let dataModulesPath = '';
+let dataModulesCircles = '';
 for (let row = 0; row < moduleCount; row += 1) {
 	for (let col = 0; col < moduleCount; col += 1) {
 		if (isDark(row, col) && !isInFinderZone(row, col)) {
-			const x = col + MARGIN;
-			const y = row + MARGIN;
-			dataModulesPath += `M${x},${y}h1v1h-1z`;
+			const cx = col + MARGIN + 0.5;
+			const cy = row + MARGIN + 0.5;
+			dataModulesCircles += `<circle cx="${cx}" cy="${cy}" r="${DOT_RADIUS}" fill="${DARK}" />`;
 		}
 	}
 }
 
 function finderEye(topLeftCol: number, topLeftRow: number): string {
-	const x = topLeftCol + MARGIN;
-	const y = topLeftRow + MARGIN;
-	return `<rect x="${x}" y="${y}" width="7" height="7" rx="2" ry="2" fill="${DARK}" /><rect x="${x + 1}" y="${y + 1}" width="5" height="5" rx="1.4" ry="1.4" fill="${LIGHT}" /><rect x="${x + 2}" y="${y + 2}" width="3" height="3" rx="0.9" ry="0.9" fill="${DARK}" />`;
+	const cx = topLeftCol + MARGIN + 3.5;
+	const cy = topLeftRow + MARGIN + 3.5;
+	return `<circle cx="${cx}" cy="${cy}" r="3.5" fill="${DARK}" /><circle cx="${cx}" cy="${cy}" r="2.5" fill="${LIGHT}" /><circle cx="${cx}" cy="${cy}" r="1.5" fill="${DARK}" />`;
 }
 
 const finderEyes = finderEye(0, 0) + finderEye(moduleCount - 7, 0) + finderEye(0, moduleCount - 7);
@@ -64,7 +64,7 @@ const logoSize = qrSize * 0.24;
 const badgeRadius = logoSize / 2 + qrSize * 0.025;
 const logoOverlay = `<circle cx="${center}" cy="${center}" r="${badgeRadius}" fill="${DARK}" stroke="${LIGHT}" stroke-width="${qrSize * 0.015}" /><image href="${logoDataUri}" x="${center - logoSize / 2}" y="${center - logoSize / 2}" width="${logoSize}" height="${logoSize}" />`;
 
-const qrSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${qrSize} ${qrSize}"><rect width="${qrSize}" height="${qrSize}" fill="${LIGHT}" /><path d="${dataModulesPath}" fill="${DARK}" />${finderEyes}${logoOverlay}</svg>`;
+const qrSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${qrSize} ${qrSize}"><rect width="${qrSize}" height="${qrSize}" fill="${LIGHT}" />${dataModulesCircles}${finderEyes}${logoOverlay}</svg>`;
 
 const contactButtons = [
 	{ href: 'tel:+524625950820', icon: 'fa-solid fa-phone', label: t('Card.Call'), accent: 'from-sky-500 to-blue-600' },
