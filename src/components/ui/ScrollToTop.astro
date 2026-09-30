@@ -1,0 +1,99 @@
+<!-- Scroll to Top Button with Progress -->
+<button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 hidden group" aria-label="Scroll to top">
+	<div class="relative">
+		<!-- Progress Ring -->
+		<svg class="w-14 h-14 transform -rotate-90" viewBox="0 0 56 56">
+			<circle
+				cx="28"
+				cy="28"
+				r="24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				class="text-slate-200 dark:text-slate-700"
+			></circle>
+			<circle
+				id="scroll-progress"
+				cx="28"
+				cy="28"
+				r="24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-dasharray="150.8"
+				stroke-dashoffset="150.8"
+				stroke-linecap="round"
+				class="text-sky-500 dark:text-sky-400 transition-all duration-200"
+			></circle>
+		</svg>
+		<!-- Icon Button -->
+		<div class="absolute inset-0 flex items-center justify-center">
+			<div class="w-10 h-10 bg-linear-to-br from-sky-500 to-blue-600 dark:from-sky-400 dark:to-blue-500 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-sky-500/50 transition-all duration-300 group-hover:scale-110">
+				<i class="fa-solid fa-arrow-up text-white text-sm" aria-hidden="true"></i>
+			</div>
+		</div>
+	</div>
+</button>
+
+<script>
+	// Scroll to top functionality with progress - Optimizado con requestAnimationFrame
+	const scrollBtn = document.getElementById('scroll-to-top');
+	const progressCircle = document.getElementById('scroll-progress');
+	const circumference = 150.8;
+
+	let ticking = false;
+	let lastKnownScrollPosition = 0;
+
+	function updateScrollProgress(scrollPos: number) {
+		const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+		const scrollProgress = (scrollPos / scrollTotal) * 100;
+		const offset = circumference - (scrollProgress / 100) * circumference;
+
+		if (progressCircle) {
+			progressCircle.style.strokeDashoffset = offset.toString();
+		}
+
+		if (scrollPos > 300) {
+			scrollBtn?.classList.remove('hidden');
+			scrollBtn?.classList.add('animate-fade-in');
+		} else {
+			scrollBtn?.classList.add('hidden');
+		}
+	}
+
+	function onScroll() {
+		lastKnownScrollPosition = window.scrollY;
+
+		if (!ticking) {
+			window.requestAnimationFrame(() => {
+				updateScrollProgress(lastKnownScrollPosition);
+				ticking = false;
+			});
+
+			ticking = true;
+		}
+	}
+
+	// Usar passive event listeners para mejor performance
+	window.addEventListener('scroll', onScroll, { passive: true });
+
+	// Debounce para resize
+	let resizeTimeout: ReturnType<typeof setTimeout>;
+	window.addEventListener(
+		'resize',
+		() => {
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout(() => {
+				updateScrollProgress(window.scrollY);
+			}, 150);
+		},
+		{ passive: true }
+	);
+
+	scrollBtn?.addEventListener('click', () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+
+	// Inicializar
+	updateScrollProgress(window.scrollY);
+</script>

@@ -1,0 +1,99 @@
+<!-- Inline Theme Script - Evita FOUC (Flash of Unstyled Content) -->
+<script is:inline>
+	// Aplicar tema inmediatamente - Dark mode por defecto
+	(function () {
+		const savedTheme = localStorage.getItem('Theme');
+		const theme = savedTheme || 'dark';
+
+		if (theme === 'dark') {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+	})();
+
+	// Función global para actualizar todos los logos (optimizada)
+	window.updateAllLogos = function () {
+		const isDark = document.documentElement.classList.contains('dark');
+		const logos = document.querySelectorAll('[data-logo-theme]');
+
+		logos.forEach((logo) => {
+			const type = logo.getAttribute('data-logo-theme');
+			if (window.getLogoPath) {
+				const correctPath = window.getLogoPath(type, isDark);
+
+				// Solo actualizar si es diferente
+				if (logo.getAttribute('src') !== correctPath) {
+					logo.setAttribute('src', correctPath);
+				}
+			}
+		});
+	};
+</script>
+<!-- Script para transiciones de Astro -->
+<script>
+	// Extender el tipo Window
+	declare global {
+		interface Window {
+			updateAllLogos?: () => void;
+			getLogoPath?: (type: string, isDark: boolean) => string;
+		}
+	}
+
+	// Función para aplicar el tema completamente (clase dark + checkbox)
+	function applyTheme() {
+		const savedTheme = localStorage.getItem('Theme');
+		const theme = savedTheme || 'dark';
+		const isDark = theme === 'dark';
+
+		// Aplicar clase dark
+		if (isDark) {
+			document.documentElement.classList.add('dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+		}
+
+		// Actualizar el estado del checkbox INMEDIATAMENTE
+		const toggleDarkMode = document.getElementById('ToggleDarkMode');
+		if (toggleDarkMode && toggleDarkMode instanceof HTMLInputElement) {
+			toggleDarkMode.checked = isDark;
+		}
+	}
+
+	// ANTES del swap - aplicar todo al nuevo documento
+	document.addEventListener('astro:before-swap', (event) => {
+		// Obtener el nuevo documento que se va a mostrar
+		const newDocument = event.newDocument;
+		const savedTheme = localStorage.getItem('Theme');
+		const theme = savedTheme || 'dark';
+		const isDark = theme === 'dark';
+
+		// Aplicar clase dark al nuevo documento ANTES de mostrarlo
+		if (isDark) {
+			newDocument.documentElement.classList.add('dark');
+		} else {
+			newDocument.documentElement.classList.remove('dark');
+		}
+
+		// Actualizar el checkbox en el nuevo documento ANTES de mostrarlo
+		const newToggle = newDocument.getElementById('ToggleDarkMode');
+		if (newToggle && newToggle instanceof HTMLInputElement) {
+			newToggle.checked = isDark;
+		}
+
+		// Actualizar logos en el nuevo documento ANTES de mostrarlo
+		const newLogos = newDocument.querySelectorAll('[data-logo-theme]');
+		newLogos.forEach((logo) => {
+			const type = logo.getAttribute('data-logo-theme');
+			if (window.getLogoPath && type) {
+				const correctPath = window.getLogoPath(type, isDark);
+				logo.setAttribute('src', correctPath);
+			}
+		});
+	});
+
+	// Después de que la página carga - solo una verificación ligera
+	document.addEventListener('astro:page-load', () => {
+		applyTheme();
+	});
+</script>

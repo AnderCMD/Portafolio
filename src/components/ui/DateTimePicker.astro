@@ -1,0 +1,316 @@
+---
+interface Props {
+	name: string;
+	label?: string;
+	placeholder?: string;
+}
+
+const { name, label = 'Fecha y hora', placeholder = 'Sin caducidad' } = Astro.props;
+---
+
+<div class="relative" data-dtp>
+	<input type="hidden" name={name} data-dtp-value />
+	<button
+		type="button"
+		data-dtp-trigger
+		aria-haspopup="dialog"
+		aria-expanded="false"
+		aria-label={label}
+		class="inline-flex min-w-56 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-left text-sm text-slate-900 transition-all hover:border-sky-500/60 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+	>
+		<i class="fa-regular fa-calendar text-sky-500" aria-hidden="true"></i>
+		<span data-dtp-text data-placeholder={placeholder} class="flex-1 text-slate-400">
+			{placeholder}
+		</span>
+		<i class="fa-solid fa-chevron-down text-xs text-slate-400" aria-hidden="true"></i>
+	</button>
+
+	<div
+		data-dtp-panel
+		role="dialog"
+		aria-label={label}
+		hidden
+		class="absolute top-full left-0 z-40 mt-2 w-[19rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-slate-200/60 bg-white/95 p-4 text-slate-900 shadow-2xl backdrop-blur-xl dark:border-slate-700/60 dark:bg-slate-900/95 dark:text-white"
+	>
+		<div class="mb-3 flex items-center justify-between">
+			<button
+				type="button"
+				data-dtp-prev
+				aria-label="Mes anterior"
+				class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-all hover:bg-slate-500/10 hover:text-sky-500"
+			>
+				<i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+			</button>
+			<p data-dtp-month aria-live="polite" class="text-sm font-bold capitalize"></p>
+			<button
+				type="button"
+				data-dtp-next
+				aria-label="Mes siguiente"
+				class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 transition-all hover:bg-slate-500/10 hover:text-sky-500"
+			>
+				<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+			</button>
+		</div>
+
+		<div class="mb-1 grid grid-cols-7 text-center text-[11px] font-semibold text-slate-400 uppercase">
+			<span>L</span>
+			<span>M</span>
+			<span>X</span>
+			<span>J</span>
+			<span>V</span>
+			<span>S</span>
+			<span>D</span>
+		</div>
+		<div data-dtp-days class="grid grid-cols-7 gap-1"></div>
+
+		<div class="mt-4 flex items-center gap-2 border-t border-slate-200/60 pt-4 dark:border-slate-700/60">
+			<i class="fa-regular fa-clock text-sky-500" aria-hidden="true"></i>
+			<div class="flex flex-1 items-center gap-2">
+				<div
+					data-dtp-hours
+					role="listbox"
+					aria-label="Hora"
+					class="h-28 flex-1 overflow-y-auto [scrollbar-width:none] rounded-xl border border-slate-200/60 p-1 dark:border-slate-700/60"
+				></div>
+				<span class="font-bold text-slate-400" aria-hidden="true">
+					:
+				</span>
+				<div
+					data-dtp-minutes
+					role="listbox"
+					aria-label="Minutos"
+					class="h-28 flex-1 overflow-y-auto [scrollbar-width:none] rounded-xl border border-slate-200/60 p-1 dark:border-slate-700/60"
+				></div>
+				<div
+					data-dtp-ampm
+					role="listbox"
+					aria-label="AM o PM"
+					class="h-28 w-16 overflow-y-auto [scrollbar-width:none] rounded-xl border border-slate-200/60 p-1 dark:border-slate-700/60"
+				></div>
+			</div>
+		</div>
+		<p class="mt-2 text-[11px] text-slate-400">Hora de Ciudad de México (UTC-6)</p>
+
+		<div class="mt-4 flex justify-between gap-2">
+			<button
+				type="button"
+				data-dtp-clear
+				class="rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+			>
+				Limpiar
+			</button>
+			<button
+				type="button"
+				data-dtp-accept
+				class="rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-4 py-1.5 text-sm font-bold text-white transition-all hover:scale-105 active:scale-95"
+			>
+				Aceptar
+			</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	const OFFSET_HOURS = 6;
+	const MONTHS = [
+		'enero',
+		'febrero',
+		'marzo',
+		'abril',
+		'mayo',
+		'junio',
+		'julio',
+		'agosto',
+		'septiembre',
+		'octubre',
+		'noviembre',
+		'diciembre',
+	];
+	const pad = (n: number) => String(n).padStart(2, '0');
+
+	const itemBase = 'block w-full rounded-lg px-2 py-1 text-center text-sm transition-all';
+	const itemIdle = 'text-slate-600 hover:bg-sky-500/10 dark:text-slate-300';
+	const itemActive = 'bg-linear-to-r from-sky-500 to-blue-600 font-bold text-white';
+
+	function nowUtcMinus6() {
+		const d = new Date(Date.now() - OFFSET_HOURS * 3_600_000);
+		return { y: d.getUTCFullYear(), m: d.getUTCMonth(), d: d.getUTCDate() };
+	}
+
+	function setup(root: HTMLElement) {
+		const hidden = root.querySelector<HTMLInputElement>('[data-dtp-value]');
+		const trigger = root.querySelector<HTMLButtonElement>('[data-dtp-trigger]');
+		const text = root.querySelector<HTMLElement>('[data-dtp-text]');
+		const panel = root.querySelector<HTMLElement>('[data-dtp-panel]');
+		const monthLabel = root.querySelector<HTMLElement>('[data-dtp-month]');
+		const daysEl = root.querySelector<HTMLElement>('[data-dtp-days]');
+		const hoursEl = root.querySelector<HTMLElement>('[data-dtp-hours]');
+		const minutesEl = root.querySelector<HTMLElement>('[data-dtp-minutes]');
+		const ampmEl = root.querySelector<HTMLElement>('[data-dtp-ampm]');
+		if (!hidden || !trigger || !text || !panel || !monthLabel || !daysEl || !hoursEl || !minutesEl || !ampmEl)
+			return;
+
+		const today = nowUtcMinus6();
+		let viewY = today.y;
+		let viewM = today.m;
+		let sel: { y: number; m: number; d: number } | null = null;
+		let hour = 12;
+		let pm = true;
+		let minute = 0;
+
+		const isPast = (y: number, m: number, d: number) => Date.UTC(y, m, d) < Date.UTC(today.y, today.m, today.d);
+
+		function renderCalendar() {
+			monthLabel!.textContent = `${MONTHS[viewM]} ${viewY}`;
+			daysEl!.replaceChildren();
+			const offset = (new Date(Date.UTC(viewY, viewM, 1)).getUTCDay() + 6) % 7;
+			const total = new Date(Date.UTC(viewY, viewM + 1, 0)).getUTCDate();
+			for (let i = 0; i < offset; i += 1) daysEl!.append(document.createElement('span'));
+			for (let d = 1; d <= total; d += 1) {
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.textContent = String(d);
+				const past = isPast(viewY, viewM, d);
+				const selected = sel !== null && sel.y === viewY && sel.m === viewM && sel.d === d;
+				const isToday = today.y === viewY && today.m === viewM && today.d === d;
+				btn.disabled = past;
+				btn.setAttribute('aria-pressed', String(selected));
+				btn.className = `h-9 rounded-lg text-sm transition-all ${
+					selected
+						? itemActive
+						: past
+							? 'cursor-not-allowed text-slate-300 dark:text-slate-600'
+							: `${itemIdle} ${isToday ? 'ring-1 ring-sky-500/60' : ''}`
+				}`;
+				btn.addEventListener('click', () => {
+					sel = { y: viewY, m: viewM, d };
+					renderCalendar();
+				});
+				daysEl!.append(btn);
+			}
+		}
+
+		function renderList(
+			el: HTMLElement,
+			values: number[],
+			current: number,
+			onPick: (v: number) => void,
+			label: (v: number) => string = pad
+		) {
+			el.replaceChildren();
+			values.forEach((v) => {
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.setAttribute('role', 'option');
+				btn.setAttribute('aria-selected', String(v === current));
+				btn.textContent = label(v);
+				btn.className = `${itemBase} ${v === current ? itemActive : itemIdle}`;
+				btn.addEventListener('click', () => onPick(v));
+				el.append(btn);
+			});
+			el.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'center' });
+		}
+
+		function renderTime() {
+			renderList(
+				hoursEl!,
+				Array.from({ length: 12 }, (_, i) => i + 1),
+				hour,
+				(v) => {
+					hour = v;
+					renderTime();
+				},
+				String
+			);
+			renderList(
+				minutesEl!,
+				Array.from({ length: 12 }, (_, i) => i * 5),
+				minute,
+				(v) => {
+					minute = v;
+					renderTime();
+				}
+			);
+			renderList(
+				ampmEl!,
+				[0, 1],
+				pm ? 1 : 0,
+				(v) => {
+					pm = v === 1;
+					renderTime();
+				},
+				(v) => (v === 1 ? 'PM' : 'AM')
+			);
+		}
+
+		function commit() {
+			if (!sel) {
+				hidden!.value = '';
+				text!.textContent = text!.dataset.placeholder ?? '';
+				text!.className = 'flex-1 text-slate-400';
+				return;
+			}
+			const utc = new Date(Date.UTC(sel.y, sel.m, sel.d, (hour % 12) + (pm ? 12 : 0) + OFFSET_HOURS, minute));
+			hidden!.value = utc.toISOString();
+			text!.textContent = `${sel.d} ${MONTHS[sel.m].slice(0, 3)} ${sel.y}, ${hour}:${pad(minute)} ${pm ? 'PM' : 'AM'} (CDMX)`;
+			text!.className = 'flex-1';
+		}
+
+		function open() {
+			panel!.hidden = false;
+			trigger!.setAttribute('aria-expanded', 'true');
+			renderCalendar();
+			renderTime();
+		}
+
+		function close() {
+			panel!.hidden = true;
+			trigger!.setAttribute('aria-expanded', 'false');
+		}
+
+		trigger.addEventListener('click', () => (panel.hidden ? open() : close()));
+		root.querySelector('[data-dtp-prev]')?.addEventListener('click', () => {
+			viewM -= 1;
+			if (viewM < 0) {
+				viewM = 11;
+				viewY -= 1;
+			}
+			renderCalendar();
+		});
+		root.querySelector('[data-dtp-next]')?.addEventListener('click', () => {
+			viewM += 1;
+			if (viewM > 11) {
+				viewM = 0;
+				viewY += 1;
+			}
+			renderCalendar();
+		});
+		root.querySelector('[data-dtp-clear]')?.addEventListener('click', () => {
+			sel = null;
+			commit();
+			close();
+		});
+		root.querySelector('[data-dtp-accept]')?.addEventListener('click', () => {
+			if (!sel) sel = { ...today };
+			commit();
+			close();
+			trigger.focus();
+		});
+		document.addEventListener('click', (event) => {
+			if (!panel.hidden && !event.composedPath().includes(root)) {
+				if (sel) commit();
+				close();
+			}
+		});
+		root.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && !panel.hidden) {
+				close();
+				trigger.focus();
+			}
+		});
+	}
+
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll<HTMLElement>('[data-dtp]').forEach(setup);
+	});
+</script>

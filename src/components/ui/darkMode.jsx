@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ThemeProvider, ThemeSwitch, useTheme } from 'theme-switcher-ts/react';
 import 'theme-switcher-ts/styles/base.css';
-import 'theme-switcher-ts/styles/variants/glassmorphism.css';
+import 'theme-switcher-ts/styles/variants/classic-sky.css';
 
 // Importar logos desde Astro Assets
 import LogoBlanco from '@/assets/images/logos/Logo-Blanco.webp';
@@ -44,7 +44,7 @@ export default function DarkMode() {
 		<ThemeProvider storageKey="Theme" defaultPreference="dark">
 			<LogoSync />
 			<div className="flex items-center gap-2 lg:flex-col">
-				<ThemeSwitch variant="glassmorphism" ariaLabel="Cambiar entre modo claro y oscuro" />
+				<ThemeSwitch variant="classic-sky" ariaLabel="Cambiar entre modo claro y oscuro" />
 			</div>
 		</ThemeProvider>
 	);

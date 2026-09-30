@@ -35,13 +35,26 @@ const RESERVED_CODES = new Set([
 	'icons',
 	'_astro',
 ]);
-const BLOCKED_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '0.0.0.0']);
+const BLOCKED_HOSTNAMES = new Set([
+	'localhost',
+	'127.0.0.1',
+	'[::1]',
+	'::1',
+	'0.0.0.0',
+	'andercmd.link',
+	'www.andercmd.link',
+]);
+const MAX_TARGET_URL_LENGTH = 2048;
 
 export function isValidCode(code: string): boolean {
 	return CODE_PATTERN.test(code) && !RESERVED_CODES.has(code.toLowerCase());
 }
 
 export function isValidTargetUrl(value: string): boolean {
+	if (value.length === 0 || value.length > MAX_TARGET_URL_LENGTH) {
+		return false;
+	}
+
 	let url: URL;
 	try {
 		url = new URL(value);
@@ -53,5 +66,5 @@ export function isValidTargetUrl(value: string): boolean {
 		return false;
 	}
 
-	return !BLOCKED_HOSTNAMES.has(url.hostname.toLowerCase());
+	return !BLOCKED_HOSTNAMES.has(url.hostname.toLowerCase().replace(/\.$/, ''));
 }

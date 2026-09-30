@@ -2,22 +2,56 @@
 export const prerender = false;
 
 import AdminLayout from '@layouts/AdminLayout.astro';
+import DateTimePicker from '@components/ui/DateTimePicker.astro';
 import { SESSION_COOKIE, verifySessionToken } from '@lib/shortener/auth';
-import { listLinks } from '@lib/shortener/db';
+import { countLinks, listLinks, type LinkCounts, type LinkPage } from '@lib/shortener/db';
+import { computePageRange, parsePage, parseSearch } from '@lib/shortener/utils';
 
 const token = Astro.cookies.get(SESSION_COOKIE)?.value;
 if (!verifySessionToken(token)) {
 	return Astro.redirect('/Admin/Login');
 }
 
-const links = await listLinks();
-const error = Astro.url.searchParams.get('error');
+const PAGE_SIZE = 10;
+const tab = Astro.url.searchParams.get('tab') === 'favorites' ? 'favorites' : 'all';
+const search = parseSearch(Astro.url.searchParams.get('q'));
+const requestedPage = parsePage(Astro.url.searchParams.get('page'));
+let pageData: LinkPage = { items: [], total: 0, page: 1, totalPages: 1 };
+let counts: LinkCounts = { all: 0, favorites: 0 };
+let dbUnavailable = false;
+try {
+	[pageData, counts] = await Promise.all([
+		listLinks({ page: requestedPage, pageSize: PAGE_SIZE, search, favoritesOnly: tab === 'favorites' }),
+		countLinks(),
+	]);
+} catch (caught) {
+	console.error('[admin] could not load links', caught);
+	dbUnavailable = true;
+}
+const links = pageData.items;
+
+const buildHref = (overrides: { tab?: string; page?: number }) => {
+	const params = new URLSearchParams();
+	const nextTab = overrides.tab ?? tab;
+	if (nextTab === 'favorites') params.set('tab', 'favorites');
+	if (search) params.set('q', search);
+	const nextPage = overrides.page ?? 1;
+	if (nextPage > 1) params.set('page', String(nextPage));
+	const query = params.toString();
+	return query ? `/Admin?${query}` : '/Admin';
+};
+const returnTo = buildHref({ page: pageData.page });
+const { start: rangeStart, end: rangeEnd } = computePageRange(pageData.total, pageData.page, PAGE_SIZE, links.length);
+const isExpired = (iso: string) => new Date(iso).getTime() <= Date.now();
+const error = dbUnavailable ? 'unavailable' : Astro.url.searchParams.get('error');
 
 const errorMessages: Record<string, string> = {
 	url: 'La URL de destino no es válida (debe ser http o https).',
 	code: 'El código solo puede tener letras, números, guiones y guion bajo (3-32 caracteres), y no puede ser una palabra reservada.',
 	duplicate: 'Ese código ya está en uso.',
+	expires: 'La fecha de caducidad no es válida o ya pasó.',
 	unknown: 'Ocurrió un error al guardar el enlace.',
+	unavailable: 'No se pudo conectar con la base de datos. Intenta de nuevo en unos momentos.',
 };
 ---
 
@@ -29,7 +63,7 @@ const errorMessages: Record<string, string> = {
 					Acortador · <span class="gradient-text">andercmd.link</span>
 				</h1>
 				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-					{links.length} {links.length === 1 ? 'enlace' : 'enlaces'} en total
+					{counts.all} {counts.all === 1 ? 'enlace' : 'enlaces'} en total
 				</p>
 			</div>
 			<form method="POST" action="/api/admin/logout">
@@ -55,7 +89,9 @@ const errorMessages: Record<string, string> = {
 		<form
 			method="POST"
 			action="/api/admin/links"
-			class="glass card-modern grid gap-3 rounded-2xl p-6 shadow-lg sm:grid-cols-[2fr_1fr_auto]"
+			data-confirm="duplicate"
+			style="contain: none"
+			class="glass card-modern relative z-20 grid gap-3 rounded-2xl p-6 shadow-lg sm:grid-cols-[2fr_1fr_auto]"
 		>
 			<div class="relative">
 				<i
@@ -89,13 +125,68 @@ const errorMessages: Record<string, string> = {
 			>
 				<i class="fa-solid fa-plus" aria-hidden="true"></i>Crear
 			</button>
+			<div class="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-slate-200/60 pt-3 sm:col-span-3 dark:border-slate-700/60">
+				<div class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+					Caduca el
+					<DateTimePicker name="expiresAt" label="Fecha y hora de caducidad" />
+				</div>
+				<label class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
+					<input type="checkbox" name="autoDelete" value="1" class="h-4 w-4 accent-sky-500" />
+					Eliminar automáticamente al caducar
+				</label>
+			</div>
 		</form>
+
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<nav aria-label="Vista de enlaces" class="flex gap-2">
+				<a
+					href={buildHref({ tab: 'all' })}
+					aria-current={tab === 'all' ? 'page' : undefined}
+					class={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+						tab === 'all'
+							? 'bg-linear-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25'
+							: 'border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
+					}`}
+				>
+					<i class="fa-solid fa-link" aria-hidden="true" />
+					Todos ({counts.all})
+				</a>
+				<a
+					href={buildHref({ tab: 'favorites' })}
+					aria-current={tab === 'favorites' ? 'page' : undefined}
+					class={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+						tab === 'favorites'
+							? 'bg-linear-to-r from-amber-500 to-orange-600 text-white shadow-lg shadow-amber-500/25'
+							: 'border border-slate-200 text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800'
+					}`}
+				>
+					<i class="fa-solid fa-star" aria-hidden="true" />
+					Favoritos ({counts.favorites})
+				</a>
+			</nav>
+			<form method="GET" action="/Admin" role="search" class="relative w-full sm:w-80">
+				{tab === 'favorites' && <input type="hidden" name="tab" value="favorites" />}
+				<i
+					class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-400"
+					aria-hidden="true"
+				/>
+				<input
+					type="search"
+					name="q"
+					value={search}
+					autocomplete="off"
+					placeholder="Buscar por código o URL (Enter)"
+					aria-label="Buscar enlaces"
+					class="w-full rounded-xl border border-slate-200 bg-white/70 py-2.5 pr-4 pl-10 text-sm text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-sky-500/40 focus:outline-none dark:border-slate-700 dark:bg-slate-900/60 dark:text-white"
+				/>
+			</form>
+		</div>
 
 		<ul class="space-y-3">
 			{links.map((link) => (
 				<li class="glass card-modern rounded-2xl p-5 shadow-lg">
 					<div class="flex flex-wrap items-center justify-between gap-4">
-						<div class="min-w-0 flex-1">
+						<div class="min-w-0 flex-1 basis-72">
 							<div class="flex flex-wrap items-center gap-2">
 								<p class="font-mono font-semibold text-sky-600 dark:text-sky-400">
 									andercmd.link/{link.code}
@@ -113,14 +204,56 @@ const errorMessages: Record<string, string> = {
 									/>
 									{link.isActive ? 'Activo' : 'Pausado'}
 								</span>
+								<form method="POST" action={`/api/admin/links/${link.code}`} class="inline-flex">
+									<input type="hidden" name="action" value="favorite" />
+									<input type="hidden" name="returnTo" value={returnTo} />
+									<input type="hidden" name="favorite" value={link.isFavorite ? '0' : '1'} />
+									<button
+										type="submit"
+										aria-label={
+											link.isFavorite
+												? `Quitar ${link.code} de favoritos`
+												: `Marcar ${link.code} como favorito`
+										}
+										aria-pressed={link.isFavorite}
+										title={link.isFavorite ? 'Quitar de favoritos' : 'Marcar como favorito'}
+										class={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-all hover:scale-110 ${link.isFavorite ? 'text-amber-500' : 'text-slate-400 hover:text-amber-500'}`}
+									>
+										<i
+											class={`${link.isFavorite ? 'fa-solid' : 'fa-regular'} fa-star`}
+											aria-hidden="true"
+										/>
+									</button>
+								</form>
 							</div>
 							<p class="mt-1 truncate text-sm text-slate-600 dark:text-slate-400">{link.targetUrl}</p>
+							{link.expiresAt && (
+								<p
+									class={`mt-1 text-xs ${isExpired(link.expiresAt) ? 'font-semibold text-red-500' : 'text-slate-500 dark:text-slate-400'}`}
+								>
+									<i class="fa-regular fa-clock mr-1" aria-hidden="true" />
+									{isExpired(link.expiresAt) ? 'Caducó el' : 'Caduca el'}
+									<time datetime={link.expiresAt} data-expires-label>
+										{link.expiresAt}
+									</time>
+									{link.autoDelete && ' · se eliminará automáticamente'}
+								</p>
+							)}
 							<p class="mt-1 text-xs text-slate-500 dark:text-slate-500">
 								<i class="fa-solid fa-arrow-pointer mr-1" aria-hidden="true" />
 								{link.clicks} {link.clicks === 1 ? 'clic' : 'clics'}
 							</p>
 						</div>
 						<div class="flex flex-wrap gap-2">
+							<a
+								href={`https://andercmd.link/${link.code}`}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+							>
+								<i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
+								Visitar
+							</a>
 							<button
 								type="button"
 								data-copy-link={`https://andercmd.link/${link.code}`}
@@ -137,8 +270,14 @@ const errorMessages: Record<string, string> = {
 								<i class="fa-solid fa-pen" aria-hidden="true" />
 								Editar
 							</button>
-							<form method="POST" action={`/api/admin/links/${link.code}`}>
+							<form
+								method="POST"
+								action={`/api/admin/links/${link.code}`}
+								data-confirm={link.isActive ? 'pause' : undefined}
+								data-confirm-code={link.code}
+							>
 								<input type="hidden" name="action" value="toggle" />
+								<input type="hidden" name="returnTo" value={returnTo} />
 								<input type="hidden" name="active" value={link.isActive ? '0' : '1'} />
 								<button
 									type="submit"
@@ -151,12 +290,34 @@ const errorMessages: Record<string, string> = {
 									{link.isActive ? 'Pausar' : 'Activar'}
 								</button>
 							</form>
+							{link.expiresAt && (
+								<form
+									method="POST"
+									action={`/api/admin/links/${link.code}`}
+									class="flex gap-2"
+									data-confirm="renew"
+									data-confirm-code={link.code}
+								>
+									<input type="hidden" name="action" value="renew" />
+									<input type="hidden" name="returnTo" value={returnTo} />
+									<input type="hidden" name="days" value="30" />
+									<button
+										type="submit"
+										class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+									>
+										<i class="fa-solid fa-rotate" aria-hidden="true" />
+										Renovar
+									</button>
+								</form>
+							)}
 							<form
 								method="POST"
 								action={`/api/admin/links/${link.code}`}
-								onsubmit="return confirm('¿Eliminar este enlace?');"
+								data-confirm="delete"
+								data-confirm-code={link.code}
 							>
 								<input type="hidden" name="action" value="delete" />
+								<input type="hidden" name="returnTo" value={returnTo} />
 								<button
 									type="submit"
 									class="inline-flex items-center gap-1.5 rounded-xl border border-red-400/30 px-3 py-1.5 text-sm font-medium text-red-500 transition-all hover:scale-105 hover:bg-red-500/10 dark:text-red-400"
@@ -171,9 +332,12 @@ const errorMessages: Record<string, string> = {
 						method="POST"
 						action={`/api/admin/links/${link.code}`}
 						data-edit-form={link.code}
+						data-confirm="edit"
+						data-confirm-code={link.code}
 						class="mt-4 hidden grid-cols-1 gap-3 border-t border-slate-200/60 pt-4 sm:grid-cols-[1fr_auto] dark:border-slate-700/60"
 					>
 						<input type="hidden" name="action" value="edit" />
+						<input type="hidden" name="returnTo" value={returnTo} />
 						<div class="relative">
 							<i
 								class="fa-solid fa-globe pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-400"
@@ -198,48 +362,294 @@ const errorMessages: Record<string, string> = {
 			))}
 			{links.length === 0 && (
 				<li class="glass rounded-2xl p-10 text-center text-slate-500 shadow-lg dark:text-slate-400">
-					<i class="fa-solid fa-link-slash mb-3 block text-3xl opacity-50" aria-hidden="true" />
-					Aún no hay enlaces. Crea el primero arriba.
+					<i
+						class={`fa-solid ${search ? 'fa-magnifying-glass' : tab === 'favorites' ? 'fa-star' : 'fa-link-slash'} mb-3 block text-3xl opacity-50`}
+						aria-hidden="true"
+					/>
+					{search
+						? 'Ningún enlace coincide con tu búsqueda.'
+						: tab === 'favorites'
+							? 'Aún no tienes favoritos. Marca una estrella en cualquier enlace.'
+							: 'Aún no hay enlaces. Crea el primero arriba.'}
 				</li>
 			)}
 		</ul>
+
+		{pageData.totalPages > 1 && (
+			<nav aria-label="Paginación de enlaces" class="flex items-center justify-between gap-3">
+				<p class="text-sm text-slate-500 dark:text-slate-400" aria-live="polite">
+					Mostrando {rangeStart}-{rangeEnd} de {pageData.total}
+				</p>
+				<div class="flex items-center gap-2">
+					{pageData.page > 1 ? (
+						<a
+							href={buildHref({ page: pageData.page - 1 })}
+							rel="prev"
+							class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+						>
+							<i class="fa-solid fa-chevron-left" aria-hidden="true" />
+							Anterior
+						</a>
+					) : (
+						<span class="inline-flex cursor-not-allowed items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 opacity-40 dark:border-slate-700 dark:text-slate-300">
+							<i class="fa-solid fa-chevron-left" aria-hidden="true" />
+							Anterior
+						</span>
+					)}
+					<span class="min-w-16 text-center text-sm font-medium text-slate-700 dark:text-slate-200">
+						{pageData.page} / {pageData.totalPages}
+					</span>
+					{pageData.page < pageData.totalPages ? (
+						<a
+							href={buildHref({ page: pageData.page + 1 })}
+							rel="next"
+							class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+						>
+							Siguiente
+							<i class="fa-solid fa-chevron-right" aria-hidden="true" />
+						</a>
+					) : (
+						<span class="inline-flex cursor-not-allowed items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 opacity-40 dark:border-slate-700 dark:text-slate-300">
+							Siguiente
+							<i class="fa-solid fa-chevron-right" aria-hidden="true" />
+						</span>
+					)}
+				</div>
+			</nav>
+		)}
 	</div>
+
+	<dialog
+		id="confirm-dialog"
+		aria-labelledby="confirm-title"
+		aria-describedby="confirm-message"
+		class="glass m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl border border-white/20 p-6 text-slate-900 shadow-2xl backdrop:bg-slate-950/60 backdrop:backdrop-blur-sm dark:text-white"
+	>
+		<div class="flex items-start gap-4">
+			<span
+				id="confirm-icon"
+				class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-500"
+			>
+				<i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+			</span>
+			<div class="min-w-0">
+				<h2 id="confirm-title" class="text-lg font-bold">
+					Confirmar acción
+				</h2>
+				<p id="confirm-message" class="mt-1 text-sm whitespace-pre-line text-slate-600 dark:text-slate-300"></p>
+				<div id="confirm-extra" hidden class="mt-4">
+					<label for="confirm-days" class="mb-1 block text-xs font-medium text-slate-500 dark:text-slate-400">
+						Extender caducidad por
+					</label>
+					<select
+						id="confirm-days"
+						class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+					>
+						<option value="1">24 horas</option>
+						<option value="7">7 días</option>
+						<option value="15">15 días</option>
+						<option value="30" selected>
+							30 días
+						</option>
+						<option value="60">60 días</option>
+						<option value="90">90 días</option>
+						<option value="365">1 año</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="mt-6 flex justify-end gap-2">
+			<button
+				type="button"
+				id="confirm-cancel"
+				class="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+			>
+				Cancelar
+			</button>
+			<button
+				type="button"
+				id="confirm-accept"
+				class="rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-4 py-2 text-sm font-bold text-white transition-all hover:scale-105 active:scale-95"
+			>
+				Confirmar
+			</button>
+		</div>
+	</dialog>
 </AdminLayout>
 
 <script>
-	document.querySelectorAll<HTMLButtonElement>('[data-toggle-edit]').forEach((button) => {
-		button.addEventListener('click', () => {
-			const code = button.getAttribute('data-toggle-edit');
-			const form = document.querySelector<HTMLFormElement>(`[data-edit-form="${code}"]`);
-			if (!form) return;
-			const willShow = form.classList.contains('hidden');
-			form.classList.toggle('hidden', !willShow);
-			form.classList.toggle('grid', willShow);
-			if (willShow) {
-				form.querySelector<HTMLInputElement>('input[name="targetUrl"]')?.focus();
-			}
+	interface ConfirmCopy {
+		title: string;
+		message: (code: string) => string;
+		accept: string;
+		danger: boolean;
+		withDuration?: boolean;
+		when?: (form: HTMLFormElement) => Promise<string | null>;
+	}
+
+	const confirmCopy: Record<string, ConfirmCopy> = {
+		delete: {
+			title: 'Eliminar enlace',
+			message: (code) =>
+				`Se eliminará andercmd.link/${code} de forma permanente. Esta acción no se puede deshacer.`,
+			accept: 'Eliminar',
+			danger: true,
+		},
+		pause: {
+			title: 'Pausar enlace',
+			message: (code) => `andercmd.link/${code} dejará de redirigir hasta que lo actives de nuevo.`,
+			accept: 'Pausar',
+			danger: false,
+		},
+		duplicate: {
+			title: 'Este enlace ya existe',
+			message: (codes) => {
+				const list = codes.split(',').map((code) => `• andercmd.link/${code}`);
+				const intro =
+					list.length === 1
+						? 'Ya tienes un enlace corto para esta URL:'
+						: `Ya tienes ${list.length} enlaces cortos para esta URL:`;
+				return `${intro}\n${list.join('\n')}\n¿Seguro que quieres crear otro?`;
+			},
+			accept: 'Crear de todos modos',
+			danger: false,
+			when: async (form) => {
+				const target = form.querySelector<HTMLInputElement>('input[name="targetUrl"]')?.value.trim() ?? '';
+				if (!target) return null;
+				try {
+					const response = await fetch(`/api/admin/duplicates?url=${encodeURIComponent(target)}`);
+					if (!response.ok) return null;
+					const { codes } = (await response.json()) as { codes: string[] };
+					return codes.length ? codes.join(',') : null;
+				} catch {
+					return null;
+				}
+			},
+		},
+		renew: {
+			title: 'Renovar enlace',
+			message: (code) => `Elige por cuánto tiempo se extenderá la caducidad de andercmd.link/${code}.`,
+			accept: 'Renovar',
+			danger: false,
+			withDuration: true,
+		},
+		edit: {
+			title: 'Guardar cambios',
+			message: (code) => `Se cambiará la URL de destino de andercmd.link/${code}.`,
+			accept: 'Guardar',
+			danger: false,
+		},
+	};
+
+	const COPY_ICON = ['fa-regular', 'fa-copy'];
+	const DONE_ICON = ['fa-solid', 'fa-check'];
+
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll<HTMLButtonElement>('[data-toggle-edit]').forEach((button) => {
+			button.addEventListener('click', () => {
+				const code = button.getAttribute('data-toggle-edit');
+				const form = document.querySelector<HTMLFormElement>(`[data-edit-form="${code}"]`);
+				if (!form) return;
+				const willShow = form.classList.contains('hidden');
+				form.classList.toggle('hidden', !willShow);
+				form.classList.toggle('grid', willShow);
+				if (willShow) {
+					form.querySelector<HTMLInputElement>('input[name="targetUrl"]')?.focus();
+				}
+			});
 		});
-	});
 
-	document.querySelectorAll<HTMLButtonElement>('[data-copy-link]').forEach((button) => {
-		button.addEventListener('click', async () => {
-			const url = button.getAttribute('data-copy-link');
-			if (!url) return;
+		document.querySelectorAll<HTMLButtonElement>('[data-copy-link]').forEach((button) => {
+			let timer: number | undefined;
+			button.addEventListener('click', async () => {
+				const url = button.getAttribute('data-copy-link');
+				if (!url) return;
 
-			const label = button.querySelector('.copy-link-label');
-			const icon = button.querySelector('i');
-			try {
-				await navigator.clipboard.writeText(url);
-				if (label) label.textContent = '¡Copiado!';
-				icon?.classList.replace('fa-copy', 'fa-check');
-			} catch {
-				if (label) label.textContent = 'Error';
-			}
+				const label = button.querySelector('.copy-link-label');
+				const icon = button.querySelector('i');
+				const setIcon = (from: string[], to: string[]) => {
+					icon?.classList.remove(...from);
+					icon?.classList.add(...to);
+				};
 
-			setTimeout(() => {
-				if (label) label.textContent = 'Copiar';
-				icon?.classList.replace('fa-check', 'fa-copy');
-			}, 1800);
+				window.clearTimeout(timer);
+				try {
+					await navigator.clipboard.writeText(url);
+					if (label) label.textContent = '¡Copiado!';
+					setIcon(COPY_ICON, DONE_ICON);
+				} catch {
+					if (label) label.textContent = 'Error';
+				}
+
+				timer = window.setTimeout(() => {
+					if (label) label.textContent = 'Copiar';
+					setIcon(DONE_ICON, COPY_ICON);
+				}, 1800);
+			});
+		});
+
+		document.querySelectorAll<HTMLTimeElement>('[data-expires-label]').forEach((el) => {
+			el.textContent =
+				new Date(el.dateTime).toLocaleString('es', {
+					dateStyle: 'medium',
+					timeStyle: 'short',
+					timeZone: 'America/Mexico_City',
+					hour12: true,
+				}) + ' (CDMX)';
+		});
+
+		const dialog = document.querySelector<HTMLDialogElement>('#confirm-dialog');
+		const title = document.querySelector<HTMLElement>('#confirm-title');
+		const message = document.querySelector<HTMLElement>('#confirm-message');
+		const accept = document.querySelector<HTMLButtonElement>('#confirm-accept');
+		const cancel = document.querySelector<HTMLButtonElement>('#confirm-cancel');
+		const icon = document.querySelector<HTMLElement>('#confirm-icon');
+		const extra = document.querySelector<HTMLElement>('#confirm-extra');
+		const days = document.querySelector<HTMLSelectElement>('#confirm-days');
+		if (!extra || !days) return;
+		if (!dialog || !title || !message || !accept || !cancel || !icon) return;
+
+		let pendingForm: HTMLFormElement | null = null;
+
+		document.querySelectorAll<HTMLFormElement>('form[data-confirm]').forEach((form) => {
+			form.addEventListener('submit', (event) => {
+				const copy = confirmCopy[form.dataset.confirm ?? ''];
+				if (!copy) return;
+				event.preventDefault();
+				const lookup = copy.when ? copy.when(form) : Promise.resolve(form.dataset.confirmCode ?? '');
+				void lookup.then((matchedCode) => {
+					if (matchedCode === null) {
+						form.submit();
+						return;
+					}
+					pendingForm = form;
+					title.textContent = copy.title;
+					message.textContent = copy.message(matchedCode);
+					accept.textContent = copy.accept;
+					accept.className = copy.danger
+						? 'rounded-xl bg-linear-to-r from-red-500 to-rose-600 px-4 py-2 text-sm font-bold text-white transition-all hover:scale-105 active:scale-95'
+						: 'rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-4 py-2 text-sm font-bold text-white transition-all hover:scale-105 active:scale-95';
+					icon.className = copy.danger
+						? 'flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-red-500'
+						: 'flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-amber-500/15 text-amber-500';
+					extra.hidden = !copy.withDuration;
+					days.value = '30';
+					dialog.showModal();
+					(copy.withDuration ? days : cancel).focus();
+				});
+			});
+		});
+
+		cancel.addEventListener('click', () => dialog.close());
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) dialog.close();
+		});
+		accept.addEventListener('click', () => {
+			const form = pendingForm;
+			const daysInput = form?.querySelector<HTMLInputElement>('input[name="days"]');
+			if (daysInput && !extra.hidden) daysInput.value = days.value;
+			dialog.close();
+			form?.submit();
 		});
 	});
 </script>
