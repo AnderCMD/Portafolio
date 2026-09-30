@@ -16,28 +16,30 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"dependencies": {
 		"@astrojs/check": "0.9.10",
-		"@astrojs/node": "^11.1.6",
+		"@astrojs/node": "11.1.6",
 		"@astrojs/react": "7.0.0",
 		"@astrojs/sitemap": "3.7.4",
 		"@tailwindcss/vite": "4.3.3",
 		"@types/react": "19.3.0",
 		"@types/react-dom": "19.3.0",
 		"astro": "7.3.5",
-		"mysql2": "^3.24.5",
-		"qrcode": "^1.5.4",
+		"mysql2": "3.24.5",
+		"qrcode": "1.5.4",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
 		"sharp": "0.35.5",
 		"tailwindcss": "4.3.3",
-		"theme-switcher-ts": "^1.1.0"
+		"theme-switcher-ts": "1.1.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "10.0.1",
-		"@types/qrcode": "^1.5.6",
+		"@types/qrcode": "1.5.6",
 		"eslint": "10.11.0",
 		"eslint-config-prettier": "10.1.8",
 		"eslint-plugin-astro": "3.2.1",
@@ -48,6 +50,7 @@
 		"prettier-plugin-astro": "1.1.0",
 		"prettier-plugin-tailwindcss": "0.8.1",
 		"typescript": "6.0.3",
-		"typescript-eslint": "8.71.0"
+		"typescript-eslint": "8.71.0",
+		"vitest": "5.0.2"
 	}
 }
