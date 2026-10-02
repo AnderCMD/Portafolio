@@ -9,6 +9,6 @@
 		"mysql2": "^3.24.4"
 	},
 	"devDependencies": {
-		"wrangler": "^4.31.1"
+		"wrangler": "^4.146.0"
 	}
 }
