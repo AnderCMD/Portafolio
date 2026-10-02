@@ -47,3 +47,6 @@ overrides:
 
 minimumReleaseAgeExclude:
   - yaml@2.9.1
+  - framer-motion@13.5.0
+  - motion-dom@13.5.0
+  - motion-utils@13.5.0

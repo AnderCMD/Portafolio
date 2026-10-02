@@ -87,6 +87,7 @@ Para mantener los componentes limpios, la información estática (experiencia, r
 - **Framework Core:** Astro 6+ (con `ClientRouter` activado para navegación SPA).
 - **Interactividad:** React 19+ (Solo para componentes que requieren estado complejo).
 - **Estilos:** Tailwind CSS 4.2+ (optimizado vía `@tailwindcss/vite`).
+- **Animaciones:** Framer Motion (`framer-motion`, API vanilla). Ver la sección _Animaciones_.
 - **Lenguaje:** TypeScript (Tipado estricto, **PROHIBIDO** el uso de `any` en archivos `.ts`, `.tsx`, `.jsx` y `.astro`).
 - **Imágenes:** Optimización obligatoria vía `astro:assets` (`<Image />`) con formatos modernos (`webp`/`avif`).
 - **Iconos:** FontAwesome 6 (vía CDN/Assets) o SVG inline.
@@ -130,6 +131,22 @@ Para mantener los componentes limpios, la información estática (experiencia, r
 - **Carga de Recursos:** Prioriza `eager` para el Hero Image y `lazy` para el resto. Usa `fetchpriority="high"` en recursos críticos.
 - **Imágenes:** Define siempre `width` y `height` (o `aspect-ratio`) para evitar Cumulative Layout Shift (CLS).
 
+### 5. Animaciones (Framer Motion)
+
+Todas las animaciones de entrada/scroll/hover se implementan en `src/scripts/motion.ts` (cargado desde `Layout.astro`, `AdminLayout.astro` y `TarjetaCard.astro`) y se activan con atributos, **sin** clases `animate-*` de CSS ni islas de React:
+
+| Atributo                                          | Efecto                                                                                                       |
+| :------------------------------------------------ | :----------------------------------------------------------------------------------------------------------- |
+| `data-motion="page"`                              | Entrada de la página (fade + slide). Ya aplicado en los layouts.                                             |
+| `data-motion="reveal"`                            | Aparece al entrar en pantalla. `data-motion-from="up\|down\|left\|right\|scale"`, `data-motion-delay="0.2"`. |
+| `data-motion-stagger="0.08"` + `data-motion-item` | Contenedor cuyos hijos aparecen en cascada.                                                                  |
+| `data-motion="float"`                             | Flotación infinita (hero).                                                                                   |
+| `data-motion-tap`                                 | Micro-interacción hover/press (no combinar con `hover:scale-*` de Tailwind).                                 |
+
+- El estado inicial oculto está en `default.css` y solo aplica con JS y sin `prefers-reduced-motion`.
+- Al terminar cada animación se marca `data-motion-done` y se quitan los estilos inline para devolver el control al CSS (hover, filtros de proyectos).
+- Los scripts son idempotentes y se reinician con `astro:page-load` (compatible con `ClientRouter`).
+
 ---
 
 ## 🕸️ Exploración del Código con Graphify
@@ -139,6 +156,8 @@ Antes de hacer cambios estructurales o explorar un área desconocida del proyect
 - Entender relaciones entre componentes, páginas, layouts y datos (`src/components/`, `src/pages/`, `src/data/`, `src/i18n/`) sin tener que leer archivo por archivo.
 - Ubicar rápidamente qué componentes reutiliza una página (ej. `Text2.astro`, `Layout.astro`) antes de duplicar lógica.
 - Verificar el impacto de un cambio (qué archivos referencian una clave de `src/i18n/locales/` o un alias de importación) antes de renombrar o eliminar algo.
+
+`.graphifyignore` define qué se excluye del grafo. Se versionan `graphify-out/graph.json` y `GRAPH_REPORT.md`; `cache/`, `.graphify_*` y `graph.html` están en `.gitignore`. Tras cambios estructurales, actualiza con `/graphify . --update`.
 
 Si existe la carpeta `graphify-out/` en el repo, trátala como fuente de verdad para preguntas sobre arquitectura antes de responder solo con `grep`/`find`.
 

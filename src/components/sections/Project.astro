@@ -96,7 +96,11 @@ const statusOrder = {
 	</div>
 </div>
 
-<div id="projects-grid" class="items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div
+	id="projects-grid"
+	data-motion-stagger="0.08"
+	class="items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+>
 	{projectsList
 		.sort((a, b) => {
 			const status_a = statusOrder[a.status as keyof typeof statusOrder] || 99;
@@ -108,6 +112,7 @@ const statusOrder = {
 		})
 		.map((Project) => (
 			<article
+				data-motion-item
 				class={`group min-h-full filter-item all ${Project.type}`}
 				data-year={Project.year}
 				data-status={Project.status || 'unknown'}

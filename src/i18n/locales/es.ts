@@ -132,6 +132,7 @@ export const es = {
 	'Card.Email': 'Correo',
 	'Card.Portfolio': 'Portafolio',
 	'Card.ScanToShare': 'Escanea para compartir esta tarjeta',
+	'Card.DownloadQR': 'Descargar QR',
 	'Card.SaveContact': 'Guardar contacto',
 	'Card.BackHome': 'Volver al inicio',
 

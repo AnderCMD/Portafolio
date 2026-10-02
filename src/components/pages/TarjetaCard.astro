@@ -135,7 +135,11 @@ const contactButtons = [
 		</div>
 
 		<main class="flex min-h-screen items-center justify-center px-4 py-12">
-			<div class="glass card-modern relative w-full max-w-sm overflow-hidden rounded-3xl shadow-2xl">
+			<div
+				data-motion="reveal"
+				data-motion-from="scale"
+				class="glass card-modern relative w-full max-w-sm overflow-hidden rounded-3xl shadow-2xl"
+			>
 				<div class="relative h-24 bg-linear-to-r from-sky-500 via-blue-600 to-indigo-600">
 					<div class="absolute top-3 right-3 z-10 flex gap-1.5">
 						<a
@@ -168,13 +172,15 @@ const contactButtons = [
 					<p class="mt-1 font-medium text-sky-600 dark:text-sky-400">{t('Card.JobTitle')}</p>
 					<p class="text-sm text-slate-500 dark:text-slate-400">{t('Card.Handle')}</p>
 
-					<div class="mt-6 grid grid-cols-2 gap-3">
+					<div class="mt-6 grid grid-cols-2 gap-3" data-motion-stagger="0.08">
 						{contactButtons.map((btn) => (
 							<a
 								href={btn.href}
+								data-motion-item
+								data-motion-tap
 								target={btn.href.startsWith('http') ? '_blank' : undefined}
 								rel={btn.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-								class={`btn-modern flex flex-col items-center gap-1.5 rounded-xl bg-linear-to-br ${btn.accent} px-3 py-3.5 text-white shadow-lg transition-all duration-300 hover:scale-105`}
+								class={`btn-modern flex flex-col items-center gap-1.5 rounded-xl bg-linear-to-br ${btn.accent} px-3 py-3.5 text-white shadow-lg`}
 							>
 								<i class={`${btn.icon} text-lg`} aria-hidden="true" />
 								<span class="text-xs font-semibold">{btn.label}</span>
@@ -182,14 +188,30 @@ const contactButtons = [
 						))}
 					</div>
 
-					<div class="mt-6 flex justify-center">
+					<div
+						class="mt-6 flex justify-center"
+						data-motion="reveal"
+						data-motion-from="scale"
+						data-motion-delay="0.3"
+					>
 						<div class="qr-wrapper h-44 w-44 rounded-2xl bg-white p-3 shadow-lg" set:html={qrSvg} />
 					</div>
 					<p class="mt-2 text-xs text-slate-500 dark:text-slate-400">{t('Card.ScanToShare')}</p>
 
+					<button
+						type="button"
+						id="download-qr"
+						data-motion-tap
+						class="btn-modern mt-4 inline-flex items-center justify-center gap-2 rounded-xl border-2 border-sky-500 px-5 py-2 text-sm font-bold text-sky-600 transition-colors duration-300 hover:bg-sky-500 hover:text-white dark:border-sky-400 dark:text-sky-400 dark:hover:bg-sky-400 dark:hover:text-slate-900"
+					>
+						<i class="fa-solid fa-download" aria-hidden="true"></i>
+						{t('Card.DownloadQR')}
+					</button>
+
 					<a
 						href="/Contacto/ander-gonzalez.vcf"
-						class="btn-modern mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-sky-500/30 transition-all duration-300 hover:scale-[1.02] hover:from-sky-600 hover:to-blue-700"
+						data-motion-tap
+						class="btn-modern mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-3 font-bold text-white shadow-lg shadow-sky-500/30 transition-[background-image,box-shadow] duration-300 hover:from-sky-600 hover:to-blue-700"
 					>
 						<i class="fa-solid fa-user-plus" aria-hidden="true"></i>
 						{t('Card.SaveContact')}
@@ -207,6 +229,43 @@ const contactButtons = [
 		</main>
 	</body>
 </html>
+
+<script>
+	import '@scripts/motion';
+
+	const EXPORT_SIZE = 1024;
+
+	// Rasteriza el SVG del QR (con logo embebido como data URI, así el canvas no se "mancha") y lo descarga como PNG.
+	async function downloadQr() {
+		const svg = document.querySelector<SVGSVGElement>('.qr-wrapper svg');
+		if (!svg) return;
+		const clone = svg.cloneNode(true) as SVGSVGElement;
+		clone.setAttribute('width', String(EXPORT_SIZE));
+		clone.setAttribute('height', String(EXPORT_SIZE));
+		const url = URL.createObjectURL(
+			new Blob([new XMLSerializer().serializeToString(clone)], { type: 'image/svg+xml;charset=utf-8' })
+		);
+		try {
+			const img = new Image();
+			img.src = url;
+			await img.decode();
+			const canvas = document.createElement('canvas');
+			canvas.width = canvas.height = EXPORT_SIZE;
+			canvas.getContext('2d')?.drawImage(img, 0, 0, EXPORT_SIZE, EXPORT_SIZE);
+			const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+			if (!blob) return;
+			const link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = 'qr-andercmd.png';
+			link.click();
+			setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+		} finally {
+			URL.revokeObjectURL(url);
+		}
+	}
+
+	document.getElementById('download-qr')?.addEventListener('click', downloadQr);
+</script>
 
 <style>
 	.qr-wrapper :global(svg) {

@@ -15,6 +15,7 @@ export default [
 			'public/**',
 			'.vscode/**',
 			'.agents/**',
+			'graphify-out/**',
 			'skills-lock.json',
 		],
 	},

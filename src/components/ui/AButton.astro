@@ -28,7 +28,8 @@ const variantClasses = {
 	class="inline-block w-full group"
 >
 	<button
-		class={`btn-modern relative w-full px-6 py-3.5 mt-4 font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 active:scale-95 ${variantClasses[variant]} flex items-center justify-center gap-2.5`}
+		data-motion-tap
+		class={`btn-modern relative w-full px-6 py-3.5 mt-4 font-bold rounded-2xl transition-[background-color,box-shadow] duration-300 ${variantClasses[variant]} flex items-center justify-center gap-2.5`}
 	>
 		{icon && <i class={icon + ' text-lg group-hover:scale-110 transition-transform'} />}
 		<span class="relative z-10">{texto}</span>

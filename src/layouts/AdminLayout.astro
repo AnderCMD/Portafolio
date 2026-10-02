@@ -38,6 +38,9 @@ import '@styles/default.css';
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 		<ThemeScripts />
+		<script>
+			import '@scripts/motion';
+		</script>
 		<ClientRouter />
 	</head>
 
@@ -87,7 +90,7 @@ import '@styles/default.css';
 				class="container mx-auto max-w-4xl flex-1 px-4 py-8 sm:px-6 lg:px-8 lg:py-12"
 				tabindex="-1"
 			>
-				<div class="animate-fade-in">
+				<div data-motion="page">
 					<slot />
 				</div>
 			</main>

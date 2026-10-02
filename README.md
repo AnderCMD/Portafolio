@@ -22,7 +22,8 @@
 
 - **Glassmorphism UI** - Efectos de vidrio esmerilado con backdrop blur
 - **Gradientes Animados** - Transiciones suaves de color en títulos y elementos
-- **Animaciones CSS** - Más de 10 animaciones personalizadas (fade, slide, float, etc.)
+- **Animaciones con Framer Motion** - Entrada de página, scroll reveal, cascadas (stagger), flotación y micro-interacciones hover/press, con respeto a `prefers-reduced-motion`
+- **Tarjeta de contacto** - `/Contacto/Tarjeta` con QR personalizado (puntos circulares + logo) descargable como PNG
 - **Modo Oscuro** - Soporte completo con transiciones suaves
 - **Responsive Design** - Totalmente adaptable a todos los dispositivos
 
@@ -146,6 +147,7 @@ Este sitio en particular corre en **Hostinger (Node.js PaaS)** desplegando direc
 
 - **[@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/)** - Generación automática de sitemap
 - **i18n nativo de Astro** - Sistema de internacionalización integrado
+- **[Framer Motion](https://motion.dev/)** - Animaciones vía API vanilla (`src/scripts/motion.ts`), controladas por atributos `data-motion-*` sin hidratar islas de React
 - **Font Awesome 6** - Iconos vectoriales
 - **Sharp** - Optimización de imágenes vía `astro:assets`
 
@@ -156,7 +158,7 @@ Este sitio en particular corre en **Hostinger (Node.js PaaS)** desplegando direc
 
 ### Herramientas para agentes de IA
 
-- **Graphify** - Skill que convierte el código de este repositorio en un grafo de conocimiento persistente (nodos "god", detección de comunidades y consultas de rutas/relaciones). Útil para que un agente de IA entienda rápidamente la arquitectura y las relaciones entre archivos antes de hacer cambios. Ver [AGENTS.md](AGENTS.md) para más contexto sobre el flujo de trabajo con agentes.
+- **Graphify** - Skill que convierte el código de este repositorio en un grafo de conocimiento persistente (nodos "god", detección de comunidades y consultas de rutas/relaciones). Útil para que un agente de IA entienda rápidamente la arquitectura y las relaciones entre archivos antes de hacer cambios. El grafo vive en `graphify-out/` (se versionan `graph.json` y `GRAPH_REPORT.md`; la caché y el HTML se ignoran) y `.graphifyignore` excluye lo que no aporta al grafo (`.agents/`, `public/`, `src/assets/`, `dist/`…). Regenéralo con `/graphify . --update`. Ver [AGENTS.md](AGENTS.md) para más contexto sobre el flujo de trabajo con agentes.
 
 ### DevOps & Deployment
 

@@ -85,6 +85,7 @@ const schemaOrg = {
 
 		<ThemeScripts />
 		<script>
+			import '@scripts/motion';
 			import { updateExperienceUI } from '@/scripts/experience';
 			document.addEventListener('astro:page-load', () => {
 				updateExperienceUI();
@@ -166,7 +167,7 @@ const schemaOrg = {
 				tabindex="-1"
 			>
 				<ClientRouter />
-				<div class="animate-fade-in">
+				<div data-motion="page">
 					<slot />
 				</div>
 			</main>

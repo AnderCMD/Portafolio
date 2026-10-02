@@ -17,3 +17,5 @@ public/
 .vscode/
 skills-lock.json
 .agents/
+graphify-out/
+.graphifyignore

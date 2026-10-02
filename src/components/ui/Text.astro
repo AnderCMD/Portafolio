@@ -9,7 +9,7 @@ interface Props {
 const { icon, title, subtitle, description } = Astro.props;
 ---
 
-<section class="flex flex-col items-center gap-6 animate-slide-up">
+<section data-motion="reveal" class="flex flex-col items-center gap-6">
 	{icon && (
 		<div class="relative">
 			<div class="absolute inset-0 bg-sky-500/20 dark:bg-sky-400/20 blur-2xl rounded-full" />
