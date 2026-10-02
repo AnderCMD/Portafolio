@@ -8,7 +8,8 @@ const { t } = useLocale(Astro);
 	<!-- CV Download Button -->
 	<a
 		href={t('Experience.CV.Link')}
-		class="group inline-flex items-center gap-3 px-8 py-4 font-bold text-white rounded-2xl bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 shadow-lg shadow-sky-500/50 hover:shadow-xl hover:shadow-sky-500/60 transition-all duration-300 transform hover:scale-105 active:scale-95"
+		data-motion-tap
+		class="group inline-flex items-center gap-3 px-8 py-4 font-bold text-white rounded-2xl bg-linear-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 shadow-lg shadow-sky-500/50 hover:shadow-xl hover:shadow-sky-500/60 transition-[background-color,box-shadow] duration-300"
 		download
 	>
 		<i class="fa-solid fa-download text-lg group-hover:animate-bounce" aria-hidden="true"></i>
@@ -25,9 +26,10 @@ const { t } = useLocale(Astro);
 			<a
 				href={social.href}
 				aria-label={social.label}
+				data-motion-tap
 				target="_blank"
 				rel="noopener noreferrer"
-				class={`group relative flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 ${social.color} transition-all duration-300 transform hover:scale-110 hover:shadow-lg active:scale-95`}
+				class={`group relative flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 ${social.color} transition-[background-color,color,box-shadow] duration-300 hover:shadow-lg`}
 			>
 				<i
 					class={`${social.icon} text-2xl group-hover:scale-110 transition-transform duration-300`}

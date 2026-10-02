@@ -28,3 +28,10 @@ pnpm-debug.log*
 # pnpm lockfile (se genera por plataforma; se mantiene fuera de git para
 # evitar conflictos de merge entre main/dev, ver .gitattributes)
 pnpm-lock.yaml
+
+# graphify: se versiona graph.json y GRAPH_REPORT.md; caché y temporales no
+graphify-out/cache/
+graphify-out/.graphify_*
+graphify-out/graph.html
+graphify-out/cost.json
+graphify-out/manifest.json

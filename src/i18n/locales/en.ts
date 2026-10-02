@@ -133,6 +133,7 @@ export const en = {
 	'Card.Email': 'Email',
 	'Card.Portfolio': 'Portfolio',
 	'Card.ScanToShare': 'Scan to share this card',
+	'Card.DownloadQR': 'Download QR',
 	'Card.SaveContact': 'Save contact',
 	'Card.BackHome': 'Back to home',
 

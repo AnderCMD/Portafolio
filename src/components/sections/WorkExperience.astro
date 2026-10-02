@@ -58,7 +58,7 @@ const totalYears = getYearsOfExperience((Astro.currentLocale as 'es' | 'en') || 
 
 	<ol class="relative space-y-10 max-w-6xl mx-auto">
 		{workExperience.map((work, index) => (
-			<li class="group relative animate-slide-up" style={`animation-delay: ${index * 0.1}s;`}>
+			<li class="group relative" data-motion="reveal" data-motion-from={index % 2 === 0 ? 'left' : 'right'}>
 				{/* Timeline Line */}
 				<div class="absolute left-6 top-0 bottom-0 w-0.5 bg-linear-to-b from-sky-400 via-blue-500 to-transparent dark:from-sky-500 dark:via-blue-600" />
 

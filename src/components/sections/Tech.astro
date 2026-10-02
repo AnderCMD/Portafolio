@@ -3,11 +3,15 @@ import { Image } from 'astro:assets';
 import { techStack } from '@/data/tech';
 ---
 
-<section class="my-8 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 animate-fade-in">
-	{techStack.map((tech, index) => (
+<section
+	data-motion-stagger="0.05"
+	data-motion-from="scale"
+	class="my-8 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8"
+>
+	{techStack.map((tech) => (
 		<article
-			class="group flex flex-col items-center justify-center transition-all duration-300 hover:scale-110 animate-scale-in"
-			style={`animation-delay: ${index * 0.05}s`}
+			data-motion-item
+			class="group flex flex-col items-center justify-center transition-all duration-300 hover:scale-110"
 		>
 			<div class="relative">
 				<div class="absolute inset-0 bg-linear-to-br from-sky-400/20 to-blue-500/20 dark:from-sky-400/10 dark:to-blue-500/10 blur-xl rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

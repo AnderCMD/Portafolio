@@ -609,3 +609,13 @@ textarea {
 		transform: scale(1.1);
 	}
 }
+
+/* Estado inicial de las animaciones de Framer Motion (src/scripts/motion.ts).
+   Solo se oculta si hay JS y el usuario no pidió movimiento reducido. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+	[data-motion='page']:not([data-motion-done]),
+	[data-motion='reveal']:not([data-motion-done]),
+	[data-motion-item]:not([data-motion-done]) {
+		opacity: 0;
+	}
+}

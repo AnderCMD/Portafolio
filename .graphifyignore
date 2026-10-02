@@ -1,0 +1,17 @@
+# Qué NO entra al grafo de conocimiento (sintaxis tipo .gitignore)
+node_modules/
+dist/
+.astro/
+.git/
+.agents/
+.claude/
+.vscode/
+graphify-out/
+
+# Recursos binarios / estáticos que no aportan relaciones de código
+public/
+src/assets/
+
+# Lockfiles y archivos generados
+pnpm-lock.yaml
+skills-lock.json
