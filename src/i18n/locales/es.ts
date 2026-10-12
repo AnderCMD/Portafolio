@@ -194,7 +194,8 @@ export const es = {
 	'Projects.Description.10': 'Desafíos de Frontend-Mentor para mejorar mis habilidades de desarrollo web.',
 
 	'Projects.Title.11': 'Reparar Windows Script',
-	'Projects.Description.11': 'Ejecutable para reparar ficheros de Windows 10 y 11.',
+	'Projects.Description.11':
+		'Kit de reparación y mantenimiento para Windows 10 y 11 en un solo archivo .bat, sin dependencias. Incluye reparación SFC/DISM/CHKDSK, limpieza, reinicio de red y de Windows Update, punto de restauración, registro de acciones y modo por línea de comandos (v2.0.0).',
 
 	'Projects.Title.12': 'TasksFlow',
 	'Projects.Description.12':

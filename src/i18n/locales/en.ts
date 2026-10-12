@@ -193,7 +193,8 @@ export const en = {
 	'Projects.Description.10': 'Frontend-Mentor challenges to enhance my web development skills.',
 
 	'Projects.Title.11': 'Repair Windows Script',
-	'Projects.Description.11': 'Executable to repair files on Windows 10 and 11.',
+	'Projects.Description.11':
+		'Single-file repair and maintenance toolkit for Windows 10 and 11, with no dependencies. Includes SFC/DISM/CHKDSK repair, cleanup, network and Windows Update reset, restore points, action logging and a command-line mode (v2.0.0).',
 
 	'Projects.Title.12': 'TasksFlow',
 	'Projects.Description.12':

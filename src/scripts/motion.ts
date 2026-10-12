@@ -9,6 +9,7 @@ import { animate, hover, inView, press, stagger } from 'framer-motion';
  *                            y data-motion-delay="0.2" (segundos).
  * - data-motion="float"    → flotación infinita suave (hero).
  * - data-motion-stagger    → contenedor cuyos [data-motion-item] aparecen en cascada al entrar en pantalla.
+ *                            Con data-motion-each cada ítem se anima al entrar él mismo en pantalla (listas largas).
  * - data-motion-tap        → micro-interacción hover/press en botones.
  *
  * El estado inicial oculto vive en default.css (solo con JS y sin prefers-reduced-motion).
@@ -86,6 +87,22 @@ function initStagger() {
 		const gap = Number(container.dataset.motionStagger) || 0.07;
 		const from = hiddenState(container.dataset.motionFrom);
 		animate(items, from, { duration: 0 });
+		if (container.hasAttribute('data-motion-each')) {
+			// Contenedor más alto que la pantalla: observar cada ítem, no el bloque completo.
+			items.forEach((item, i) => {
+				const stop = inView(
+					item,
+					() => {
+						animate(item, visibleState, { duration: 0.6, delay: (i % 3) * gap, ease: EASE }).then(() =>
+							finish(item)
+						);
+					},
+					{ amount: 0.1, margin: '0px 0px -5% 0px' }
+				);
+				cleanups.push(stop);
+			});
+			return;
+		}
 		const stop = inView(
 			container,
 			() => {
