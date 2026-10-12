@@ -25,7 +25,7 @@ export const getWorkExperience = (t: (key: string) => string) => [
 		startDate: '06/2024 • 12/2024',
 		...extractTechnologies(t('WorkExperience.Companies.Description.3')),
 		location: 'Remoto',
-		visit: 'https://www.amedigital.mx/',
+		visit: '',
 	},
 	{
 		active: false,

@@ -2,7 +2,6 @@
 import HoroscopoImagen from '@/assets/images/projects/Horoscope.webp';
 import CalculatorImagen from '@/assets/images/projects/Calculator.webp';
 import GPTLocalImagen from '@/assets/images/projects/GPT-Local.webp';
-import AMEDigitalImagen from '@/assets/images/projects/AMEDigital.webp';
 import DiagnosticoModernoImagen from '@/assets/images/projects/DiagnosticoModerno.webp';
 import EcologiXImagen from '@/assets/images/projects/EcologiX.webp';
 import FlappyBatImagen from '@/assets/images/projects/FlappyBat.webp';
@@ -11,7 +10,6 @@ import FrontendMentorImagen from '@/assets/images/projects/Frontend-Mentor.webp'
 import WindowsRepairImagen from '@/assets/images/projects/WindowsRepair.webp';
 import TasksFlowImagen from '@/assets/images/projects/TasksFlow.webp';
 import SIEMTIPOSImagen from '@/assets/images/projects/SIEMTIPOS.webp';
-import ResserSaaSImagen from '@/assets/images/projects/ResserSaaS.webp';
 import SIEMTIImagen from '@/assets/images/projects/SIEMTI.webp';
 import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 import VigilantImagen from '@/assets/images/projects/Vigilant.webp';
@@ -52,15 +50,6 @@ export const getProjects = (t: (key: string) => string) => [
 		year: 2024,
 		technologies: ['HTML', 'CSS', 'JavaScript', 'Git & GitHub'],
 		status: 'active',
-	},
-	{
-		type: 'web',
-		title: t('Projects.Title.4'),
-		description: t('Projects.Description.4'),
-		image: AMEDigitalImagen,
-		year: 2024,
-		technologies: ['Astro', ' React', 'JavaScript', 'TailwindCSS', 'Git & GitHub'],
-		status: 'out-of-service',
 	},
 	{
 		type: 'web',
@@ -154,15 +143,6 @@ export const getProjects = (t: (key: string) => string) => [
 			'Git & GitHub',
 		],
 		status: 'active',
-	},
-	{
-		type: 'web',
-		title: t('Projects.Title.14'),
-		description: t('Projects.Description.14'),
-		image: ResserSaaSImagen,
-		year: 2025,
-		technologies: ['React Vite', 'TypeScript', 'AntDesign', 'C# .Net 8', 'SQL Server', 'Azure', 'Git'],
-		status: 'delivered',
 	},
 	{
 		type: 'web',
