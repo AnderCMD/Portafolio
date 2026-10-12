@@ -174,9 +174,6 @@ export const es = {
 	'Projects.Title.3': 'GPT - Local',
 	'Projects.Description.3': 'Chatbot con inteligencia artificial con modelo Llama 3.',
 
-	'Projects.Title.4': 'AMEDigital A.C.',
-	'Projects.Description.4': 'Sitio web empresarial de AMEDigital A.C.',
-
 	'Projects.Title.5': 'Diagnostico Moderno',
 	'Projects.Description.5': 'Sitio web empresarial médico de Diagnostico Moderno.',
 
@@ -204,9 +201,6 @@ export const es = {
 	'Projects.Title.13': 'SIEMTI - Sistema de Punto de Venta',
 	'Projects.Description.13': 'Sistema de punto de venta (POS) para la empresa de Sistemas Empresariales en T.I.',
 
-	'Projects.Title.14': 'Resser Técnologias SA de CV (SaaS & ERP)',
-	'Projects.Description.14':
-		'Plataforma de Resser Tecnologías SA de CV (SaaS & ERP) para la gestión administrativa y monitoreo externo.',
 	'Projects.Title.15': 'Sistemas Empresariales en T.I. (SIEMTI)',
 	'Projects.Description.15': 'Sitio web empresarial de Sistemas Empresariales en T.I. (SIEMTI)',
 
