@@ -2,6 +2,7 @@
 // Languages
 import { useLocale } from '@/hooks/useLocale';
 const { t } = useLocale(Astro);
+const { each = false } = Astro.props as { each?: boolean };
 
 // Imagenes
 import { Image } from 'astro:assets';
@@ -99,6 +100,7 @@ const statusOrder = {
 <div
 	id="projects-grid"
 	data-motion-stagger="0.08"
+	data-motion-each={each ? '' : undefined}
 	class="items-stretch justify-center grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
 >
 	{projectsList

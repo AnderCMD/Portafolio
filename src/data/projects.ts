@@ -16,6 +16,7 @@ import SIEMTIImagen from '@/assets/images/projects/SIEMTI.webp';
 import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 import VigilantImagen from '@/assets/images/projects/Vigilant.webp';
 import AutoSwitchMonitorImagen from '@/assets/images/projects/AutoSwitchMonitor.webp';
+import ThemeSwitcherImagen from '@/assets/images/projects/ThemeSwitcher.webp';
 
 // Status: out-of-service, unmaintained, active, delivered
 export const getProjects = (t: (key: string) => string) => [
@@ -120,9 +121,9 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.11'),
 		image: WindowsRepairImagen,
 		linkCode: 'https://github.com/AnderCMD/Fix-Windows',
-		linkDownload: '/Download/Scripts/FixWindows.bat',
-		year: 2024,
-		technologies: ['Batch'],
+		linkDownload: 'https://github.com/AnderCMD/Fix-Windows/releases/latest/download/FixWindows.bat',
+		year: 2026,
+		technologies: ['Batch', 'Windows', 'PowerShell', 'GitHub Actions'],
 		status: 'active',
 	},
 	{
@@ -181,7 +182,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://www.npmjs.com/package/folio-generator-ts',
 		linkCode: 'https://github.com/AnderCMD/Folio-Generator',
 		year: 2026,
-		technologies: ['TypeScript', 'JavaScript', 'Python', 'NPM', 'Node.js'],
+		technologies: ['TypeScript', 'JavaScript', 'NPM', 'Node.js'],
 		status: 'active',
 	},
 	{
@@ -190,8 +191,9 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.17'),
 		image: VigilantImagen,
 		linkCode: 'https://github.com/AnderCMD/Vigilant',
+		linkDownload: 'https://github.com/AnderCMD/Vigilant/releases/latest',
 		year: 2025,
-		technologies: ['Python', 'Windows'],
+		technologies: ['Go', 'Windows'],
 		status: 'active',
 	},
 	{
@@ -200,8 +202,20 @@ export const getProjects = (t: (key: string) => string) => [
 		description: t('Projects.Description.18'),
 		image: AutoSwitchMonitorImagen,
 		linkCode: 'https://github.com/AnderCMD/AutoSwitchMonitor',
+		linkDownload: 'https://github.com/AnderCMD/AutoSwitchMonitor/releases/latest',
 		year: 2025,
 		technologies: ['Go', 'Windows', 'macOS'],
+		status: 'active',
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.19'),
+		description: t('Projects.Description.19'),
+		image: ThemeSwitcherImagen,
+		linkView: 'https://www.npmjs.com/package/theme-switcher-ts',
+		linkCode: 'https://github.com/AnderCMD/Theme-Switcher',
+		year: 2026,
+		technologies: ['TypeScript', 'CSS', 'React', 'Vue', 'Angular', 'NPM'],
 		status: 'active',
 	},
 ];

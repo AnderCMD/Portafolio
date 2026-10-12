@@ -194,7 +194,8 @@ export const es = {
 	'Projects.Description.10': 'Desafíos de Frontend-Mentor para mejorar mis habilidades de desarrollo web.',
 
 	'Projects.Title.11': 'Reparar Windows Script',
-	'Projects.Description.11': 'Ejecutable para reparar ficheros de Windows 10 y 11.',
+	'Projects.Description.11':
+		'Kit de reparación y mantenimiento para Windows 10 y 11 en un solo archivo .bat, sin dependencias. Incluye reparación SFC/DISM/CHKDSK, limpieza, reinicio de red y de Windows Update, punto de restauración, registro de acciones y modo por línea de comandos (v2.0.0).',
 
 	'Projects.Title.12': 'TasksFlow',
 	'Projects.Description.12':
@@ -239,13 +240,16 @@ export const es = {
 		'Colaboración en el desarrollo de aplicaciones web, participación en proyectos de inteligencia artificial e implementación de mejoras en sistemas existentes.\n\nAlgunas de las tecnologías utilizadas son: (React, CSS, HTML, JavaScript, Python, AWS)',
 	'Projects.Title.16': 'Folio Generator',
 	'Projects.Description.16':
-		'Librería robusta y flexible diseñada para generar códigos alfanuméricos secuenciales (folios) como A00001, A00002. Soporta padding, separadores personalizados y es Type-safe. Disponible en JS, TS y Python.',
+		'Librería robusta y flexible diseñada para generar códigos alfanuméricos secuenciales (folios) como A00001, A00002. Soporta padding, separadores personalizados, manejo de colisiones y es Type-safe. Publicada en NPM para JS y TS.',
 	'Projects.Title.17': 'Vigilant',
 	'Projects.Description.17':
 		'Aplicación ligera para la bandeja del sistema en Windows que simula actividad del usuario para evitar que el equipo entre en reposo o cambie el estado a "Ausente".',
 	'Projects.Title.18': 'AutoSwitchMonitor',
 	'Projects.Description.18':
 		'Cambia automáticamente la entrada de video del monitor (DDC/CI) al mover un switch KVM por USB entre equipos, con atajos de teclado configurables. Binario único en Go para Windows y macOS.',
+	'Projects.Title.19': 'Theme Switcher',
+	'Projects.Description.19':
+		'Interruptor de tema claro/oscuro para la web, diminuto y sin dependencias. Un núcleo único, sin atarte a ningún framework y con 30 diseños de toggle animados; funciona con HTML/CSS, React, Vue, Angular, Astro y Tailwind CSS.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',
