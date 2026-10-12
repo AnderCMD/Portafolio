@@ -239,13 +239,16 @@ export const en = {
 		'Collaboration in the development of web applications, participation in artificial intelligence projects and implementation of improvements in existing systems.\n\nSome of the technologies used are: (React, CSS, HTML, JavaScript, Python, AWS)',
 	'Projects.Title.16': 'Folio Generator',
 	'Projects.Description.16':
-		'A robust and flexible library designed to generate sequential alphanumeric codes (folios). Supports automatic padding, custom separators, and is fully Type-safe. Available in JS, TS, and Python.',
+		'A robust and flexible library designed to generate sequential alphanumeric codes (folios). Supports automatic padding, custom separators, collision handling and is fully Type-safe. Published on NPM for JS and TS.',
 	'Projects.Title.17': 'Vigilant',
 	'Projects.Description.17':
 		'Lightweight Windows system tray application that simulates user activity to prevent the system from going into sleep mode or changing its status to "Away".',
 	'Projects.Title.18': 'AutoSwitchMonitor',
 	'Projects.Description.18':
 		"Automatically switches your monitor's video input (DDC/CI) when you move a USB KVM switch between PCs, with configurable global hotkeys. Single Go binary for Windows and macOS.",
+	'Projects.Title.19': 'Theme Switcher',
+	'Projects.Description.19':
+		'Tiny, dependency-free dark/light theme switcher for the web. One core engine, no framework lock-in and 30 animated toggle designs; works with HTML/CSS, React, Vue, Angular, Astro and Tailwind CSS.',
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
