@@ -23,6 +23,14 @@ let cleanups: Array<() => void> = [];
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Elementos más altos que la pantalla (listas en móvil) nunca alcanzan un % fijo visible: limitar el umbral
+// a lo que cabe en el viewport para que siempre se disparen.
+function amountFor(el: HTMLElement, base: number): number {
+	const height = el.getBoundingClientRect().height;
+	if (!height) return base;
+	return Math.min(base, (window.innerHeight * 0.5) / height);
+}
+
 function hiddenState(from: string | undefined): Record<string, number> {
 	switch (from) {
 		case 'down':
@@ -73,7 +81,7 @@ function initReveal() {
 			() => {
 				animate(el, visibleState, { duration: 0.7, delay, ease: EASE }).then(() => finish(el));
 			},
-			{ amount: 0.15, margin: '0px 0px -8% 0px' }
+			{ amount: amountFor(el, 0.15), margin: '0px 0px -8% 0px' }
 		);
 		cleanups.push(stop);
 	});
@@ -110,7 +118,7 @@ function initStagger() {
 					finish(...items)
 				);
 			},
-			{ amount: 0.1, margin: '0px 0px -5% 0px' }
+			{ amount: amountFor(container, 0.1), margin: '0px 0px -5% 0px' }
 		);
 		cleanups.push(stop);
 	});
