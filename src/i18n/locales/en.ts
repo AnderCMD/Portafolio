@@ -243,6 +243,12 @@ export const en = {
 	'Projects.Title.19': 'Theme Switcher',
 	'Projects.Description.19':
 		'Tiny, dependency-free dark/light theme switcher for the web. One core engine, no framework lock-in and 30 animated toggle designs; works with HTML/CSS, React, Vue, Angular, Astro and Tailwind CSS.',
+	'Projects.Title.20': 'Lupa A11y',
+	'Projects.Description.20':
+		'VS Code extension that lints React (JSX/TSX) files for accessibility and explains each issue in Spanish: why it matters, who it affects, examples and the related WCAG 2.2 criterion. Includes quick fixes and 35 rules.',
+	'Projects.Title.21': 'Autto Framework',
+	'Projects.Description.21':
+		'Open-source QA automation framework for UI, API and accessibility testing. Reusable Spring Boot engine with Selenium, Cucumber, REST Assured and axe-core, Grid, BrowserStack and Appium support, and evidence-rich reports.',
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
