@@ -195,7 +195,7 @@ export const en = {
 
 	'Projects.Title.12': 'TasksFlow',
 	'Projects.Description.12':
-		'Task management system to create, edit, and delete tasks, assign due dates and priorities.',
+		'Task management app to create, edit and complete tasks with due dates and priorities. Includes search and filters, a calendar view, a statistics dashboard, light/dark mode, data export and import, and local storage.',
 
 	'Projects.Title.13': 'SIEMTI - Point of Sale System',
 	'Projects.Description.13': 'Point of sale system (POS) for Sistemas Empresariales en T.I.',
