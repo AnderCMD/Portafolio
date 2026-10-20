@@ -125,7 +125,7 @@ export const getProjects = (t: (key: string) => string) => [
 		linkView: 'https://tasksflow.andercmd.dev',
 		linkCode: 'https://github.com/AnderCMD/TasksFlow',
 		year: 2025,
-		technologies: ['Redux', 'React Vite', 'JavaScript', 'TailwindCSS', 'Git & Github'],
+		technologies: ['Redux', 'React Vite', 'JavaScript', 'TailwindCSS', 'Framer Motion', 'Git & Github'],
 		status: 'active',
 	},
 	{

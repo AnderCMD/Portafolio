@@ -196,7 +196,7 @@ export const es = {
 
 	'Projects.Title.12': 'TasksFlow',
 	'Projects.Description.12':
-		'Sistema de gestion de tareas que permite crear, editar y eliminar tareas, ademas de asignarles una fecha de vencimiento y una prioridad.',
+		'Aplicación de gestión de tareas para crear, editar y completar tareas con fecha de vencimiento y prioridad. Incluye búsqueda y filtros, vista de calendario, panel de estadísticas, modo claro/oscuro, exportación e importación de datos y almacenamiento local.',
 
 	'Projects.Title.13': 'SIEMTI - Sistema de Punto de Venta',
 	'Projects.Description.13': 'Sistema de punto de venta (POS) para la empresa de Sistemas Empresariales en T.I.',
