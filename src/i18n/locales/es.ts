@@ -244,6 +244,12 @@ export const es = {
 	'Projects.Title.19': 'Theme Switcher',
 	'Projects.Description.19':
 		'Interruptor de tema claro/oscuro para la web, diminuto y sin dependencias. Un núcleo único, sin atarte a ningún framework y con 30 diseños de toggle animados; funciona con HTML/CSS, React, Vue, Angular, Astro y Tailwind CSS.',
+	'Projects.Title.20': 'Lupa A11y',
+	'Projects.Description.20':
+		'Extensión de VS Code que analiza la accesibilidad de archivos React (JSX/TSX) y explica cada problema en español: por qué importa, a quién afecta, ejemplos y el criterio WCAG 2.2 relacionado. Incluye correcciones rápidas y 35 reglas.',
+	'Projects.Title.21': 'Autto Framework',
+	'Projects.Description.21':
+		'Framework open source de automatización QA para pruebas de UI, API y accesibilidad. Motor reutilizable sobre Spring Boot con Selenium, Cucumber, REST Assured y axe-core, soporte para Grid, BrowserStack y Appium, y reportes con evidencia.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',

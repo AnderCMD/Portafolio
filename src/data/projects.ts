@@ -15,6 +15,8 @@ import FolioGeneratorImagen from '@/assets/images/projects/FolioGenerator.webp';
 import VigilantImagen from '@/assets/images/projects/Vigilant.webp';
 import AutoSwitchMonitorImagen from '@/assets/images/projects/AutoSwitchMonitor.webp';
 import ThemeSwitcherImagen from '@/assets/images/projects/ThemeSwitcher.webp';
+import LupaA11yImagen from '@/assets/images/projects/LupaA11y.webp';
+import AuttoFrameworkImagen from '@/assets/images/projects/AuttoFramework.webp';
 
 // Status: out-of-service, unmaintained, active, delivered
 export const getProjects = (t: (key: string) => string) => [
@@ -196,6 +198,27 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Theme-Switcher',
 		year: 2026,
 		technologies: ['TypeScript', 'CSS', 'React', 'Vue', 'Angular', 'NPM'],
+		status: 'active',
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.20'),
+		description: t('Projects.Description.20'),
+		image: LupaA11yImagen,
+		linkView: 'https://marketplace.visualstudio.com/items?itemName=AnderCMD.lupa-a11y',
+		linkCode: 'https://github.com/AnderCMD/Lupa-a11y',
+		year: 2026,
+		technologies: ['TypeScript', 'VS Code', 'ESLint', 'WCAG', 'NPM'],
+		status: 'active',
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.21'),
+		description: t('Projects.Description.21'),
+		image: AuttoFrameworkImagen,
+		linkCode: 'https://github.com/AnderCMD/Autto-Framework',
+		year: 2026,
+		technologies: ['Java', 'Spring Boot', 'Selenium', 'Cucumber', 'GitHub Actions'],
 		status: 'active',
 	},
 ];
