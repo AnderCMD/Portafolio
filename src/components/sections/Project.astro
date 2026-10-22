@@ -110,13 +110,13 @@ const statusOrder = {
 			if (status_a !== status_b) {
 				return status_a - status_b; // Default sort by status
 			}
-			return (b.year || 0) - (a.year || 0); // Then by year
+			return (b.date || '').localeCompare(a.date || ''); // Then by full date (newest first)
 		})
 		.map((Project) => (
 			<article
 				data-motion-item
 				class={`group min-h-full filter-item all ${Project.type}`}
-				data-year={Project.year}
+				data-date={Project.date}
 				data-status={Project.status || 'unknown'}
 				data-title={Project.title || ''}
 			>
@@ -173,10 +173,13 @@ const statusOrder = {
 								)}
 							</span>
 						)}
-						{Project.year && (
-							<span class="absolute top-4 right-4 z-20 px-3 py-1.5 text-xs font-bold text-white bg-sky-600/90 dark:bg-sky-500/90 backdrop-blur-sm rounded-full shadow-lg">
-								{Project.year}
-							</span>
+						{Project.date && (
+							<time
+								datetime={Project.date}
+								class="absolute top-4 right-4 z-20 px-3 py-1.5 text-xs font-bold text-white bg-sky-600/90 dark:bg-sky-500/90 backdrop-blur-sm rounded-full shadow-lg"
+							>
+								{Project.date.slice(0, 4)}
+							</time>
 						)}
 					</a>
 
@@ -267,11 +270,11 @@ const statusOrder = {
 					const statusA = statusOrder[a.dataset.status || 'unknown'] || 99;
 					const statusB = statusOrder[b.dataset.status || 'unknown'] || 99;
 					if (statusA !== statusB) return statusA - statusB;
-					return (Number(b.dataset.year) || 0) - (Number(a.dataset.year) || 0);
+					return (b.dataset.date || '').localeCompare(a.dataset.date || '');
 				} else {
-					const yearA = Number(a.dataset.year) || 0;
-					const yearB = Number(b.dataset.year) || 0;
-					if (yearA !== yearB) return yearB - yearA;
+					const dateA = a.dataset.date || '';
+					const dateB = b.dataset.date || '';
+					if (dateA !== dateB) return dateB.localeCompare(dateA);
 					return (a.dataset.title || '').localeCompare(b.dataset.title || '');
 				}
 			});
