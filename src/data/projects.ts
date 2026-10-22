@@ -227,7 +227,7 @@ export const getProjects = (t: (key: string) => string) => [
 		title: t('Projects.Title.22'),
 		description: t('Projects.Description.22'),
 		image: RizomaDBImagen,
-		linkView: 'https://marketplace.visualstudio.com/items?itemName=AnderCMD.rizomadb',
+		linkView: 'https://andercmd.github.io/RizomaDB/',
 		linkCode: 'https://github.com/AnderCMD/RizomaDB',
 		year: 2026,
 		technologies: ['TypeScript', 'VS Code', 'PostgreSQL', 'MongoDB', 'Redis', 'MCP'],
