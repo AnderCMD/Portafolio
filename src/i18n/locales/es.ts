@@ -250,6 +250,9 @@ export const es = {
 	'Projects.Title.21': 'Autto Framework',
 	'Projects.Description.21':
 		'Framework open source de automatización QA para pruebas de UI, API y accesibilidad. Motor reutilizable sobre Spring Boot con Selenium, Cucumber, REST Assured y axe-core, soporte para Grid, BrowserStack y Appium, y reportes con evidencia.',
+	'Projects.Title.22': 'RizomaDB',
+	'Projects.Description.22':
+		'Cliente de bases de datos multimotor para VS Code (y VSCodium, Cursor y Windsurf): Apache-2.0, sin telemetría, sin cuentas y sin funciones bloqueadas. Conecta 24 motores, ejecuta consultas, edita datos en la cuadrícula, diseña tablas y diagramas ER, e incluye políticas, un asistente de IA opcional y un servidor MCP de solo lectura.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',

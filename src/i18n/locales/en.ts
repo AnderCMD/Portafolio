@@ -249,6 +249,9 @@ export const en = {
 	'Projects.Title.21': 'Autto Framework',
 	'Projects.Description.21':
 		'Open-source QA automation framework for UI, API and accessibility testing. Reusable Spring Boot engine with Selenium, Cucumber, REST Assured and axe-core, Grid, BrowserStack and Appium support, and evidence-rich reports.',
+	'Projects.Title.22': 'RizomaDB',
+	'Projects.Description.22':
+		'Multi-engine database client for VS Code (and VSCodium, Cursor and Windsurf): Apache-2.0, no telemetry, no accounts and no locked features. Connects to 24 engines, runs queries, edits data in the grid, designs tables and ER diagrams, and includes policies, an optional AI assistant and a read-only MCP server.',
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
