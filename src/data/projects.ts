@@ -17,6 +17,7 @@ import AutoSwitchMonitorImagen from '@/assets/images/projects/AutoSwitchMonitor.
 import ThemeSwitcherImagen from '@/assets/images/projects/ThemeSwitcher.webp';
 import LupaA11yImagen from '@/assets/images/projects/LupaA11y.webp';
 import AuttoFrameworkImagen from '@/assets/images/projects/AuttoFramework.webp';
+import RizomaDBImagen from '@/assets/images/projects/RizomaDB.webp';
 
 // Status: out-of-service, unmaintained, active, delivered
 export const getProjects = (t: (key: string) => string) => [
@@ -219,6 +220,17 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/Autto-Framework',
 		year: 2026,
 		technologies: ['Java', 'Spring Boot', 'Selenium', 'Cucumber', 'GitHub Actions'],
+		status: 'active',
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.22'),
+		description: t('Projects.Description.22'),
+		image: RizomaDBImagen,
+		linkView: 'https://marketplace.visualstudio.com/items?itemName=AnderCMD.rizomadb',
+		linkCode: 'https://github.com/AnderCMD/RizomaDB',
+		year: 2026,
+		technologies: ['TypeScript', 'VS Code', 'PostgreSQL', 'MongoDB', 'Redis', 'MCP'],
 		status: 'active',
 	},
 ];
