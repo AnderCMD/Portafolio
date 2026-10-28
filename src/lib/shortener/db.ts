@@ -41,7 +41,7 @@ export function targetKey(targetUrl: string): string {
 	return createHash('sha256').update(normalizeTarget(targetUrl)).digest('hex');
 }
 
-function getPool(): mysql.Pool {
+export function getPool(): mysql.Pool {
 	if (!pool) {
 		pool = mysql.createPool({
 			host: DB_HOST,

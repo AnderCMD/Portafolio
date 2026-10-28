@@ -66,14 +66,22 @@ const errorMessages: Record<string, string> = {
 					{counts.all} {counts.all === 1 ? 'enlace' : 'enlaces'} en total
 				</p>
 			</div>
-			<form method="POST" action="/api/admin/logout">
-				<button
-					type="submit"
+			<div class="flex flex-wrap items-center gap-2">
+				<a
+					href="/Admin/Proyectos"
 					class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
 				>
-					<i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>Cerrar sesión
-				</button>
-			</form>
+					<i class="fa-solid fa-toggle-on" aria-hidden="true"></i>Proyectos
+				</a>
+				<form method="POST" action="/api/admin/logout">
+					<button
+						type="submit"
+						class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+					>
+						<i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>Cerrar sesión
+					</button>
+				</form>
+			</div>
 		</header>
 
 		{error && errorMessages[error] && (

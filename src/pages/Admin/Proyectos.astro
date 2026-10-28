@@ -1,0 +1,223 @@
+---
+export const prerender = false;
+
+import AdminLayout from '@layouts/AdminLayout.astro';
+import { SESSION_COOKIE, verifySessionToken } from '@lib/shortener/auth';
+import { listProjects, type ProjectRecord } from '@lib/projects/db';
+
+const token = Astro.cookies.get(SESSION_COOKIE)?.value;
+if (!verifySessionToken(token)) {
+	return Astro.redirect('/Admin/Login');
+}
+
+let projects: ProjectRecord[] = [];
+let dbUnavailable = false;
+try {
+	projects = await listProjects();
+} catch (caught) {
+	console.error('[admin] could not load projects', caught);
+	dbUnavailable = true;
+}
+
+const error = dbUnavailable ? 'unavailable' : Astro.url.searchParams.get('error');
+const errorMessages: Record<string, string> = {
+	slug: 'El identificador solo puede tener minúsculas, números, guiones y guion bajo (2-64 caracteres).',
+	name: 'El nombre es obligatorio (máximo 100 caracteres).',
+	duplicate: 'Ya existe un proyecto con ese identificador.',
+	unknown: 'Ocurrió un error al guardar el proyecto.',
+	unavailable: 'No se pudo conectar con la base de datos. Intenta de nuevo en unos momentos.',
+};
+const origin = Astro.url.origin;
+const activeCount = projects.filter((project) => project.isActive).length;
+---
+
+<AdminLayout title="Proyectos">
+	<div class="space-y-8">
+		<header class="flex flex-wrap items-center justify-between gap-4">
+			<div>
+				<h1 class="text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">
+					Proyectos · <span class="gradient-text">estado</span>
+				</h1>
+				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+					{activeCount} de {projects.length}
+					{projects.length === 1 ? 'proyecto activo' : 'proyectos activos'}
+				</p>
+			</div>
+			<a
+				href="/Admin"
+				class="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"
+			>
+				<i class="fa-solid fa-link" aria-hidden="true"></i>Acortador
+			</a>
+		</header>
+
+		{error && errorMessages[error] && (
+			<p
+				class="flex items-center gap-2 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-2.5 text-sm text-red-600 dark:text-red-300"
+				role="alert"
+			>
+				<i class="fa-solid fa-circle-exclamation" aria-hidden="true" />
+				{errorMessages[error]}
+			</p>
+		)}
+
+		<section class="glass rounded-2xl p-6 text-sm text-slate-600 shadow-lg dark:text-slate-300">
+			<h2 class="mb-2 text-base font-bold text-slate-900 dark:text-white">Cómo consultarlo desde un proyecto</h2>
+			<p>
+				Cada proyecto hace{' '}
+				<code class="font-mono text-sky-600 dark:text-sky-400">
+					GET {origin}/api/status/&lt;identificador&gt;
+				</code>
+				y recibe <code class="font-mono">{'{ "active": true }'}</code> o{' '}
+				<code class="font-mono">{'{ "active": false }'}</code>. Un identificador desconocido responde{' '}
+				<code class="font-mono">404</code> con <code class="font-mono">active: false</code>; si la base de datos
+				falla responde <code class="font-mono">503</code> (decide en el proyecto si eso bloquea o no).
+			</p>
+		</section>
+
+		<form
+			method="POST"
+			action="/api/admin/projects"
+			class="glass card-modern grid gap-3 rounded-2xl p-6 shadow-lg sm:grid-cols-[1fr_1fr_auto]"
+		>
+			<div class="relative">
+				<i
+					class="fa-solid fa-folder pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-400"
+					aria-hidden="true"
+				></i>
+				<input
+					type="text"
+					name="name"
+					placeholder="Nombre (ej. Sistema de Acme)"
+					aria-label="Nombre del proyecto"
+					maxlength="100"
+					required
+					class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pr-4 pl-10 text-slate-900 transition-all focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+				/>
+			</div>
+			<div class="relative">
+				<i
+					class="fa-solid fa-hashtag pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-slate-400"
+					aria-hidden="true"
+				></i>
+				<input
+					type="text"
+					name="slug"
+					placeholder="identificador (ej. acme-erp)"
+					aria-label="Identificador del proyecto"
+					pattern="[a-z0-9][a-z0-9_\-]{1,63}"
+					autocapitalize="none"
+					required
+					class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pr-4 pl-10 font-mono text-slate-900 transition-all focus:border-sky-500 focus:ring-2 focus:ring-sky-500/30 focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+				/>
+			</div>
+			<button
+				type="submit"
+				class="btn-modern inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-sky-500 to-blue-600 px-6 py-2.5 font-bold text-white shadow-lg shadow-sky-500/30 transition-all duration-300 hover:scale-105 hover:from-sky-600 hover:to-blue-700 active:scale-95"
+			>
+				<i class="fa-solid fa-plus" aria-hidden="true"></i>Crear
+			</button>
+		</form>
+
+		<ul class="space-y-3">
+			{projects.map((project) => (
+				<li class="glass card-modern rounded-2xl p-5 shadow-lg">
+					<div class="flex flex-wrap items-center justify-between gap-4">
+						<div class="min-w-0 flex-1 basis-72">
+							<div class="flex flex-wrap items-center gap-2">
+								<p class="font-semibold text-slate-900 dark:text-white">{project.name}</p>
+								<span
+									class={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold shadow-sm ${
+										project.isActive
+											? 'bg-linear-to-r from-emerald-500 to-teal-600 text-white shadow-emerald-500/30'
+											: 'bg-linear-to-r from-red-500 to-rose-600 text-white shadow-red-500/30'
+									}`}
+								>
+									<i
+										class={`fa-solid ${project.isActive ? 'fa-check' : 'fa-ban'}`}
+										aria-hidden="true"
+									/>
+									{project.isActive ? 'true · activo' : 'false · bloqueado'}
+								</span>
+							</div>
+							<p class="mt-1 font-mono text-sm break-all text-sky-600 dark:text-sky-400">
+								/api/status/{project.slug}
+							</p>
+							<p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+								{project.checkCount} {project.checkCount === 1 ? 'consulta' : 'consultas'} ·
+								{project.lastCheckedAt ? (
+									<>
+										última:{' '}
+										<time datetime={project.lastCheckedAt} data-checked-label>
+											{project.lastCheckedAt}
+										</time>
+									</>
+								) : (
+									'sin consultas todavía'
+								)}
+							</p>
+						</div>
+						<div class="flex flex-wrap items-center gap-2">
+							<form method="POST" action={`/api/admin/projects/${project.slug}`}>
+								<input type="hidden" name="action" value="toggle" />
+								<input type="hidden" name="active" value={project.isActive ? '0' : '1'} />
+								<button
+									type="submit"
+									class="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-all hover:scale-105 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+								>
+									<i
+										class={`fa-solid ${project.isActive ? 'fa-lock' : 'fa-lock-open'}`}
+										aria-hidden="true"
+									/>
+									{project.isActive ? 'Bloquear' : 'Activar'}
+								</button>
+							</form>
+							<form
+								method="POST"
+								action={`/api/admin/projects/${project.slug}`}
+								data-confirm-delete={project.name}
+							>
+								<input type="hidden" name="action" value="delete" />
+								<button
+									type="submit"
+									class="inline-flex items-center gap-1.5 rounded-xl border border-red-400/30 px-3 py-1.5 text-sm font-medium text-red-500 transition-all hover:scale-105 hover:bg-red-500/10 dark:text-red-400"
+								>
+									<i class="fa-solid fa-trash" aria-hidden="true" />
+									Eliminar
+								</button>
+							</form>
+						</div>
+					</div>
+				</li>
+			))}
+			{projects.length === 0 && (
+				<li class="glass rounded-2xl p-10 text-center text-slate-500 shadow-lg dark:text-slate-400">
+					<i class="fa-solid fa-folder-open mb-3 block text-3xl opacity-50" aria-hidden="true" />
+					Aún no hay proyectos. Crea el primero arriba.
+				</li>
+			)}
+		</ul>
+	</div>
+</AdminLayout>
+
+<script>
+	document.addEventListener('astro:page-load', () => {
+		document.querySelectorAll<HTMLTimeElement>('[data-checked-label]').forEach((el) => {
+			el.textContent =
+				new Date(el.dateTime).toLocaleString('es', {
+					dateStyle: 'medium',
+					timeStyle: 'short',
+					timeZone: 'America/Mexico_City',
+					hour12: true,
+				}) + ' (CDMX)';
+		});
+
+		document.querySelectorAll<HTMLFormElement>('form[data-confirm-delete]').forEach((form) => {
+			form.addEventListener('submit', (event) => {
+				const name = form.dataset.confirmDelete ?? '';
+				const message = `Se eliminará "${name}". Si sigue consultando el endpoint recibirá 404 (bloqueado). ¿Continuar?`;
+				if (!window.confirm(message)) event.preventDefault();
+			});
+		});
+	});
+</script>
