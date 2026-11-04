@@ -294,4 +294,5 @@ export const es = {
 	'Certificates.Items.Title.27': 'Premio SIGA 2023 — Innovación Pública Digital',
 	'Certificates.Items.Title.28': 'Valores del Ser',
 	'Certificates.Items.Title.29': 'Asistente Web',
+	'Certificates.Items.Title.30': 'OpenAI Foundational Knowledge',
 } as const;

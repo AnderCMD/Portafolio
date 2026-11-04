@@ -28,8 +28,15 @@ import FCSDesarrolloWebIntegral from '@/assets/images/certificates/fcs-desarroll
 import OtrosSIGA2023 from '@/assets/images/certificates/otros-siga-2023.webp';
 import FCSValoresDelSer from '@/assets/images/certificates/fcs-valores-del-ser.webp';
 import FCSAsistenteWeb from '@/assets/images/certificates/fcs-asistente-web.webp';
+import OpenAIFoundationalKnowledge from '@/assets/images/certificates/openai-foundational-knowledge.webp';
 
 export const getCertificates = (t: (key: string) => string) => [
+	{
+		title: t('Certificates.Items.Title.30'),
+		issuer: 'OpenAI',
+		date: '08/2026',
+		image: OpenAIFoundationalKnowledge,
+	},
 	{
 		title: t('Certificates.Items.Title.1'),
 		issuer: 'Coddy Tech',
