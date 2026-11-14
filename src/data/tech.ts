@@ -20,12 +20,24 @@ export const techStack = [
 		icon: 'python',
 	},
 	{
+		name: 'Java',
+		icon: 'java',
+	},
+	{
 		name: 'C#',
 		icon: 'csharp',
 	},
 	{
+		name: 'Go',
+		icon: 'go',
+	},
+	{
 		name: 'React',
 		icon: 'react',
+	},
+	{
+		name: 'Vite',
+		icon: 'vitejs',
 	},
 	{
 		name: 'Astro',
@@ -37,6 +49,10 @@ export const techStack = [
 		icon: 'tailwindcss',
 	},
 	{
+		name: 'Node.js',
+		icon: 'nodejs',
+	},
+	{
 		name: 'ExpressJS',
 		icon: 'express',
 		invert: true,
@@ -44,6 +60,10 @@ export const techStack = [
 	{
 		name: 'NestJS',
 		icon: 'nestjs',
+	},
+	{
+		name: 'Spring Boot',
+		icon: 'spring',
 	},
 	{
 		name: '.Net 8+',
@@ -62,8 +82,16 @@ export const techStack = [
 		icon: 'microsoftsqlserver',
 	},
 	{
+		name: 'Oracle SQL',
+		icon: 'oracle',
+	},
+	{
 		name: 'MongoDB',
 		icon: 'mongodb',
+	},
+	{
+		name: 'Redis',
+		icon: 'redis',
 	},
 	{
 		name: 'Git',
@@ -75,8 +103,25 @@ export const techStack = [
 		invert: true,
 	},
 	{
+		name: 'GitHub Actions',
+		icon: 'githubactions',
+	},
+	{
 		name: 'Docker',
 		icon: 'docker',
+	},
+	{
+		name: 'Selenium',
+		icon: 'selenium',
+	},
+	{
+		name: 'Cucumber',
+		icon: 'cucumber',
+		iconImage: 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/cucumber/cucumber-plain.svg',
+	},
+	{
+		name: 'Arduino',
+		icon: 'arduino',
 	},
 	{
 		name: 'Vercel',
