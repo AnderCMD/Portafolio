@@ -253,6 +253,9 @@ export const es = {
 	'Projects.Title.22': 'RizomaDB',
 	'Projects.Description.22':
 		'Cliente de bases de datos multimotor para VS Code (y VSCodium, Cursor y Windsurf): Apache-2.0, sin telemetría, sin cuentas y sin funciones bloqueadas. Conecta 24 motores, ejecuta consultas, edita datos en la cuadrícula, diseña tablas y diagramas ER, e incluye políticas, un asistente de IA opcional y un servidor MCP de solo lectura.',
+	'Projects.Title.23': 'Basta',
+	'Projects.Description.23':
+		'¡Basta! Juego de palabras para jugar en grupo con el teléfono en el centro de la mesa. Hecho con Expo y React Native para Android e iOS; descarga el APK desde las releases.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',

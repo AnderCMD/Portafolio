@@ -252,6 +252,9 @@ export const en = {
 	'Projects.Title.22': 'RizomaDB',
 	'Projects.Description.22':
 		'Multi-engine database client for VS Code (and VSCodium, Cursor and Windsurf): Apache-2.0, no telemetry, no accounts and no locked features. Connects to 24 engines, runs queries, edits data in the grid, designs tables and ER diagrams, and includes policies, an optional AI assistant and a read-only MCP server.',
+	'Projects.Title.23': 'Basta',
+	'Projects.Description.23':
+		'¡Basta! (Stop!) word game to play in a group with the phone in the middle of the table. Built with Expo and React Native for Android and iOS; download the APK from the releases.',
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
