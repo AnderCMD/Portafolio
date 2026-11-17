@@ -18,6 +18,7 @@ import ThemeSwitcherImagen from '@/assets/images/projects/ThemeSwitcher.webp';
 import LupaA11yImagen from '@/assets/images/projects/LupaA11y.webp';
 import AuttoFrameworkImagen from '@/assets/images/projects/AuttoFramework.webp';
 import RizomaDBImagen from '@/assets/images/projects/RizomaDB.webp';
+import BastaImagen from '@/assets/images/projects/Basta.webp';
 
 // date: fecha del primer commit del repositorio (YYYY-MM-DD)
 // Status: out-of-service, unmaintained, active, delivered
@@ -232,6 +233,17 @@ export const getProjects = (t: (key: string) => string) => [
 		linkCode: 'https://github.com/AnderCMD/RizomaDB',
 		date: '2026-10-20',
 		technologies: ['TypeScript', 'VS Code', 'PostgreSQL', 'MongoDB', 'Redis', 'MCP'],
+		status: 'active',
+	},
+	{
+		type: 'mobile',
+		title: t('Projects.Title.23'),
+		description: t('Projects.Description.23'),
+		image: BastaImagen,
+		linkCode: 'https://github.com/AnderCMD/Basta',
+		linkDownload: 'https://github.com/AnderCMD/Basta/releases/latest',
+		date: '2026-11-16',
+		technologies: ['React Native', 'Expo', 'TypeScript', 'Android', 'iOS', 'Git & GitHub'],
 		status: 'active',
 	},
 ];
