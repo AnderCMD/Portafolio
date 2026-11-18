@@ -3,6 +3,7 @@
 	"type": "module",
 	"version": "2.3.1",
 	"description": "Portafolio de proyectos de AnderCMD",
+	"license": "Apache-2.0",
 	"author": {
 		"name": "AnderCMD",
 		"email": "andercmd@outlook.com"
