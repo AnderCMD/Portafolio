@@ -255,6 +255,9 @@ export const en = {
 	'Projects.Title.23': 'Basta',
 	'Projects.Description.23':
 		'¡Basta! (Stop!) word game to play in a group with the phone in the middle of the table. Built with Expo and React Native for Android and iOS; download the APK from the releases.',
+	'Projects.Title.24': 'TaskGlass',
+	'Projects.Description.24':
+		'Fully transparent, blurred or acrylic Windows taskbar that follows light and dark mode. Small open-source (Apache-2.0) tray app written in Go; includes an installer, a website with a guide and downloads from the releases.',
 	'Projects.Status.OutOfService': 'Out of Service',
 	'Projects.Status.Unmaintained': 'Unmaintained',
 	'Projects.Status.Active': 'Active',
