@@ -256,6 +256,9 @@ export const es = {
 	'Projects.Title.23': 'Basta',
 	'Projects.Description.23':
 		'¡Basta! Juego de palabras para jugar en grupo con el teléfono en el centro de la mesa. Hecho con Expo y React Native para Android e iOS; descarga el APK desde las releases.',
+	'Projects.Title.24': 'TaskGlass',
+	'Projects.Description.24':
+		'Barra de tareas de Windows totalmente transparente, con desenfoque o acrílica, que sigue el modo claro y oscuro. Pequeña app de bandeja escrita en Go, de código abierto (Apache-2.0); incluye instalador, sitio web con guía y descarga desde las releases.',
 	'Projects.Status.OutOfService': 'Fuera de servicio',
 	'Projects.Status.Unmaintained': 'Sin mantenimiento',
 	'Projects.Status.Active': 'En servicio',

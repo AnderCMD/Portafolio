@@ -19,6 +19,7 @@ import LupaA11yImagen from '@/assets/images/projects/LupaA11y.webp';
 import AuttoFrameworkImagen from '@/assets/images/projects/AuttoFramework.webp';
 import RizomaDBImagen from '@/assets/images/projects/RizomaDB.webp';
 import BastaImagen from '@/assets/images/projects/Basta.webp';
+import TaskGlassImagen from '@/assets/images/projects/TaskGlass.webp';
 
 // date: fecha del primer commit del repositorio (YYYY-MM-DD)
 // Status: out-of-service, unmaintained, active, delivered
@@ -244,6 +245,18 @@ export const getProjects = (t: (key: string) => string) => [
 		linkDownload: 'https://github.com/AnderCMD/Basta/releases/latest',
 		date: '2026-11-16',
 		technologies: ['React Native', 'Expo', 'TypeScript', 'Android', 'iOS', 'Git & GitHub'],
+		status: 'active',
+	},
+	{
+		type: 'other',
+		title: t('Projects.Title.24'),
+		description: t('Projects.Description.24'),
+		image: TaskGlassImagen,
+		linkView: 'https://andercmd.github.io/TaskGlass/',
+		linkCode: 'https://github.com/AnderCMD/TaskGlass',
+		linkDownload: 'https://github.com/AnderCMD/TaskGlass/releases/latest',
+		date: '2026-11-17',
+		technologies: ['Go', 'Windows', 'C', 'PowerShell', 'GitHub Actions', 'Git & GitHub'],
 		status: 'active',
 	},
 ];
