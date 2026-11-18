@@ -254,7 +254,6 @@ export const getProjects = (t: (key: string) => string) => [
 		image: TaskGlassImagen,
 		linkView: 'https://andercmd.github.io/TaskGlass/',
 		linkCode: 'https://github.com/AnderCMD/TaskGlass',
-		linkDownload: 'https://github.com/AnderCMD/TaskGlass/releases/latest',
 		date: '2026-11-17',
 		technologies: ['Go', 'Windows', 'C', 'PowerShell', 'GitHub Actions', 'Git & GitHub'],
 		status: 'active',
